@@ -33,7 +33,7 @@ CREATE TABLE arboles.userlevels
   created_at timestamp NOT NULL DEFAULT now(),
   updated_at timestamp,
   delete_at timestamp,
-  level varchar(11) DEFAULT '',
+  level varchar(11) NOT NULL DEFAULT '',
   CONSTRAINT pk_userlevels PRIMARY KEY(id),
   CONSTRAINT uk_userlevels_level UNIQUE(level)
 );
@@ -47,7 +47,7 @@ CREATE TABLE arboles.loanstates
   created_at timestamp NOT NULL DEFAULT now(),
   updated_at timestamp,
   delete_at timestamp,
-  state varchar(20) DEFAULT '',
+  state varchar(20) NOT NULL DEFAULT '',
   CONSTRAINT pk_loanstates PRIMARY KEY(id),
   CONSTRAINT uk_loanstates_state UNIQUE(state)
 );
@@ -61,7 +61,7 @@ CREATE TABLE arboles.documenttypes
   created_at timestamp NOT NULL DEFAULT now(),
   updated_at timestamp,
   delete_at timestamp,
-  descrip varchar(20) DEFAULT '',
+  descrip varchar(20) NOT NULL DEFAULT '',
   CONSTRAINT pk_documenttypes PRIMARY KEY(id),
   CONSTRAINT uk_documenttypes_descrip UNIQUE(descrip)
 );
@@ -76,8 +76,34 @@ CREATE TABLE arboles.teldescrips
   created_at timestamp NOT NULL DEFAULT now(),
   updated_at timestamp,
   delete_at timestamp,
-  descrip varchar(20) DEFAULT '',
+  descrip varchar(20) NOT NULL DEFAULT '',
   CONSTRAINT pk_teldescrips PRIMARY KEY(id),
   CONSTRAINT uk_teldescrips_descrip UNIQUE(descrip)
 );
+
+
+-- tabla 6
+DROP TABLE arboles.users;
+
+CREATE TABLE arboles.users
+(
+  id serial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp,
+  active bool DEFAULT TRUE,
+  nickname varchar(50)  NOT NULL DEFAULT '',
+  email varchar(100) NOT NULL,
+  password varchar(256) NOT NULL,
+  cod_document_types varchar(3) NOT NULL DEFAULT '',
+  document varchar(11) NOT NULL DEFAULT '',
+  name varchar(50) NOT NULL DEFAULT '',
+  CONSTRAINT pk_users PRIMARY KEY(id),
+  CONSTRAINT uk_users_nickname UNIQUE(nickname),
+  CONSTRAINT uk_users_email UNIQUE(email),
+  CONSTRAINT uk_users_cdt_document UNIQUE(cod_document_types,document),
+  CONSTRAINT uk_users_name UNIQUE(name)
+);
+
+
 
