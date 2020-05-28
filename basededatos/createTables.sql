@@ -350,3 +350,21 @@ CREATE TABLE arboles.cashs
 );
 
 
+
+-- tabla 16
+DROP TABLE arboles.expensedescrips;
+
+CREATE TABLE arboles.expensedescrips
+(
+  id bigserial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp,
+  cod_collection integer NOT NULL,
+  descrip varchar(11) NOT NULL DEFAULT '',
+  CONSTRAINT pk_expensed PRIMARY KEY(id),
+  CONSTRAINT fk_expensed_collectiones FOREIGN KEY(cod_collection) 
+    REFERENCES arboles.collectiones(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+  CONSTRAINT uk_expensed_cc_descrip UNIQUE(cod_collection,descrip)
+);
