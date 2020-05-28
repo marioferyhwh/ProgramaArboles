@@ -9,7 +9,7 @@ OWNER arbol;
 -- arboles
 
 DROP TABLE arboles.collectiones;
-
+-- tabla 1
 CREATE TABLE arboles.collectiones
 (
   id serial NOT NULL ,
@@ -25,6 +25,7 @@ CREATE TABLE arboles.collectiones
 
 DROP TABLE arboles.userlevels;
 
+-- tabla 2
 CREATE TABLE arboles.userlevels
 (
   id smallserial NOT NULL ,
@@ -32,11 +33,13 @@ CREATE TABLE arboles.userlevels
   updated_at timestamp,
   delete_at timestamp,
   level varchar(11) DEFAULT '',
-  CONSTRAINT pk_userlevels PRIMARY KEY(id)
+  CONSTRAINT pk_userlevels PRIMARY KEY(id),
+  CONSTRAINT uk_userlevels_level UNIQUE(level)
 );
 
 DROP TABLE arboles.loanstates;
 
+-- tabla 3
 CREATE TABLE arboles.loanstates
 (
   id smallserial NOT NULL ,
@@ -44,11 +47,13 @@ CREATE TABLE arboles.loanstates
   updated_at timestamp,
   delete_at timestamp,
   state varchar(20) DEFAULT '',
-  CONSTRAINT pk_loanstates PRIMARY KEY(id)
+  CONSTRAINT pk_loanstates PRIMARY KEY(id),
+  CONSTRAINT uk_loanstates_state UNIQUE(state)
 );
 
 DROP TABLE arboles.documenttypes;
 
+-- tabla 4
 CREATE TABLE arboles.documenttypes
 (
   id varchar(3) NOT NULL ,
@@ -56,6 +61,7 @@ CREATE TABLE arboles.documenttypes
   updated_at timestamp,
   delete_at timestamp,
   descrip varchar(20) DEFAULT '',
-  CONSTRAINT pk_documenttypes PRIMARY KEY(id)
+  CONSTRAINT pk_documenttypes PRIMARY KEY(id),
+  CONSTRAINT uk_documenttypes_descrip UNIQUE(descrip)
 );
 
