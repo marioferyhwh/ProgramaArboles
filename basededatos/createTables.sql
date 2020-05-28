@@ -134,7 +134,7 @@ CREATE TABLE arboles.listlocationes
   descrip varchar(11) NOT NULL DEFAULT '',
   CONSTRAINT pk_listl PRIMARY KEY(id),
   CONSTRAINT fk_listl_collections FOREIGN KEY(cod_collection) 
-    REFERENCES collectiones(id)
+    REFERENCES arboles.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   CONSTRAINT uk_listl_cc_descrip UNIQUE(cod_collection,descrip)
 );
