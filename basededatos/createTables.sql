@@ -196,3 +196,42 @@ CREATE TABLE arboles.usertels
 
 );
 
+
+
+-- tabla 11
+DROP TABLE arboles.clients;
+
+CREATE TABLE arboles.clients
+(
+  id bigserial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp,
+  name varchar(50) NOT NULL,
+  email varchar(100),
+  cc varchar(11),
+  adress varchar(60) NOT NULL,
+  loan_number integer NOT NULL DEFAULT 0,
+  cod_collection integer NOT NULL,
+  cod_loan_state SMALLINT NOT NULL DEFAULT 0,
+  cod_business_type SMALLINT NOT NULL DEFAULT 0,
+  cod_list_location BIGINT NOT NULL DEFAULT 0,
+  
+  CONSTRAINT pk_clients PRIMARY KEY(id),
+  
+  CONSTRAINT fk_clients_collectiones FOREIGN KEY(cod_collection) 
+    REFERENCES arboles.collectiones(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
+  
+  CONSTRAINT fk_clients_loans FOREIGN KEY(cod_loan_state) 
+    REFERENCES arboles.loanstates(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
+
+  CONSTRAINT fk_clients_businesst FOREIGN KEY(cod_business_type) 
+    REFERENCES arboles.businesstypes(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
+
+  CONSTRAINT fk_clients_listlocationes FOREIGN KEY(cod_location_list) 
+    REFERENCES arboles.listlocationes(id)
+    ON UPDATE RESTRICT ON DELETE RESTRIC
+);
