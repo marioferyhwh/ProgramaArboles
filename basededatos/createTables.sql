@@ -140,4 +140,36 @@ CREATE TABLE arboles.listlocationes
 );
 
 
+-- tabla 9
+DROP TABLE arboles.listusers;
+
+CREATE TABLE arboles.listusers
+(
+  id bigserial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp,
+  cod_user integer NOT NULL,
+  cod_collection integer NOT NULL,
+  cod_user_level SMALLINT NOT NULL DEFAULT 1,
+  cash NUMERIC(6,1) NOT NULL DEFAULT 0,
+  
+  CONSTRAINT pk_listu PRIMARY KEY(id),
+  
+  CONSTRAINT fk_listu_users FOREIGN KEY(cod_user) 
+    REFERENCES arboles.users(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
+  
+  CONSTRAINT fk_listu_collections FOREIGN KEY(cod_collection) 
+    REFERENCES arboles.collectiones(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
+  
+  CONSTRAINT fk_listu_userl FOREIGN KEY(cod_user_level) 
+    REFERENCES arboles.userlevels(id)
+    ON UPDATE CASCADE ON DELETE RESTRICT,
+  
+  CONSTRAINT uk_listu_cc_descrip UNIQUE(cod_user,cod_collection)
+);
+
+
 
