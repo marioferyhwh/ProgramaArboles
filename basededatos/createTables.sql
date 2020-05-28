@@ -292,3 +292,37 @@ CREATE TABLE arboles.loans
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
 );
+
+
+-- tabla 14
+DROP TABLE arboles.payments;
+
+CREATE TABLE arboles.payments
+(
+  id bigserial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp NOT NULL,
+  cod_loan BIGINT NOT NULL,
+  cash numeric(6,1) NOT NULL,
+  cod_user integer NOT NULL,
+  cod_collection integer NOT NULL,
+  CONSTRAINT pk_payments PRIMARY KEY(id),
+
+  CONSTRAINT fk_payments_loans FOREIGN KEY(cod_loan) 
+    REFERENCES arboles.loans(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
+  CONSTRAINT fk_payments_users FOREIGN KEY(cod_user) 
+    REFERENCES arboles.users(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
+  CONSTRAINT fk_payments_collectiones FOREIGN KEY(cod_collection) 
+    REFERENCES arboles.collectiones(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
+);
+
+
+
+
