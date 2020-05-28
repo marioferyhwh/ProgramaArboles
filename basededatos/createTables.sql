@@ -34,8 +34,8 @@ CREATE TABLE arboles.userlevels
   updated_at timestamp,
   delete_at timestamp,
   level varchar(11) NOT NULL DEFAULT '',
-  CONSTRAINT pk_userlevels PRIMARY KEY(id),
-  CONSTRAINT uk_userlevels_level UNIQUE(level)
+  CONSTRAINT pk_userl PRIMARY KEY(id),
+  CONSTRAINT uk_userl_level UNIQUE(level)
 );
 
 -- tabla 3
@@ -48,8 +48,8 @@ CREATE TABLE arboles.loanstates
   updated_at timestamp,
   delete_at timestamp,
   state varchar(20) NOT NULL DEFAULT '',
-  CONSTRAINT pk_loanstates PRIMARY KEY(id),
-  CONSTRAINT uk_loanstates_state UNIQUE(state)
+  CONSTRAINT pk_loans PRIMARY KEY(id),
+  CONSTRAINT uk_loans_state UNIQUE(state)
 );
 
 -- tabla 4
@@ -62,8 +62,8 @@ CREATE TABLE arboles.documenttypes
   updated_at timestamp,
   delete_at timestamp,
   descrip varchar(20) NOT NULL DEFAULT '',
-  CONSTRAINT pk_documenttypes PRIMARY KEY(id),
-  CONSTRAINT uk_documenttypes_descrip UNIQUE(descrip)
+  CONSTRAINT pk_documentt PRIMARY KEY(id),
+  CONSTRAINT uk_documentt_descrip UNIQUE(descrip)
 );
 
 
@@ -77,8 +77,8 @@ CREATE TABLE arboles.teldescrips
   updated_at timestamp,
   delete_at timestamp,
   descrip varchar(20) NOT NULL DEFAULT '',
-  CONSTRAINT pk_teldescrips PRIMARY KEY(id),
-  CONSTRAINT uk_teldescrips_descrip UNIQUE(descrip)
+  CONSTRAINT pk_teld PRIMARY KEY(id),
+  CONSTRAINT uk_teld_descrip UNIQUE(descrip)
 );
 
 
@@ -92,7 +92,7 @@ CREATE TABLE arboles.users
   updated_at timestamp,
   delete_at timestamp,
   active bool DEFAULT TRUE,
-  nickname varchar(50)  NOT NULL DEFAULT '',
+  nickname varchar(50) NOT NULL DEFAULT '',
   email varchar(100) NOT NULL,
   password varchar(256) NOT NULL,
   cod_document_types varchar(3) NOT NULL DEFAULT '',
@@ -116,8 +116,28 @@ CREATE TABLE arboles.businesstypes
   updated_at timestamp,
   delete_at timestamp,
   descrip varchar(45) NOT NULL DEFAULT '',
-  CONSTRAINT pk_businesstypes PRIMARY KEY(id),
-  CONSTRAINT uk_businesstypes_descrip UNIQUE(descrip)
+  CONSTRAINT pk_businesst PRIMARY KEY(id),
+  CONSTRAINT uk_businesst_descrip UNIQUE(descrip)
 );
+
+
+-- tabla 8
+DROP TABLE arboles.listlocationes;
+
+CREATE TABLE arboles.listlocationes
+(
+  id bigserial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp,
+  cod_collection integer NOT NULL,
+  descrip varchar(11) NOT NULL DEFAULT '',
+  CONSTRAINT pk_listl PRIMARY KEY(id),
+  CONSTRAINT fk_listl_collections FOREIGN KEY(cod_collection) 
+    REFERENCES collectiones(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+  CONSTRAINT uk_listl_cc_descrip UNIQUE(cod_collection,descrip)
+);
+
 
 
