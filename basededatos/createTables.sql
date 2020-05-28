@@ -319,10 +319,34 @@ CREATE TABLE arboles.payments
 
   CONSTRAINT fk_payments_collectiones FOREIGN KEY(cod_collection) 
     REFERENCES arboles.collectiones(id)
-    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+    ON UPDATE RESTRICT ON DELETE RESTRICT 
 
 );
 
 
+
+-- tabla 15
+DROP TABLE arboles.cashs;
+
+CREATE TABLE arboles.cashs
+(
+  id bigserial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp NOT NULL,
+  cod_collection integer NOT NULL,
+  cod_user integer NOT NULL,
+  cash numeric(6,1) NOT NULL,
+  CONSTRAINT pk_cashs PRIMARY KEY(id),
+
+  CONSTRAINT fk_cashs_collectiones FOREIGN KEY(cod_collection) 
+    REFERENCES arboles.collectiones(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
+  CONSTRAINT fk_cashs_users FOREIGN KEY(cod_user) 
+    REFERENCES arboles.users(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT 
+
+);
 
 
