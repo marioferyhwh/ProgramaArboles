@@ -96,7 +96,7 @@ CREATE TABLE arboles.users
   email varchar(100) NOT NULL,
   password varchar(256) NOT NULL,
   cod_document_types varchar(3) NOT NULL DEFAULT '',
-  document varchar(11) NOT NULL DEFAULT '',
+  document NUMERIC(11) NOT NULL DEFAULT '',
   name varchar(50) NOT NULL DEFAULT '',
   CONSTRAINT pk_users PRIMARY KEY(id),
   CONSTRAINT uk_users_nickname UNIQUE(nickname),
@@ -182,7 +182,7 @@ CREATE TABLE arboles.usertels
   updated_at timestamp,
   delete_at timestamp,
   cod_user integer NOT NULL,
-  phone varchar(11) NOT NULL DEFAULT '',
+  phone NUMERIC(12) NOT NULL DEFAULT '',
   cod_tel_descrip SMALLINT NOT NULL DEFAULT '',
   CONSTRAINT pk_usert PRIMARY KEY(id),
 
@@ -209,7 +209,7 @@ CREATE TABLE arboles.clients
   delete_at timestamp,
   name varchar(50) NOT NULL,
   email varchar(100),
-  cc varchar(11),
+  cc NUMERIC(11),
   adress varchar(60) NOT NULL,
   loan_number SMALLINT NOT NULL DEFAULT 0,
   cod_collection integer NOT NULL,
@@ -247,16 +247,48 @@ CREATE TABLE arboles.clienttels
   updated_at timestamp,
   delete_at timestamp,
   cod_client integer NOT NULL,
-  phone varchar(11) NOT NULL DEFAULT '',
+  phone NUMERIC(12) NOT NULL DEFAULT '',
   cod_tel_descrip SMALLINT NOT NULL DEFAULT '',
   CONSTRAINT pk_clientt PRIMARY KEY(id),
 
-  CONSTRAINT fk_clientt_users FOREIGN KEY(cod_client) 
-    REFERENCES arboles.users(id)
+  CONSTRAINT fk_clientt_clients FOREIGN KEY(cod_client) 
+    REFERENCES arboles.clients(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_clientt_teld FOREIGN KEY(cod_tel_descrip) 
     REFERENCES arboles.teldescrips(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
+);
+
+-- tabla 13
+DROP TABLE arboles.loans;
+
+CREATE TABLE arboles.loans
+(
+  id bigserial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp NOT NULL,
+  initial_value numeric(6,1) NOT NULL,
+  interest numeric(3) NOT NULL,
+  quota numeric(2) NOT NULL,
+  balance numeric(6,1) NOT NULL,
+  cod_loan_state SMALLINT NOT NULL,
+  cod_client BIGINT NOT NULL,
+  cod_collection integer NOT NULL,
+  CONSTRAINT pk_loans PRIMARY KEY(id),
+
+  CONSTRAINT fk_loans_loans FOREIGN KEY(cod_loan_state) 
+    REFERENCES arboles.loanstates(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
+  CONSTRAINT fk_loans_clients FOREIGN KEY(cod_client) 
+    REFERENCES arboles.clients(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
+  CONSTRAINT fk_loans_collectiones FOREIGN KEY(cod_collection) 
+    REFERENCES arboles.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
 );
