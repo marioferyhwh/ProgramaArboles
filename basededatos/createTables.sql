@@ -106,4 +106,18 @@ CREATE TABLE arboles.users
 );
 
 
+-- tabla 7
+DROP TABLE arboles.businesstypes;
+
+CREATE TABLE arboles.businesstypes
+(
+  id smallserial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp,
+  descrip varchar(45) NOT NULL DEFAULT '',
+  CONSTRAINT pk_businesstypes PRIMARY KEY(id),
+  CONSTRAINT uk_businesstypes_descrip UNIQUE(descrip)
+);
+
 
