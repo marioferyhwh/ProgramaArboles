@@ -133,7 +133,7 @@ CREATE TABLE arboles.listlocationes
   cod_collection integer NOT NULL,
   descrip varchar(11) NOT NULL DEFAULT '',
   CONSTRAINT pk_listl PRIMARY KEY(id),
-  CONSTRAINT fk_listl_collections FOREIGN KEY(cod_collection) 
+  CONSTRAINT fk_listl_collectiones FOREIGN KEY(cod_collection) 
     REFERENCES arboles.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   CONSTRAINT uk_listl_cc_descrip UNIQUE(cod_collection,descrip)
@@ -160,7 +160,7 @@ CREATE TABLE arboles.listusers
     REFERENCES arboles.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   
-  CONSTRAINT fk_listu_collections FOREIGN KEY(cod_collection) 
+  CONSTRAINT fk_listu_collectiones FOREIGN KEY(cod_collection) 
     REFERENCES arboles.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   
@@ -172,4 +172,27 @@ CREATE TABLE arboles.listusers
 );
 
 
+-- tabla 10
+DROP TABLE arboles.usertels;
+
+CREATE TABLE arboles.usertels
+(
+  id bigserial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp,
+  cod_user integer NOT NULL,
+  phone varchar(11) NOT NULL DEFAULT '',
+  cod_tel_descrip SMALLINT NOT NULL DEFAULT '',
+  CONSTRAINT pk_usert PRIMARY KEY(id),
+
+  CONSTRAINT fk_usert_users FOREIGN KEY(cod_user) 
+    REFERENCES arboles.users(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
+  CONSTRAINT fk_usert_teld FOREIGN KEY(cod_tel_descrip) 
+    REFERENCES arboles.teldescrips(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
+);
 
