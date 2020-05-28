@@ -8,8 +8,9 @@ OWNER arbol;
 -- psql -d arboles -U arbol
 -- arboles
 
-DROP TABLE arboles.collectiones;
 -- tabla 1
+DROP TABLE arboles.collectiones;
+
 CREATE TABLE arboles.collectiones
 (
   id serial NOT NULL ,
@@ -23,9 +24,9 @@ CREATE TABLE arboles.collectiones
 );
 
 
+-- tabla 2
 DROP TABLE arboles.userlevels;
 
--- tabla 2
 CREATE TABLE arboles.userlevels
 (
   id smallserial NOT NULL ,
@@ -37,9 +38,9 @@ CREATE TABLE arboles.userlevels
   CONSTRAINT uk_userlevels_level UNIQUE(level)
 );
 
+-- tabla 3
 DROP TABLE arboles.loanstates;
 
--- tabla 3
 CREATE TABLE arboles.loanstates
 (
   id smallserial NOT NULL ,
@@ -51,9 +52,9 @@ CREATE TABLE arboles.loanstates
   CONSTRAINT uk_loanstates_state UNIQUE(state)
 );
 
+-- tabla 4
 DROP TABLE arboles.documenttypes;
 
--- tabla 4
 CREATE TABLE arboles.documenttypes
 (
   id varchar(3) NOT NULL ,
@@ -63,5 +64,20 @@ CREATE TABLE arboles.documenttypes
   descrip varchar(20) DEFAULT '',
   CONSTRAINT pk_documenttypes PRIMARY KEY(id),
   CONSTRAINT uk_documenttypes_descrip UNIQUE(descrip)
+);
+
+
+-- tabla 5
+DROP TABLE arboles.teldescrips;
+
+CREATE TABLE arboles.teldescrips
+(
+  id smallserial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp,
+  descrip varchar(20) DEFAULT '',
+  CONSTRAINT pk_teldescrips PRIMARY KEY(id),
+  CONSTRAINT uk_teldescrips_descrip UNIQUE(descrip)
 );
 
