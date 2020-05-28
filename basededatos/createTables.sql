@@ -43,6 +43,19 @@ CREATE TABLE arboles.loanstates
   created_at timestamp NOT NULL DEFAULT now(),
   updated_at timestamp,
   delete_at timestamp,
-  level varchar(20) DEFAULT '',
+  state varchar(20) DEFAULT '',
   CONSTRAINT pk_loanstates PRIMARY KEY(id)
 );
+
+DROP TABLE arboles.documenttypes;
+
+CREATE TABLE arboles.documenttypes
+(
+  id varchar(3) NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp,
+  descrip varchar(20) DEFAULT '',
+  CONSTRAINT pk_documenttypes PRIMARY KEY(id)
+);
+
