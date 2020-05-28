@@ -368,3 +368,33 @@ CREATE TABLE arboles.expensedescrips
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   CONSTRAINT uk_expensed_cc_descrip UNIQUE(cod_collection,descrip)
 );
+
+-- tabla 17
+DROP TABLE arboles.expense;
+
+CREATE TABLE arboles.expense
+(
+  id bigserial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp NOT NULL,
+  cash numeric(6,1) NOT NULL,
+  cod_expense_descrip BIGINT NOT NULL,
+  cod_user integer NOT NULL,
+  cod_collection integer NOT NULL,
+  CONSTRAINT pk_expense PRIMARY KEY(id),
+
+  CONSTRAINT fk_expense_expensed FOREIGN KEY(cod_expense_descrip) 
+    REFERENCES arboles.expensedescrips(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
+  CONSTRAINT fk_expense_users FOREIGN KEY(cod_user) 
+    REFERENCES arboles.users(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
+  CONSTRAINT fk_expense_collectiones FOREIGN KEY(cod_collection) 
+    REFERENCES arboles.collectiones(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT 
+
+);
+
