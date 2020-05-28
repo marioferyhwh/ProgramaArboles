@@ -211,7 +211,7 @@ CREATE TABLE arboles.clients
   email varchar(100),
   cc varchar(11),
   adress varchar(60) NOT NULL,
-  loan_number integer NOT NULL DEFAULT 0,
+  loan_number SMALLINT NOT NULL DEFAULT 0,
   cod_collection integer NOT NULL,
   cod_loan_state SMALLINT NOT NULL DEFAULT 0,
   cod_business_type SMALLINT NOT NULL DEFAULT 0,
@@ -234,4 +234,29 @@ CREATE TABLE arboles.clients
   CONSTRAINT fk_clients_listlocationes FOREIGN KEY(cod_location_list) 
     REFERENCES arboles.listlocationes(id)
     ON UPDATE RESTRICT ON DELETE RESTRIC
+);
+
+
+-- tabla 12
+DROP TABLE arboles.clienttels;
+
+CREATE TABLE arboles.clienttels
+(
+  id bigserial NOT NULL ,
+  created_at timestamp NOT NULL DEFAULT now(),
+  updated_at timestamp,
+  delete_at timestamp,
+  cod_client integer NOT NULL,
+  phone varchar(11) NOT NULL DEFAULT '',
+  cod_tel_descrip SMALLINT NOT NULL DEFAULT '',
+  CONSTRAINT pk_clientt PRIMARY KEY(id),
+
+  CONSTRAINT fk_clientt_users FOREIGN KEY(cod_client) 
+    REFERENCES arboles.users(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
+  CONSTRAINT fk_clientt_teld FOREIGN KEY(cod_tel_descrip) 
+    REFERENCES arboles.teldescrips(id)
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,
+
 );
