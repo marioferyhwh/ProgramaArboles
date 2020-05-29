@@ -100,14 +100,14 @@ CREATE TABLE forest.users
   nickname varchar(50) NOT NULL DEFAULT '',
   email varchar(100) NOT NULL,
   password varchar(256) NOT NULL,
-  cod_document_type varchar(3) NOT NULL DEFAULT '',
-  document NUMERIC(11) NOT NULL DEFAULT '',
+  cod_document_type varchar(3) NOT NULL DEFAULT 'CC',
+  document NUMERIC(11) NOT NULL ,
   name varchar(50) NOT NULL DEFAULT '',
 
   CONSTRAINT pk_users PRIMARY KEY(id),
   CONSTRAINT uk_users_nickname UNIQUE(nickname),
   CONSTRAINT uk_users_email UNIQUE(email),
-  CONSTRAINT uk_users_cdocumentt_document UNIQUE(cod_document_types,document),
+  CONSTRAINT uk_users_cdocumentt_document UNIQUE(cod_document_type,document),
   CONSTRAINT fk_users_document_t FOREIGN key(cod_document_type)
     REFERENCES forest.documenttypes (id) 
     ON DELETE RESTRICT ON UPDATE RESTRICT
@@ -193,8 +193,8 @@ CREATE TABLE forest.usertels
   updated_at timestamp,
   delete_at timestamp,
   cod_user integer NOT NULL,
-  phone NUMERIC(12) NOT NULL DEFAULT '',
-  cod_tel_descrip SMALLINT NOT NULL DEFAULT '',
+  phone NUMERIC(12) NOT NULL,
+  cod_tel_descrip SMALLINT NOT NULL DEFAULT 0,
   CONSTRAINT pk_user_t PRIMARY KEY(id),
 
   CONSTRAINT fk_user_t_users FOREIGN KEY(cod_user) 
@@ -223,7 +223,7 @@ CREATE TABLE forest.clients
   name varchar(50) NOT NULL,
   email varchar(100),
   cod_document_type varchar(3) DEFAULT 'CC',
-  document NUMERIC(11) DEFAULT '',
+  document NUMERIC(11),
   adress varchar(60) NOT NULL,
   loan_number SMALLINT NOT NULL DEFAULT 0,
   cod_collection integer NOT NULL,
@@ -234,10 +234,10 @@ CREATE TABLE forest.clients
   
   CONSTRAINT pk_clients PRIMARY KEY(id),
   
-  CONSTRAINT uk_clients_cdocumentt_document UNIQUE(cod_document_types,document),
-  CONSTRAINT fk_clients_document_t FOREIGN key(cod_document_type),
+  CONSTRAINT uk_clients_cdocumentt_document UNIQUE(cod_document_type,document),
+  CONSTRAINT fk_clients_document_t FOREIGN key(cod_document_type)
     REFERENCES forest.documenttypes (id) 
-    ON DELETE RESTRICT ON UPDATE RESTRICT
+    ON DELETE RESTRICT ON UPDATE RESTRICT,
 
   CONSTRAINT fk_clients_collectiones FOREIGN KEY(cod_collection) 
     REFERENCES forest.collectiones(id)
@@ -257,7 +257,8 @@ CREATE TABLE forest.clients
 
   CONSTRAINT fk_clients_users FOREIGN KEY(cod_user) 
     REFERENCES forest.users(id)
-    ON UPDATE RESTRICT ON DELETE RESTRICT    
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
+  CONSTRAINT ck_clients_loan_number CHECK(loan_number >= 0)
 
 );
 
@@ -272,8 +273,8 @@ CREATE TABLE forest.clienttels
   updated_at timestamp,
   delete_at timestamp,
   cod_client integer NOT NULL,
-  phone NUMERIC(12) NOT NULL DEFAULT '',
-  cod_tel_descrip SMALLINT NOT NULL DEFAULT '',
+  phone NUMERIC(12) NOT NULL,
+  cod_tel_descrip SMALLINT NOT NULL,
   CONSTRAINT pk_client_t PRIMARY KEY(id),
 
   CONSTRAINT fk_client_t_clients FOREIGN KEY(cod_client) 
@@ -318,8 +319,8 @@ CREATE TABLE forest.loans
     REFERENCES forest.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
-  CONSTRAINT fk_loans_collectiones FOREIGN KEY(cod_user) 
-    REFERENCES forest.collectiones(id)
+  CONSTRAINT fk_loans_users FOREIGN KEY(cod_user) 
+    REFERENCES forest.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   
   CONSTRAINT ck_loans_initialv CHECK( initial_value > 0 AND initial_value%5 = 0),  
