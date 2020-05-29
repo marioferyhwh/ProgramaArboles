@@ -110,7 +110,7 @@ CREATE TABLE forest.users
   CONSTRAINT uk_users_cdocumentt_document UNIQUE(cod_document_types,document),
   CONSTRAINT fk_users_document_t FOREIGN key(cod_document_type)
     REFERENCES forest.documenttypes (id) 
-    ON DELETE RESTRIC ON UPDATE RESTRIC
+    ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
 
@@ -237,7 +237,7 @@ CREATE TABLE forest.clients
   CONSTRAINT uk_clients_cdocumentt_document UNIQUE(cod_document_types,document),
   CONSTRAINT fk_clients_document_t FOREIGN key(cod_document_type),
     REFERENCES forest.documenttypes (id) 
-    ON DELETE RESTRIC ON UPDATE RESTRIC
+    ON DELETE RESTRICT ON UPDATE RESTRICT
 
   CONSTRAINT fk_clients_collectiones FOREIGN KEY(cod_collection) 
     REFERENCES forest.collectiones(id)
@@ -253,7 +253,7 @@ CREATE TABLE forest.clients
 
   CONSTRAINT fk_clients_list_l FOREIGN KEY(cod_list_location) 
     REFERENCES forest.listlocationes(id)
-    ON UPDATE RESTRICT ON DELETE RESTRIC,
+    ON UPDATE RESTRICT ON DELETE RESTRICT,
 
   CONSTRAINT fk_clients_users FOREIGN KEY(cod_user) 
     REFERENCES forest.users(id)
