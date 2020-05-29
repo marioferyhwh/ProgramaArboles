@@ -9,9 +9,9 @@ CREATE DATABASE forest OWNER arbol;
 -- arboles
 
 -- tabla 1
-DROP TABLE forest.collectiones;
+DROP TABLE public.collectiones;
 
-CREATE TABLE forest.collectiones
+CREATE TABLE public.collectiones
 (
   id serial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -26,9 +26,9 @@ CREATE TABLE forest.collectiones
 
 
 -- tabla 2
-DROP TABLE forest.userlevels;
+DROP TABLE public.userlevels;
 
-CREATE TABLE forest.userlevels
+CREATE TABLE userlevels
 (
   id smallserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -41,9 +41,9 @@ CREATE TABLE forest.userlevels
 );
 
 -- tabla 3
-DROP TABLE forest.loanstates;
+DROP TABLE public.loanstates;
 
-CREATE TABLE forest.loanstates
+CREATE TABLE public.loanstates
 (
   id smallserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -56,9 +56,9 @@ CREATE TABLE forest.loanstates
 );
 
 -- tabla 4
-DROP TABLE forest.documenttypes;
+DROP TABLE public.documenttypes;
 
-CREATE TABLE forest.documenttypes
+CREATE TABLE public.documenttypes
 (
   id varchar(3) NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -72,9 +72,9 @@ CREATE TABLE forest.documenttypes
 
 
 -- tabla 5
-DROP TABLE forest.teldescrips;
+DROP TABLE public.teldescrips;
 
-CREATE TABLE forest.teldescrips
+CREATE TABLE public.teldescrips
 (
   id smallserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -88,9 +88,9 @@ CREATE TABLE forest.teldescrips
 
 
 -- tabla 6
-DROP TABLE forest.users;
+DROP TABLE public.users;
 
-CREATE TABLE forest.users
+CREATE TABLE public.users
 (
   id serial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -109,15 +109,15 @@ CREATE TABLE forest.users
   CONSTRAINT uk_users_email UNIQUE(email),
   CONSTRAINT uk_users_cdocumentt_document UNIQUE(cod_document_type,document),
   CONSTRAINT fk_users_document_t FOREIGN key(cod_document_type)
-    REFERENCES forest.documenttypes (id) 
+    REFERENCES public.documenttypes (id) 
     ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
 
 -- tabla 7
-DROP TABLE forest.businesstypes;
+DROP TABLE public.businesstypes;
 
-CREATE TABLE forest.businesstypes
+CREATE TABLE public.businesstypes
 (
   id smallserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -131,9 +131,9 @@ CREATE TABLE forest.businesstypes
 
 
 -- tabla 8
-DROP TABLE forest.listlocationes;
+DROP TABLE public.listlocationes;
 
-CREATE TABLE forest.listlocationes
+CREATE TABLE public.listlocationes
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -144,16 +144,16 @@ CREATE TABLE forest.listlocationes
 
   CONSTRAINT pk_list_l PRIMARY KEY(id),
   CONSTRAINT fk_list_l_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES forest.collectiones(id)
+    REFERENCES public.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   CONSTRAINT uk_list_l_ccollection_descrip UNIQUE(cod_collection,descrip)
 );
 
 
 -- tabla 9
-DROP TABLE forest.listusers;
+DROP TABLE public.listusers;
 
-CREATE TABLE forest.listusers
+CREATE TABLE public.listusers
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -168,15 +168,15 @@ CREATE TABLE forest.listusers
   CONSTRAINT pk_list_u PRIMARY KEY(id),
   
   CONSTRAINT fk_list_u_users FOREIGN KEY(cod_user) 
-    REFERENCES forest.users(id)
+    REFERENCES public.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   
   CONSTRAINT fk_list_u_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES forest.collectiones(id)
+    REFERENCES public.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   
   CONSTRAINT fk_list_u_user_l FOREIGN KEY(cod_user_level) 
-    REFERENCES forest.userlevels(id)
+    REFERENCES public.userlevels(id)
     ON UPDATE CASCADE ON DELETE RESTRICT,
   
   CONSTRAINT uk_list_u_cuser_ccollection UNIQUE(cod_user,cod_collection)
@@ -184,9 +184,9 @@ CREATE TABLE forest.listusers
 
 
 -- tabla 10
-DROP TABLE forest.usertels;
+DROP TABLE public.usertels;
 
-CREATE TABLE forest.usertels
+CREATE TABLE public.usertels
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -198,11 +198,11 @@ CREATE TABLE forest.usertels
   CONSTRAINT pk_user_t PRIMARY KEY(id),
 
   CONSTRAINT fk_user_t_users FOREIGN KEY(cod_user) 
-    REFERENCES forest.users(id)
+    REFERENCES public.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_user_t_tel_d FOREIGN KEY(cod_tel_descrip) 
-    REFERENCES forest.teldescrips(id)
+    REFERENCES public.teldescrips(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   CONSTRAINT uk_user_t_phone UNIQUE(phone),
   CONSTRAINT ck_user_t_phone CHECK(phone > 999999)
@@ -212,9 +212,9 @@ CREATE TABLE forest.usertels
 
 
 -- tabla 11
-DROP TABLE forest.clients;
+DROP TABLE public.clients;
 
-CREATE TABLE forest.clients
+CREATE TABLE public.clients
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -236,27 +236,27 @@ CREATE TABLE forest.clients
   
   CONSTRAINT uk_clients_cdocumentt_document UNIQUE(cod_document_type,document),
   CONSTRAINT fk_clients_document_t FOREIGN key(cod_document_type)
-    REFERENCES forest.documenttypes (id) 
+    REFERENCES public.documenttypes (id) 
     ON DELETE RESTRICT ON UPDATE RESTRICT,
 
   CONSTRAINT fk_clients_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES forest.collectiones(id)
+    REFERENCES public.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   
   CONSTRAINT fk_clients_loan_s FOREIGN KEY(cod_loan_state) 
-    REFERENCES forest.loanstates(id)
+    REFERENCES public.loanstates(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
 
   CONSTRAINT fk_clients_business_t FOREIGN KEY(cod_business_type) 
-    REFERENCES forest.businesstypes(id)
+    REFERENCES public.businesstypes(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
 
   CONSTRAINT fk_clients_list_l FOREIGN KEY(cod_list_location) 
-    REFERENCES forest.listlocationes(id)
+    REFERENCES public.listlocationes(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
 
   CONSTRAINT fk_clients_users FOREIGN KEY(cod_user) 
-    REFERENCES forest.users(id)
+    REFERENCES public.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   CONSTRAINT ck_clients_loan_number CHECK(loan_number >= 0)
 
@@ -264,9 +264,9 @@ CREATE TABLE forest.clients
 
 
 -- tabla 12
-DROP TABLE forest.clienttels;
+DROP TABLE public.clienttels;
 
-CREATE TABLE forest.clienttels
+CREATE TABLE public.clienttels
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -278,19 +278,19 @@ CREATE TABLE forest.clienttels
   CONSTRAINT pk_client_t PRIMARY KEY(id),
 
   CONSTRAINT fk_client_t_clients FOREIGN KEY(cod_client) 
-    REFERENCES forest.clients(id)
+    REFERENCES public.clients(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_client_t_tel_d FOREIGN KEY(cod_tel_descrip) 
-    REFERENCES forest.teldescrips(id)
+    REFERENCES public.teldescrips(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,    
   CONSTRAINT ck_client_t_phone CHECK(phone > 999999)
 );
 
 -- tabla 13
-DROP TABLE forest.loans;
+DROP TABLE public.loans;
 
-CREATE TABLE forest.loans
+CREATE TABLE public.loans
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -308,19 +308,19 @@ CREATE TABLE forest.loans
   CONSTRAINT pk_loans PRIMARY KEY(id),
 
   CONSTRAINT fk_loans_loan_s FOREIGN KEY(cod_loan_state) 
-    REFERENCES forest.loanstates(id)
+    REFERENCES public.loanstates(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_loans_clients FOREIGN KEY(cod_client) 
-    REFERENCES forest.clients(id)
+    REFERENCES public.clients(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_loans_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES forest.collectiones(id)
+    REFERENCES public.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_loans_users FOREIGN KEY(cod_user) 
-    REFERENCES forest.users(id)
+    REFERENCES public.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   
   CONSTRAINT ck_loans_initialv CHECK( initial_value > 0 AND initial_value%5 = 0),  
@@ -331,9 +331,9 @@ CREATE TABLE forest.loans
 
 
 -- tabla 14
-DROP TABLE forest.payments;
+DROP TABLE public.payments;
 
-CREATE TABLE forest.payments
+CREATE TABLE public.payments
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -347,15 +347,15 @@ CREATE TABLE forest.payments
   CONSTRAINT pk_payments PRIMARY KEY(id),
 
   CONSTRAINT fk_payments_loans FOREIGN KEY(cod_loan) 
-    REFERENCES forest.loans(id)
+    REFERENCES public.loans(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_payments_users FOREIGN KEY(cod_user) 
-    REFERENCES forest.users(id)
+    REFERENCES public.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_payments_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES forest.collectiones(id)
+    REFERENCES public.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   
   CONSTRAINT ck_payments_cash CHECK(cash > 0)
@@ -365,9 +365,9 @@ CREATE TABLE forest.payments
 
 
 -- tabla 15
-DROP TABLE forest.cashs;
+DROP TABLE public.cashs;
 
-CREATE TABLE forest.cashs
+CREATE TABLE public.cashs
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -380,11 +380,11 @@ CREATE TABLE forest.cashs
   CONSTRAINT pk_cashs PRIMARY KEY(id),
 
   CONSTRAINT fk_cashs_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES forest.collectiones(id)
+    REFERENCES public.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_cashs_users FOREIGN KEY(cod_user) 
-    REFERENCES forest.users(id)
+    REFERENCES public.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT ck_cashs_cash CHECK(cash != 0)
@@ -394,9 +394,9 @@ CREATE TABLE forest.cashs
 
 
 -- tabla 16
-DROP TABLE forest.expensedescrips;
+DROP TABLE public.expensedescrips;
 
-CREATE TABLE forest.expensedescrips
+CREATE TABLE public.expensedescrips
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -407,15 +407,15 @@ CREATE TABLE forest.expensedescrips
 
   CONSTRAINT pk_expense_d PRIMARY KEY(id),
   CONSTRAINT fk_expense_d_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES forest.collectiones(id)
+    REFERENCES public.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   CONSTRAINT uk_expense_d_ccollection_descrip UNIQUE(cod_collection,descrip)
 );
 
 -- tabla 17
-DROP TABLE forest.expense;
+DROP TABLE public.expense;
 
-CREATE TABLE forest.expense
+CREATE TABLE public.expense
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -428,15 +428,15 @@ CREATE TABLE forest.expense
   CONSTRAINT pk_expense PRIMARY KEY(id),
 
   CONSTRAINT fk_expense_expensed FOREIGN KEY(cod_expense_descrip) 
-    REFERENCES forest.expensedescrips(id)
+    REFERENCES public.expensedescrips(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_expense_users FOREIGN KEY(cod_user) 
-    REFERENCES forest.users(id)
+    REFERENCES public.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_expense_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES forest.collectiones(id)
+    REFERENCES public.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
 
   CONSTRAINT ck_expense_cash CHECK(cash > 0)
