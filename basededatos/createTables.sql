@@ -293,7 +293,7 @@ CREATE TABLE forest.loans
   updated_at timestamp,
   delete_at timestamp NOT NULL,
   initial_value numeric(6,1) NOT NULL,
-  interest numeric(3) NOT NULL,
+  interest numeric(3) NOT NULL DEFAULT 20,
   quota numeric(2) NOT NULL,
   balance numeric(6,1) NOT NULL,
   cod_loan_state SMALLINT NOT NULL,
@@ -319,7 +319,10 @@ CREATE TABLE forest.loans
     REFERENCES forest.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   
-  CONSTRAINT ck_loans_initialv CHECK( initial_value > 0 AND initial_value%5 = 0) 
+  CONSTRAINT ck_loans_initialv CHECK( initial_value > 0 AND initial_value%5 = 0),  
+  CONSTRAINT ck_loans_interest CHECK( interest > 0),
+  CONSTRAINT ck_loans_quota CHECK( quota > 0),
+  CONSTRAINT ck_loans_balance CHECK( balance >= 0)
 );
 
 
@@ -351,7 +354,7 @@ CREATE TABLE forest.payments
     REFERENCES forest.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   
-  CONSTRAINT ck_payments_cash CHECK(cash != 0)
+  CONSTRAINT ck_payments_cash CHECK(cash > 0)
 
 );
 
@@ -432,7 +435,7 @@ CREATE TABLE forest.expense
     REFERENCES forest.collectiones(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
 
-  CONSTRAINT ck_expense_cash CHECK(cash != 0)
+  CONSTRAINT ck_expense_cash CHECK(cash > 0)
 
 );
 
