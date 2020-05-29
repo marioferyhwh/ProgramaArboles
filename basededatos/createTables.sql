@@ -1,9 +1,9 @@
 
 
-CREATE ROLE arbol
-WITH SUPERUSER LOGIN ENCRYPTED PASSWORD 'arboles';
-CREATE DATABASE arboles
-OWNER arbol;
+CREATE ROLE arbol WITH SUPERUSER LOGIN ENCRYPTED PASSWORD 'arboles';
+
+CREATE DATABASE forest OWNER arbol;
+
 
 -- psql -d arboles -U arbol
 -- arboles
