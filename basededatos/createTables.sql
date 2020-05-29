@@ -9,9 +9,9 @@ CREATE DATABASE forest OWNER arbol;
 -- arboles
 
 -- tabla 1
-DROP TABLE public.collectiones;
+DROP TABLE public.collections;
 
-CREATE TABLE public.collectiones
+CREATE TABLE public.collections
 (
   id serial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -21,7 +21,7 @@ CREATE TABLE public.collectiones
   active bool NOT NULL DEFAULT TRUE,
   balance_total numeric(7,1) NOT NULL DEFAULT 0,
   
-  CONSTRAINT pk_collectiones PRIMARY KEY(id)
+  CONSTRAINT pk_collections PRIMARY KEY(id)
 );
 
 
@@ -143,8 +143,8 @@ CREATE TABLE public.listlocationes
   descrip varchar(11) NOT NULL DEFAULT '',
 
   CONSTRAINT pk_list_l PRIMARY KEY(id),
-  CONSTRAINT fk_list_l_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES public.collectiones(id)
+  CONSTRAINT fk_list_l_collections FOREIGN KEY(cod_collection) 
+    REFERENCES public.collections(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   CONSTRAINT uk_list_l_ccollection_descrip UNIQUE(cod_collection,descrip)
 );
@@ -171,8 +171,8 @@ CREATE TABLE public.listusers
     REFERENCES public.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   
-  CONSTRAINT fk_list_u_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES public.collectiones(id)
+  CONSTRAINT fk_list_u_collections FOREIGN KEY(cod_collection) 
+    REFERENCES public.collections(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   
   CONSTRAINT fk_list_u_user_l FOREIGN KEY(cod_user_level) 
@@ -239,8 +239,8 @@ CREATE TABLE public.clients
     REFERENCES public.documenttypes (id) 
     ON DELETE RESTRICT ON UPDATE RESTRICT,
 
-  CONSTRAINT fk_clients_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES public.collectiones(id)
+  CONSTRAINT fk_clients_collections FOREIGN KEY(cod_collection) 
+    REFERENCES public.collections(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   
   CONSTRAINT fk_clients_loan_s FOREIGN KEY(cod_loan_state) 
@@ -315,8 +315,8 @@ CREATE TABLE public.loans
     REFERENCES public.clients(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
-  CONSTRAINT fk_loans_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES public.collectiones(id)
+  CONSTRAINT fk_loans_collections FOREIGN KEY(cod_collection) 
+    REFERENCES public.collections(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_loans_users FOREIGN KEY(cod_user) 
@@ -354,8 +354,8 @@ CREATE TABLE public.payments
     REFERENCES public.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
-  CONSTRAINT fk_payments_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES public.collectiones(id)
+  CONSTRAINT fk_payments_collections FOREIGN KEY(cod_collection) 
+    REFERENCES public.collections(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   
   CONSTRAINT ck_payments_cash CHECK(cash > 0)
@@ -379,8 +379,8 @@ CREATE TABLE public.cashs
   
   CONSTRAINT pk_cashs PRIMARY KEY(id),
 
-  CONSTRAINT fk_cashs_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES public.collectiones(id)
+  CONSTRAINT fk_cashs_collections FOREIGN KEY(cod_collection) 
+    REFERENCES public.collections(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_cashs_users FOREIGN KEY(cod_user) 
@@ -406,8 +406,8 @@ CREATE TABLE public.expensedescrips
   descrip varchar(11) NOT NULL DEFAULT '',
 
   CONSTRAINT pk_expense_d PRIMARY KEY(id),
-  CONSTRAINT fk_expense_d_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES public.collectiones(id)
+  CONSTRAINT fk_expense_d_collections FOREIGN KEY(cod_collection) 
+    REFERENCES public.collections(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   CONSTRAINT uk_expense_d_ccollection_descrip UNIQUE(cod_collection,descrip)
 );
@@ -435,8 +435,8 @@ CREATE TABLE public.expense
     REFERENCES public.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
-  CONSTRAINT fk_expense_collectiones FOREIGN KEY(cod_collection) 
-    REFERENCES public.collectiones(id)
+  CONSTRAINT fk_expense_collections FOREIGN KEY(cod_collection) 
+    REFERENCES public.collections(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
 
   CONSTRAINT ck_expense_cash CHECK(cash > 0)
