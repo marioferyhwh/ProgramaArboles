@@ -1,5 +1,11 @@
 # estructura de la base de datos
 
+## backend
+
+el backend se hace en go y se guarda en
+
+[ProgramaArbolesBackend](https://github.com/marioferyhwh/ProgramaArbolesBackend
+)
 ## collectiones 1 Listado de cuentas (árboles)(Cobros)
 
 | Attribute     | Type         | Domain | Constraint | Null | Default | Observation                                                |
