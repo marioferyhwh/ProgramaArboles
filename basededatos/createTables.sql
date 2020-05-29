@@ -159,6 +159,7 @@ CREATE TABLE forest.listusers
   created_at timestamp NOT NULL DEFAULT now(),
   updated_at timestamp,
   delete_at timestamp,
+  active bool DEFAULT TRUE,
   cod_user integer NOT NULL,
   cod_collection integer NOT NULL,
   cod_user_level SMALLINT NOT NULL DEFAULT 1,
@@ -203,7 +204,8 @@ CREATE TABLE forest.usertels
   CONSTRAINT fk_user_t_tel_d FOREIGN KEY(cod_tel_descrip) 
     REFERENCES forest.teldescrips(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
-  CONSTRAINT uk_user_phone UNIQUE(phone)
+  CONSTRAINT uk_user_t_phone UNIQUE(phone),
+  CONSTRAINT ck_user_t_phone CHECK(phone > 999999)
 
 );
 
@@ -220,8 +222,8 @@ CREATE TABLE forest.clients
   delete_at timestamp,
   name varchar(50) NOT NULL,
   email varchar(100),
-  cod_document_type varchar(3) NOT NULL DEFAULT '',
-  document NUMERIC(11) NOT NULL DEFAULT '',
+  cod_document_type varchar(3) DEFAULT 'CC',
+  document NUMERIC(11) DEFAULT '',
   adress varchar(60) NOT NULL,
   loan_number SMALLINT NOT NULL DEFAULT 0,
   cod_collection integer NOT NULL,
@@ -280,7 +282,8 @@ CREATE TABLE forest.clienttels
 
   CONSTRAINT fk_client_t_tel_d FOREIGN KEY(cod_tel_descrip) 
     REFERENCES forest.teldescrips(id)
-    ON UPDATE RESTRICT ON DELETE RESTRICT 
+    ON UPDATE RESTRICT ON DELETE RESTRICT ,    
+  CONSTRAINT ck_client_t_phone CHECK(phone > 999999)
 );
 
 -- tabla 13
@@ -293,7 +296,7 @@ CREATE TABLE forest.loans
   updated_at timestamp,
   delete_at timestamp NOT NULL,
   initial_value numeric(6,1) NOT NULL,
-  interest numeric(3) NOT NULL DEFAULT 20,
+  interest numeric(2) NOT NULL DEFAULT 20,
   quota numeric(2) NOT NULL,
   balance numeric(6,1) NOT NULL,
   cod_loan_state SMALLINT NOT NULL,
