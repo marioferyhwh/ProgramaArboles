@@ -21,8 +21,9 @@ CREATE TABLE public.collections
   active bool NOT NULL DEFAULT TRUE,
   balance_total numeric(7,1) NOT NULL DEFAULT 0,
   
-  CONSTRAINT pk_collections PRIMARY KEY(id)
 );
+ALTER TABLE public.collections ADD
+  CONSTRAINT pk_collections PRIMARY KEY(id);
 
 
 -- tabla 2
@@ -35,11 +36,13 @@ CREATE TABLE user_levels
   updated_at timestamp,
   delete_at timestamp,
   level varchar(11) NOT NULL DEFAULT '',
-
-  CONSTRAINT pk_user_l PRIMARY KEY(id),
-  CONSTRAINT uk_user_l_level UNIQUE(level)
 );
 
+ALTER TABLE public.user_levels ADD
+  CONSTRAINT pk_user_l PRIMARY KEY(id);
+ALTER TABLE public.user_levels ADD
+  CONSTRAINT uk_user_l_level UNIQUE(level);
+  
 -- tabla 3
 DROP TABLE public.loan_states;
 
@@ -51,10 +54,12 @@ CREATE TABLE public.loan_states
   delete_at timestamp,
   state varchar(20) NOT NULL DEFAULT '',
 
-  CONSTRAINT pk_loan_s PRIMARY KEY(id),
-  CONSTRAINT uk_loan_s_state UNIQUE(state)
 );
 
+ALTER TABLE public.loan_states ADD
+  CONSTRAINT pk_loan_s PRIMARY KEY(id);
+ALTER TABLE public.loan_states ADD
+  CONSTRAINT uk_loan_s_state UNIQUE(state);
 -- tabla 4
 DROP TABLE public.document_types;
 
@@ -66,9 +71,11 @@ CREATE TABLE public.document_types
   delete_at timestamp,
   descrip varchar(20) NOT NULL DEFAULT '',
 
-  CONSTRAINT pk_document_t PRIMARY KEY(id),
-  CONSTRAINT uk_document_t_descrip UNIQUE(descrip)
 );
+ALTER TABLE public.document_types ADD
+  CONSTRAINT pk_document_t PRIMARY KEY(id);
+ALTER TABLE public.document_types ADD
+  CONSTRAINT uk_document_t_descrip UNIQUE(descrip);
 
 
 -- tabla 5
