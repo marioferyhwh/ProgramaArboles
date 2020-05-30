@@ -9,8 +9,6 @@
 -- arboles
 
 
-
-
 -- tabla 1
 DROP TABLE public.collections;
 
@@ -115,7 +113,7 @@ CREATE TABLE public.users
   updated_at timestamp,
   delete_at timestamp,
   active bool DEFAULT TRUE,
-  nickname varchar(50) NOT NULL DEFAULT '',
+  nick_name varchar(50) NOT NULL DEFAULT '',
   email varchar(100) NOT NULL,
   password varchar(256) NOT NULL,
   cod_document_type varchar(3) NOT NULL DEFAULT 'CC',
@@ -514,7 +512,7 @@ CREATE TABLE public.expenses
   cod_expense_descrip BIGINT NOT NULL,
   cod_user integer NOT NULL,
   cod_collection integer NOT NULL,
-  
+
   CONSTRAINT pk_expense PRIMARY KEY(id)
 );
 
