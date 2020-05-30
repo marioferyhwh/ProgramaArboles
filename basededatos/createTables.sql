@@ -27,6 +27,8 @@ CREATE TABLE public.collections
 
 
 
+
+
 -- tabla 2
 DROP TABLE public.user_levels;
 
@@ -42,7 +44,8 @@ CREATE TABLE user_levels
 );
 
 
-  
+
+
 
 -- tabla 3
 DROP TABLE public.loan_states;
@@ -57,6 +60,8 @@ CREATE TABLE public.loan_states
 
   CONSTRAINT pk_loan_s PRIMARY KEY(id)
 );
+
+
 
 
 
@@ -77,6 +82,7 @@ CREATE TABLE public.document_types
 
 
 
+
 -- tabla 5
 DROP TABLE public.tel_descrips;
 
@@ -90,6 +96,8 @@ CREATE TABLE public.tel_descrips
 
   CONSTRAINT pk_tel_d PRIMARY KEY(id)
 );
+
+
 
 
 
@@ -118,6 +126,7 @@ CREATE TABLE public.users
 
 
 
+
 -- tabla 7
 DROP TABLE public.business_types;
 
@@ -131,6 +140,7 @@ CREATE TABLE public.business_types
 
   CONSTRAINT pk_business_t PRIMARY KEY(id)
 );
+
 
 
 
@@ -149,7 +159,6 @@ CREATE TABLE public.list_locations
 
   CONSTRAINT pk_list_l PRIMARY KEY(id)
 );
-
 
 
 
@@ -178,6 +187,7 @@ CREATE TABLE public.list_users
 
 
 
+
 -- tabla 10
 DROP TABLE public.user_tels;
 
@@ -192,6 +202,7 @@ CREATE TABLE public.user_tels
   cod_tel_descrip SMALLINT NOT NULL DEFAULT 0,
   CONSTRAINT pk_user_t PRIMARY KEY(id)
 );
+
 
 
 
@@ -224,6 +235,8 @@ CREATE TABLE public.clients
 
 
 
+
+
 -- tabla 12
 DROP TABLE public.client_tels;
 
@@ -239,6 +252,7 @@ CREATE TABLE public.client_tels
 
   CONSTRAINT pk_client_t PRIMARY KEY(id)
 );
+
 
 
 
@@ -269,6 +283,7 @@ CREATE TABLE public.loans
 
 
 
+
 -- tabla 14
 DROP TABLE public.payments;
 
@@ -290,6 +305,7 @@ CREATE TABLE public.payments
 
 
 
+
 -- tabla 15
 DROP TABLE public.cashes;
 
@@ -305,6 +321,7 @@ CREATE TABLE public.cashes
   
   CONSTRAINT pk_cashes PRIMARY KEY(id)
 );
+
 
 
 

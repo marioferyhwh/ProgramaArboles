@@ -1,21 +1,25 @@
 
---
+--2
 ALTER TABLE public.user_levels ADD
   CONSTRAINT uk_user_l_level UNIQUE(level);
 
---
+
+--3
 ALTER TABLE public.loan_states ADD
   CONSTRAINT uk_loan_s_state UNIQUE(state);
 
---
+
+--4
 ALTER TABLE public.document_types ADD
   CONSTRAINT uk_document_t_descrip UNIQUE(descrip);
 
---
+
+--5
 ALTER TABLE public.tel_descrips ADD
   CONSTRAINT uk_tel_d_descrip UNIQUE(descrip);
 
---
+
+--6
 ALTER TABLE public.users ADD
   CONSTRAINT uk_users_nickname UNIQUE(nickname);
 
@@ -30,11 +34,13 @@ ALTER TABLE public.users ADD
     REFERENCES public.document_types (id) 
     ON DELETE RESTRICT ON UPDATE RESTRICT;
 
---
+
+--7
 ALTER TABLE public.business_types ADD
   CONSTRAINT uk_business_t_descrip UNIQUE(descrip);
 
---
+
+--8
 ALTER TABLE public.list_locations ADD
   CONSTRAINT fk_list_l_collections FOREIGN KEY(cod_collection) 
     REFERENCES public.collections(id)
@@ -43,7 +49,8 @@ ALTER TABLE public.list_locations ADD
 ALTER TABLE public.list_locations ADD
   CONSTRAINT uk_list_l_ccollection_descrip UNIQUE(cod_collection,descrip);
 
---
+
+--9
 ALTER TABLE public.list_users ADD
   CONSTRAINT fk_list_u_users FOREIGN KEY(cod_user) 
     REFERENCES public.users(id)
@@ -62,7 +69,8 @@ ALTER TABLE public.list_users ADD
 ALTER TABLE public.list_users ADD
   CONSTRAINT uk_list_u_cuser_ccollection UNIQUE(cod_user,cod_collection);
 
--- 
+
+--10
 ALTER TABLE public.user_tels ADD
   CONSTRAINT fk_user_t_users FOREIGN KEY(cod_user) 
     REFERENCES public.users(id)
@@ -78,6 +86,7 @@ ALTER TABLE public.user_tels ADD
 
 ALTER TABLE public.user_tels ADD
   CONSTRAINT ck_user_t_phone CHECK(phone > 999999);
+
 
 --11
 ALTER TABLE public.clients ADD
