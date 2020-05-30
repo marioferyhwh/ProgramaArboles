@@ -26,9 +26,9 @@ CREATE TABLE public.collections
 
 
 -- tabla 2
-DROP TABLE public.userlevels;
+DROP TABLE public.user_levels;
 
-CREATE TABLE userlevels
+CREATE TABLE user_levels
 (
   id smallserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -41,9 +41,9 @@ CREATE TABLE userlevels
 );
 
 -- tabla 3
-DROP TABLE public.loanstates;
+DROP TABLE public.loan_states;
 
-CREATE TABLE public.loanstates
+CREATE TABLE public.loan_states
 (
   id smallserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -56,9 +56,9 @@ CREATE TABLE public.loanstates
 );
 
 -- tabla 4
-DROP TABLE public.documenttypes;
+DROP TABLE public.document_types;
 
-CREATE TABLE public.documenttypes
+CREATE TABLE public.document_types
 (
   id varchar(3) NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -72,9 +72,9 @@ CREATE TABLE public.documenttypes
 
 
 -- tabla 5
-DROP TABLE public.teldescrips;
+DROP TABLE public.tel_descrips;
 
-CREATE TABLE public.teldescrips
+CREATE TABLE public.tel_descrips
 (
   id smallserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -109,15 +109,15 @@ CREATE TABLE public.users
   CONSTRAINT uk_users_email UNIQUE(email),
   CONSTRAINT uk_users_cdocumentt_document UNIQUE(cod_document_type,document),
   CONSTRAINT fk_users_document_t FOREIGN key(cod_document_type)
-    REFERENCES public.documenttypes (id) 
+    REFERENCES public.document_types (id) 
     ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
 
 -- tabla 7
-DROP TABLE public.businesstypes;
+DROP TABLE public.business_types;
 
-CREATE TABLE public.businesstypes
+CREATE TABLE public.business_types
 (
   id smallserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -131,9 +131,9 @@ CREATE TABLE public.businesstypes
 
 
 -- tabla 8
-DROP TABLE public.listlocationes;
+DROP TABLE public.list_locations;
 
-CREATE TABLE public.listlocationes
+CREATE TABLE public.list_locations
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -151,9 +151,9 @@ CREATE TABLE public.listlocationes
 
 
 -- tabla 9
-DROP TABLE public.listusers;
+DROP TABLE public.list_users;
 
-CREATE TABLE public.listusers
+CREATE TABLE public.list_users
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -176,7 +176,7 @@ CREATE TABLE public.listusers
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   
   CONSTRAINT fk_list_u_user_l FOREIGN KEY(cod_user_level) 
-    REFERENCES public.userlevels(id)
+    REFERENCES public.user_levels(id)
     ON UPDATE CASCADE ON DELETE RESTRICT,
   
   CONSTRAINT uk_list_u_cuser_ccollection UNIQUE(cod_user,cod_collection)
@@ -184,9 +184,9 @@ CREATE TABLE public.listusers
 
 
 -- tabla 10
-DROP TABLE public.usertels;
+DROP TABLE public.user_tels;
 
-CREATE TABLE public.usertels
+CREATE TABLE public.user_tels
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -202,7 +202,7 @@ CREATE TABLE public.usertels
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_user_t_tel_d FOREIGN KEY(cod_tel_descrip) 
-    REFERENCES public.teldescrips(id)
+    REFERENCES public.tel_descrips(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
   CONSTRAINT uk_user_t_phone UNIQUE(phone),
   CONSTRAINT ck_user_t_phone CHECK(phone > 999999)
@@ -236,7 +236,7 @@ CREATE TABLE public.clients
   
   CONSTRAINT uk_clients_cdocumentt_document UNIQUE(cod_document_type,document),
   CONSTRAINT fk_clients_document_t FOREIGN key(cod_document_type)
-    REFERENCES public.documenttypes (id) 
+    REFERENCES public.document_types (id) 
     ON DELETE RESTRICT ON UPDATE RESTRICT,
 
   CONSTRAINT fk_clients_collections FOREIGN KEY(cod_collection) 
@@ -244,15 +244,15 @@ CREATE TABLE public.clients
     ON UPDATE RESTRICT ON DELETE RESTRICT,
   
   CONSTRAINT fk_clients_loan_s FOREIGN KEY(cod_loan_state) 
-    REFERENCES public.loanstates(id)
+    REFERENCES public.loan_states(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
 
   CONSTRAINT fk_clients_business_t FOREIGN KEY(cod_business_type) 
-    REFERENCES public.businesstypes(id)
+    REFERENCES public.business_types(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
 
   CONSTRAINT fk_clients_list_l FOREIGN KEY(cod_list_location) 
-    REFERENCES public.listlocationes(id)
+    REFERENCES public.list_locations(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT,
 
   CONSTRAINT fk_clients_users FOREIGN KEY(cod_user) 
@@ -264,9 +264,9 @@ CREATE TABLE public.clients
 
 
 -- tabla 12
-DROP TABLE public.clienttels;
+DROP TABLE public.client_tels;
 
-CREATE TABLE public.clienttels
+CREATE TABLE public.client_tels
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -282,7 +282,7 @@ CREATE TABLE public.clienttels
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_client_t_tel_d FOREIGN KEY(cod_tel_descrip) 
-    REFERENCES public.teldescrips(id)
+    REFERENCES public.tel_descrips(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,    
   CONSTRAINT ck_client_t_phone CHECK(phone > 999999)
 );
@@ -308,7 +308,7 @@ CREATE TABLE public.loans
   CONSTRAINT pk_loans PRIMARY KEY(id),
 
   CONSTRAINT fk_loans_loan_s FOREIGN KEY(cod_loan_state) 
-    REFERENCES public.loanstates(id)
+    REFERENCES public.loan_states(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_loans_clients FOREIGN KEY(cod_client) 
@@ -365,9 +365,9 @@ CREATE TABLE public.payments
 
 
 -- tabla 15
-DROP TABLE public.cashs;
+DROP TABLE public.cashes;
 
-CREATE TABLE public.cashs
+CREATE TABLE public.cashes
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -377,26 +377,26 @@ CREATE TABLE public.cashs
   cod_user integer NOT NULL,
   cash numeric(6,1) NOT NULL,
   
-  CONSTRAINT pk_cashs PRIMARY KEY(id),
+  CONSTRAINT pk_cashes PRIMARY KEY(id),
 
-  CONSTRAINT fk_cashs_collections FOREIGN KEY(cod_collection) 
+  CONSTRAINT fk_cashes_collections FOREIGN KEY(cod_collection) 
     REFERENCES public.collections(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
-  CONSTRAINT fk_cashs_users FOREIGN KEY(cod_user) 
+  CONSTRAINT fk_cashes_users FOREIGN KEY(cod_user) 
     REFERENCES public.users(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
-  CONSTRAINT ck_cashs_cash CHECK(cash != 0)
+  CONSTRAINT ck_cashes_cash CHECK(cash != 0)
 
 );
 
 
 
 -- tabla 16
-DROP TABLE public.expensedescrips;
+DROP TABLE public.expense_descrips;
 
-CREATE TABLE public.expensedescrips
+CREATE TABLE public.expense_descrips
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -413,9 +413,9 @@ CREATE TABLE public.expensedescrips
 );
 
 -- tabla 17
-DROP TABLE public.expense;
+DROP TABLE public.expenses;
 
-CREATE TABLE public.expense
+CREATE TABLE public.expenses
 (
   id bigserial NOT NULL ,
   created_at timestamp NOT NULL DEFAULT now(),
@@ -428,7 +428,7 @@ CREATE TABLE public.expense
   CONSTRAINT pk_expense PRIMARY KEY(id),
 
   CONSTRAINT fk_expense_expensed FOREIGN KEY(cod_expense_descrip) 
-    REFERENCES public.expensedescrips(id)
+    REFERENCES public.expense_descrips(id)
     ON UPDATE RESTRICT ON DELETE RESTRICT ,
 
   CONSTRAINT fk_expense_users FOREIGN KEY(cod_user) 
