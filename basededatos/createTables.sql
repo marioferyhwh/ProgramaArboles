@@ -1,8 +1,9 @@
 
-
+--
 -- CREATE ROLE arbol WITH SUPERUSER LOGIN ENCRYPTED PASSWORD 'arboles';
 
 -- CREATE DATABASE forest OWNER arbol;
+-- insert into users(nick_name,email,password,cod_document_type,document) values('forest','forest','forest','CC',11111111111);
 
 
 -- psql -d arboles -U arbol
