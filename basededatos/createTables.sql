@@ -180,6 +180,7 @@ CREATE TABLE public.list_users
   cod_collection integer NOT NULL,
   cod_user_level SMALLINT NOT NULL DEFAULT 1,
   cash NUMERIC(6,1) NOT NULL DEFAULT 0,
+  name VARCHAR(20) DEFAULT '',
   
   CONSTRAINT pk_list_u PRIMARY KEY(id)
 );
