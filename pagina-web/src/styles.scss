@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "./assets/styles/normalize";
+.base-footer {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.all-height {
+    min-height: 100vh;
+}
+
+.base-header {
+    text-align: center;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+}
+
+.footer {
+    flex: 0 0 90px;
+}
+
+.footer,
+.header {
+    text-align: center;
+    width: 100%;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+    margin: 0 auto
+}

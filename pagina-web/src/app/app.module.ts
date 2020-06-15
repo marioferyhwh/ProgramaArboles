@@ -25,6 +25,9 @@ import { FormLocationComponent } from "./modules/components/form-location/form-l
 import { FormCashComponent } from "./modules/components/form-cash/form-cash.component";
 import { FormLoginComponent } from "./modules/components/form-login/form-login.component";
 import { FormsModule } from "@angular/forms";
+import { LoginComponent } from "./modules/login/login.component";
+import { NotFoundComponent } from "./modules/not-found/not-found.component";
+import { NavBarComponent } from "./modules/components/nav-bar/nav-bar.component";
 
 @NgModule({
   declarations: [
@@ -50,10 +53,13 @@ import { FormsModule } from "@angular/forms";
     FormLocationComponent,
     FormCashComponent,
     FormLoginComponent,
+    LoginComponent,
+    NotFoundComponent,
+    NavBarComponent,
     //ModelsModule,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
-  bootstrap: [AppComponent, FormsModule],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
