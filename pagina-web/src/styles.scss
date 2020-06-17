@@ -1,6 +1,77 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "./assets/styles/normalize";
+$font1: Roboto,
+"Open Sans",
+sans-serif;
+$font2: Source Sans Pro,
+"Open Sans",
+sans-serif;
+$t_h1: 27px;
+$t_h2: 24px;
+$t_h3: 18px;
+$t_h4: 16px;
+$t_h5: 14px;
+$t_h6: 9px;
+$c5_03: #615623;
+$c5_02: #918234;
+$c5_01: #c2ad46;
+$c5: #f2d857;
+$c5_11: #f5e079;
+$c5_12: #f7e89a;
+$c5_13: #faefbc;
+$c4_03: #575102;
+$c4_02: #827a02;
+$c4_01: #aea203;
+$c4: #d9cb04;
+$c4_11: #e1d536;
+$c4_12: #e8e068;
+$c4_13: #f0ea9b;
+$c3_03: #2c2e01;
+$c3_02: #434501;
+$c3_01: #595c02;
+$c3: #6f7302;
+$c3_11: #8c8f35;
+$c3_12: #a9ab67;
+$c3_13: #c5c79a;
+$c2_03: #090f00;
+$c2_02: #0e1701;
+$c2_01: #121e01;
+$c2: #172601;
+$c2_11: #455134;
+$c2_12: #747d67;
+$c2_13: #a2a899;
+$c1_03: #4a5057;
+$c1_02: #707882;
+$c1_01: #95a0ae;
+$c1: #bac8d9;
+$c1_11: #c8d3e1;
+$c1_12: #d6dee8;
+$c1_13: #e3e9f0;
+img,
+svg {
+    max-width: 100%;
+}
+
+body {
+    background-image: url("./assets/img/rebe-pascual-hIyBAUQOx2c-unsplash.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: $font1;
+    color: $c2;
+}
+
+.body {
+    background-color: rgba($c2_13, $alpha: 0.7);
+    min-height: 50vh;
+}
+
+.t-100 {
+    width: 30px;
+    height: 30px;
+}
+
+//color: $c2;
 .base-footer {
     text-align: center;
     display: flex;
@@ -21,7 +92,22 @@
 }
 
 .footer {
+    background-color: $c2_13;
     flex: 0 0 90px;
+    margin: 0;
+    p {
+        margin: 0;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    p {
+        margin: 0;
+    }
 }
 
 .footer,
@@ -34,5 +120,70 @@
     width: 90%;
     max-width: 1200px;
     text-align: center;
-    margin: 0 auto
+    margin: 0 auto;
+}
+
+.nav {
+    max-width: 90vw;
+    .active {
+        font-size: 0.9rem;
+    }
+    a {
+        text-decoration: none;
+        color: $c2_02;
+        text-transform: uppercase;
+    }
+    ul {
+        padding: 0;
+        max-width: 100%;
+        display: flex;
+        justify-content: center;
+        //flex-wrap: wrap;
+        background-color: $c2_13;
+    }
+    li {
+        list-style: none;
+        flex: 0 0 auto;
+        padding: 4.5px;
+        float: left;
+        //opacity: 0.9;
+        ul {
+            position: absolute;
+        }
+        &:hover {
+            opacity: 1;
+            &>ul {
+                display: flex;
+            }
+        }
+    }
+    .sub-group-item1 {
+        flex-direction: column;
+        background-color: $c3_13;
+        position: absolute;
+        min-width: 100px;
+        display: none;
+        flex-wrap: nowrap;
+        top: 100%;
+        a {
+            text-transform: capitalize;
+        }
+    }
+    .subitem1 {
+        position: relative;
+        li {
+            position: relative;
+        }
+    }
+    .sub-group-item2 {
+        flex-direction: column;
+        background-color: $c3_12;
+        position: absolute;
+        min-width: 140px;
+        display: none;
+        flex-wrap: nowrap;
+        right: -140px;
+        top: 0;
+    }
+    .subitem2 {}
 }

@@ -28,6 +28,9 @@ import { FormsModule } from "@angular/forms";
 import { LoginComponent } from "./modules/login/login.component";
 import { NotFoundComponent } from "./modules/not-found/not-found.component";
 import { NavBarComponent } from "./modules/components/nav-bar/nav-bar.component";
+import { ClientListComponent } from './modules/client-list/client-list.component';
+import { ClientNewComponent } from './modules/client-new/client-new.component';
+import { ClientEditComponent } from './modules/client-edit/client-edit.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +59,9 @@ import { NavBarComponent } from "./modules/components/nav-bar/nav-bar.component"
     LoginComponent,
     NotFoundComponent,
     NavBarComponent,
+    ClientListComponent,
+    ClientNewComponent,
+    ClientEditComponent,
     //ModelsModule,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
