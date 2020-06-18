@@ -6,5 +6,5 @@ export interface LoanPayment extends BaseDB {
   money: number;
   id_user: number;
   id_collection: number;
-  user_create: User;
+  user_create?: User;
 }

@@ -1,1 +1,14 @@
-<p>table-cash works!</p>
+<table>
+    <thead>
+        <th>id</th>
+        <th>cobro</th>
+        <th>usuario</th>
+        <th>valor</th>
+    </thead>
+    <tbody *ngFor="let movimento of this.movimentos">
+        <td>{{movimento.id}}</td>
+        <td>{{movimento.id_collection}}</td>
+        <td>{{movimento.id_user}}</td>
+        <td>{{movimento.money}}</td>
+    </tbody>
+</table>

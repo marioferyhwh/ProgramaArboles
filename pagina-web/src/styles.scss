@@ -187,3 +187,23 @@ body {
     }
     .subitem2 {}
 }
+
+//tablas
+table {
+    margin: 0 auto;
+    background-color: $c2_12;
+    border-collapse: collapse;
+    th {
+        background-color: $c2_13;
+        text-transform: uppercase;
+    }
+    td,
+    th {
+        border: 1px solid $c2_03;
+        padding: 6px;
+    }
+    td {
+        color: $c1_13;
+        text-transform: capitalize;
+    }
+}

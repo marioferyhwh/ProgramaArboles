@@ -1,1 +1,20 @@
-<p>table-loan works!</p>
+<table>
+    <thead>
+        <th>cliente</th>
+        <th>creado</th>
+        <th>actualizado</th>
+        <th>inicial</th>
+        <th>interes</th>
+        <th>cuotas</th>
+        <th>saldo</th>
+    </thead>
+    <tbody *ngFor="let prestamo of this.prestamos">
+        <td>{{prestamo.id}}</td>
+        <td>{{prestamo.create_at}}</td>
+        <td>{{prestamo.update_at}}</td>
+        <td>{{prestamo.initial_value}}</td>
+        <td>{{prestamo.interest}}</td>
+        <td>{{prestamo.quota}}</td>
+        <td>{{prestamo.balance}}</td>
+    </tbody>
+</table>

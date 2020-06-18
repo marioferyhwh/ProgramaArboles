@@ -1,1 +1,16 @@
-<p>table-loan-payment works!</p>
+<table>
+    <thead>
+        <th>id</th>
+        <th>prestamo</th>
+        <th>creado</th>
+        <th>registrado por</th>
+        <th>valor</th>
+    </thead>
+    <tbody *ngFor="let prestamo_pagado of this.prestamo_pagados">
+        <td>{{prestamo_pagado.id}}</td>
+        <td>{{prestamo_pagado.id_loan}}</td>
+        <td>{{prestamo_pagado.update_at}}</td>
+        <td>{{prestamo_pagado.id_user}}</td>
+        <td>{{prestamo_pagado.money}}</td>
+    </tbody>
+</table>

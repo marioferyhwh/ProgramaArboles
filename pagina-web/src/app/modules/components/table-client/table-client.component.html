@@ -1,1 +1,12 @@
-<p>table-client works!</p>
+<table>
+    <thead>
+        <th>nombre</th>
+        <th>Prestamos</th>
+        <th>estado</th>
+    </thead>
+    <tbody *ngFor="let cliente of this.clientes">
+        <td>{{cliente.name}}</td>
+        <td>{{cliente.number_loans}}</td>
+        <td>{{cliente.id_loan_state}}</td>
+    </tbody>
+</table>

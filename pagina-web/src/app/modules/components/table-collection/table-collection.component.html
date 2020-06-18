@@ -1,1 +1,14 @@
-<p>table-collection works!</p>
+<table>
+    <thead>
+        <th>id</th>
+        <th>activo</th>
+        <th>descripcion</th>
+        <th>saldo</th>
+    </thead>
+    <tbody *ngFor="let cobro of this.cobros">
+        <td>{{cobro.id}}</td>
+        <td>{{cobro.active}}</td>
+        <td>{{cobro.description}}</td>
+        <td>{{cobro.balance_total}}</td>
+    </tbody>
+</table>

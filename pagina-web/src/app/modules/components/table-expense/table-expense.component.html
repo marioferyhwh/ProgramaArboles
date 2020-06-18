@@ -1,1 +1,15 @@
-<p>table-expense works!</p>
+<table>
+    <thead>
+        <th>id</th>
+        <th>usuario</th>
+        <th>gasto</th>
+        <th>valor</th>
+
+    </thead>
+    <tbody *ngFor="let gasto of this.gastos">
+        <td>{{gasto.id}}</td>
+        <td>{{gasto.id_user}}</td>
+        <td>{{gasto.id_expense}}</td>
+        <td>{{gasto.money}}</td>
+    </tbody>
+</table>

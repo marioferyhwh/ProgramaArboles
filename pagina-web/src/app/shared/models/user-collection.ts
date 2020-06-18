@@ -10,7 +10,7 @@ export interface UserCollection extends BaseDB {
   id_user_level: number;
   money: number;
   name: string;
-  access: UserLevel;
-  user: User;
-  collection: Collection;
+  access?: UserLevel;
+  user?: User;
+  collection?: Collection;
 }

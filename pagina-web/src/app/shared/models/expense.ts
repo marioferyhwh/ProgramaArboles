@@ -6,5 +6,5 @@ export interface Expense extends BaseDB {
   id_expense: number;
   id_user: number;
   id_collection: number;
-  description: ExpenseDescription;
+  description?: ExpenseDescription;
 }

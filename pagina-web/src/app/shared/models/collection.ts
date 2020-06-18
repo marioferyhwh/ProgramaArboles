@@ -8,8 +8,8 @@ export interface Collection extends BaseDB {
   description: string;
   active: boolean;
   balance_total: number;
-  cashes: CollectionCash;
-  expenses: Expense;
-  clients: Client;
-  users: UserCollection;
+  cashes?: CollectionCash;
+  expenses?: Expense;
+  clients?: Client;
+  users?: UserCollection;
 }

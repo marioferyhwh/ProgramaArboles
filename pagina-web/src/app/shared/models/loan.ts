@@ -11,12 +11,12 @@ export interface Loan extends BaseDB {
   quota: number;
   balance: number;
   id_loan_state: number;
-  id_client: number;
-  id_collection: number;
-  id_user: number;
+  id_client?: number;
+  id_collection?: number;
+  id_user?: number;
   loan_state: LoanState;
   payments: LoanPayment[];
-  client: Client;
-  collection: Collection;
-  user: User;
+  client?: Client;
+  collection?: Collection;
+  user?: User;
 }
