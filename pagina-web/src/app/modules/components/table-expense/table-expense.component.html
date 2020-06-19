@@ -1,15 +1,18 @@
 <table>
     <thead>
-        <th>id</th>
-        <th>usuario</th>
-        <th>gasto</th>
-        <th>valor</th>
-
+        <tr>
+            <th>id</th>
+            <th>usuario</th>
+            <th>gasto</th>
+            <th>valor</th>
+        </tr>
     </thead>
-    <tbody *ngFor="let gasto of this.gastos">
-        <td>{{gasto.id}}</td>
-        <td>{{gasto.id_user}}</td>
-        <td>{{gasto.id_expense}}</td>
-        <td>{{gasto.money}}</td>
+    <tbody>
+        <tr *ngFor="let gasto of this.gastos">
+            <td>{{gasto.id}}</td>
+            <td>{{gasto.id_user}}</td>
+            <td>{{gasto.id_expense}}</td>
+            <td>{{gasto.money}}</td>
+        </tr>
     </tbody>
 </table>
