@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, LOCALE_ID } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -35,7 +35,10 @@ import { ClientListComponent } from "./modules/client-list/client-list.component
 import { ClientNewComponent } from "./modules/client-new/client-new.component";
 import { ClientEditComponent } from "./modules/client-edit/client-edit.component";
 import { LoadComponent } from "./modules/components/load/load.component";
-
+import { registerLocaleData } from "@angular/common";
+import localEs from "@angular/common/locales/es";
+//
+registerLocaleData(localEs);
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +73,13 @@ import { LoadComponent } from "./modules/components/load/load.component";
     //ModelsModule,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [ClientService],
+  providers: [
+    ClientService,
+    {
+      provide: LOCALE_ID,
+      useValue: "es",
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
