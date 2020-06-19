@@ -10,7 +10,7 @@ export interface User extends BaseDB {
   password?: string;
   document_code?: string;
   document?: string;
-  name: string;
+  name?: string;
   admin?: boolean;
   time_zone?: number;
   confirm_password?: string;

@@ -6,6 +6,11 @@ import { AppComponent } from "./app.component";
 //services
 import { ClientService } from "./services/client.service";
 //
+import { registerLocaleData } from "@angular/common";
+import localEs from "@angular/common/locales/es";
+//
+registerLocaleData(localEs);
+//
 
 import { HeaderComponent } from "./modules/components/header/header.component";
 import { FooterComponent } from "./modules/components/footer/footer.component";
@@ -16,6 +21,7 @@ import { TableLoanComponent } from "./modules/components/table-loan/table-loan.c
 import { TableLoanPaymentComponent } from "./modules/components/table-loan-payment/table-loan-payment.component";
 import { TableExpenseComponent } from "./modules/components/table-expense/table-expense.component";
 import { TableCashComponent } from "./modules/components/table-cash/table-cash.component";
+import { TableUserComponent } from "./modules/components/table-user/table-user.component";
 import { FormUserComponent } from "./modules/components/form-user/form-user.component";
 import { FormClienteComponent } from "./modules/components/form-client/form-client.component";
 import { FormCollectionComponent } from "./modules/components/form-collection/form-collection.component";
@@ -35,10 +41,9 @@ import { ClientListComponent } from "./modules/client-list/client-list.component
 import { ClientNewComponent } from "./modules/client-new/client-new.component";
 import { ClientEditComponent } from "./modules/client-edit/client-edit.component";
 import { LoadComponent } from "./modules/components/load/load.component";
-import { registerLocaleData } from "@angular/common";
-import localEs from "@angular/common/locales/es";
-//
-registerLocaleData(localEs);
+import { UserNewComponent } from "./modules/user-new/user-new.component";
+import { UserListComponent } from "./modules/user-list/user-list.component";
+import { UserEditComponent } from "./modules/user-edit/user-edit.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +57,7 @@ registerLocaleData(localEs);
     TableLoanPaymentComponent,
     TableExpenseComponent,
     TableCashComponent,
+    TableUserComponent,
     FormUserComponent,
     FormClienteComponent,
     FormCollectionComponent,
@@ -70,6 +76,9 @@ registerLocaleData(localEs);
     ClientNewComponent,
     ClientEditComponent,
     LoadComponent,
+    UserNewComponent,
+    UserListComponent,
+    UserEditComponent,
     //ModelsModule,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],

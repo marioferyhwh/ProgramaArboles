@@ -11,10 +11,10 @@
             </ul>
         </li>
 
-        <li routerLinkActive="active" class="subitem1"><a [routerLink]="['prestamo']">Prestamo</a>
+        <li routerLinkActive="active" class="subitem1"><a [routerLink]="['/prestamo']">prestamo</a>
             <ul class="sub-group-item1">
                 <li routerLinkActive="active">
-                    <a [routerLink]="['prestamo','nuevo']">nuevo</a>
+                    <a [routerLink]="['/prestamo','nuevo']">nuevo</a>
                 </li>
                 <!-- <li routerLinkActive="active">
                     <a [routerLink]="['prestamo','editar']">editar</a>
@@ -74,7 +74,10 @@
                     <a [routerLink]="['config']">ingresos</a>
                 </li>
                 <li routerLinkActive="active">
-                    <a [routerLink]="['config']">cobradores</a>
+                    <a [routerLink]="['/usuario','lista']">cobradores</a>
+                </li>
+                <li routerLinkActive="active">
+                    <a [routerLink]="['/login']">salir</a>
                 </li>
             </ul>
         </li>
