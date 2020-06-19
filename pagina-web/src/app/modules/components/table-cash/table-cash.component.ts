@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { CollectionCash } from "src/app/shared/models/collection-cash";
 
 @Component({
@@ -7,7 +7,7 @@ import { CollectionCash } from "src/app/shared/models/collection-cash";
   styleUrls: ["./table-cash.component.scss"],
 })
 export class TableCashComponent implements OnInit {
-  public movimentos: CollectionCash[];
+  @Input() public movimentos: CollectionCash[];
   constructor() {}
 
   ngOnInit(): void {}

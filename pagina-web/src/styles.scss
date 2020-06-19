@@ -64,6 +64,16 @@ body {
 .body {
     background-color: rgba($c2_13, $alpha: 0.7);
     min-height: 50vh;
+    padding: 9px 5px 12px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
 }
 
 .t-100 {
@@ -89,6 +99,7 @@ body {
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
+    margin-bottom: 9px;
 }
 
 .footer {
@@ -206,4 +217,8 @@ table {
         color: $c1_13;
         text-transform: capitalize;
     }
+}
+
+.form-group {
+    padding: 15px;
 }

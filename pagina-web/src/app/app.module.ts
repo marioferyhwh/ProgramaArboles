@@ -3,6 +3,9 @@ import { NgModule } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+//services
+import { ClientService } from "./services/client.service";
+//
 
 import { HeaderComponent } from "./modules/components/header/header.component";
 import { FooterComponent } from "./modules/components/footer/footer.component";
@@ -14,7 +17,7 @@ import { TableLoanPaymentComponent } from "./modules/components/table-loan-payme
 import { TableExpenseComponent } from "./modules/components/table-expense/table-expense.component";
 import { TableCashComponent } from "./modules/components/table-cash/table-cash.component";
 import { FormUserComponent } from "./modules/components/form-user/form-user.component";
-import { FormClienteComponent } from "./modules/components/form-cliente/form-cliente.component";
+import { FormClienteComponent } from "./modules/components/form-client/form-client.component";
 import { FormCollectionComponent } from "./modules/components/form-collection/form-collection.component";
 import { FormLoanComponent } from "./modules/components/form-loan/form-loan.component";
 import { FormLoanPaymentComponent } from "./modules/components/form-loan-payment/form-loan-payment.component";
@@ -28,9 +31,10 @@ import { FormsModule } from "@angular/forms";
 import { LoginComponent } from "./modules/login/login.component";
 import { NotFoundComponent } from "./modules/not-found/not-found.component";
 import { NavBarComponent } from "./modules/components/nav-bar/nav-bar.component";
-import { ClientListComponent } from './modules/client-list/client-list.component';
-import { ClientNewComponent } from './modules/client-new/client-new.component';
-import { ClientEditComponent } from './modules/client-edit/client-edit.component';
+import { ClientListComponent } from "./modules/client-list/client-list.component";
+import { ClientNewComponent } from "./modules/client-new/client-new.component";
+import { ClientEditComponent } from "./modules/client-edit/client-edit.component";
+import { LoadComponent } from "./modules/components/load/load.component";
 
 @NgModule({
   declarations: [
@@ -62,10 +66,11 @@ import { ClientEditComponent } from './modules/client-edit/client-edit.component
     ClientListComponent,
     ClientNewComponent,
     ClientEditComponent,
+    LoadComponent,
     //ModelsModule,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+  providers: [ClientService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

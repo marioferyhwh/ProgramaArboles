@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { LoanPayment } from "src/app/shared/models/loan-payment";
 import { Loan } from "src/app/shared/models/loan";
 
@@ -8,7 +8,7 @@ import { Loan } from "src/app/shared/models/loan";
   styleUrls: ["./table-loan.component.scss"],
 })
 export class TableLoanComponent implements OnInit {
-  public prestamos: Loan[];
+  @Input() public prestamos: Loan[];
   constructor() {}
 
   ngOnInit(): void {}

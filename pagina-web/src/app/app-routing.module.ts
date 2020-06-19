@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: "not-found", component: NotFoundComponent },
   { path: "cliente", component: ClientListComponent },
   { path: "cliente/nuevo", component: ClientNewComponent },
-  { path: "cliente/edit/:id", component: ClientEditComponent },
+  { path: "cliente/editar/:id", component: ClientEditComponent },
   { path: "cliente/:id", component: ClientEditComponent },
   { path: "**", pathMatch: "full", redirectTo: "not-found" },
 ];

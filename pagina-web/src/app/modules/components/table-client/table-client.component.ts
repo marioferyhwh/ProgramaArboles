@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Client } from "src/app/shared/models/client";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-table-client",
@@ -7,7 +8,7 @@ import { Client } from "src/app/shared/models/client";
   styleUrls: ["./table-client.component.scss"],
 })
 export class TableClientComponent implements OnInit {
-  public clientes: Client[] = [
+  @Input() clients: Client[] = [
     {
       id: 1,
       name: "name1",
@@ -21,7 +22,18 @@ export class TableClientComponent implements OnInit {
       id_loan_state: 1,
     },
   ];
-  constructor() {}
+  // @Output() cargarCliete: EventEmitter<number>;
+  constructor(private _router: Router) {
+    // this.cargarCliete = new EventEmitter();
+  }
 
   ngOnInit(): void {}
+
+  clientEdit(id: number) {
+    // this.cargarCliete.emit(id)
+    this._router.navigate(["cliente", "editar", id]);
+  }
+  clientView(id: number) {
+    this._router.navigate(["cliente", id]);
+  }
 }

@@ -1,0 +1,44 @@
+<app-load *ngIf="!client"></app-load>
+<form action="" *ngIf="client">
+    <div class="form-group">
+        <label for="">identificador:</label>
+        <input type="text" [value]="client.id">
+    </div>
+    <div class="form-group">
+        <label for="">Creado:</label>
+        <input type="text" [value]="client.create_at">
+        <label for="">por:</label>
+        <input type="text" [value]="client.user_create">
+    </div>
+    <div class="form-group">
+        <label for="">actualizado:</label>
+        <input type="text" [value]="client.update_at">
+    </div>
+    <div class="form-group">
+        <label for="">nombre:</label>
+        <input type="text" [value]="client.id">
+    </div>
+    <div class="form-group">
+        <label for="">Tdc:</label>
+        <input type="text" [value]="client.document_code">
+        <label for="">#:</label>
+        <input type="text" [value]="client.document">
+    </div>
+    <div class="form-group">
+        <label for="">prestamos:</label>
+        <input type="text" [value]="client.number_loans">
+    </div>
+    <div class="form-group">
+        <label for="">Estado:</label>
+        <input type="text" [value]="client.state">
+    </div>
+    <div class="form-group">
+        <label for="">Tipo de negocio:</label>
+        <input type="text" [value]="client.id_type_business">
+    </div>
+    <div class="form-group">
+        <label for="">cobro:</label>
+        <input type="text" [value]="client.id_collection">
+    </div>
+
+</form>

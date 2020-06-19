@@ -1,12 +1,13 @@
-<table>
+<app-load *ngIf="!clients"></app-load>
+<table *ngIf="clients">
     <thead>
         <th>nombre</th>
         <th>Prestamos</th>
         <th>estado</th>
     </thead>
-    <tbody *ngFor="let cliente of this.clientes">
-        <td>{{cliente.name}}</td>
-        <td>{{cliente.number_loans}}</td>
-        <td>{{cliente.id_loan_state}}</td>
+    <tbody *ngFor="let client of this.clients">
+        <td (click)="clientEdit(client.id)"> {{client.name}}</td>
+        <td>{{client.number_loans}}</td>
+        <td>{{client.id_loan_state}}</td>
     </tbody>
 </table>
