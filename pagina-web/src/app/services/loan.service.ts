@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { LoanModel } from "../shared/models/loan.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class LoanService {
-
-  constructor() { }
+  public loan: LoanModel[];
+  constructor() {}
 }

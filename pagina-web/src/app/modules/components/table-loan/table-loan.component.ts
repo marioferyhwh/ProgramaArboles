@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { LoanPayment } from "src/app/shared/models/loan-payment";
-import { Loan } from "src/app/shared/models/loan";
+import { LoanModel } from "src/app/shared/models/loan.model";
 
 @Component({
   selector: "app-table-loan",
@@ -8,7 +7,7 @@ import { Loan } from "src/app/shared/models/loan";
   styleUrls: ["./table-loan.component.scss"],
 })
 export class TableLoanComponent implements OnInit {
-  @Input() public prestamos: Loan[];
+  @Input() public prestamos: LoanModel[];
   constructor() {}
 
   ngOnInit(): void {}

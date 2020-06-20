@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { ExpenseModel } from "../shared/models/expense.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ExpenseService {
-
-  constructor() { }
+  public expese: ExpenseModel[];
+  constructor() {}
 }

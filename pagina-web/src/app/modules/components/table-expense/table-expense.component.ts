@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Expense } from "src/app/shared/models/expense";
+import { ExpenseModel } from "src/app/shared/models/expense.model";
 
 @Component({
   selector: "app-table-expense",
@@ -7,7 +7,7 @@ import { Expense } from "src/app/shared/models/expense";
   styleUrls: ["./table-expense.component.scss"],
 })
 export class TableExpenseComponent implements OnInit {
-  @Input() public gastos: Expense[];
+  @Input() public gastos: ExpenseModel[];
   constructor() {}
 
   ngOnInit(): void {}

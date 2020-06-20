@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { CollectionModel } from "../shared/models/collection.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class CollectionService {
-
-  constructor() { }
+  public collection: CollectionModel[];
+  constructor() {}
 }

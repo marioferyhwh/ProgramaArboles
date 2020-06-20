@@ -1,9 +1,8 @@
-import { BaseDB } from "./base-db";
-import { UserCollection } from "./user-collection";
-import { Tel } from "./tel";
-import { Expense } from "./expense";
-
-export class UserModel {
+import { BaseDbModel } from "./base-db.model";
+import { UserCollectionModel } from "./user-collection.model";
+import { TelModel } from "./tel.model";
+import { ExpenseModel } from "./expense.model";
+export class UserModel extends BaseDbModel {
   actived: boolean;
   nick_name: string;
   email: string;
@@ -14,9 +13,9 @@ export class UserModel {
   admin: boolean;
   time_zone: number;
   confirm_password: string;
-  collections: UserCollection;
-  tels: Tel;
-  tels_new: Tel;
-  tels_delete: Tel;
-  expenses: Expense;
+  collections: UserCollectionModel;
+  tels: TelModel;
+  tels_new: TelModel;
+  tels_delete: TelModel;
+  expenses: ExpenseModel;
 }

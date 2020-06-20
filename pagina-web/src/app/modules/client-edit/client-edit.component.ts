@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { ClientService } from "src/app/services/client.service";
-import { Client } from "src/app/shared/models/client";
+import { ClientModel } from "src/app/shared/models/client.model";
 
 @Component({
   selector: "app-client-edit",
@@ -9,7 +9,7 @@ import { Client } from "src/app/shared/models/client";
   styleUrls: ["./client-edit.component.scss"],
 })
 export class ClientEditComponent implements OnInit {
-  public client: Client;
+  public client: ClientModel;
   constructor(
     private _activedRoute: ActivatedRoute,
     private _clientService: ClientService

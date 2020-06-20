@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Client } from "src/app/shared/models/client";
 import { Router } from "@angular/router";
+import { ClientModel } from "src/app/shared/models/client.model";
 
 @Component({
   selector: "app-table-client",
@@ -8,20 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./table-client.component.scss"],
 })
 export class TableClientComponent implements OnInit {
-  @Input() clients: Client[] = [
-    {
-      id: 1,
-      name: "name1",
-      number_loans: 1,
-      id_loan_state: 1,
-    },
-    {
-      id: 1,
-      name: "name1",
-      number_loans: 1,
-      id_loan_state: 1,
-    },
-  ];
+  @Input() clients: ClientModel[];
   // @Output() cargarCliete: EventEmitter<number>;
   constructor(private _router: Router) {
     // this.cargarCliete = new EventEmitter();

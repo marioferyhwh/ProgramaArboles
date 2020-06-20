@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ClientService } from "src/app/services/client.service";
-import { Client } from "src/app/shared/models/client";
+import { ClientModel } from "src/app/shared/models/client.model";
 
 @Component({
   selector: "app-client-list",
@@ -8,7 +8,7 @@ import { Client } from "src/app/shared/models/client";
   styleUrls: ["./client-list.component.scss"],
 })
 export class ClientListComponent implements OnInit {
-  public clients: Client[];
+  public clients: ClientModel[];
   constructor(private _clientService: ClientService) {}
 
   ngOnInit(): void {

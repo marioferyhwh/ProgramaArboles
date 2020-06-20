@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { Collection } from "src/app/shared/models/collection";
+import { CollectionModel } from "src/app/shared/models/collection.model";
 
 @Component({
   selector: "app-table-collection",
@@ -7,7 +7,7 @@ import { Collection } from "src/app/shared/models/collection";
   styleUrls: ["./table-collection.component.scss"],
 })
 export class TableCollectionComponent implements OnInit {
-  @Input() public cobros: Collection[];
+  @Input() public cobros: CollectionModel[];
   constructor() {}
 
   ngOnInit(): void {}

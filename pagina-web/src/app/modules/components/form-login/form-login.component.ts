@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { User } from "src/app/shared/models/user";
-import { NgForOf } from "@angular/common";
 import { NgForm } from "@angular/forms";
 import { UserService } from "src/app/services/user.service";
+import { UserModel } from "src/app/shared/models/user.model";
 
 @Component({
   selector: "app-form-login",
@@ -10,7 +9,7 @@ import { UserService } from "src/app/services/user.service";
   styleUrls: ["./form-login.component.scss"],
 })
 export class FormLoginComponent implements OnInit {
-  public user: User = { email: "", password: "" };
+  public user: UserModel = new UserModel();
   constructor(private _userService: UserService) {}
 
   ngOnInit(): void {}

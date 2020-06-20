@@ -1,26 +1,25 @@
 import { Injectable } from "@angular/core";
-import { User } from "../shared/models/user";
+import { UserModel } from "../shared/models/user.model";
 
 @Injectable({
   providedIn: "root",
 })
 export class UserService {
-  private users: User[] = [{}, {}];
+  private users: UserModel[];
   constructor() {
     console.log("inicia servicio Usuario");
   }
-  login(user: User) {}
+  login(user: UserModel) {}
   logout() {}
-  getUser(id: number): User {
+  getUser(id: number): UserModel {
     return this.users[id];
   }
-  getUsers(): User[] {
+  getUsers(): UserModel[] {
     return this.users;
   }
-
-  createUser(user: User) {}
-  editUser(User: User) {}
-  deleteUser(id: number): User {
+  createUser(user: UserModel) {}
+  editUser(User: UserModel) {}
+  deleteUser(id: number): UserModel {
     return this.users[id];
   }
 }
