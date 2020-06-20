@@ -1,6 +1,6 @@
 export class BaseDbModel {
   id: number;
-  create_at: string;
-  update_at: string;
-  delete_at: string;
+  create_at: Date;
+  update_at: Date;
+  delete_at: Date;
 }

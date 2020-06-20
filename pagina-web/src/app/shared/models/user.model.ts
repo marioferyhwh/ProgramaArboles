@@ -12,6 +12,8 @@ export class UserModel extends BaseDbModel {
   name: string;
   admin: boolean;
   time_zone: number;
+  password_at: Date;
+  change_password: boolean;
   confirm_password: string;
   collections: UserCollectionModel;
   tels: TelModel;
