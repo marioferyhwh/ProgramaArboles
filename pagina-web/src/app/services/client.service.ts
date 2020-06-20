@@ -38,7 +38,7 @@ export class ClientService {
     },
   ];
   constructor() {
-    console.log("incia servicio");
+    console.log("inicia servicio Cliente");
   }
 
   getClients(): Client[] {
@@ -47,6 +47,9 @@ export class ClientService {
   getClient(id: number): Client {
     return this.clients[id];
   }
+
+  createClient(Client: Client) {}
+  editClient(Client: Client) {}
   deleteClient(id: number): Client {
     return this.clients[id];
   }

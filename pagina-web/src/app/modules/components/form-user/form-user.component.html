@@ -1,1 +1,23 @@
-<p>form-user works!</p>
+<form (ngSubmit)="onAction(fl)" #fl="ngForm" class="form">
+    <div class="form-group">
+        <input type="email" placeholder="User" [(ngModel)]="user.email" name="email" required email>
+        <span class="tect-danger" *ngIf="fl.submitted && fl.controls['email'].invalid">
+      correo no valido
+    </span>
+    </div>
+    <div class="form-group">
+        <label for="password">clave:</label>
+        <input type="password" placeholder="**********" [(ngModel)]="user.password" name="password" required>
+        <span class="tect-danger" *ngIf="fl.submitted && fl.controls['password'].invalid">
+      Clave no valida
+    </span>
+        <label for="confirm_password">confirmar clave:</label>
+        <input type="password" placeholder="**********" [(ngModel)]="user.confirm_password" name="confirm_password" required>
+        <span class="tect-danger" *ngIf="fl.submitted && fl.controls['password'].invalid">
+      Clave no valida
+    </span>
+    </div>
+    <div class="form-group">
+        <button type="submit">Crear</button>
+    </div>
+</form>
