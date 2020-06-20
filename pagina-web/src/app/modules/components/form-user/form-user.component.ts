@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { UserModel } from "src/app/shared/models/user.model";
-
 @Component({
   selector: "app-form-user",
   templateUrl: "./form-user.component.html",
@@ -9,10 +8,13 @@ import { UserModel } from "src/app/shared/models/user.model";
 })
 export class FormUserComponent implements OnInit {
   @Input() public user: UserModel = new UserModel();
-  constructor() {}
+  @Output() UserData: EventEmitter<UserModel>;
+  constructor() {
+    this.UserData = new EventEmitter();
+  }
 
   ngOnInit(): void {}
   onAction(form: NgForm) {
-    console.log(this.user);
+    this.UserData.emit(this.user);
   }
 }

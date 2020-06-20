@@ -5,6 +5,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 //services
 import { ClientService } from "./services/client.service";
+import { FormsModule } from "@angular/forms";
+import { HttpClientModule } from "@angular/common/http";
 //
 import { registerLocaleData } from "@angular/common";
 import localEs from "@angular/common/locales/es";
@@ -33,7 +35,6 @@ import { FormTelComponent } from "./modules/components/form-tel/form-tel.compone
 import { FormLocationComponent } from "./modules/components/form-location/form-location.component";
 import { FormCashComponent } from "./modules/components/form-cash/form-cash.component";
 import { FormLoginComponent } from "./modules/components/form-login/form-login.component";
-import { FormsModule } from "@angular/forms";
 import { LoginComponent } from "./modules/login/login.component";
 import { NotFoundComponent } from "./modules/not-found/not-found.component";
 import { NavBarComponent } from "./modules/components/nav-bar/nav-bar.component";
@@ -81,7 +82,7 @@ import { UserEditComponent } from "./modules/user-edit/user-edit.component";
     UserEditComponent,
     //ModelsModule,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [
     ClientService,
     {
