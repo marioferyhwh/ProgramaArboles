@@ -1,7 +1,7 @@
-import { Tel } from './tel.model';
+import { TelModel } from "./tel.model";
 
-describe('Tel', () => {
-  it('should create an instance', () => {
-    expect(new Tel()).toBeTruthy();
+describe("TelModel", () => {
+  it("should create an instance", () => {
+    expect(new TelModel()).toBeTruthy();
   });
 });

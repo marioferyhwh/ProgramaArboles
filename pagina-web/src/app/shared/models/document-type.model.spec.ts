@@ -1,7 +1,7 @@
-import { DocumentType } from './document-type.model';
+import { DocumentTypeModel } from "./document-type.model";
 
-describe('DocumentType', () => {
-  it('should create an instance', () => {
-    expect(new DocumentType()).toBeTruthy();
+describe("DocumentTypeModel", () => {
+  it("should create an instance", () => {
+    expect(new DocumentTypeModel()).toBeTruthy();
   });
 });

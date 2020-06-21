@@ -1,7 +1,7 @@
-import { Client } from './client.model';
+import { ClientModel } from "./client.model";
 
-describe('Client', () => {
-  it('should create an instance', () => {
-    expect(new Client()).toBeTruthy();
+describe("ClientModel", () => {
+  it("should create an instance", () => {
+    expect(new ClientModel()).toBeTruthy();
   });
 });

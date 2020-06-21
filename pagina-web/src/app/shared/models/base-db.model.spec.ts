@@ -1,7 +1,7 @@
-import { BaseDb } from './base-db.model';
+import { BaseDbModel } from "./base-db.model";
 
-describe('BaseDb', () => {
-  it('should create an instance', () => {
-    expect(new BaseDb()).toBeTruthy();
+describe("BaseDbModel", () => {
+  it("should create an instance", () => {
+    expect(new BaseDbModel()).toBeTruthy();
   });
 });

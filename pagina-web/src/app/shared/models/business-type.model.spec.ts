@@ -1,7 +1,7 @@
-import { BusinessType } from './business-type.model';
+import { BusinessTypeModel } from "./business-type.model";
 
-describe('BusinessType', () => {
-  it('should create an instance', () => {
-    expect(new BusinessType()).toBeTruthy();
+describe("BusinessTypeModel", () => {
+  it("should create an instance", () => {
+    expect(new BusinessTypeModel()).toBeTruthy();
   });
 });

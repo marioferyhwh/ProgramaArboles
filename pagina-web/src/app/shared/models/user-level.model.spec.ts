@@ -1,7 +1,7 @@
-import { UserLevel } from './user-level.model';
+import { UserLevelModel } from "./user-level.model";
 
-describe('UserLevel', () => {
-  it('should create an instance', () => {
-    expect(new UserLevel()).toBeTruthy();
+describe("UserLevelModel", () => {
+  it("should create an instance", () => {
+    expect(new UserLevelModel()).toBeTruthy();
   });
 });

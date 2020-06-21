@@ -1,7 +1,7 @@
-import { Loan } from './loan.model';
+import { LoanModel } from "./loan.model";
 
-describe('Loan', () => {
-  it('should create an instance', () => {
-    expect(new Loan()).toBeTruthy();
+describe("LoanModel", () => {
+  it("should create an instance", () => {
+    expect(new LoanModel()).toBeTruthy();
   });
 });

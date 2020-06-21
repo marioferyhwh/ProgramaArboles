@@ -1,7 +1,7 @@
-import { Expense } from './expense.model';
+import { ExpenseModel } from "./expense.model";
 
-describe('Expense', () => {
-  it('should create an instance', () => {
-    expect(new Expense()).toBeTruthy();
+describe("ExpenseModel", () => {
+  it("should create an instance", () => {
+    expect(new ExpenseModel()).toBeTruthy();
   });
 });
