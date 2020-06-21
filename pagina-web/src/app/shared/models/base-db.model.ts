@@ -1,6 +1,8 @@
 export class BaseDbModel {
-  id: number;
-  create_at: Date;
-  update_at: Date;
-  delete_at: Date;
+  constructor(
+    public id?: number,
+    public create_at?: Date,
+    public update_at?: Date,
+    public delete_at?: Date
+  ) {}
 }

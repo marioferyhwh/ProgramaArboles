@@ -7,23 +7,27 @@ import { TelModel } from "./tel.model";
 import { LoanModel } from "./loan.model";
 
 export class ClientModel extends BaseDbModel {
-  name: string;
-  email: string;
-  document_code: string;
-  document: string;
-  adress: string;
-  number_loans: number;
-  id_collection: number;
-  id_loan_state: number;
-  id_type_business: number;
-  id_location: number;
-  id_user: number;
-  state: LoanStateModel;
-  bussiness: BusinessTypeModel;
-  location: ClientLocationModel;
-  user_create: UserModel;
-  tels_delete: TelModel;
-  tels_new: TelModel;
-  tels: TelModel;
-  loans: LoanModel;
+  constructor(
+    public name?: string,
+    public email?: string,
+    public document_code?: string,
+    public document?: string,
+    public adress?: string,
+    public number_loans?: number,
+    public id_collection?: number,
+    public id_loan_state?: number,
+    public id_type_business?: number,
+    public id_location?: number,
+    public id_user?: number,
+    public state?: LoanStateModel,
+    public bussiness?: BusinessTypeModel,
+    public location?: ClientLocationModel,
+    public user_create?: UserModel,
+    public tels_delete?: TelModel,
+    public tels_new?: TelModel,
+    public tels?: TelModel,
+    public loans?: LoanModel
+  ) {
+    super();
+  }
 }

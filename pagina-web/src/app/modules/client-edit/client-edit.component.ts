@@ -15,7 +15,9 @@ export class ClientEditComponent implements OnInit {
     private _clientService: ClientService
   ) {
     this._activedRoute.params.subscribe((parms) => {
-      this.client = this._clientService.getClient(parms["id"]);
+      this._clientService.getClient(parms["id"]).subscribe((res) => {
+        this.client = <ClientModel>res["data"];
+      });
       console.log(this.client);
     });
   }

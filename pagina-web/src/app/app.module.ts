@@ -4,7 +4,7 @@ import { NgModule, LOCALE_ID } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 //services
-import { ClientService } from "./services/client.service";
+// import { ClientService } from "./services/client.service";
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 //
@@ -84,7 +84,6 @@ import { UserEditComponent } from "./modules/user-edit/user-edit.component";
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [
-    ClientService,
     {
       provide: LOCALE_ID,
       useValue: "es",

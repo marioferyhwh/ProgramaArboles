@@ -15,7 +15,9 @@ export class TableClientComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
+  ngOnChanges(): void {
+    console.log(this.clients);
+  }
   clientEdit(id: number) {
     // this.cargarCliete.emit(id)
     this._router.navigate(["cliente", "editar", id]);
