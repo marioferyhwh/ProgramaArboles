@@ -41,7 +41,7 @@ import { NavBarComponent } from "./modules/components/nav-bar/nav-bar.component"
 import { ClientListComponent } from "./modules/client-list/client-list.component";
 import { ClientNewComponent } from "./modules/client-new/client-new.component";
 import { ClientEditComponent } from "./modules/client-edit/client-edit.component";
-import { LoadComponent } from "./modules/components/load/load.component";
+import { LoadingComponent } from "./modules/components/loading/loading.component";
 import { UserNewComponent } from "./modules/user-new/user-new.component";
 import { UserListComponent } from "./modules/user-list/user-list.component";
 import { UserEditComponent } from "./modules/user-edit/user-edit.component";
@@ -76,7 +76,7 @@ import { UserEditComponent } from "./modules/user-edit/user-edit.component";
     ClientListComponent,
     ClientNewComponent,
     ClientEditComponent,
-    LoadComponent,
+    LoadingComponent,
     UserNewComponent,
     UserListComponent,
     UserEditComponent,

@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { ClientModel } from "../shared/models/client.model";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { ApiServerService } from "./api-server.service";
+import { RespModel } from "../shared/models/resp.model";
 
 @Injectable({
   providedIn: "root",
@@ -41,33 +41,49 @@ export class ClientService {
       id_loan_state: 5,
     },
   ];
+
   constructor(private _api: ApiServerService) {
     console.log("inicia servicio Cliente");
   }
 
-  getClients(c: number): Observable<object> {
-    return this._api.GetQuery(`client/list/${c}`);
-    // .pipe(
-    //   map((data: RespModel) => {
-    //     return data.data;
-    //   })
-    // );
+  getClients(c: number): Observable<ClientModel[]> {
+    return this._api.GetQuery(`client/list/${c}`).pipe(
+      map((data: RespModel) => {
+        return <Array<ClientModel>>data.data;
+      })
+    );
   }
 
-  getClient(id: number): Observable<object> {
-    return this._api.GetQuery(`client/list/${id}`);
+  getClient(id: number): Observable<ClientModel> {
+    return this._api.GetQuery(`client/list/${id}`).pipe(
+      map((data: RespModel) => {
+        return <ClientModel>data.data;
+      })
+    );
   }
 
-  createClient(Client: ClientModel): Observable<object> {
-    return this._api.PostQuery(`client`);
+  createClient(Client: ClientModel): Observable<ClientModel> {
+    return this._api.PostQuery(`client`).pipe(
+      map((data: RespModel) => {
+        return <ClientModel>data.data;
+      })
+    );
   }
 
-  editClient(client: ClientModel): Observable<object> {
+  editClient(client: ClientModel): Observable<ClientModel> {
     let id = client.id;
-    return this._api.PutQuery(`client/${id}`);
+    return this._api.PutQuery(`client/${id}`).pipe(
+      map((data: RespModel) => {
+        return <ClientModel>data.data;
+      })
+    );
   }
 
-  deleteClient(id: number): Observable<object> {
-    return this._api.DeleteQuery(`client/${id}`);
+  deleteClient(id: number): Observable<ClientModel> {
+    return this._api.DeleteQuery(`client/${id}`).pipe(
+      map((data: RespModel) => {
+        return <ClientModel>data.data;
+      })
+    );
   }
 }

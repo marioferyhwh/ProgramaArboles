@@ -13,7 +13,7 @@ export class UserNewComponent implements OnInit {
   ngOnInit(): void {}
   onCreateUser(u: UserModel) {
     console.log(u);
-    this._userService.createUser(u).subscribe((resp) => {
+    this._userService.createUser(u).subscribe((resp: UserModel) => {
       console.log(resp);
     });
   }
