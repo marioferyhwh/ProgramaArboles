@@ -1,6 +1,6 @@
 <app-loading *ngIf="!clients"></app-loading>
-<h2 *ngIf="clients && clients.length == 0 ">No se e encontraron clientes</h2>
-<table *ngIf="clients && clients.length > 0 ">
+<h2 *ngIf="clients && clients.length == 0 ">No se encontraron clientes</h2>
+<table *ngIf="clients && clients.length > 0 " class="table">
     <thead>
         <tr>
             <th>nombre</th>

@@ -45,6 +45,7 @@ import { LoadingComponent } from "./modules/components/loading/loading.component
 import { UserNewComponent } from "./modules/user-new/user-new.component";
 import { UserListComponent } from "./modules/user-list/user-list.component";
 import { UserEditComponent } from "./modules/user-edit/user-edit.component";
+import { BodyComponent } from "./modules/body/body.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +81,7 @@ import { UserEditComponent } from "./modules/user-edit/user-edit.component";
     UserNewComponent,
     UserListComponent,
     UserEditComponent,
+    BodyComponent,
     //ModelsModule,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
