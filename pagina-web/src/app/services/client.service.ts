@@ -62,8 +62,8 @@ export class ClientService {
     );
   }
 
-  createClient(Client: ClientModel): Observable<ClientModel> {
-    return this._api.PostQuery(`client`).pipe(
+  createClient(client: ClientModel): Observable<ClientModel> {
+    return this._api.PostQuery(`client`, client).pipe(
       map((data: RespModel) => {
         return <ClientModel>data.data;
       })
@@ -72,7 +72,7 @@ export class ClientService {
 
   editClient(client: ClientModel): Observable<ClientModel> {
     let id = client.id;
-    return this._api.PutQuery(`client/${id}`).pipe(
+    return this._api.PutQuery(`client/${id}`, client).pipe(
       map((data: RespModel) => {
         return <ClientModel>data.data;
       })

@@ -1,23 +1,79 @@
 <form (ngSubmit)="onAction(fl)" #fl="ngForm" class="form">
-    <div class="form-group">
-        <input type="email" placeholder="User" [(ngModel)]="user.email" name="email" required email>
-        <span class="tect-danger" *ngIf="fl.submitted && fl.controls['email'].invalid">
+    <div class="form-item">
+        <label for="actived">activo:</label>
+        <input type="checkbox" name="actived" [(ngModel)]="user.actived">
+        <label for="admin">admin:</label>
+        <input type="checkbox" name="admin" [(ngModel)]="user.admin">
+    </div>
+
+    <div class="form-item">
+        <label for="nick_name">nick name:</label>
+        <input type="text" placeholder="Nick Name" [(ngModel)]="user.nick_name" name="nick_name">
+        <span class="text-danger" *ngIf="fl.submitted && fl.controls['nick_name'].invalid">
+      nik name no valido
+    </span>
+    </div>
+
+    <div class="form-item">
+        <label for="">nombre:</label>
+        <input type="text" placeholder="Name" [(ngModel)]="user.name" name="name" required>
+        <span class="text-danger" *ngIf="fl.submitted && fl.controls['name'].invalid">
       correo no valido
     </span>
     </div>
-    <div class="form-group">
+
+    <div class="form-item">
+        <label for="email">correo:</label>
+        <input type="email" placeholder="email" [(ngModel)]="user.email" name="email" required email>
+        <span class="text-danger" *ngIf="fl.submitted && fl.controls['email'].invalid">
+      correo no valido
+    </span>
+    </div>
+    <div class="form-item">
         <label for="password">clave:</label>
         <input type="password" placeholder="**********" [(ngModel)]="user.password" name="password" required>
-        <span class="tect-danger" *ngIf="fl.submitted && fl.controls['password'].invalid">
+        <span class="text-danger" *ngIf="fl.submitted && fl.controls['password'].invalid">
       Clave no valida
-    </span>
+    </span></div>
+
+    <div class="form-item">
         <label for="confirm_password">confirmar clave:</label>
         <input type="password" placeholder="**********" [(ngModel)]="user.confirm_password" name="confirm_password" required>
-        <span class="tect-danger" *ngIf="fl.submitted && fl.controls['password'].invalid">
-      Clave no valida
+        <span class="" *ngIf="fl.submitted && fl.controls['password'].invalid">
+      no conciden las claves
     </span>
     </div>
-    <div class="form-group">
+
+    <div class="form-item">
+        <label for="">doc:</label>
+        <!-- <select name="select">
+      <option value="CE" [(ngModel)]="user.document_code">CE.</option>
+      <option value="CC" selected [(ngModel)]="user.document_code">CC.</option>
+    </select> -->
+        <label for="document"># doc:</label>
+        <input type="text" placeholder="11111111111" [(ngModel)]="user.document" name="document" required>
+        <span class="text-danger" *ngIf="fl.submitted && fl.controls['document'].invalid">
+      documento no valido
+    </span>
+    </div>
+
+    <div class="form-item">
+        <label for="">zona horaria:</label>
+        <input type="number" placeholder="5" [(ngModel)]="user.time_zone" name="time_zone" required>
+        <span class="text-danger" *ngIf="fl.submitted && fl.controls['time_zone'].invalid">
+      zona horaria no valida
+    </span>
+    </div>
+
+    <div class="form-item">
+        <label for="change_password">cambiar Clave:</label>
+        <input type="checkbox" name="change_password" [(ngModel)]="user.change_password">
+    </div>
+
+    <div class="form-item">
         <button type="submit">Crear</button>
     </div>
+
+
+
 </form>

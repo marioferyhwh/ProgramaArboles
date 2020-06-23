@@ -16,9 +16,15 @@ export class FormLoginComponent implements OnInit {
 
   onLogin(fl: NgForm) {
     console.log(fl);
-    if (fl.invalid) {
-      return;
-    }
+    // if (fl.invalid) {
+    //   return;
+    // }
     console.log(this.user);
+    this._userService.login(this.user).subscribe(
+      (resp) => {
+        console.log(resp);
+      },
+      (err) => console.log({ err })
+    );
   }
 }

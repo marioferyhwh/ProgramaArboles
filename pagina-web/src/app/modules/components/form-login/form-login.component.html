@@ -1,16 +1,19 @@
 <form (ngSubmit)="onLogin(fl)" #fl="ngForm" class="form">
+
     <div class="form-group">
         <span class="tect-danger" *ngIf="fl.submitted && fl.controls['email'].invalid">
       correo no valido
     </span>
         <input type="email" placeholder="User" [(ngModel)]="user.email" name="email" required email>
     </div>
+
     <div class="form-group">
         <span class="tect-danger" *ngIf="fl.submitted && fl.controls['password'].invalid">
       Clave no valida
     </span>
         <input type="password" placeholder="**********" [(ngModel)]="user.password" name="password" required>
     </div>
+
     <div class="form-group">
         <button type="submit">iniciar</button>
     </div>

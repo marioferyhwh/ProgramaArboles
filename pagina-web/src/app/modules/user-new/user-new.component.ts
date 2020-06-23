@@ -12,9 +12,16 @@ export class UserNewComponent implements OnInit {
 
   ngOnInit(): void {}
   onCreateUser(u: UserModel) {
+    u.document_code = "CC";
     console.log(u);
-    this._userService.createUser(u).subscribe((resp: UserModel) => {
-      console.log(resp);
-    });
+    this._userService.createUser(u).subscribe(
+      (resp: UserModel) => {
+        console.log(resp);
+      },
+      (err) => {
+        console.log(err);
+        console.log(err.error);
+      }
+    );
   }
 }

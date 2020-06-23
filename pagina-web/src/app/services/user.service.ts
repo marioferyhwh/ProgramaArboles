@@ -1,30 +1,67 @@
 import { Injectable } from "@angular/core";
 import { UserModel } from "../shared/models/user.model";
-import { HttpClient } from "@angular/common/http";
+import { ApiServerService } from "./api-server.service";
+import { RespModel } from "../shared/models/resp.model";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
 })
 export class UserService {
   private users: UserModel[];
-  private _url = "http://localhost:8080/api/v1/";
-  constructor(private _http: HttpClient) {
+  constructor(private _api: ApiServerService) {
     console.log("inicia servicio Usuario");
   }
-  login(user: UserModel) {}
-  logout() {}
-  getUser(id: number): UserModel {
-    return this.users[id];
+
+  login(user: UserModel) {
+    return this._api.PostQuery(`user/login`, user, false).pipe(
+      map((data: RespModel) => {
+        if (data.new_token) {
+          this._api.setToken(data.new_token);
+        }
+        return data;
+      })
+    );
   }
-  getUsers(): UserModel[] {
-    return this.users;
+
+  logout() {
+    this._api.setToken("");
   }
-  createUser(user: UserModel) {
-    let token = ""; //?authorization=
-    return this._http.post(`${this._url}user${token}`, user);
+  getUser(id: number): Observable<UserModel[]> {
+    return this._api.GetQuery(`user/list/${id}`).pipe(
+      map((data: RespModel) => {
+        return <Array<UserModel>>data.data;
+      })
+    );
   }
-  editUser(User: UserModel) {}
-  deleteUser(id: number): UserModel {
-    return this.users[id];
+  getUsers(id: number): Observable<UserModel> {
+    return this._api.GetQuery(`user/list/${id}`).pipe(
+      map((data: RespModel) => {
+        return <UserModel>data.data;
+      })
+    );
+  }
+  createUser(user: UserModel): Observable<UserModel> {
+    return this._api.PostQuery(`user`, user).pipe(
+      map((data: RespModel) => {
+        return <UserModel>data.data;
+      })
+    );
+  }
+  editUser(user: UserModel): Observable<UserModel> {
+    let id = user.id;
+    return this._api.PutQuery(`user/${id}`, user).pipe(
+      map((data: RespModel) => {
+        return <UserModel>data.data;
+      })
+    );
+  }
+  deleteUser(id: number): Observable<UserModel> {
+    return this._api.DeleteQuery(`user/${id}`).pipe(
+      map((data: RespModel) => {
+        return <UserModel>data.data;
+      })
+    );
   }
 }

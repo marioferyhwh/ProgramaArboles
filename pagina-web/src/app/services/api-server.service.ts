@@ -17,7 +17,16 @@ export class ApiServerService {
     sessionStorage.setItem(this._nameToken, token);
   }
   getToken(): string {
-    return `Bearer ${sessionStorage.getItem(this._nameToken)}`;
+    if (sessionStorage.getItem(this._nameToken)) {
+      return `Bearer ${sessionStorage.getItem(this._nameToken)}`;
+    } else {
+      return "";
+    }
+  }
+  deleteToken() {
+    if (sessionStorage.getItem(this._nameToken)) {
+      //sessionStorage
+    }
   }
 
   GetQuery(query: string, token: boolean = true): Observable<object> {
@@ -33,20 +42,30 @@ export class ApiServerService {
     return this._http.get(`${this._url}${query}`, { headers: header });
   }
 
-  PostQuery(query: string, token: boolean = true): Observable<object> {
+  PostQuery(
+    query: string,
+    data: any,
+    token: boolean = true
+  ): Observable<object> {
     let aut: string;
     if (token) {
       aut = this.getToken();
+    } else {
+      aut = "";
     }
 
     const header = new HttpHeaders({
       "Content-Type": "application/json",
       Authorization: aut,
     });
-    return this._http.get(`${this._url}${query}`, { headers: header });
+    return this._http.post(`${this._url}${query}`, data, { headers: header });
   }
 
-  PutQuery(query: string, token: boolean = true): Observable<object> {
+  PutQuery(
+    query: string,
+    data: any,
+    token: boolean = true
+  ): Observable<object> {
     let aut: string;
     if (token) {
       aut = this.getToken();
@@ -56,7 +75,7 @@ export class ApiServerService {
       "Content-Type": "application/json",
       Authorization: aut,
     });
-    return this._http.get(`${this._url}${query}`, { headers: header });
+    return this._http.put(`${this._url}${query}`, data, { headers: header });
   }
 
   DeleteQuery(query: string, token: boolean = true): Observable<object> {
