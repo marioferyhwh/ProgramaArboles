@@ -9,12 +9,14 @@ import { UserNewComponent } from "./modules/user-new/user-new.component";
 import { UserListComponent } from "./modules/user-list/user-list.component";
 import { UserEditComponent } from "./modules/user-edit/user-edit.component";
 import { BodyComponent } from "./modules/body/body.component";
+import { LoginGuard } from "./guards/login.guard";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
   {
     path: "",
     component: BodyComponent,
+    canActivate: [LoginGuard],
     children: [
       { path: "not-found", component: NotFoundComponent },
 

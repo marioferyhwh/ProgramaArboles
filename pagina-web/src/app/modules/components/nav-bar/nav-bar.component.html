@@ -77,7 +77,7 @@
                     <a [routerLink]="['/usuario','lista']">cobradores</a>
                 </li>
                 <li routerLinkActive="active">
-                    <a [routerLink]="['/login']">salir</a>
+                    <a (click)="logOut()" [routerLink]="['/login']">salir</a>
                 </li>
             </ul>
         </li>
