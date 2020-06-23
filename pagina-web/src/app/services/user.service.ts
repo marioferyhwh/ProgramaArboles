@@ -28,6 +28,9 @@ export class UserService {
   logout() {
     this._api.deleteToken();
   }
+  getuserNow(): UserModel {
+    return this._api.userToken();
+  }
   getUser(id: number): Observable<UserModel[]> {
     return this._api.GetQuery(`user/list/${id}`).pipe(
       map((data: RespModel) => {

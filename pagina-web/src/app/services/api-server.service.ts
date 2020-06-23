@@ -64,7 +64,7 @@ export class ApiServerService {
     this._user = data["user"];
     const now = new Date();
     const exp = new Date(data["exp"] * 1000);
-    console.log(this._user);
+    // console.log(this._user);
     if (exp < now) {
       // this.deleteToken();
       return false;
