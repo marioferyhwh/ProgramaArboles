@@ -1,44 +1,99 @@
 <app-loading *ngIf="!client"></app-loading>
-<form action="" *ngIf="client">
-    <div class="form-group">
-        <label for="">identificador:</label>
-        <input type="text" [value]="client.id">
+<form *ngIf="client" autocomplete="off" (ngSubmit)="onAction(forma)" #forma="ngForm" class="col-8 offset-2">
+
+    <div class="form-group row" *ngIf="client.id">
+        <label class="col-3 col-form-label">identificador:{{client.id}}</label>
+        <label class="col-3 col-form-label">cobro:{{client.id_collection}}</label>
     </div>
-    <div class="form-group">
-        <label for="">Creado:</label>
-        <input type="text" [value]="client.create_at">
-        <label for="">por:</label>
-        <input type="text" [value]="client.user_create">
+
+    <div class="form-group row" *ngIf="client.id">
+        <label class="col-4 col-form-label">Creado:{{client.create_at}}</label>
+
+        <label class="col-5 col-form-label">por:{{client.user_create}}</label>
     </div>
-    <div class="form-group">
-        <label for="">actualizado:</label>
-        <input type="text" [value]="client.update_at">
+
+    <div class="form-group row" *ngIf="client.id">
+        <label class="col-4 col-form-label">actualizado:{{client.update_at}}</label>
+        <label class="col-10 col-form-label">prestamos:{{client.number_loans}}</label>
     </div>
-    <div class="form-group">
-        <label for="">nombre:</label>
-        <input type="text" [value]="client.id">
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="">Estado:</label>
+        <div class="col-8">
+            <select class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="">Tdc:</label>
-        <input type="text" [value]="client.document_code">
-        <label for="">#:</label>
-        <input type="text" [value]="client.document">
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="">nombre:</label>
+        <div class="col-8">
+            <input [ngClass]="{'is-invalid':name.invalid && name.touched}" #name="ngModel" class="form-control" type="text" name="name" [ngModel]="client.name" required minlength="10" placeholder="nombre">
+            <small class="form-text text-danger" *ngIf="name.invalid && name.touched"> ingrese  10 letras</small>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="">prestamos:</label>
-        <input type="text" [value]="client.number_loans">
+
+    <div class="form-group row align-items-cente">
+        <label class="col-4 col-form-label r" for="">tipo de docuemto:</label>
+        <div class="col-8">
+            <select class="form-control">
+        <option>TI</option>
+        <option>CC</option>
+        <option>CE</option>
+      </select>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="">Estado:</label>
-        <input type="text" [value]="client.state">
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="">documento:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" [ngModel]="client.document" name="document">
+        </div>
     </div>
-    <div class="form-group">
-        <label for="">Tipo de negocio:</label>
-        <input type="text" [value]="client.id_type_business">
+
+
+
+    <div class="form-group row align-items-center">
+        <label class="col-4 col-form-label" for="">Tipo de negocio:</label>
+        <div class="col-8">
+            <select class="form-control" required>
+        <option>abarrotes</option>
+        <option>talonarios</option>
+        <option>fruteria</option>
+      </select>
+        </div>
     </div>
-    <div class="form-group">
-        <label for="">cobro:</label>
-        <input type="text" [value]="client.id_collection">
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="">Localizacion:</label>
+        <div class="col-8">
+            <select class="form-control" required>
+        <option>kennedy</option>
+        <option>soacha</option>
+        <option>casanare</option>
+      </select>
+        </div>
     </div>
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label " for="">Direccion:</label>
+        <div class="col-8">
+            <input [ngClass]="{'is-invalid':adress.invalid && adress.touched }" #adress="ngModel" class="form-control" type="text" name="document" [ngModel]="client.adress" required>
+            <small class="form-text text-danger" *ngIf="adress.invalid && adress.touched"> ingrese dirrecion</small>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label">&nbsp;</label>
+        <div class="col-md-8 input-group">
+            <button class="btn btn-outline-primary btn-block" type="submit">Crear</button>
+        </div>
+    </div>
+
 
 </form>
