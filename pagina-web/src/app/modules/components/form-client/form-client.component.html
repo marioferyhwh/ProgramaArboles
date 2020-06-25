@@ -1,5 +1,5 @@
 <app-loading *ngIf="!client"></app-loading>
-<form *ngIf="client" autocomplete="off" (ngSubmit)="onAction(forma)" #forma="ngForm" class="col-8 offset-2">
+<form *ngIf="client" autocomplete="off" (ngSubmit)="onAction(forma)" #forma="ngForm" class="col-8 offset-2 text-left">
 
     <div class="form-group row" *ngIf="client.id">
         <label class="col-3 col-form-label">identificador:{{client.id}}</label>
@@ -18,14 +18,10 @@
     </div>
 
     <div class="form-group row">
-        <label class="col-4 col-form-label" for="">Estado:</label>
+        <label class="col-4 col-form-label " for="">Estado:</label>
         <div class="col-8">
-            <select class="form-control">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
+            <select class="form-control" name="id_loan_state" [ngModel]="client.id_loan_state">
+        <option *ngFor="let estate of loan_states" [value]="estate.id">{{estate.state}}</option>
       </select>
         </div>
     </div>
@@ -34,17 +30,15 @@
         <label class="col-4 col-form-label" for="">nombre:</label>
         <div class="col-8">
             <input [ngClass]="{'is-invalid':name.invalid && name.touched}" #name="ngModel" class="form-control" type="text" name="name" [ngModel]="client.name" required minlength="10" placeholder="nombre">
-            <small class="form-text text-danger" *ngIf="name.invalid && name.touched"> ingrese  10 letras</small>
+            <small class="form-text text-danger" *ngIf="name.invalid && name.touched"> ingrese 10 letras</small>
         </div>
     </div>
 
     <div class="form-group row align-items-cente">
-        <label class="col-4 col-form-label r" for="">tipo de docuemto:</label>
+        <label class="col-4 col-form-label r" for="">tipo de documento:</label>
         <div class="col-8">
-            <select class="form-control">
-        <option>TI</option>
-        <option>CC</option>
-        <option>CE</option>
+            <select class="form-control" name="document_code" [ngModel]="client.document_code" [ngClass]="{'is-invalid':docType.invalid && docType.touched}" #docType="ngModel">
+        <option *ngFor="let doc of documents" [value]="doc.name_short">{{doc.description}}</option>
       </select>
         </div>
     </div>
@@ -61,22 +55,26 @@
     <div class="form-group row align-items-center">
         <label class="col-4 col-form-label" for="">Tipo de negocio:</label>
         <div class="col-8">
-            <select class="form-control" required>
-        <option>abarrotes</option>
-        <option>talonarios</option>
-        <option>fruteria</option>
+            <select class="form-control" required [ngClass]="{'is-invalid':business.invalid && business.touched}" #business="ngModel" name="id_type_business" [ngModel]="client.id_type_business">
+        <option *ngFor="let bussines of businesstype" [value]="bussines.id">{{bussines.type_business}}</option>
       </select>
+            <small class="form-text text-danger" *ngIf="business.invalid && business.touched">
+        ingreser negocio
+      </small>
         </div>
     </div>
 
     <div class="form-group row">
         <label class="col-4 col-form-label" for="">Localizacion:</label>
         <div class="col-8">
-            <select class="form-control" required>
+            <select class="form-control" required name="location" [ngModel]="client.location" [ngClass]="{'is-invalid':location.invalid && location.touched}" #location="ngModel">
         <option>kennedy</option>
         <option>soacha</option>
         <option>casanare</option>
       </select>
+            <small class="form-text text-danger" *ngIf="location.invalid && location.touched">
+        ingreser localizacion
+      </small>
         </div>
     </div>
 
