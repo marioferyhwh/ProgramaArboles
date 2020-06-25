@@ -5,7 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 //services
 // import { ClientService } from "./services/client.service";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 //
 import { registerLocaleData } from "@angular/common";
@@ -84,7 +84,13 @@ import { BodyComponent } from "./modules/body/body.component";
     BodyComponent,
     //ModelsModule,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [
     {
       provide: LOCALE_ID,
