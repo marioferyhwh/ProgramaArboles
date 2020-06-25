@@ -10,6 +10,7 @@ import { UserListComponent } from "./modules/user-list/user-list.component";
 import { UserEditComponent } from "./modules/user-edit/user-edit.component";
 import { BodyComponent } from "./modules/body/body.component";
 import { LoginGuard } from "./guards/login.guard";
+import { LoanNewComponent } from "./modules/loan-new/loan-new.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -32,6 +33,8 @@ const routes: Routes = [
       { path: "cliente/nuevo", component: ClientNewComponent },
       { path: "cliente/editar/:id", component: ClientEditComponent },
       { path: "cliente/:id", component: ClientEditComponent },
+
+      { path: "prestamo/nuevo", component: LoanNewComponent },
       {
         path: "cobro/:id",
         component: UserEditComponent,
