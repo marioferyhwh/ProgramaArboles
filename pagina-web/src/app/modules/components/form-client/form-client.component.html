@@ -1,5 +1,5 @@
 <app-loading *ngIf="!client"></app-loading>
-<form *ngIf="client" autocomplete="off" (ngSubmit)="onAction(forma)" #forma="ngForm" class="col-8 offset-2 text-left">
+<form class="col-8 offset-2 text-left" *ngIf="client" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
 
     <div class="form-group row" *ngIf="client.id">
         <label class="col-3 col-form-label">identificador:{{client.id}}</label>
@@ -20,7 +20,7 @@
     <div class="form-group row">
         <label class="col-4 col-form-label " for="">Estado:</label>
         <div class="col-8">
-            <select class="form-control" name="id_loan_state" [ngModel]="client.id_loan_state">
+            <select class="form-control" formControlName="id_loan_state">
         <option *ngFor="let estate of loan_states" [value]="estate.id">{{estate.state}}</option>
       </select>
         </div>
@@ -29,15 +29,15 @@
     <div class="form-group row">
         <label class="col-4 col-form-label" for="">nombre:</label>
         <div class="col-8">
-            <input [ngClass]="{'is-invalid':name.invalid && name.touched}" #name="ngModel" class="form-control" type="text" name="name" [ngModel]="client.name" required minlength="10" placeholder="nombre">
-            <small class="form-text text-danger" *ngIf="name.invalid && name.touched"> ingrese 10 letras</small>
+            <input class="form-control" type="text" placeholder="nombre" [ngClass]="{'is-invalid':nameInvalid()}" formControlName="name">
+            <small class="form-text text-danger" *ngIf="nameInvalid()"> ingrese 10 letras</small>
         </div>
     </div>
 
     <div class="form-group row align-items-cente">
         <label class="col-4 col-form-label r" for="">tipo de documento:</label>
         <div class="col-8">
-            <select class="form-control" name="document_code" [ngModel]="client.document_code" [ngClass]="{'is-invalid':docType.invalid && docType.touched}" #docType="ngModel">
+            <select class="form-control" formControlName="document_code">
         <option *ngFor="let doc of documents" [value]="doc.name_short">{{doc.description}}</option>
       </select>
         </div>
@@ -46,7 +46,7 @@
     <div class="form-group row">
         <label class="col-4 col-form-label" for="">documento:</label>
         <div class="col-8">
-            <input class="form-control" type="text" [ngModel]="client.document" name="document">
+            <input class="form-control" type="text" formControlName="document">
         </div>
     </div>
 
@@ -55,10 +55,10 @@
     <div class="form-group row align-items-center">
         <label class="col-4 col-form-label" for="">Tipo de negocio:</label>
         <div class="col-8">
-            <select class="form-control" required [ngClass]="{'is-invalid':business.invalid && business.touched}" #business="ngModel" name="id_type_business" [ngModel]="client.id_type_business">
+            <select class="form-control" [ngClass]="{'is-invalid':id_type_businessInvalid()}" formControlName="id_type_business">
         <option *ngFor="let bussines of businesstype" [value]="bussines.id">{{bussines.type_business}}</option>
       </select>
-            <small class="form-text text-danger" *ngIf="business.invalid && business.touched">
+            <small class="form-text text-danger" *ngIf="id_type_businessInvalid()">
         ingreser negocio
       </small>
         </div>
@@ -67,12 +67,12 @@
     <div class="form-group row">
         <label class="col-4 col-form-label" for="">Localizacion:</label>
         <div class="col-8">
-            <select class="form-control" required name="location" [ngModel]="client.location" [ngClass]="{'is-invalid':location.invalid && location.touched}" #location="ngModel">
+            <select class="form-control" formControlName="id_location" [ngClass]="{'is-invalid':id_locationInvalid()}">
         <option>kennedy</option>
         <option>soacha</option>
         <option>casanare</option>
       </select>
-            <small class="form-text text-danger" *ngIf="location.invalid && location.touched">
+            <small class="form-text text-danger" *ngIf="id_locationInvalid()">
         ingreser localizacion
       </small>
         </div>
@@ -81,8 +81,8 @@
     <div class="form-group row">
         <label class="col-4 col-form-label " for="">Direccion:</label>
         <div class="col-8">
-            <input [ngClass]="{'is-invalid':adress.invalid && adress.touched }" #adress="ngModel" class="form-control" type="text" name="document" [ngModel]="client.adress" required>
-            <small class="form-text text-danger" *ngIf="adress.invalid && adress.touched"> ingrese dirrecion</small>
+            <input [ngClass]="{'is-invalid':adressInvalid()}" class="form-control" type="text" formControlName="document">
+            <small class="form-text text-danger" *ngIf="adressInvalid()"> ingrese dirrecion</small>
         </div>
     </div>
 
@@ -92,6 +92,5 @@
             <button class="btn btn-outline-primary btn-block" type="submit">Crear</button>
         </div>
     </div>
-
 
 </form>
