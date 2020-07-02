@@ -7,7 +7,7 @@ import { UserModel } from "src/app/shared/models/user.model";
   styleUrls: ["./form-user.component.scss"],
 })
 export class FormUserComponent implements OnInit {
-  @Input() public user: UserModel = new UserModel();
+  @Input() public user: UserModel;
   @Output() UserData: EventEmitter<UserModel>;
   constructor() {
     this.UserData = new EventEmitter();

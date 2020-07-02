@@ -1,9 +1,8 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { LoanModel } from "src/app/shared/models/loan.model";
 import { GlobalService } from "src/app/services/global.service";
 import { LoanStateModel } from "src/app/shared/models/loan-state.model";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { retryWhen } from "rxjs/operators";
 
 @Component({
   selector: "app-form-loan",
@@ -11,9 +10,12 @@ import { retryWhen } from "rxjs/operators";
   styleUrls: ["./form-loan.component.scss"],
 })
 export class FormLoanComponent implements OnInit {
-  public forma: FormGroup;
   @Input() public loan: LoanModel;
+  @Output() public loanData: EventEmitter<LoanModel>;
+
+  public forma: FormGroup;
   public loan_states: LoanStateModel[];
+
   constructor(private _globalService: GlobalService, private _fb: FormBuilder) {
     this.initForm();
   }
@@ -80,5 +82,6 @@ export class FormLoanComponent implements OnInit {
     }
 
     console.log(this.forma);
+    this.loanData.emit(this.loan);
   }
 }
