@@ -11,7 +11,10 @@ import { UserService } from "src/app/services/user.service";
   styleUrls: ["./user-new.component.scss"],
 })
 export class UserNewComponent implements OnInit {
-  constructor(private _userService: UserService, private _router: Router) {}
+  public user: UserModel;
+  constructor(private _userService: UserService, private _router: Router) {
+    this.user = new UserModel();
+  }
 
   ngOnInit(): void {}
   onCreateUser(u: UserModel) {

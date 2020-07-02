@@ -31,6 +31,7 @@ export class FormClienteComponent implements OnInit {
   ) {
     this.initForm();
     this.upData();
+    this.clientData = new EventEmitter();
   }
 
   ngOnInit(): void {}
@@ -50,7 +51,7 @@ export class FormClienteComponent implements OnInit {
 
   initForm() {
     this._globalService.get().subscribe((dt) => {
-      console.log({ dt });
+      // console.log({ dt });
       this.documents = dt.document_types;
       this.loan_states = dt.loan_states;
       this.businesstype = dt.business_types;
@@ -61,10 +62,6 @@ export class FormClienteComponent implements OnInit {
       this.businesstype.unshift({
         //id: 0,
         type_business: "-- selecione negocio --",
-      });
-      this.telds.unshift({
-        //id: 0,
-        tel_description: "-- selecione  descripcion --",
       });
     });
     this.forma = this._fb.group({
