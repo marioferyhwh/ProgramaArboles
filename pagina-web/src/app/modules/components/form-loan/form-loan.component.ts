@@ -2,7 +2,8 @@ import { Component, OnInit, Input } from "@angular/core";
 import { LoanModel } from "src/app/shared/models/loan.model";
 import { GlobalService } from "src/app/services/global.service";
 import { LoanStateModel } from "src/app/shared/models/loan-state.model";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { retryWhen } from "rxjs/operators";
 
 @Component({
   selector: "app-form-loan",
@@ -24,19 +25,60 @@ export class FormLoanComponent implements OnInit {
     this._globalService.get().subscribe((dt) => {
       console.log({ dt });
       this.loan_states = dt.loan_states;
-      this.loan_states.unshift({
-        //id: 0,
-        state: "-- selecione Estado --",
-      });
+      // this.loan_states.unshift({
+      //   id: 0,
+      //   state: "-- selecione Estado --",
+      // });
     });
     this.forma = this._fb.group({
-      initial_value: [""],
-      interest: [""],
-      quota: [""],
-      loan_state: [""],
+      initial_value: ["", [Validators.required, Validators.min(5)]],
+      interest: [
+        20,
+        [Validators.required, Validators.min(10), Validators.max(100)],
+      ],
+      quota: [
+        30,
+        [Validators.required, Validators.min(1), Validators.max(120)],
+      ],
+      loan_state: [
+        1,
+        [Validators.required, Validators.nullValidator, Validators.min(1)],
+      ],
     });
   }
+
+  initial_valueInvalid(): Boolean {
+    console.log(this.forma.get("initial_value"));
+    return (
+      this.forma.get("initial_value").invalid &&
+      this.forma.get("initial_value").touched
+    );
+  }
+
+  interestInvalid(): Boolean {
+    return (
+      this.forma.get("interest").invalid && this.forma.get("interest").touched
+    );
+  }
+
+  quotaInvalid(): Boolean {
+    return this.forma.get("quota").invalid && this.forma.get("quota").touched;
+  }
+
+  loan_stateInvalid(): Boolean {
+    return (
+      this.forma.get("loan_state").invalid &&
+      this.forma.get("loan_state").touched
+    );
+  }
+
   onAction() {
+    if (this.forma.invalid) {
+      Object.values(this.forma.controls).forEach((c) => {
+        c.markAsTouched();
+      });
+    }
+
     console.log(this.forma);
   }
 }
