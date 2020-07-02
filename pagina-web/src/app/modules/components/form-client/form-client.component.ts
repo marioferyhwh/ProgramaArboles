@@ -7,6 +7,7 @@ import { LoanStateModel } from "src/app/shared/models/loan-state.model";
 import { TelDescriptionModel } from "src/app/shared/models/tel-description.model";
 import { BusinessTypeModel } from "src/app/shared/models/business-type.model";
 import { isUndefined } from "util";
+import { ValidatorsService } from "src/app/services/validators.service";
 
 @Component({
   selector: "app-form-client",
@@ -22,7 +23,12 @@ export class FormClienteComponent implements OnInit {
   public loan_states: LoanStateModel[];
   public businesstype: BusinessTypeModel[];
   public telds: TelDescriptionModel[];
-  constructor(private _globalService: GlobalService, private _fb: FormBuilder) {
+
+  constructor(
+    private _globalService: GlobalService,
+    private _fb: FormBuilder,
+    private _validators: ValidatorsService
+  ) {
     this.initForm();
     this.upData();
   }
@@ -64,11 +70,11 @@ export class FormClienteComponent implements OnInit {
     this.forma = this._fb.group({
       name: ["", [Validators.required, Validators.minLength(5)]],
       email: ["", [Validators.email]],
-      document_code: [""],
-      document: [""],
+      document_code: ["", [this._validators.documentCode]],
+      document: ["", [this._validators.documentCode]],
       adress: ["", [Validators.required]],
       number_loans: [0],
-      id_loan_state: ["", [Validators.required]],
+      id_loan_state: [1, [Validators.required]],
       id_type_business: ["", [Validators.required]],
       id_location: ["", [Validators.required]],
       tels: this._fb.array([]),
@@ -95,7 +101,10 @@ export class FormClienteComponent implements OnInit {
     return <FormArray>this.forma.get("tels");
   }
 
-  numberInvalid(i: number) {}
+  numberInvalid(i: number) {
+    const forma = this.telsArray.controls[i];
+    return forma.get("number").invalid && forma.get("number").touched;
+  }
 
   get nameInvalid(): boolean {
     return this.forma.get("name").invalid && this.forma.get("name").touched;
@@ -103,6 +112,19 @@ export class FormClienteComponent implements OnInit {
 
   get emailInvalid(): boolean {
     return this.forma.get("email").invalid && this.forma.get("email").touched;
+  }
+
+  get documentInvalid(): boolean {
+    return (
+      this.forma.get("document").invalid && this.forma.get("document").touched
+    );
+  }
+
+  get document_codeInvalid(): boolean {
+    return (
+      this.forma.get("document_code").invalid &&
+      this.forma.get("document_code").touched
+    );
   }
 
   get adressInvalid(): boolean {
