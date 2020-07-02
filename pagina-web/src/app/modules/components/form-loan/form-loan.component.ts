@@ -33,6 +33,7 @@ export class FormLoanComponent implements OnInit {
       initial_value: [""],
       interest: [""],
       quota: [""],
+      loan_state: [""],
     });
   }
   onAction() {
