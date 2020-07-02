@@ -75,6 +75,11 @@
                 </li>
                 <li routerLinkActive="active">
                     <a [routerLink]="['/usuario','lista']">cobradores</a>
+                    <ul class="sub-group-item2">
+                        <li routerLinkActive="active">
+                            <a [routerLink]="['/usuario','nuevo']">nuevo</a>
+                        </li>
+                    </ul>
                 </li>
                 <li routerLinkActive="active">
                     <a (click)="logOut()" [routerLink]="['/login']">salir</a>
