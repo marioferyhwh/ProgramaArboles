@@ -23,8 +23,10 @@ export class FormUserComponent implements OnInit {
     private _globalService: GlobalService,
     private _validator: ValidatorsService
   ) {
-    this.initForm();
     this.UserData = new EventEmitter();
+    this.initForm();
+    this.dataForm();
+    this.listenerForm();
   }
 
   ngOnInit(): void {}
@@ -39,6 +41,18 @@ export class FormUserComponent implements OnInit {
     this.UserData.emit(this.user);
   }
 
+  dataForm() {
+    if (this.user != null) {
+      this.forma.reset(this.user);
+    }
+  }
+
+  listenerForm() {
+    this.forma.valueChanges.subscribe((value) => {
+      console.log({ value });
+    });
+  }
+
   initForm() {
     this._globalService.get().subscribe((dt) => {
       // console.log({ dt });
@@ -49,29 +63,41 @@ export class FormUserComponent implements OnInit {
       });
     });
 
-    this.forma = this._fb.group({
-      actived: [true, [Validators.required]],
-      nick_name: [],
-      email: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"),
+    this.forma = this._fb.group(
+      {
+        actived: [true, [Validators.required]],
+        nick_name: [],
+        email: [
+          "",
+          [
+            Validators.required,
+            Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"),
+          ],
+          this._validator.userExists,
         ],
-      ],
-      password: [""],
-      document_code: ["", [Validators.required, this._validator.documentCode]],
-      document: ["", [Validators.required, this._validator.document]],
-      name: ["", [Validators.required]],
-      admin: [false, [Validators.required]],
-      time_zone: [
-        -5,
-        [Validators.required, Validators.min(-24), Validators.max(24)],
-      ],
-      change_password: [true, [Validators.required]],
-      confirm_password: [""],
-      tels: this._fb.array([]),
-    });
+        password: [""],
+        document_code: [
+          "",
+          [Validators.required, this._validator.documentCode],
+        ],
+        document: ["", [Validators.required, this._validator.document]],
+        name: ["", [Validators.required], this._validator.userExists],
+        admin: [false, [Validators.required]],
+        time_zone: [
+          -5,
+          [Validators.required, Validators.min(-24), Validators.max(24)],
+        ],
+        change_password: [true, [Validators.required]],
+        confirm_password: [""],
+        tels: this._fb.array([]),
+      },
+      {
+        validators: this._validator.passwordEquals(
+          "password",
+          "confirm_password"
+        ),
+      }
+    );
   }
 
   get activedInvalid(): boolean {
@@ -127,9 +153,9 @@ export class FormUserComponent implements OnInit {
     );
   }
   get confirm_passwordInvalid(): boolean {
-    return (
-      this.forma.get("confirm_password").invalid &&
-      this.forma.get("confirm_password").touched
+    return !(
+      this.forma.get("password").value ===
+      this.forma.get("confirm_password").value
     );
   }
 

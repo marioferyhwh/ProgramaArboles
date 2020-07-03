@@ -47,26 +47,6 @@
     </div>
 
     <div class="form-group row">
-        <label class="col-4 col-form-label" for="password">clave:</label>
-        <div class="col-8">
-            <input class="form-control" type="password" placeholder="**********" formControlName="password" [class.is-invalid]="passwordInvalid">
-            <span class="text-danger" *ngIf="passwordInvalid">
-        Clave no valida
-      </span>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label class="col-4 col-form-label" for="confirm_password">confirmar clave:</label>
-        <div class="col-8">
-            <input class="form-control" type="password" placeholder="**********" formControlName="confirm_password" [class.is-invalid]="confirm_passwordInvalid">
-            <span class="text-danger" *ngIf="confirm_passwordInvalid">
-        no conciden las claves
-      </span>
-        </div>
-    </div>
-
-    <div class="form-group row">
         <label class="col-4 col-form-label r" for="">tipo de documento:</label>
         <div class="col-8">
             <select class="form-control" formControlName="document_code" [ngClass]="{'is-invalid':document_codeInvalid}">
@@ -92,6 +72,27 @@
             <span class="text-danger" *ngIf="time_zoneInvalid">
         zona horaria no valida
       </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="password">clave:</label>
+        <div class="col-8">
+            <input class="form-control" type="password" placeholder="**********" formControlName="password" [class.is-invalid]="passwordInvalid">
+            <span class="text-danger" *ngIf="passwordInvalid">
+        Clave no valida
+      </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="confirm_password">confirmar clave:</label>
+        <div class="col-8">
+            <input class="form-control" type="password" placeholder="**********" formControlName="confirm_password" [class.is-invalid]="confirm_passwordInvalid">
+            <span class="text-danger" *ngIf="confirm_passwordInvalid">
+        no conciden las claves
+      </span>
+
         </div>
     </div>
 
@@ -133,5 +134,7 @@
     </div>
 </form>
 <pre>
+  {{forma.status}}
+  {{forma.controls['name'].status}}
   {{forma.value | json}}
 </pre>
