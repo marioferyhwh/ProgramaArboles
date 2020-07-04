@@ -5,5 +5,5 @@ export class GlovalVarModel {
   collection?: number;
   client?: number;
   expense?: number;
-  sesion?: boolean;
+  sesion?: number;
 }
