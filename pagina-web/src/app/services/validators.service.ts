@@ -36,9 +36,10 @@ export class ValidatorsService {
   userExists(
     control: FormGroup
   ): Promise<ErrorValidate> | Observable<ErrorValidate> {
+    return Promise.resolve(null);
     if (!control.value) {
-      return Promise.resolve(null);
     }
+    const control_old = control.value;
     return new Promise((res, rej) => {
       //se consultara si el usario eciste por api
 
@@ -46,14 +47,14 @@ export class ValidatorsService {
       console.log("ll");
       console.log({ control });
       setTimeout(() => {
-        // console.log(control.value);
+        console.log(control.value + " - " + control_old);
         // console.log(control.value === "usuario");
-        if (control.value === "usuario") {
-          res({ existe: true });
-        } else {
+        if (control.value === control_old) {
+          //res({ existe: true });
           res(null);
         }
-      }, 3500);
+        res(null);
+      }, 1800);
     });
   }
 }

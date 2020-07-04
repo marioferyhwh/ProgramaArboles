@@ -4,6 +4,7 @@ import { UserService } from "src/app/services/user.service";
 import { UserModel } from "src/app/shared/models/user.model";
 import Swal from "sweetalert2";
 import { Router } from "@angular/router";
+import { GlobalService } from "src/app/services/global.service";
 
 @Component({
   selector: "app-form-login",
@@ -14,7 +15,11 @@ export class FormLoginComponent implements OnInit {
   public user: UserModel = new UserModel();
   public remember: boolean = false;
   private emailLS: string = "forest-email";
-  constructor(private _userService: UserService, private _router: Router) {
+  constructor(
+    private _userService: UserService,
+    private _router: Router,
+    private _globalService: GlobalService
+  ) {
     if (localStorage.getItem(this.emailLS)) {
       this.user.email = localStorage.getItem(this.emailLS);
       this.remember = true;
@@ -47,6 +52,7 @@ export class FormLoginComponent implements OnInit {
           localStorage.removeItem(this.emailLS);
         }
         console.log(resp);
+        this._globalService.setVar({ user: 1 });
         this._router.navigate(["/cliente"]);
       },
       (err) => {

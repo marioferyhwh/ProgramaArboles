@@ -1,5 +1,4 @@
 import { BusinessTypeModel } from "./business-type.model";
-import { TelModel } from "./tel.model";
 import { LoanStateModel } from "./loan-state.model";
 import { UserLevelModel } from "./user-level.model";
 import { DocumentTypeModel } from "./document-type.model";

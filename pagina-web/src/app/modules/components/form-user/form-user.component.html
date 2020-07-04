@@ -3,15 +3,15 @@
     <div class="form-group row">
         <label class="col-2 col-form-label" for="actived">activo:</label>
         <div class="col-2">
-            <input class="form-control" type="checkbox" formControlName="actived">
+            <input class="form-control" type="checkbox" formControlName="actived" [class.is-invalid]="activedInvalid">
         </div>
         <label class="col-2 col-form-label" for="admin">admin:</label>
         <div class="col-2">
-            <input class="form-control" type="checkbox" formControlName="admin">
+            <input class="form-control" type="checkbox" formControlName="admin" [class.is-invalid]="adminInvalid">
         </div>
         <label class="col-2 col-form-label" for="change_password">cambiar Clave:</label>
         <div class="col-2">
-            <input class="form-control" type="checkbox" formControlName="change_password">
+            <input class="form-control" type="checkbox" formControlName="change_password" [class.is-invalid]="change_passwordInvalid">
         </div>
 
     </div>
@@ -31,7 +31,7 @@
         <div class="col-8">
             <input class="form-control" type="text" placeholder="Name" formControlName="name" [class.is-invalid]="nameInvalid">
             <span class="text-danger" *ngIf="nameInvalid">
-        correo no valido
+        usuario no valido
       </span>
         </div>
     </div>
@@ -68,7 +68,7 @@
     <div class="form-group row">
         <label class="col-4 col-form-label">zona horaria:</label>
         <div class="col-8">
-            <input class="form-control" type="number" placeholder="5" formControlName="time_zone" [class.is-invalid]="time_zoneInvalid">
+            <input class="form-control" type="number" placeholder="-24 a 24 " formControlName="time_zone" [class.is-invalid]="time_zoneInvalid">
             <span class="text-danger" *ngIf="time_zoneInvalid">
         zona horaria no valida
       </span>

@@ -14,11 +14,15 @@ export class UserNewComponent implements OnInit {
   public user: UserModel;
   constructor(private _userService: UserService, private _router: Router) {
     this.user = new UserModel();
+    this.user.id = 2;
+    this.user.actived = true;
+    this.user.admin = false;
+    this.user.change_password = true;
+    this.user.time_zone = -5;
   }
 
   ngOnInit(): void {}
   onCreateUser(u: UserModel) {
-    u.document_code = "CC";
     console.log(u);
     const toast = Swal.mixin({
       allowOutsideClick: false,

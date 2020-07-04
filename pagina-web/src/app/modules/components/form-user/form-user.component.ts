@@ -25,32 +25,44 @@ export class FormUserComponent implements OnInit {
   ) {
     this.UserData = new EventEmitter();
     this.initForm();
-    this.dataForm();
     this.listenerForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dataForm();
+  }
 
   onAction() {
     if (this.forma.invalid) {
+      console.log(this.forma);
       Object.values(this.forma.controls).forEach((c) => {
-        c.markAsTouched();
+        if (c instanceof FormGroup) {
+          Object.values(c.controls).forEach((c) => {
+            c.markAsTouched();
+          });
+        } else {
+          c.markAsTouched();
+        }
       });
       return;
     }
+    this.user = this.forma.value;
+    console.log(this.user);
     this.UserData.emit(this.user);
   }
 
   dataForm() {
     if (this.user != null) {
-      this.forma.reset(this.user);
+      this.forma.reset({ ...this.user });
     }
   }
 
   listenerForm() {
+    /*
     this.forma.valueChanges.subscribe((value) => {
       console.log({ value });
     });
+    */
   }
 
   initForm() {
@@ -65,22 +77,30 @@ export class FormUserComponent implements OnInit {
 
     this.forma = this._fb.group(
       {
+        id: [0],
         actived: [true, [Validators.required]],
-        nick_name: [],
+        nick_name: [""],
         email: [
           "",
           [
             Validators.required,
             Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"),
           ],
-          this._validator.userExists,
+          ,
         ],
         password: [""],
         document_code: [
           "",
           [Validators.required, this._validator.documentCode],
         ],
-        document: ["", [Validators.required, this._validator.document]],
+        document: [
+          "",
+          [
+            Validators.required,
+            this._validator.document,
+            Validators.pattern("[0-9]+"),
+          ],
+        ],
         name: ["", [Validators.required], this._validator.userExists],
         admin: [false, [Validators.required]],
         time_zone: [
