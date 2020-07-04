@@ -1,95 +1,76 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <a class="navbar-brand"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-sm navbar-light bg-native" id="main_navbar">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-    <div class="collapse navbar-collapse">
-
-
+    <div class="collapse navbar-collapse" id="main_nav">
         <ul class="navbar-nav">
-            <li routerLinkActive="active" class="nav-item dropdown"><a [routerLink]="['/cliente']">Cliente</a>
-                <ul class="sub-group-item1">
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['/cliente','nuevo']">nuevo</a>
-                    </li>
-                    <!-- <li routerLinkActive="active">
-                    <a [routerLink]="['cliente','editar']">editar</a>
-                </li> -->
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" id="navbarclient" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cliente</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarclient">
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cliente','nuevo']">nuevo</a></li>
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cliente']">Lista</a></li>
                 </ul>
             </li>
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">prestamo</a>
+                <ul class="dropdown-menu">
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/prestamo','nuevo']">nuevo</a></li>
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/prestamo']">lista</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Caja</a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">gastos</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos','nuevo']">nuevo</a> </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos','buscar']">buscar</a> </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos','items']">items</a> </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos']">lista</a> </li>
+                        </ul>
+                    </li>
 
-            <li routerLinkActive="active" class="nav-item dropdown"><a [routerLink]="['/prestamo']">prestamo</a>
-                <ul class="sub-group-item1">
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['/prestamo','nuevo']">nuevo</a>
-                    </li>
-                    <!-- <li routerLinkActive="active">
-                    <a [routerLink]="['prestamo','editar']">editar</a>
-                </li> -->
-                </ul>
-            </li>
-            <li routerLinkActive="active" class="nav-item dropdown"><a [routerLink]="['caja']">Caja</a>
-                <ul class="sub-group-item1">
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['caja' ,'gastos']">gastos</a>
-                        <ul class="sub-group-item2">
-                            <li routerLinkActive="active">
-                                <a [routerLink]="['caja' ,'gastos','nuevo']">nuevo</a>
-                            </li>
-                            <li routerLinkActive="active">
-                                <a [routerLink]="['caja' ,'gastos','buscar']">buscar</a>
-                            </li>
-                            <li routerLinkActive="active">
-                                <a [routerLink]="['caja' ,'gastos','items']">items</a>
-                            </li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ingresos</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja','ingresos','nuevo']">nuevo</a> </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja','ingresos','buscar']">buscar</a> </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja','ingresos','items']">items</a> </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja','ingresos','lista']">lista</a> </li>
                         </ul>
                     </li>
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['caja','ingresos']">ingresos</a>
-                        <ul class="sub-group-item2">
-                            <li routerLinkActive="active">
-                                <a [routerLink]="['caja','ingresos','nuevo']">nuevo</a>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">movimentos</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/historial','nuevo']">nuevo</a>
                             </li>
-                            <li routerLinkActive="active">
-                                <a [routerLink]="['caja','ingresos','buscar']">buscar</a>
-                            </li>
-                            <li routerLinkActive="active">
-                                <a [routerLink]="['caja','ingresos','items']">items</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['historial']">movimentos</a>
-                        <ul class="sub-group-item2">
-                            <li routerLinkActive="active">
-                                <a [routerLink]="['historial','nuevo']">nuevo</a>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/historial','lista']">lista</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li routerLinkActive="active" class="nav-item dropdown"><a [routerLink]="['calculator']">Calculos</a></li>
-            <li routerLinkActive="active" class="nav-item dropdown"><a [routerLink]="['config']">Configuracion</a>
-                <ul class="sub-group-item1">
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['config']">prestamos</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['config']">gastos</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['config']">ingresos</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a [routerLink]="['/usuario','lista']">cobradores</a>
-                        <ul class="sub-group-item2">
-                            <li routerLinkActive="active">
-                                <a [routerLink]="['/usuario','nuevo']">nuevo</a>
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link" [routerLink]="['/calculator']">Calculos</a>
+            </li>
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuracion</a>
+                <ul class="dropdown-menu">
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">prestamos</a></li>
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">gastos</a></li>
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">ingresos</a></li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown">cobradores</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','nuevo']">nuevo</a>
+                            </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','lista']">lista</a>
                             </li>
                         </ul>
                     </li>
-                    <li routerLinkActive="active">
-                        <a (click)="logOut()" [routerLink]="['/login']">salir</a>
+                    <div class="dropdown-divider"></div>
+                    <li routerLinkActive="active"><a class="dropdown-item" (click)="logOut()" [routerLink]="['/login']">salir</a>
                     </li>
                 </ul>
             </li>

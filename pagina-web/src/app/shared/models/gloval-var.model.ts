@@ -1,5 +1,3 @@
-import { Interface } from "readline";
-
 export class GlovalVarModel {
   user?: number;
   collection?: number;

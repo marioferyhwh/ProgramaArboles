@@ -30,11 +30,12 @@ export class FormClienteComponent implements OnInit {
     private _validators: ValidatorsService
   ) {
     this.initForm();
-    this.upData();
     this.clientData = new EventEmitter();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.upData();
+  }
 
   onAction() {
     console.log(this.forma);
@@ -76,8 +77,9 @@ export class FormClienteComponent implements OnInit {
       id_location: ["", [Validators.required]],
       tels: this._fb.array([]),
 
-      //id_collection: [""],
-      //id_user: [""],
+      id: [],
+      id_collection: [0],
+      id_user: [0],
     });
   }
 
@@ -152,7 +154,7 @@ export class FormClienteComponent implements OnInit {
   upData() {
     if (this.client != null) {
       // this.forma.setValue(this.client);
-      this.forma.reset(this.client);
+      this.forma.reset({ ...this.client });
     }
   }
 }
