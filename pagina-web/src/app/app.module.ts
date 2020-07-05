@@ -46,7 +46,19 @@ import { UserNewComponent } from "./modules/user-new/user-new.component";
 import { UserListComponent } from "./modules/user-list/user-list.component";
 import { UserEditComponent } from "./modules/user-edit/user-edit.component";
 import { BodyComponent } from "./modules/body/body.component";
-import { LoanNewComponent } from './modules/loan-new/loan-new.component';
+import { LoanNewComponent } from "./modules/loan-new/loan-new.component";
+import { LocationNewComponent } from "./modules/location/location-new/location-new.component";
+import { LocationEditComponent } from "./modules/location/location-edit/location-edit.component";
+import { LocationListComponent } from "./modules/location/location-list/location-list.component";
+import { BusinessTypeNewComponent } from "./modules/business/business-type-new/business-type-new.component";
+import { BusinessTypeEditComponent } from "./modules/business/business-type-edit/business-type-edit.component";
+import { BusinessTypeListComponent } from "./modules/business/business-type-list/business-type-list.component";
+import { TableTypeaComponent } from "./modules/components/table-typea/table-typea.component";
+import { TableLocationComponent } from "./modules/components/table-location/table-location.component";
+import { TableBusinessTypeComponent } from './modules/components/table-business-type/table-business-type.component';
+import { TableDocumentsComponent } from './modules/components/table-documents/table-documents.component';
+import { FormDocumentsComponent } from './modules/components/form-documents/form-documents.component';
+import { FormBusinessTypeComponent } from './modules/components/form-business-type/form-business-type.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,6 +96,18 @@ import { LoanNewComponent } from './modules/loan-new/loan-new.component';
     UserEditComponent,
     BodyComponent,
     LoanNewComponent,
+    LocationNewComponent,
+    LocationEditComponent,
+    LocationListComponent,
+    BusinessTypeNewComponent,
+    BusinessTypeEditComponent,
+    BusinessTypeListComponent,
+    TableTypeaComponent,
+    TableLocationComponent,
+    TableBusinessTypeComponent,
+    TableDocumentsComponent,
+    FormDocumentsComponent,
+    FormBusinessTypeComponent,
     //ModelsModule,
   ],
   imports: [

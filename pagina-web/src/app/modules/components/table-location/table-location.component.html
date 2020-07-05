@@ -1,0 +1,17 @@
+<app-loading *ngIf="!data"></app-loading>
+<table class="table table-sm" *ngIf="data">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dat of ">
+            <th scope="col">{{dat.id}}</th>
+            <td>{{dat.description}}</td>
+            <td><button class="btn btn-danger" type="button" (click)="removeItem(dat.id)">-</button> <button class="btn btn-danger" type="button" (click)="selectItem(dat.id)">/</button></td>
+        </tr>
+    </tbody>
+</table>

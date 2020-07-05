@@ -11,6 +11,12 @@ import { UserEditComponent } from "./modules/user-edit/user-edit.component";
 import { BodyComponent } from "./modules/body/body.component";
 import { LoginGuard } from "./guards/login.guard";
 import { LoanNewComponent } from "./modules/loan-new/loan-new.component";
+import { BusinessTypeListComponent } from "./modules/business/business-type-list/business-type-list.component";
+import { BusinessTypeNewComponent } from "./modules/business/business-type-new/business-type-new.component";
+import { BusinessTypeEditComponent } from "./modules/business/business-type-edit/business-type-edit.component";
+import { LocationListComponent } from "./modules/location/location-list/location-list.component";
+import { LocationNewComponent } from "./modules/location/location-new/location-new.component";
+import { LocationEditComponent } from "./modules/location/location-edit/location-edit.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -25,14 +31,30 @@ const routes: Routes = [
       { path: "usuario/nuevo", component: UserNewComponent },
       { path: "usuario/cobros", component: UserEditComponent },
       { path: "usuario/:id", component: UserEditComponent },
+      { path: "usuario", component: UserListComponent },
 
       { path: "cobro/lista", component: UserListComponent },
       { path: "cobro/nuevo", component: UserNewComponent },
 
-      { path: "cliente", component: ClientListComponent },
       { path: "cliente/nuevo", component: ClientNewComponent },
       { path: "cliente/editar/:id", component: ClientEditComponent },
       { path: "cliente/:id", component: ClientEditComponent },
+      { path: "cliente", component: ClientListComponent },
+
+      { path: "cliente/sector/lista", component: LocationListComponent },
+      { path: "cliente/sector/nuevo", component: LocationNewComponent },
+      {
+        path: "cliente/sector/editar/:id",
+        component: LocationEditComponent,
+      },
+      { path: "cliente/sector/:id", component: LocationEditComponent },
+      { path: "cliente/sector", component: LocationListComponent },
+
+      { path: "negocio/lista", component: BusinessTypeListComponent },
+      { path: "negocio/nuevo", component: BusinessTypeNewComponent },
+      { path: "negocio/editar/:id", component: BusinessTypeEditComponent },
+      { path: "negocio/:id", component: BusinessTypeEditComponent },
+      { path: "negocio", component: BusinessTypeListComponent },
 
       { path: "prestamo/nuevo", component: LoanNewComponent },
       {

@@ -5,10 +5,19 @@
     <div class="collapse navbar-collapse" id="main_nav">
         <ul class="navbar-nav">
             <li class="nav-item dropdown" routerLinkActive="active">
-                <a class="nav-link dropdown-toggle" id="navbarclient" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cliente</a>
-                <ul class="dropdown-menu" aria-labelledby="navbarclient">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cliente</a>
+                <ul class="dropdown-menu">
                     <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cliente','nuevo']">nuevo</a></li>
                     <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cliente']">Lista</a></li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sectores</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active">
+                                <a class="dropdown-item" [routerLink]="['/cliente','sector','nuevo']">nuevo</a></li>
+                            <li routerLinkActive="active">
+                                <a class="dropdown-item" [routerLink]="['/cliente','sector','lista']">lista</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item dropdown" routerLinkActive="active">
@@ -24,9 +33,11 @@
                     <li class="nav-item dropdown" routerLinkActive="active">
                         <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">gastos</a>
                         <ul class="dropdown-menu">
-                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos','nuevo']">nuevo</a> </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos','nuevo']">nuevo</a>
+                            </li>
                             <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos','buscar']">buscar</a> </li>
-                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos','items']">items</a> </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos','items']">items</a>
+                            </li>
                             <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos']">lista</a> </li>
                         </ul>
                     </li>
