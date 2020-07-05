@@ -12,7 +12,7 @@ export class ClientListComponent implements OnInit {
   constructor(private _clientService: ClientService) {}
 
   ngOnInit(): void {
-    this._clientService.getClients(1).subscribe(
+    this._clientService.getList(1).subscribe(
       (res: ClientModel[]) => {
         this.clients = res;
         console.log(res);

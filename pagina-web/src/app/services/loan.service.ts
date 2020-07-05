@@ -1,10 +1,142 @@
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { map } from "rxjs/operators";
 import { LoanModel } from "../shared/models/loan.model";
+import { ApiServerService } from "./api-server.service";
+import { RespModel } from "../shared/models/resp.model";
+import { LoanStateModel } from "../shared/models/loan-state.model";
+import { LoanPaymentModel } from "../shared/models/loan-payment.model";
 
 @Injectable({
   providedIn: "root",
 })
 export class LoanService {
-  public loan: LoanModel[];
-  constructor() {}
+  private _urlA: String = "loan";
+  private _urlB: String = "loanloan_state";
+  private _urlC: String = "loanloan_payment";
+
+  constructor(private _api: ApiServerService) {}
+
+  getList(c: number): Observable<LoanModel[]> {
+    return this._api.GetQuery(`${this._urlA}/list/${c}`).pipe(
+      map((data: RespModel) => {
+        return <Array<LoanModel>>data.data;
+      })
+    );
+  }
+
+  get(id: number): Observable<LoanModel> {
+    return this._api.GetQuery(`${this._urlA}/${id}`).pipe(
+      map((data: RespModel) => {
+        return <LoanModel>data.data;
+      })
+    );
+  }
+
+  create(client: LoanModel): Observable<LoanModel> {
+    return this._api.PostQuery(`${this._urlA}`, client).pipe(
+      map((data: RespModel) => {
+        return <LoanModel>data.data;
+      })
+    );
+  }
+
+  edit(client: LoanModel): Observable<LoanModel> {
+    let id = client.id;
+    return this._api.PutQuery(`${this._urlA}/${id}`, client).pipe(
+      map((data: RespModel) => {
+        return <LoanModel>data.data;
+      })
+    );
+  }
+
+  delete(id: number): Observable<LoanModel> {
+    return this._api.DeleteQuery(`${this._urlA}/${id}`).pipe(
+      map((data: RespModel) => {
+        return <LoanModel>data.data;
+      })
+    );
+  }
+
+  getLoanStateList(c: number): Observable<LoanStateModel[]> {
+    return this._api.GetQuery(`${this._urlB}/list/${c}`).pipe(
+      map((data: RespModel) => {
+        return <Array<LoanStateModel>>data.data;
+      })
+    );
+  }
+
+  getLoanState(id: number): Observable<LoanStateModel> {
+    return this._api.GetQuery(`${this._urlB}/${id}`).pipe(
+      map((data: RespModel) => {
+        return <LoanStateModel>data.data;
+      })
+    );
+  }
+
+  createLoanState(client: LoanStateModel): Observable<LoanStateModel> {
+    return this._api.PostQuery(`${this._urlB}`, client).pipe(
+      map((data: RespModel) => {
+        return <LoanStateModel>data.data;
+      })
+    );
+  }
+
+  editLoanState(client: LoanStateModel): Observable<LoanStateModel> {
+    let id = client.id;
+    return this._api.PutQuery(`${this._urlB}/${id}`, client).pipe(
+      map((data: RespModel) => {
+        return <LoanStateModel>data.data;
+      })
+    );
+  }
+
+  deleteLoanState(id: number): Observable<LoanStateModel> {
+    return this._api.DeleteQuery(`${this._urlB}/${id}`).pipe(
+      map((data: RespModel) => {
+        return <LoanStateModel>data.data;
+      })
+    );
+  }
+
+  getLoanPaymentList(c: number): Observable<LoanPaymentModel[]> {
+    return this._api.GetQuery(`${this._urlC}/list/${c}`).pipe(
+      map((data: RespModel) => {
+        return <Array<LoanPaymentModel>>data.data;
+      })
+    );
+  }
+
+  getLoanPayment(id: number): Observable<LoanPaymentModel> {
+    return this._api.GetQuery(`${this._urlC}/${id}`).pipe(
+      map((data: RespModel) => {
+        return <LoanPaymentModel>data.data;
+      })
+    );
+  }
+
+  createLoanPayment(client: LoanPaymentModel): Observable<LoanPaymentModel> {
+    return this._api.PostQuery(`${this._urlC}`, client).pipe(
+      map((data: RespModel) => {
+        return <LoanPaymentModel>data.data;
+      })
+    );
+  }
+
+  editLoanPayment(client: LoanPaymentModel): Observable<LoanPaymentModel> {
+    let id = client.id;
+    return this._api.PutQuery(`${this._urlC}/${id}`, client).pipe(
+      map((data: RespModel) => {
+        return <LoanPaymentModel>data.data;
+      })
+    );
+  }
+
+  deleteLoanPayment(id: number): Observable<LoanPaymentModel> {
+    return this._api.DeleteQuery(`${this._urlC}/${id}`).pipe(
+      map((data: RespModel) => {
+        return <LoanPaymentModel>data.data;
+      })
+    );
+  }
 }

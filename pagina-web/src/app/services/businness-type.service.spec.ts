@@ -3,7 +3,7 @@ import { TestBed } from "@angular/core/testing";
 import { BusinessTypeService } from "./business-type.service";
 
 describe("BusinnessTypeService", () => {
-  let service: BusinessTypeService[];
+  let service: BusinessTypeService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

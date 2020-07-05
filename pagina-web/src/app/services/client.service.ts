@@ -4,85 +4,138 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { ApiServerService } from "./api-server.service";
 import { RespModel } from "../shared/models/resp.model";
+import { TelModel } from "../shared/models/tel.model";
+import { ClientLocationModel } from "../shared/models/client-location.model";
 
 @Injectable({
   providedIn: "root",
 })
 export class ClientService {
-  private clients: ClientModel[] = [
-    {
-      id: 1,
-      name: "name1",
-      number_loans: 1,
-      id_loan_state: 1,
-    },
-    {
-      id: 2,
-      name: "name2",
-      number_loans: 2,
-      id_loan_state: 2,
-    },
-    {
-      id: 3,
-      name: "name3",
-      number_loans: 3,
-      id_loan_state: 3,
-    },
-    {
-      id: 4,
-      name: "name4",
-      number_loans: 4,
-      id_loan_state: 4,
-    },
-    {
-      id: 5,
-      name: "name5",
-      number_loans: 5,
-      id_loan_state: 5,
-    },
-  ];
+  private _urlA: String = "client";
+  private _urlB: String = "clienttel";
+  private _urlC: String = "clientlocation";
 
-  constructor(private _api: ApiServerService) {
-    console.log("inicia servicio Cliente");
-  }
+  constructor(private _api: ApiServerService) {}
 
-  getClients(c: number): Observable<ClientModel[]> {
-    return this._api.GetQuery(`client/list/${c}`).pipe(
+  getList(c: number): Observable<ClientModel[]> {
+    return this._api.GetQuery(`${this._urlA}/list/${c}`).pipe(
       map((data: RespModel) => {
         return <Array<ClientModel>>data.data;
       })
     );
   }
 
-  getClient(id: number): Observable<ClientModel> {
-    return this._api.GetQuery(`client/list/${id}`).pipe(
+  get(id: number): Observable<ClientModel> {
+    return this._api.GetQuery(`${this._urlA}/${id}`).pipe(
       map((data: RespModel) => {
         return <ClientModel>data.data;
       })
     );
   }
 
-  createClient(client: ClientModel): Observable<ClientModel> {
-    return this._api.PostQuery(`client`, client).pipe(
+  create(client: ClientModel): Observable<ClientModel> {
+    return this._api.PostQuery(`${this._urlA}`, client).pipe(
       map((data: RespModel) => {
         return <ClientModel>data.data;
       })
     );
   }
 
-  editClient(client: ClientModel): Observable<ClientModel> {
+  edit(client: ClientModel): Observable<ClientModel> {
     let id = client.id;
-    return this._api.PutQuery(`client/${id}`, client).pipe(
+    return this._api.PutQuery(`${this._urlA}/${id}`, client).pipe(
       map((data: RespModel) => {
         return <ClientModel>data.data;
       })
     );
   }
 
-  deleteClient(id: number): Observable<ClientModel> {
-    return this._api.DeleteQuery(`client/${id}`).pipe(
+  delete(id: number): Observable<ClientModel> {
+    return this._api.DeleteQuery(`${this._urlA}/${id}`).pipe(
       map((data: RespModel) => {
         return <ClientModel>data.data;
+      })
+    );
+  }
+
+  getTelList(c: number): Observable<TelModel[]> {
+    return this._api.GetQuery(`${this._urlB}/list/${c}`).pipe(
+      map((data: RespModel) => {
+        return <Array<TelModel>>data.data;
+      })
+    );
+  }
+
+  getTel(id: number): Observable<TelModel> {
+    return this._api.GetQuery(`${this._urlB}/${id}`).pipe(
+      map((data: RespModel) => {
+        return <TelModel>data.data;
+      })
+    );
+  }
+
+  createTel(client: TelModel): Observable<TelModel> {
+    return this._api.PostQuery(`${this._urlB}`, client).pipe(
+      map((data: RespModel) => {
+        return <TelModel>data.data;
+      })
+    );
+  }
+
+  editTel(client: TelModel): Observable<TelModel> {
+    let id = client.id;
+    return this._api.PutQuery(`${this._urlB}/${id}`, client).pipe(
+      map((data: RespModel) => {
+        return <TelModel>data.data;
+      })
+    );
+  }
+
+  deleteTel(id: number): Observable<TelModel> {
+    return this._api.DeleteQuery(`${this._urlB}/${id}`).pipe(
+      map((data: RespModel) => {
+        return <TelModel>data.data;
+      })
+    );
+  }
+
+  getLocationList(c: number): Observable<ClientLocationModel[]> {
+    return this._api.GetQuery(`${this._urlC}/list/${c}`).pipe(
+      map((data: RespModel) => {
+        return <Array<ClientLocationModel>>data.data;
+      })
+    );
+  }
+
+  getLocation(id: number): Observable<ClientLocationModel> {
+    return this._api.GetQuery(`${this._urlC}/${id}`).pipe(
+      map((data: RespModel) => {
+        return <ClientLocationModel>data.data;
+      })
+    );
+  }
+
+  createLocation(client: ClientLocationModel): Observable<ClientLocationModel> {
+    return this._api.PostQuery(`${this._urlC}`, client).pipe(
+      map((data: RespModel) => {
+        return <ClientLocationModel>data.data;
+      })
+    );
+  }
+
+  editLocation(client: ClientLocationModel): Observable<ClientLocationModel> {
+    let id = client.id;
+    return this._api.PutQuery(`${this._urlC}/${id}`, client).pipe(
+      map((data: RespModel) => {
+        return <ClientLocationModel>data.data;
+      })
+    );
+  }
+
+  deleteLocation(id: number): Observable<ClientLocationModel> {
+    return this._api.DeleteQuery(`${this._urlC}/${id}`).pipe(
+      map((data: RespModel) => {
+        return <ClientLocationModel>data.data;
       })
     );
   }

@@ -31,7 +31,7 @@ export class UserNewComponent implements OnInit {
     });
     toast.fire();
     toast.showLoading();
-    this._userService.createUser(u).subscribe(
+    this._userService.create(u).subscribe(
       (resp: UserModel) => {
         toast.close();
         const toast2 = Swal.mixin({
