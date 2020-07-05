@@ -38,15 +38,15 @@ import { FormLoginComponent } from "./modules/components/form-login/form-login.c
 import { LoginComponent } from "./modules/login/login.component";
 import { NotFoundComponent } from "./modules/not-found/not-found.component";
 import { NavBarComponent } from "./modules/components/nav-bar/nav-bar.component";
-import { ClientListComponent } from "./modules/client-list/client-list.component";
-import { ClientNewComponent } from "./modules/client-new/client-new.component";
-import { ClientEditComponent } from "./modules/client-edit/client-edit.component";
+import { ClientListComponent } from "./modules/client/client-list/client-list.component";
+import { ClientNewComponent } from "./modules/client/client-new/client-new.component";
+import { ClientEditComponent } from "./modules/client/client-edit/client-edit.component";
 import { LoadingComponent } from "./modules/components/loading/loading.component";
-import { UserNewComponent } from "./modules/user-new/user-new.component";
-import { UserListComponent } from "./modules/user-list/user-list.component";
-import { UserEditComponent } from "./modules/user-edit/user-edit.component";
+import { UserNewComponent } from "./modules/user/user-new/user-new.component";
+import { UserListComponent } from "./modules/user/user-list/user-list.component";
+import { UserEditComponent } from "./modules/user/user-edit/user-edit.component";
 import { BodyComponent } from "./modules/body/body.component";
-import { LoanNewComponent } from "./modules/loan-new/loan-new.component";
+import { LoanNewComponent } from "./modules/loan/loan-new/loan-new.component";
 import { LocationNewComponent } from "./modules/location/location-new/location-new.component";
 import { LocationEditComponent } from "./modules/location/location-edit/location-edit.component";
 import { LocationListComponent } from "./modules/location/location-list/location-list.component";
@@ -55,10 +55,18 @@ import { BusinessTypeEditComponent } from "./modules/business/business-type-edit
 import { BusinessTypeListComponent } from "./modules/business/business-type-list/business-type-list.component";
 import { TableTypeaComponent } from "./modules/components/table-typea/table-typea.component";
 import { TableLocationComponent } from "./modules/components/table-location/table-location.component";
-import { TableBusinessTypeComponent } from './modules/components/table-business-type/table-business-type.component';
-import { TableDocumentsComponent } from './modules/components/table-documents/table-documents.component';
-import { FormDocumentsComponent } from './modules/components/form-documents/form-documents.component';
-import { FormBusinessTypeComponent } from './modules/components/form-business-type/form-business-type.component';
+import { TableBusinessTypeComponent } from "./modules/components/table-business-type/table-business-type.component";
+import { TableDocumentsComponent } from "./modules/components/table-documents/table-documents.component";
+import { FormDocumentsComponent } from "./modules/components/form-documents/form-documents.component";
+import { FormBusinessTypeComponent } from "./modules/components/form-business-type/form-business-type.component";
+import { CollectionNewComponent } from './modules/collection/collection-new/collection-new.component';
+import { CollectionListComponent } from './modules/collection/collection-list/collection-list.component';
+import { CollectionEditComponent } from './modules/collection/collection-edit/collection-edit.component';
+import { ExpenseEditComponent } from './modules/expense/expense-edit/expense-edit.component';
+import { ExpenseListComponent } from './modules/expense/expense-list/expense-list.component';
+import { ExpenseNewComponent } from './modules/expense/expense-new/expense-new.component';
+import { LoanListComponent } from './modules/loan/loan-list/loan-list.component';
+import { LoanEditComponent } from './modules/loan/loan-edit/loan-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,6 +116,14 @@ import { FormBusinessTypeComponent } from './modules/components/form-business-ty
     TableDocumentsComponent,
     FormDocumentsComponent,
     FormBusinessTypeComponent,
+    CollectionNewComponent,
+    CollectionListComponent,
+    CollectionEditComponent,
+    ExpenseEditComponent,
+    ExpenseListComponent,
+    ExpenseNewComponent,
+    LoanListComponent,
+    LoanEditComponent,
     //ModelsModule,
   ],
   imports: [
