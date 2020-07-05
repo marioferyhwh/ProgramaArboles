@@ -7,7 +7,7 @@ import { TypeaModels } from "src/app/shared/models/typea.models";
   styleUrls: ["./table-typea.component.scss"],
 })
 export class TableTypeaComponent implements OnInit {
-  @Input() data: TypeaModels;
+  @Input() data: TypeaModels[];
   @Output() edit: EventEmitter<number>;
   @Output() delete: EventEmitter<number>;
   constructor() {}

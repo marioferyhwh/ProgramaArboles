@@ -1,1 +1,18 @@
-<p>table-documents works!</p>
+<app-loading *ngIf="!data"></app-loading>
+<h2 *ngIf="data && data.length == 0 ">No se encontraron clientes</h2>
+<table class="table table-sm" *ngIf="data && data.length > 0 ">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dat of data ">
+            <th scope="col">{{dat.id}}</th>
+            <td>{{dat.description}}</td>
+            <td><button class="btn btn-danger" type="button" (click)="removeItem(dat.id)">-</button> <button class="btn btn-danger" type="button" (click)="selectItem(dat.id)">/</button></td>
+        </tr>
+    </tbody>
+</table>

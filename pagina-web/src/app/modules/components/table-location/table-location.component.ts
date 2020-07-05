@@ -7,7 +7,7 @@ import { ClientLocationModel } from "src/app/shared/models/client-location.model
   styleUrls: ["./table-location.component.scss"],
 })
 export class TableLocationComponent implements OnInit {
-  @Input() data: ClientLocationModel;
+  @Input() data: ClientLocationModel[];
   @Output() edit: EventEmitter<number>;
   @Output() delete: EventEmitter<number>;
   constructor() {}
