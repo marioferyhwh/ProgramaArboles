@@ -14,9 +14,15 @@ import { LoanNewComponent } from "./modules/loan/loan-new/loan-new.component";
 import { BusinessTypeListComponent } from "./modules/business/business-type-list/business-type-list.component";
 import { BusinessTypeNewComponent } from "./modules/business/business-type-new/business-type-new.component";
 import { BusinessTypeEditComponent } from "./modules/business/business-type-edit/business-type-edit.component";
-import { LocationListComponent } from "./modules/location/location-list/location-list.component";
-import { LocationNewComponent } from "./modules/location/location-new/location-new.component";
-import { LocationEditComponent } from "./modules/location/location-edit/location-edit.component";
+import { CollectionListComponent } from "./modules/collection/collection-list/collection-list.component";
+import { CollectionNewComponent } from "./modules/collection/collection-new/collection-new.component";
+import { CollectionEditComponent } from "./modules/collection/collection-edit/collection-edit.component";
+import { ExpenseListComponent } from "./modules/expense/expense-list/expense-list.component";
+import { ExpenseNewComponent } from "./modules/expense/expense-new/expense-new.component";
+import { ExpenseEditComponent } from "./modules/expense/expense-edit/expense-edit.component";
+import { ClienteLocationListComponent } from "./modules/client/cliente-location-list/cliente-location-list.component";
+import { ClienteLocationNewComponent } from "./modules/client/cliente-location-new/cliente-location-new.component";
+import { ClienteLocationEditComponent } from "./modules/client/cliente-location-edit/cliente-location-edit.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -27,58 +33,46 @@ const routes: Routes = [
     children: [
       { path: "not-found", component: NotFoundComponent },
 
-      { path: "usuario/lista", component: UserListComponent },
-      { path: "usuario/nuevo", component: UserNewComponent },
-      { path: "usuario/cobros", component: UserEditComponent },
-      { path: "usuario/:id", component: UserEditComponent },
-      { path: "usuario", component: UserListComponent },
-
-      { path: "cobro/lista", component: UserListComponent },
-      { path: "cobro/nuevo", component: UserNewComponent },
-
-      { path: "cliente/nuevo", component: ClientNewComponent },
-      { path: "cliente/editar/:id", component: ClientEditComponent },
-      { path: "cliente/:id", component: ClientEditComponent },
-      { path: "cliente", component: ClientListComponent },
-
-      { path: "cliente/sector/lista", component: LocationListComponent },
-      { path: "cliente/sector/nuevo", component: LocationNewComponent },
-      {
-        path: "cliente/sector/editar/:id",
-        component: LocationEditComponent,
-      },
-      { path: "cliente/sector/:id", component: LocationEditComponent },
-      { path: "cliente/sector", component: LocationListComponent },
-
       { path: "negocio/lista", component: BusinessTypeListComponent },
       { path: "negocio/nuevo", component: BusinessTypeNewComponent },
-      { path: "negocio/editar/:id", component: BusinessTypeEditComponent },
       { path: "negocio/:id", component: BusinessTypeEditComponent },
-      { path: "negocio", component: BusinessTypeListComponent },
+      { path: "negocio/editar/:id", component: BusinessTypeEditComponent },
 
+      { path: "cliente/lista", component: ClientListComponent },
+      { path: "cliente/nuevo", component: ClientNewComponent },
+      { path: "cliente/:id", component: ClientEditComponent },
+      { path: "cliente/editar/:id", component: ClientEditComponent },
+
+      { path: "sector/lista", component: ClienteLocationListComponent },
+      { path: "sector/nuevo", component: ClienteLocationNewComponent },
+      { path: "sector/:id", component: ClienteLocationEditComponent },
+      { path: "sector/editar/:id", component: ClienteLocationEditComponent },
+
+      { path: "cobro/lista", component: CollectionListComponent },
+      { path: "cobro/nuevo", component: CollectionNewComponent },
+      { path: "cobro/:id", component: CollectionEditComponent },
+      { path: "cobro/:id/editar", component: CollectionEditComponent },
+
+      { path: "gasto/lista", component: ExpenseListComponent },
+      { path: "gasto/nuevo", component: ExpenseNewComponent },
+      { path: "gasto/:id", component: ExpenseEditComponent },
+      { path: "gasto/:id/editar", component: ExpenseEditComponent },
+
+      { path: "prestamo/lista", component: ExpenseListComponent },
+      { path: "prestamo/nuevo", component: ExpenseNewComponent },
+      { path: "prestamo/:id", component: ExpenseEditComponent },
+      { path: "prestamo/:id/editar", component: ExpenseEditComponent },
+
+      { path: "prestamo/lista", component: ExpenseListComponent },
+      { path: "prestamo/nuevo", component: ExpenseNewComponent },
+      { path: "prestamo/:id", component: ExpenseEditComponent },
+      { path: "prestamo/:id/editar", component: ExpenseEditComponent },
+
+      { path: "usuario/lista", component: UserListComponent },
+      { path: "usuario/nuevo", component: UserNewComponent },
+      { path: "usuario/:id", component: UserEditComponent },
+      { path: "usuario/:id/editar", component: UserEditComponent },
       { path: "prestamo/nuevo", component: LoanNewComponent },
-      {
-        path: "cobro/:id",
-        component: UserEditComponent,
-        children: [
-          { path: "cliente", component: ClientListComponent },
-          { path: "cliente/nuevo", component: ClientNewComponent },
-          { path: "cliente/editar/:id", component: ClientEditComponent },
-          {
-            path: "cliente/:id",
-            component: ClientEditComponent,
-            children: [
-              { path: "prestamo", component: ClientListComponent },
-              { path: "prestamo/nuevo", component: ClientNewComponent },
-              { path: "prestamo/editar/:id", component: ClientEditComponent },
-              { path: "prestamo/:id", component: ClientEditComponent },
-            ],
-          },
-          { path: "gastos/lista", component: UserListComponent },
-          { path: "gastos/nuevo", component: UserNewComponent },
-          { path: "gastos/:id", component: UserEditComponent },
-        ],
-      },
 
       { path: "**", pathMatch: "full", redirectTo: "not-found" },
     ],
