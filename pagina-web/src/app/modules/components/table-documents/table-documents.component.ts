@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Router } from "@angular/router";
 import { DocumentTypeModel } from "src/app/shared/models/document-type.model";
 
 @Component({
@@ -8,12 +9,15 @@ import { DocumentTypeModel } from "src/app/shared/models/document-type.model";
 })
 export class TableDocumentsComponent implements OnInit {
   @Input() data: DocumentTypeModel[];
-  @Output() edit: EventEmitter<number>;
-  @Output() delete: EventEmitter<number>;
-  constructor() {}
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {}
 
-  removeItem(id: number) {}
-  selectItem(id: number) {}
+  deleteItem(id: number) {}
+  selectItem(id: number) {
+    this._router.navigate(["/negocio", id, "editar"]);
+  }
+  editItem(id: number) {
+    this._router.navigate(["/negocio", id]);
+  }
 }

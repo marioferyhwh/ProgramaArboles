@@ -1,20 +1,20 @@
-<app-loading *ngIf="!client"></app-loading>
-<form class="col-8 offset-2 text-left" *ngIf="client" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
+<app-loading *ngIf="!data"></app-loading>
+<form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
 
-    <div class="form-group row" *ngIf="client.id">
-        <label class="col-3 col-form-label">identificador:{{client.id}}</label>
-        <label class="col-3 col-form-label">cobro:{{client.id_collection}}</label>
+    <div class="form-group row" *ngIf="data.id">
+        <label class="col-3 col-form-label">identificador:{{data.id}}</label>
+        <label class="col-3 col-form-label">cobro:{{data.id_collection}}</label>
     </div>
 
-    <div class="form-group row" *ngIf="client.id">
-        <label class="col-4 col-form-label">Creado:{{client.create_at}}</label>
+    <div class="form-group row" *ngIf="data.id">
+        <label class="col-4 col-form-label">Creado:{{data.create_at}}</label>
 
-        <label class="col-5 col-form-label">por:{{client.user_create}}</label>
+        <label class="col-5 col-form-label">por:{{data.user_create}}</label>
     </div>
 
-    <div class="form-group row" *ngIf="client.id">
-        <label class="col-4 col-form-label">actualizado:{{client.update_at}}</label>
-        <label class="col-10 col-form-label">prestamos:{{client.number_loans}}</label>
+    <div class="form-group row" *ngIf="data.id">
+        <label class="col-4 col-form-label">actualizado:{{data.update_at}}</label>
+        <label class="col-10 col-form-label">prestamos:{{data.number_loans}}</label>
     </div>
 
     <div class="form-group row">

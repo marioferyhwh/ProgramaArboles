@@ -6,7 +6,6 @@ import { DocumentTypeModel } from "src/app/shared/models/document-type.model";
 import { LoanStateModel } from "src/app/shared/models/loan-state.model";
 import { TelDescriptionModel } from "src/app/shared/models/tel-description.model";
 import { BusinessTypeModel } from "src/app/shared/models/business-type.model";
-import { isUndefined } from "util";
 import { ValidatorsService } from "src/app/services/validators.service";
 
 @Component({
@@ -15,8 +14,8 @@ import { ValidatorsService } from "src/app/services/validators.service";
   styleUrls: ["./form-client.component.scss"],
 })
 export class FormClienteComponent implements OnInit {
-  @Input() public client: ClientModel;
-  @Output() public clientData: EventEmitter<ClientModel>;
+  @Input() public data: ClientModel;
+  @Output() public onData: EventEmitter<ClientModel>;
 
   public forma: FormGroup;
   public documents: DocumentTypeModel[];
@@ -30,7 +29,7 @@ export class FormClienteComponent implements OnInit {
     private _validators: ValidatorsService
   ) {
     this.initForm();
-    this.clientData = new EventEmitter();
+    this.onData = new EventEmitter();
   }
 
   ngOnInit(): void {
@@ -45,9 +44,9 @@ export class FormClienteComponent implements OnInit {
       });
       return;
     }
-    console.log(this.client);
+    console.log(this.data);
     console.log(this.forma.value);
-    this.clientData.emit(this.client);
+    this.onData.emit(this.data);
   }
 
   initForm() {
@@ -152,9 +151,9 @@ export class FormClienteComponent implements OnInit {
   }
 
   upData() {
-    if (this.client != null) {
+    if (this.data != null) {
       // this.forma.setValue(this.client);
-      this.forma.reset({ ...this.client });
+      this.forma.reset({ ...this.data });
     }
   }
 }

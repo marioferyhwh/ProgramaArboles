@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Router } from "@angular/router";
 import { CollectionCashModel } from "src/app/shared/models/collection-cash.model";
 
 @Component({
@@ -7,8 +8,16 @@ import { CollectionCashModel } from "src/app/shared/models/collection-cash.model
   styleUrls: ["./table-cash.component.scss"],
 })
 export class TableCashComponent implements OnInit {
-  @Input() public movimentos: CollectionCashModel[];
-  constructor() {}
+  @Input() data: CollectionCashModel[];
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {}
+
+  deleteItem(id: number) {}
+  selectItem(id: number) {
+    this._router.navigate(["/cobro", "caja", id, "editar"]);
+  }
+  editItem(id: number) {
+    this._router.navigate(["/cobro", "caja", id]);
+  }
 }

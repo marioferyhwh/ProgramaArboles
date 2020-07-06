@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Router } from "@angular/router";
 import { ClientLocationModel } from "src/app/shared/models/client-location.model";
 
 @Component({
@@ -8,12 +9,15 @@ import { ClientLocationModel } from "src/app/shared/models/client-location.model
 })
 export class TableLocationComponent implements OnInit {
   @Input() data: ClientLocationModel[];
-  @Output() edit: EventEmitter<number>;
-  @Output() delete: EventEmitter<number>;
-  constructor() {}
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {}
 
-  removeItem(id: number) {}
-  selectItem(id: number) {}
+  deleteItem(id: number) {}
+  selectItem(id: number) {
+    this._router.navigate(["/sector", id, "editar"]);
+  }
+  editItem(id: number) {
+    this._router.navigate(["/sector", id]);
+  }
 }

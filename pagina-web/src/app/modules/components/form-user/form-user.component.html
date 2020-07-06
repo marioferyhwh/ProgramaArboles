@@ -1,5 +1,5 @@
-<app-loading *ngIf="!user"></app-loading>
-<form class="col-8 offset-2 text-left" *ngIf="user" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
+<app-loading *ngIf="!data"></app-loading>
+<form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
     <div class="form-group row">
         <label class="col-2 col-form-label" for="actived">activo:</label>
         <div class="col-2">

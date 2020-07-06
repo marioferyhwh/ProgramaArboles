@@ -8,14 +8,14 @@
                 <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cliente</a>
                 <ul class="dropdown-menu">
                     <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cliente','nuevo']">nuevo</a></li>
-                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cliente']">Lista</a></li>
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cliente','lista']">Lista</a></li>
                     <li class="nav-item dropdown" routerLinkActive="active">
                         <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sectores</a>
                         <ul class="dropdown-menu">
                             <li routerLinkActive="active">
-                                <a class="dropdown-item" [routerLink]="['/cliente','sector','nuevo']">nuevo</a></li>
+                                <a class="dropdown-item" [routerLink]="['/sector','nuevo']">nuevo</a></li>
                             <li routerLinkActive="active">
-                                <a class="dropdown-item" [routerLink]="['/cliente','sector','lista']">lista</a></li>
+                                <a class="dropdown-item" [routerLink]="['/sector','lista']">lista</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -24,7 +24,7 @@
                 <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">prestamo</a>
                 <ul class="dropdown-menu">
                     <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/prestamo','nuevo']">nuevo</a></li>
-                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/prestamo']">lista</a></li>
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/prestamo','lista']">lista</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown" routerLinkActive="active">
@@ -33,22 +33,26 @@
                     <li class="nav-item dropdown" routerLinkActive="active">
                         <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">gastos</a>
                         <ul class="dropdown-menu">
-                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos','nuevo']">nuevo</a>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/gasto','nuevo']">nuevo</a>
                             </li>
-                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos','buscar']">buscar</a> </li>
-                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos','items']">items</a>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/gasto','buscar']">buscar</a>
                             </li>
-                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja' ,'gastos']">lista</a> </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/gasto','descripcion','lista']">items</a>
+                            </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/gasto','lista']">lista</a> </li>
                         </ul>
                     </li>
 
                     <li class="nav-item dropdown" routerLinkActive="active">
                         <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ingresos</a>
                         <ul class="dropdown-menu">
-                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja','ingresos','nuevo']">nuevo</a> </li>
-                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja','ingresos','buscar']">buscar</a> </li>
-                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja','ingresos','items']">items</a> </li>
-                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/caja','ingresos','lista']">lista</a> </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/cobro','caja','nuevo']">nuevo</a>
+                            </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/cobro','caja','buscar']">buscar</a> </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/cobro','caja','items']">items</a>
+                            </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/cobro','caja','lista']">lista</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item dropdown" routerLinkActive="active">

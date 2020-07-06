@@ -11,8 +11,8 @@ import { TelDescriptionModel } from "src/app/shared/models/tel-description.model
   styleUrls: ["./form-user.component.scss"],
 })
 export class FormUserComponent implements OnInit {
-  @Input() public user: UserModel;
-  @Output() public UserData: EventEmitter<UserModel>;
+  @Input() public data: UserModel;
+  @Output() public onData: EventEmitter<UserModel>;
 
   public forma: FormGroup;
   public documents: DocumentTypeModel[];
@@ -23,7 +23,7 @@ export class FormUserComponent implements OnInit {
     private _globalService: GlobalService,
     private _validator: ValidatorsService
   ) {
-    this.UserData = new EventEmitter();
+    this.onData = new EventEmitter();
     this.initForm();
     this.listenerForm();
   }
@@ -46,14 +46,14 @@ export class FormUserComponent implements OnInit {
       });
       return;
     }
-    this.user = this.forma.value;
-    console.log(this.user);
-    this.UserData.emit(this.user);
+    this.data = this.forma.value;
+    console.log(this.data);
+    this.onData.emit(this.data);
   }
 
   dataForm() {
-    if (this.user != null) {
-      this.forma.reset({ ...this.user });
+    if (this.data != null) {
+      this.forma.reset({ ...this.data });
     }
   }
 

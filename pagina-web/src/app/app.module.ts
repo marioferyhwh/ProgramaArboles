@@ -14,8 +14,7 @@ import localEs from "@angular/common/locales/es";
 registerLocaleData(localEs);
 //
 
-
-import { ComponentsModule } from './modules/components/components.module';
+import { ComponentsModule } from "./modules/components/components.module";
 
 import { LoginComponent } from "./modules/login/login.component";
 import { NotFoundComponent } from "./modules/not-found/not-found.component";
@@ -109,10 +108,8 @@ import { UserCollectionEditComponent } from "./modules/user/user-collection-edit
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
   ],
   providers: [
     {

@@ -10,8 +10,8 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   styleUrls: ["./form-loan.component.scss"],
 })
 export class FormLoanComponent implements OnInit {
-  @Input() public loan: LoanModel;
-  @Output() public loanData: EventEmitter<LoanModel>;
+  @Input() public data: LoanModel;
+  @Output() public onData: EventEmitter<LoanModel>;
 
   public forma: FormGroup;
   public loan_states: LoanStateModel[];
@@ -23,7 +23,7 @@ export class FormLoanComponent implements OnInit {
   ngOnInit(): void {}
 
   initForm() {
-    this.loan = new LoanModel();
+    this.data = new LoanModel();
     this._globalService.get().subscribe((dt) => {
       console.log({ dt });
       this.loan_states = dt.loan_states;
@@ -82,6 +82,6 @@ export class FormLoanComponent implements OnInit {
     }
 
     console.log(this.forma);
-    this.loanData.emit(this.loan);
+    this.onData.emit(this.data);
   }
 }

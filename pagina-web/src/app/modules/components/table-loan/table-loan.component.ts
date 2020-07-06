@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { Router } from "@angular/router";
 import { LoanModel } from "src/app/shared/models/loan.model";
 
 @Component({
@@ -7,8 +8,16 @@ import { LoanModel } from "src/app/shared/models/loan.model";
   styleUrls: ["./table-loan.component.scss"],
 })
 export class TableLoanComponent implements OnInit {
-  @Input() public prestamos: LoanModel[];
-  constructor() {}
+  @Input() data: LoanModel[];
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {}
+
+  deleteItem(id: number) {}
+  selectItem(id: number) {
+    this._router.navigate(["/prestamo", id, "editar"]);
+  }
+  editItem(id: number) {
+    this._router.navigate(["/prestamo", id]);
+  }
 }

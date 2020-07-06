@@ -8,15 +8,15 @@ import { ClientModel } from "src/app/shared/models/client.model";
   styleUrls: ["./table-client.component.scss"],
 })
 export class TableClientComponent implements OnInit {
-  @Input() clients: ClientModel[];
-  // @Output() cargarCliete: EventEmitter<number>;
+  @Input() data: ClientModel[];
+  //@Output() onSelect: EventEmitter<number>;
   constructor(private _router: Router) {
     // this.cargarCliete = new EventEmitter();
   }
 
   ngOnInit(): void {}
   ngOnChanges(): void {
-    console.log(this.clients);
+    console.log(this.data);
   }
   clientEdit(id: number) {
     // this.cargarCliete.emit(id)

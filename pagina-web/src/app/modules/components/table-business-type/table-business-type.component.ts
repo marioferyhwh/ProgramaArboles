@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output, Input } from "@angular/core";
 import { BusinessTypeModel } from "src/app/shared/models/business-type.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-table-business-type",
@@ -8,12 +9,15 @@ import { BusinessTypeModel } from "src/app/shared/models/business-type.model";
 })
 export class TableBusinessTypeComponent implements OnInit {
   @Input() data: BusinessTypeModel[];
-  @Output() edit: EventEmitter<number>;
-  @Output() delete: EventEmitter<number>;
-  constructor() {}
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {}
 
-  removeItem(id: number) {}
-  selectItem(id: number) {}
+  deleteItem(id: number) {}
+  selectItem(id: number) {
+    this._router.navigate(["/negocio", id, "editar"]);
+  }
+  editItem(id: number) {
+    this._router.navigate(["/negocio", id]);
+  }
 }

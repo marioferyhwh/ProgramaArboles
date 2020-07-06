@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { Router } from "@angular/router";
 import { CollectionModel } from "src/app/shared/models/collection.model";
 
 @Component({
@@ -7,8 +8,16 @@ import { CollectionModel } from "src/app/shared/models/collection.model";
   styleUrls: ["./table-collection.component.scss"],
 })
 export class TableCollectionComponent implements OnInit {
-  @Input() public cobros: CollectionModel[];
-  constructor() {}
+  @Input() data: CollectionModel[];
+  constructor(private _router: Router) {}
 
   ngOnInit(): void {}
+
+  deleteItem(id: number) {}
+  selectItem(id: number) {
+    this._router.navigate(["/cobro", id, "editar"]);
+  }
+  editItem(id: number) {
+    this._router.navigate(["/cobro", id]);
+  }
 }

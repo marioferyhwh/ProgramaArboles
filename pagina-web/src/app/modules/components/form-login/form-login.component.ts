@@ -29,11 +29,10 @@ export class FormLoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onLogin(fl: NgForm) {
-    console.log(fl);
+    //console.log(fl);
     if (fl.invalid) {
       return;
     }
-
     const toast = Swal.mixin({
       allowOutsideClick: false,
       icon: "info",
@@ -42,7 +41,8 @@ export class FormLoginComponent implements OnInit {
     toast.fire();
     toast.showLoading();
 
-    console.log(this.user);
+    //console.log(this.user);
+
     this._userService.login(this.user).subscribe(
       (resp) => {
         toast.close();
