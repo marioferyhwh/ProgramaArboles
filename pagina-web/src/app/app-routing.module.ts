@@ -23,6 +23,23 @@ import { ExpenseEditComponent } from "./modules/expense/expense-edit/expense-edi
 import { ClienteLocationListComponent } from "./modules/client/cliente-location-list/cliente-location-list.component";
 import { ClienteLocationNewComponent } from "./modules/client/cliente-location-new/cliente-location-new.component";
 import { ClienteLocationEditComponent } from "./modules/client/cliente-location-edit/cliente-location-edit.component";
+import { CollectionCashListComponent } from './modules/collection/collection-cash-list/collection-cash-list.component';
+import { CollectionCashNewComponent } from './modules/collection/collection-cash-new/collection-cash-new.component';
+import { CollectionCashEditComponent } from './modules/collection/collection-cash-edit/collection-cash-edit.component';
+import { ExpenseDescriptionListComponent } from './modules/expense/expense-description-list/expense-description-list.component';
+import { ExpenseDescriptionNewComponent } from './modules/expense/expense-description-new/expense-description-new.component';
+import { ExpenseDescriptionEditComponent } from './modules/expense/expense-description-edit/expense-description-edit.component';
+import { LoanLoanPaymentListComponent } from './modules/loan/loan-loan-payment-list/loan-loan-payment-list.component';
+import { LoanLoanPaymentNewComponent } from './modules/loan/loan-loan-payment-new/loan-loan-payment-new.component';
+import { LoanLoanPaymentEditComponent } from './modules/loan/loan-loan-payment-edit/loan-loan-payment-edit.component';
+import { LoanLoanStateListComponent } from './modules/loan/loan-loan-state-list/loan-loan-state-list.component';
+import { LoanLoanStateNewComponent } from './modules/loan/loan-loan-state-new/loan-loan-state-new.component';
+import { LoanLoanStateEditComponent } from './modules/loan/loan-loan-state-edit/loan-loan-state-edit.component';
+import { LoanListComponent } from './modules/loan/loan-list/loan-list.component';
+import { LoanEditComponent } from './modules/loan/loan-edit/loan-edit.component';
+import { UserLevelListComponent } from './modules/user/user-level-list/user-level-list.component';
+import { UserLevelNewComponent } from './modules/user/user-level-new/user-level-new.component';
+import { UserLevelEditComponent } from './modules/user/user-level-edit/user-level-edit.component';
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -48,25 +65,46 @@ const routes: Routes = [
       { path: "sector/:id", component: ClienteLocationEditComponent },
       { path: "sector/editar/:id", component: ClienteLocationEditComponent },
 
+      { path: "cobro/caja/lista", component: CollectionCashListComponent },
+      { path: "cobro/caja/nuevo", component: CollectionCashNewComponent },
+      { path: "cobro/caja/:id", component: CollectionCashEditComponent },
+      { path: "cobro/caja/:id/editar", component: CollectionCashEditComponent },
+
       { path: "cobro/lista", component: CollectionListComponent },
       { path: "cobro/nuevo", component: CollectionNewComponent },
       { path: "cobro/:id", component: CollectionEditComponent },
       { path: "cobro/:id/editar", component: CollectionEditComponent },
+
+      { path: "gasto/descripcion/lista", component: ExpenseDescriptionListComponent },
+      { path: "gasto/descripcion/nuevo", component: ExpenseDescriptionNewComponent },
+      { path: "gasto/descripcion/:id", component: ExpenseDescriptionEditComponent },
+      { path: "gasto/descripcion/:id/editar", component: ExpenseDescriptionEditComponent },
 
       { path: "gasto/lista", component: ExpenseListComponent },
       { path: "gasto/nuevo", component: ExpenseNewComponent },
       { path: "gasto/:id", component: ExpenseEditComponent },
       { path: "gasto/:id/editar", component: ExpenseEditComponent },
 
-      { path: "prestamo/lista", component: ExpenseListComponent },
-      { path: "prestamo/nuevo", component: ExpenseNewComponent },
-      { path: "prestamo/:id", component: ExpenseEditComponent },
-      { path: "prestamo/:id/editar", component: ExpenseEditComponent },
+      { path: "prestamo/pago/lista", component: LoanLoanPaymentListComponent },
+      { path: "prestamo/pago/nuevo", component: LoanLoanPaymentNewComponent },
+      { path: "prestamo/pago/:id", component: LoanLoanPaymentEditComponent },
+      { path: "prestamo/pago/:id/editar", component: LoanLoanPaymentEditComponent },
 
-      { path: "prestamo/lista", component: ExpenseListComponent },
-      { path: "prestamo/nuevo", component: ExpenseNewComponent },
-      { path: "prestamo/:id", component: ExpenseEditComponent },
-      { path: "prestamo/:id/editar", component: ExpenseEditComponent },
+      { path: "prestamo/estados/lista", component: LoanLoanStateListComponent },
+      { path: "prestamo/estados/nuevo", component: LoanLoanStateNewComponent },
+      { path: "prestamo/estados/:id", component: LoanLoanStateEditComponent },
+      { path: "prestamo/estados/:id/editar", component: LoanLoanStateEditComponent },
+
+      { path: "prestamo/lista", component: LoanListComponent },
+      { path: "prestamo/nuevo", component: LoanNewComponent },
+      { path: "prestamo/:id", component: LoanEditComponent },
+      { path: "prestamo/:id/editar", component: LoanEditComponent },
+
+
+      { path: "user/lista", component: UserLevelListComponent },
+      { path: "user/nuevo", component: UserLevelNewComponent },
+      { path: "user/:id", component: UserLevelEditComponent },
+      { path: "user/:id/editar", component: UserLevelEditComponent },
 
       { path: "usuario/lista", component: UserListComponent },
       { path: "usuario/nuevo", component: UserNewComponent },
