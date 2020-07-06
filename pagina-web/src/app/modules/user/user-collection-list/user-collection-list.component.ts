@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { UserService } from "src/app/services/user.service";
+import { UserCollectionModel } from "src/app/shared/models/user-collection.model";
 
 @Component({
-  selector: 'app-user-collection-list',
-  templateUrl: './user-collection-list.component.html',
-  styleUrls: ['./user-collection-list.component.scss']
+  selector: "app-user-collection-list",
+  templateUrl: "./user-collection-list.component.html",
+  styleUrls: ["./user-collection-list.component.scss"],
 })
 export class UserCollectionListComponent implements OnInit {
+  public userColections: UserCollectionModel[];
 
-  constructor() { }
+  constructor(private _userService: UserService) {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
