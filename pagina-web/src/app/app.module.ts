@@ -14,34 +14,14 @@ import localEs from "@angular/common/locales/es";
 registerLocaleData(localEs);
 //
 
-import { HeaderComponent } from "./modules/components/header/header.component";
-import { FooterComponent } from "./modules/components/footer/footer.component";
-import { ButtonComponent } from "./modules/components/button/button.component";
-import { TableClientComponent } from "./modules/components/table-client/table-client.component";
-import { TableCollectionComponent } from "./modules/components/table-collection/table-collection.component";
-import { TableLoanComponent } from "./modules/components/table-loan/table-loan.component";
-import { TableLoanPaymentComponent } from "./modules/components/table-loan-payment/table-loan-payment.component";
-import { TableExpenseComponent } from "./modules/components/table-expense/table-expense.component";
-import { TableCashComponent } from "./modules/components/table-cash/table-cash.component";
-import { TableUserComponent } from "./modules/components/table-user/table-user.component";
-import { FormUserComponent } from "./modules/components/form-user/form-user.component";
-import { FormClienteComponent } from "./modules/components/form-client/form-client.component";
-import { FormCollectionComponent } from "./modules/components/form-collection/form-collection.component";
-import { FormLoanComponent } from "./modules/components/form-loan/form-loan.component";
-import { FormLoanPaymentComponent } from "./modules/components/form-loan-payment/form-loan-payment.component";
-import { FormExpenseComponent } from "./modules/components/form-expense/form-expense.component";
-import { FormGeneralComponent } from "./modules/components/form-general/form-general.component";
-import { FormTelComponent } from "./modules/components/form-tel/form-tel.component";
-import { FormLocationComponent } from "./modules/components/form-location/form-location.component";
-import { FormCashComponent } from "./modules/components/form-cash/form-cash.component";
-import { FormLoginComponent } from "./modules/components/form-login/form-login.component";
+
+import { ComponentsModule } from './modules/components/components.module';
+
 import { LoginComponent } from "./modules/login/login.component";
 import { NotFoundComponent } from "./modules/not-found/not-found.component";
-import { NavBarComponent } from "./modules/components/nav-bar/nav-bar.component";
 import { ClientListComponent } from "./modules/client/client-list/client-list.component";
 import { ClientNewComponent } from "./modules/client/client-new/client-new.component";
 import { ClientEditComponent } from "./modules/client/client-edit/client-edit.component";
-import { LoadingComponent } from "./modules/components/loading/loading.component";
 import { UserNewComponent } from "./modules/user/user-new/user-new.component";
 import { UserListComponent } from "./modules/user/user-list/user-list.component";
 import { UserEditComponent } from "./modules/user/user-edit/user-edit.component";
@@ -50,12 +30,6 @@ import { LoanNewComponent } from "./modules/loan/loan-new/loan-new.component";
 import { BusinessTypeNewComponent } from "./modules/business/business-type-new/business-type-new.component";
 import { BusinessTypeEditComponent } from "./modules/business/business-type-edit/business-type-edit.component";
 import { BusinessTypeListComponent } from "./modules/business/business-type-list/business-type-list.component";
-import { TableTypeaComponent } from "./modules/components/table-typea/table-typea.component";
-import { TableLocationComponent } from "./modules/components/table-location/table-location.component";
-import { TableBusinessTypeComponent } from "./modules/components/table-business-type/table-business-type.component";
-import { TableDocumentsComponent } from "./modules/components/table-documents/table-documents.component";
-import { FormDocumentsComponent } from "./modules/components/form-documents/form-documents.component";
-import { FormBusinessTypeComponent } from "./modules/components/form-business-type/form-business-type.component";
 import { CollectionNewComponent } from "./modules/collection/collection-new/collection-new.component";
 import { CollectionListComponent } from "./modules/collection/collection-list/collection-list.component";
 import { CollectionEditComponent } from "./modules/collection/collection-edit/collection-edit.component";
@@ -88,35 +62,12 @@ import { UserCollectionEditComponent } from "./modules/user/user-collection-edit
 @NgModule({
   declarations: [
     AppComponent,
-    //ComponentsModule,
-    HeaderComponent,
-    FooterComponent,
-    ButtonComponent,
-    TableClientComponent,
-    TableCollectionComponent,
-    TableLoanComponent,
-    TableLoanPaymentComponent,
-    TableExpenseComponent,
-    TableCashComponent,
-    TableUserComponent,
-    FormUserComponent,
-    FormClienteComponent,
-    FormCollectionComponent,
-    FormLoanComponent,
-    FormLoanPaymentComponent,
-    FormExpenseComponent,
-    FormGeneralComponent,
-    FormTelComponent,
-    FormLocationComponent,
-    FormCashComponent,
-    FormLoginComponent,
+
     LoginComponent,
     NotFoundComponent,
-    NavBarComponent,
     ClientListComponent,
     ClientNewComponent,
     ClientEditComponent,
-    LoadingComponent,
     UserNewComponent,
     UserListComponent,
     UserEditComponent,
@@ -125,12 +76,6 @@ import { UserCollectionEditComponent } from "./modules/user/user-collection-edit
     BusinessTypeNewComponent,
     BusinessTypeEditComponent,
     BusinessTypeListComponent,
-    TableTypeaComponent,
-    TableLocationComponent,
-    TableBusinessTypeComponent,
-    TableDocumentsComponent,
-    FormDocumentsComponent,
-    FormBusinessTypeComponent,
     CollectionNewComponent,
     CollectionListComponent,
     CollectionEditComponent,
@@ -160,7 +105,6 @@ import { UserCollectionEditComponent } from "./modules/user/user-collection-edit
     UserCollectionListComponent,
     UserCollectionNewComponent,
     UserCollectionEditComponent,
-    //ModelsModule,
   ],
   imports: [
     BrowserModule,
@@ -168,6 +112,7 @@ import { UserCollectionEditComponent } from "./modules/user/user-collection-edit
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ComponentsModule
   ],
   providers: [
     {
