@@ -8,7 +8,7 @@ import { CollectionService } from "src/app/services/collection.service";
   styleUrls: ["./collection-cash-list.component.scss"],
 })
 export class CollectionCashListComponent implements OnInit {
-  public cash: CollectionCashModel[];
+  public cashes: CollectionCashModel[];
 
   constructor(private _clientService: CollectionService) {}
 

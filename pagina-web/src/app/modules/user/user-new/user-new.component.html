@@ -1,4 +1,2 @@
-<div class="container body">
-    <h1>nuevo Usuario</h1>
-    <app-form-user (onData)="onCreateUser($event)" [data]="user"></app-form-user>
-</div>
+<h1>nuevo Usuario</h1>
+<app-form-user [data]="user" (onData)="onCreateUser($event)"></app-form-user>

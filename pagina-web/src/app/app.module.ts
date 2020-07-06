@@ -16,7 +16,7 @@ registerLocaleData(localEs);
 
 import { ComponentsModule } from "./modules/components/components.module";
 
-import { LoginComponent } from "./modules/login/login.component";
+import { LoginComponent } from "./modules/user/login/login.component";
 import { NotFoundComponent } from "./modules/not-found/not-found.component";
 import { ClientListComponent } from "./modules/client/client-list/client-list.component";
 import { ClientNewComponent } from "./modules/client/client-new/client-new.component";
