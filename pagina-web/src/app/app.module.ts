@@ -64,8 +64,6 @@ import { ExpenseListComponent } from "./modules/expense/expense-list/expense-lis
 import { ExpenseNewComponent } from "./modules/expense/expense-new/expense-new.component";
 import { LoanListComponent } from "./modules/loan/loan-list/loan-list.component";
 import { LoanEditComponent } from "./modules/loan/loan-edit/loan-edit.component";
-import { ClienteTelNewComponent } from "./modules/client/cliente-tel-new/cliente-tel-new.component";
-import { ClienteTelEditComponent } from "./modules/client/cliente-tel-edit/cliente-tel-edit.component";
 import { ClienteLocationNewComponent } from "./modules/client/cliente-location-new/cliente-location-new.component";
 import { ClienteLocationEditComponent } from "./modules/client/cliente-location-edit/cliente-location-edit.component";
 import { ClienteLocationListComponent } from "./modules/client/cliente-location-list/cliente-location-list.component";
@@ -141,8 +139,6 @@ import { UserCollectionEditComponent } from "./modules/user/user-collection-edit
     ExpenseNewComponent,
     LoanListComponent,
     LoanEditComponent,
-    ClienteTelNewComponent,
-    ClienteTelEditComponent,
     ClienteLocationNewComponent,
     ClienteLocationEditComponent,
     ClienteLocationListComponent,
