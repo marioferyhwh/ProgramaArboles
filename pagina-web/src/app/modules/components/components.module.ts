@@ -37,6 +37,9 @@ import { TableLoanStateComponent } from "./table-loan-state/table-loan-state.com
 import { FormLoanStateComponent } from "./form-loan-state/form-loan-state.component";
 import { FormUserLevelComponent } from "./form-user-level/form-user-level.component";
 import { TableUserLevelComponent } from "./table-user-level/table-user-level.component";
+import { ButtonDeleteComponent } from "./button-delete/button-delete.component";
+import { ButtonEditComponent } from "./button-edit/button-edit.component";
+import { ButtonNewComponent } from "./button-new/button-new.component";
 
 const declarations = [
   HeaderComponent,
@@ -74,6 +77,9 @@ const declarations = [
   FormLoanStateComponent,
   FormUserLevelComponent,
   TableUserLevelComponent,
+  ButtonDeleteComponent,
+  ButtonEditComponent,
+  ButtonNewComponent,
 ];
 @NgModule({
   declarations: [...declarations],
