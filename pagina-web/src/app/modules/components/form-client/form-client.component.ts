@@ -18,6 +18,7 @@ export class FormClienteComponent implements OnInit {
   @Output() public onData: EventEmitter<ClientModel>;
 
   public forma: FormGroup;
+  public buttonText = "crear";
   public documents: DocumentTypeModel[];
   public loan_states: LoanStateModel[];
   public businesstype: BusinessTypeModel[];
@@ -32,8 +33,10 @@ export class FormClienteComponent implements OnInit {
     this.onData = new EventEmitter();
   }
 
-  ngOnInit(): void {
-    this.upData();
+  ngOnInit(): void {}
+
+  ngOnChanges() {
+    this.dataForm();
   }
 
   onAction() {
@@ -150,7 +153,7 @@ export class FormClienteComponent implements OnInit {
     );
   }
 
-  upData() {
+  dataForm() {
     if (this.data != null) {
       // this.forma.setValue(this.client);
       this.forma.reset({ ...this.data });

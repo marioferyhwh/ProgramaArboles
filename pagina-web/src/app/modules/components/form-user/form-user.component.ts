@@ -15,6 +15,7 @@ export class FormUserComponent implements OnInit {
   @Output() public onData: EventEmitter<UserModel>;
 
   public forma: FormGroup;
+  public buttonText = "crear";
   public documents: DocumentTypeModel[];
   public telds: TelDescriptionModel[];
 
@@ -28,7 +29,9 @@ export class FormUserComponent implements OnInit {
     this.listenerForm();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngOnChanges() {
     this.dataForm();
   }
 

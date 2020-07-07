@@ -32,7 +32,7 @@ export class UserNewComponent implements OnInit {
     toast.fire();
     toast.showLoading();
     this._userService.create(u).subscribe(
-      (resp: UserModel) => {
+      (resp) => {
         toast.close();
         const toast2 = Swal.mixin({
           title: "Usuario creado",

@@ -11,11 +11,24 @@ export class FormLocationComponent implements OnInit {
   @Input() public data: ClientLocationModel;
   @Output() public onData: EventEmitter<ClientLocationModel>;
   public forma: FormGroup;
+  public buttonText = "crear";
+
   constructor(private _fb: FormBuilder) {
     this.onData = new EventEmitter();
+    this.initForm();
   }
 
   ngOnInit(): void {}
+
+  ngOnChanges() {
+    this.dataForm();
+  }
+
+  dataForm() {
+    if (this.data != null) {
+      this.forma.reset({ ...this.data });
+    }
+  }
 
   onAction() {
     console.log(this.forma);

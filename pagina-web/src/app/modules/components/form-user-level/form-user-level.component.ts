@@ -11,11 +11,22 @@ export class FormUserLevelComponent implements OnInit {
   @Input() public data: UserLevelModel;
   @Output() public onData: EventEmitter<UserLevelModel>;
   public forma: FormGroup;
+  public buttonText = "crear";
+
   constructor(private _fb: FormBuilder) {
     this.onData = new EventEmitter();
+    this.initForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.dataForm();
+  }
+
+  dataForm() {
+    if (this.data != null) {
+      this.forma.reset({ ...this.data });
+    }
+  }
   onAction() {
     console.log(this.forma);
     if (this.forma.invalid) {

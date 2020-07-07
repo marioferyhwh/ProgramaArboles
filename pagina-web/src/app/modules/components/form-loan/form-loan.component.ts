@@ -14,13 +14,28 @@ export class FormLoanComponent implements OnInit {
   @Output() public onData: EventEmitter<LoanModel>;
 
   public forma: FormGroup;
+  public buttonText = "crear";
   public loan_states: LoanStateModel[];
 
   constructor(private _globalService: GlobalService, private _fb: FormBuilder) {
     this.initForm();
+    this.initForm();
   }
 
   ngOnInit(): void {}
+
+  ngOnChanges() {
+    this.dataForm();
+  }
+
+  dataForm() {
+    if (this.data != null) {
+      this.forma.reset({ ...this.data });
+      if (this.data.id && this.data.id != 0) {
+        this.buttonText = "editar";
+      }
+    }
+  }
 
   initForm() {
     this.data = new LoanModel();

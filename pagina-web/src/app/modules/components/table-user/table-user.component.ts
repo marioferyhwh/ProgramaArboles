@@ -15,9 +15,9 @@ export class TableUserComponent implements OnInit {
 
   deleteItem(id: number) {}
   selectItem(id: number) {
-    this._router.navigate(["/user", id, "editar"]);
+    this._router.navigate(["/usuario", id, "editar"]);
   }
   editItem(id: number) {
-    this._router.navigate(["/user", id]);
+    this._router.navigate(["/usuario", id]);
   }
 }

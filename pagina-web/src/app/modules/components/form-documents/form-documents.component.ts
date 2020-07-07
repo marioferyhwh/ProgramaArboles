@@ -11,11 +11,27 @@ export class FormDocumentsComponent implements OnInit {
   @Input() public data: DocumentTypeModel;
   @Output() public onData: EventEmitter<DocumentTypeModel>;
   public forma: FormGroup;
+  public buttonText = "crear";
+
   constructor(private _fb: FormBuilder) {
     this.onData = new EventEmitter();
+    this.initForm();
   }
 
   ngOnInit(): void {}
+
+  ngOnChanges() {
+    this.dataForm();
+  }
+
+  dataForm() {
+    if (this.data != null) {
+      this.forma.reset({ ...this.data });
+      if (this.data.id && this.data.id != 0) {
+        this.buttonText = "editar";
+      }
+    }
+  }
   onAction() {
     console.log(this.forma);
     if (this.forma.invalid) {

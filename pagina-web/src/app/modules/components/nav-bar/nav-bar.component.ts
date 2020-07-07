@@ -9,7 +9,9 @@ import { UserService } from "src/app/services/user.service";
 export class NavBarComponent implements OnInit {
   constructor(private _userServer: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // $('#main_navbar').bootnavbar({})
+  }
   logOut() {
     this._userServer.logout();
   }
