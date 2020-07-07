@@ -12,5 +12,15 @@ export class UserCollectionListComponent implements OnInit {
 
   constructor(private _userService: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._userService.getCollectionList(1).subscribe(
+      (res) => {
+        this.userColections = res;
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }

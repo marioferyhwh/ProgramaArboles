@@ -10,7 +10,17 @@ import { ExpenseService } from "src/app/services/expense.service";
 export class ExpenseDescriptionListComponent implements OnInit {
   public expenseDescriptions: ExpenseDescriptionModel[];
 
-  constructor(private _clientService: ExpenseService) {}
+  constructor(private _expneseService: ExpenseService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._expneseService.getDescriptionList(1).subscribe(
+      (res) => {
+        this.expenseDescriptions = res;
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }

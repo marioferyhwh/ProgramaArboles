@@ -10,7 +10,17 @@ import { CollectionService } from "src/app/services/collection.service";
 export class CollectionCashListComponent implements OnInit {
   public cashes: CollectionCashModel[];
 
-  constructor(private _clientService: CollectionService) {}
+  constructor(private _collectionservice: CollectionService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._collectionservice.getCashList(1).subscribe(
+      (res) => {
+        this.cashes = res;
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }

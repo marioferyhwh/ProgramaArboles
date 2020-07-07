@@ -42,18 +42,18 @@ export class UserService {
     return this._api.userToken();
   }
 
-  getlist(id: number): Observable<UserModel> {
+  getList(id: number): Observable<UserModel[]> {
     return this._api.GetQuery(`${this._urlA}/list/${id}`).pipe(
       map((data: RespModel) => {
-        return <UserModel>data.data;
+        return <Array<UserModel>>data.data;
       })
     );
   }
 
-  get(id: number): Observable<UserModel[]> {
+  get(id: number): Observable<UserModel> {
     return this._api.GetQuery(`${this._urlA}/${id}`).pipe(
       map((data: RespModel) => {
-        return <Array<UserModel>>data.data;
+        return <UserModel>data.data;
       })
     );
   }

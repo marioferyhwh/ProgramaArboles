@@ -10,7 +10,17 @@ import { CollectionService } from "src/app/services/collection.service";
 export class CollectionListComponent implements OnInit {
   public collections: CollectionModel[];
 
-  constructor(private _clientService: CollectionService) {}
+  constructor(private _collectionService: CollectionService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._collectionService.getList(1).subscribe(
+      (res) => {
+        this.collections = res;
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }

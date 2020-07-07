@@ -10,7 +10,17 @@ import { LoanService } from "src/app/services/loan.service";
 export class LoanLoanStateListComponent implements OnInit {
   public loanStates: LoanStateModel[];
 
-  constructor(private _clientService: LoanService) {}
+  constructor(private _loanService: LoanService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._loanService.getLoanStateList(1).subscribe(
+      (res) => {
+        this.loanStates = res;
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 }
