@@ -12,5 +12,7 @@ export class LoanLoanPaymentNewComponent implements OnInit {
 
   constructor(private _clientService: LoanService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loanPayment = new LoanPaymentModel();
+  }
 }

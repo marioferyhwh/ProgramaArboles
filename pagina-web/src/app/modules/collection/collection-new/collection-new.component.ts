@@ -12,5 +12,7 @@ export class CollectionNewComponent implements OnInit {
 
   constructor(private _clientService: CollectionService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.collection = new CollectionModel();
+  }
 }

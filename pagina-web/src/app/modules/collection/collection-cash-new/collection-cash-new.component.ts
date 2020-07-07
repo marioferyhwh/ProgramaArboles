@@ -12,5 +12,7 @@ export class CollectionCashNewComponent implements OnInit {
 
   constructor(private _clientService: CollectionService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cash = new CollectionCashModel();
+  }
 }

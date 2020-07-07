@@ -12,5 +12,7 @@ export class UserCollectionNewComponent implements OnInit {
 
   constructor(private _userService: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userColection = new UserCollectionModel();
+  }
 }

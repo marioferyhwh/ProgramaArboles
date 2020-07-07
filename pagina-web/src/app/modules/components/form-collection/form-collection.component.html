@@ -1,1 +1,72 @@
-<p>form-collection works!</p>
+<app-loading *ngIf="!data"></app-loading>
+<form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
+    <div class="form-group row">
+        <label class="col-2 col-form-label" for="actived">activo:</label>
+        <div class="col-7">
+            <input class="form-control" type="checkbox" formControlName="actived" [class.is-invalid]="activedInvalid">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="nick_name">Name cobro:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="Nick Name" formControlName="nick_name" [class.is-invalid]="descriptionInvalid">
+            <span class="text-danger" *ngIf="descriptionInvalid">
+        nick name no valido
+      </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label">saldo:</label>
+        <div class="col-8">
+            <input class="form-control" type="number" placeholder="Name" formControlName="name" [class.is-invalid]="balance_totalInvalid">
+            <span class="text-danger" *ngIf="balance_totalInvalid">
+        usuario no valido
+      </span>
+        </div>
+    </div>
+
+
+    <!-- <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Numero</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody formArrayName="tels">
+                    <tr *ngFor="let tel of telsArray.controls; let i = index" [formGroupName]="i">
+                        <td>
+                            <select class="form-control" formControlName="id_tel_descript">
+                <option *ngFor="let teld of telds" [value]="teld.id">{{teld.tel_description}}</option>
+              </select>
+                        </td>
+                        <td>
+                            <input class="form-control" type="text" formControlName="number" [class.is-invalid]="numberInvalid(i)" />
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" type="button" (click)="removeTel(i)">-</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class=" btn btn-secondary btn-block mb-5" type="button" (click)="addTel()">+</button>
+        </div>
+    </div> -->
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label">&nbsp;</label>
+        <div class="col-md-8 input-group">
+            <button class="btn btn-outline-primary btn-block" type="submit">Crear</button>
+        </div>
+    </div>
+</form>
+<pre>
+  {{forma.status}}
+  {{forma.controls['name'].status}}
+  {{forma.value | json}}
+</pre>

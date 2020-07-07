@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CollectionModel } from "src/app/shared/models/collection.model";
 @Component({
   selector: "app-form-collection",
@@ -29,6 +29,21 @@ export class FormCollectionComponent implements OnInit {
   initForm() {
     this.forma = this._fb.group({
       id: [],
+      description: [""],
+      actived: ["", Validators.required],
+      balance_total: ["", [Validators.required, Validators.min(0)]],
     });
+  }
+  InvalidField(Field: string): boolean {
+    return this.forma.get(Field).invalid && this.forma.get(Field).touched;
+  }
+  get descriptionInvalid(): boolean {
+    return this.InvalidField("description");
+  }
+  get activedInvalid(): boolean {
+    return this.InvalidField("actived");
+  }
+  get balance_totalInvalid(): boolean {
+    return this.InvalidField("balance_total");
   }
 }

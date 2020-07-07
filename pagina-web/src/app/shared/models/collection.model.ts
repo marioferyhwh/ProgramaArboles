@@ -6,7 +6,7 @@ import { UserCollectionModel } from "./user-collection.model";
 
 export class CollectionModel extends BaseDbModel {
   description: string;
-  active: boolean;
+  actived: boolean;
   balance_total: number;
   cashes?: CollectionCashModel;
   expenses?: ExpenseModel;

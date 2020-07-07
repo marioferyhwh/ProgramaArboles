@@ -12,5 +12,7 @@ export class ClienteLocationNewComponent implements OnInit {
 
   constructor(private _clientService: ClientService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.location = new ClientLocationModel();
+  }
 }

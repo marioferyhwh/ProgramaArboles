@@ -12,5 +12,7 @@ export class UserLevelNewComponent implements OnInit {
 
   constructor(private _userService: UserService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userLevel = new UserLevelModel();
+  }
 }

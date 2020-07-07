@@ -12,5 +12,7 @@ export class ExpenseDescriptionNewComponent implements OnInit {
 
   constructor(private _clientService: ExpenseService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.expenseDescription = new ExpenseDescriptionModel();
+  }
 }

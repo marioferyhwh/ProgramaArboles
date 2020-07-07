@@ -12,5 +12,7 @@ export class BusinessTypeNewComponent implements OnInit {
 
   constructor(private _businessTypeService: BusinessTypeService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.businessType = new BusinessTypeModel("");
+  }
 }
