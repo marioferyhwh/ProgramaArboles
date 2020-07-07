@@ -12,7 +12,10 @@
         <tr *ngFor="let dat of data ">
             <th scope="col">{{dat.id}}</th>
             <td>{{dat.type_business}}</td>
-            <td><button class="btn btn-danger" type="button" (click)="deleteItem(dat.id)">-</button> <button class="btn btn-danger" type="button" (click)="selectItem(dat.id)">/</button></td>
+            <td>
+                <app-button-edit (click)="selectItem(dat.id)"></app-button-edit>
+                <app-button-delete (click)="deleteItem(dat.id)"></app-button-delete>
+            </td>
         </tr>
     </tbody>
 </table>
