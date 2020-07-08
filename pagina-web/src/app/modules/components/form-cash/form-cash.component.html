@@ -1,1 +1,41 @@
-<p>form-cash works!</p>
+<app-loading *ngIf="!data"></app-loading>
+<form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="id_collection">Cobro:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="nombre" formControlName="id_collection" [class.is-invalid]="id_collectionInvalid">
+            <span class="text-danger" *ngIf="id_collectionInvalid">
+        nick name no valido
+      </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="id_user">Usuario:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="nombre" formControlName="id_user" [class.is-invalid]="id_userInvalid">
+            <span class="text-danger" *ngIf="id_userInvalid">
+        nick name no valido
+      </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="money">Valor:</label>
+        <div class="col-8">
+            <input class="form-control" type="number" placeholder="0" formControlName="money" [class.is-invalid]="moneyInvalid">
+            <span class="text-danger" *ngIf="moneyInvalid">
+        usuario no valido
+      </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <app-button-create-edit class="col-md-8 input-group" [id]="data.id" (onCancel)="cancel()"></app-button-create-edit>
+    </div>
+    <pre *ngIf="debug">
+      {{forma.status}}
+      {{forma.value | json}}
+    </pre>
+</form>

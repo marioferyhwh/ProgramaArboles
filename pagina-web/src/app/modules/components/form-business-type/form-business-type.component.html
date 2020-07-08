@@ -1,1 +1,21 @@
-<p>form-business-type works!</p>
+<app-loading *ngIf="!data"></app-loading>
+<form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="type_business">Typo de negocio:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="nombre" formControlName="type_business" [class.is-invalid]="type_businessInvalid">
+            <span class="text-danger" *ngIf="type_businessInvalid">
+        nick name no valido
+      </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <app-button-create-edit class="col-md-8 input-group" [id]="data.id" (onCancel)="cancel()"></app-button-create-edit>
+    </div>
+    <pre *ngIf="debug">
+      {{forma.status}}
+      {{forma.value | json}}
+    </pre>
+</form>

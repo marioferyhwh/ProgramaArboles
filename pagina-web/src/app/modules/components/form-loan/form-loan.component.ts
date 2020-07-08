@@ -100,6 +100,9 @@ export class FormLoanComponent implements OnInit {
   get quotaInvalid(): boolean {
     return this.InvalidField("quota");
   }
+  get balanceInvalid(): boolean {
+    return this.InvalidField("balance");
+  }
   get id_loan_stateInvalid(): boolean {
     return this.InvalidField("id_loan_state");
   }

@@ -1,1 +1,31 @@
-<p>form-documents works!</p>
+<app-loading *ngIf="!data"></app-loading>
+<form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="name_short">Siglas:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="nombre" formControlName="name_short" [class.is-invalid]="name_shortInvalid">
+            <span class="text-danger" *ngIf="name_shortInvalid">
+        nick name no valido
+      </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="description">Descripcion:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="nombre" formControlName="description" [class.is-invalid]="descriptionInvalid">
+            <span class="text-danger" *ngIf="descriptionInvalid">
+        nick name no valido
+      </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <app-button-create-edit class="col-md-8 input-group" [id]="data.id" (onCancel)="cancel()"></app-button-create-edit>
+    </div>
+    <pre *ngIf="debug">
+      {{forma.status}}
+      {{forma.value | json}}
+    </pre>
+</form>
