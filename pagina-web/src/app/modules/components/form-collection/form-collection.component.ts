@@ -25,6 +25,9 @@ export class FormCollectionComponent implements OnInit {
 
   dataForm() {
     if (this.data != null) {
+      if (this.data.actived == null) {
+        this.data.actived = false;
+      }
       this.forma.reset({ ...this.data });
     }
     this.forma.controls["balance_total"].disable();

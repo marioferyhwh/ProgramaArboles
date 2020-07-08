@@ -13,9 +13,9 @@
     <tbody>
         <tr *ngFor="let dat of data">
             <th scope="col">{{dat.id}}</th>
-            <td>{{dat.actived}}</td>
-            <td>{{dat.description}}</td>
-            <td>{{dat.balance_total}}</td>
+            <td>{{ dat.actived | actived }}</td>
+            <td>{{dat.description }}</td>
+            <td>{{dat.balance_total | moneda}}</td>
             <td *ngIf="edit">
                 <app-button-edit (click)="selectItem(dat.id)"></app-button-edit>
                 <app-button-delete (click)="deleteItem(dat.id)"></app-button-delete>

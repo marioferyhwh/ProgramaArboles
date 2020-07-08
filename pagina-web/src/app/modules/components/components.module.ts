@@ -41,6 +41,7 @@ import { ButtonDeleteComponent } from "./button-delete/button-delete.component";
 import { ButtonEditComponent } from "./button-edit/button-edit.component";
 import { ButtonNewComponent } from "./button-new/button-new.component";
 import { ButtonCreateEditComponent } from "./button-create-edit/button-create-edit.component";
+import { PipesModule } from "src/app/shared/pipes/pipes.module";
 
 const declarations = [
   HeaderComponent,
@@ -85,7 +86,13 @@ const declarations = [
 ];
 @NgModule({
   declarations: [...declarations],
-  imports: [CommonModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    PipesModule,
+  ],
   exports: [...declarations],
 })
 export class ComponentsModule {}
