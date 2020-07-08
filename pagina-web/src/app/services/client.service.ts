@@ -74,17 +74,17 @@ export class ClientService {
     );
   }
 
-  createTel(client: TelModel): Observable<TelModel> {
-    return this._api.PostQuery(`${this._urlB}`, client).pipe(
+  createTel(ct: TelModel): Observable<TelModel> {
+    return this._api.PostQuery(`${this._urlB}`, ct).pipe(
       map((data: RespModel) => {
         return <TelModel>data.data;
       })
     );
   }
 
-  editTel(client: TelModel): Observable<TelModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlB}/${id}`, client).pipe(
+  editTel(ct: TelModel): Observable<TelModel> {
+    let id = ct.id;
+    return this._api.PutQuery(`${this._urlB}/${id}`, ct).pipe(
       map((data: RespModel) => {
         return <TelModel>data.data;
       })
@@ -115,17 +115,17 @@ export class ClientService {
     );
   }
 
-  createLocation(client: ClientLocationModel): Observable<ClientLocationModel> {
-    return this._api.PostQuery(`${this._urlC}`, client).pipe(
+  createLocation(cl: ClientLocationModel): Observable<ClientLocationModel> {
+    return this._api.PostQuery(`${this._urlC}`, cl).pipe(
       map((data: RespModel) => {
         return <ClientLocationModel>data.data;
       })
     );
   }
 
-  editLocation(client: ClientLocationModel): Observable<ClientLocationModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlC}/${id}`, client).pipe(
+  editLocation(cl: ClientLocationModel): Observable<ClientLocationModel> {
+    let id = cl.id;
+    return this._api.PutQuery(`${this._urlC}/${id}`, cl).pipe(
       map((data: RespModel) => {
         return <ClientLocationModel>data.data;
       })

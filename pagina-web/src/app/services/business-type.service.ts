@@ -29,17 +29,17 @@ export class BusinessTypeService {
     );
   }
 
-  create(client: BusinessTypeModel): Observable<BusinessTypeModel> {
-    return this._api.PostQuery(`${this._urlA}`, client).pipe(
+  create(bt: BusinessTypeModel): Observable<BusinessTypeModel> {
+    return this._api.PostQuery(`${this._urlA}`, bt).pipe(
       map((data: RespModel) => {
         return <BusinessTypeModel>data.data;
       })
     );
   }
 
-  edit(client: BusinessTypeModel): Observable<BusinessTypeModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlA}/${id}`, client).pipe(
+  edit(bt: BusinessTypeModel): Observable<BusinessTypeModel> {
+    let id = bt.id;
+    return this._api.PutQuery(`${this._urlA}/${id}`, bt).pipe(
       map((data: RespModel) => {
         return <BusinessTypeModel>data.data;
       })

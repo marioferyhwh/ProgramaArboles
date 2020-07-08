@@ -33,17 +33,17 @@ export class LoanService {
     );
   }
 
-  create(client: LoanModel): Observable<LoanModel> {
-    return this._api.PostQuery(`${this._urlA}`, client).pipe(
+  create(l: LoanModel): Observable<LoanModel> {
+    return this._api.PostQuery(`${this._urlA}`, l).pipe(
       map((data: RespModel) => {
         return <LoanModel>data.data;
       })
     );
   }
 
-  edit(client: LoanModel): Observable<LoanModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlA}/${id}`, client).pipe(
+  edit(l: LoanModel): Observable<LoanModel> {
+    let id = l.id;
+    return this._api.PutQuery(`${this._urlA}/${id}`, l).pipe(
       map((data: RespModel) => {
         return <LoanModel>data.data;
       })
@@ -74,17 +74,17 @@ export class LoanService {
     );
   }
 
-  createLoanState(client: LoanStateModel): Observable<LoanStateModel> {
-    return this._api.PostQuery(`${this._urlB}`, client).pipe(
+  createLoanState(ls: LoanStateModel): Observable<LoanStateModel> {
+    return this._api.PostQuery(`${this._urlB}`, ls).pipe(
       map((data: RespModel) => {
         return <LoanStateModel>data.data;
       })
     );
   }
 
-  editLoanState(client: LoanStateModel): Observable<LoanStateModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlB}/${id}`, client).pipe(
+  editLoanState(ls: LoanStateModel): Observable<LoanStateModel> {
+    let id = ls.id;
+    return this._api.PutQuery(`${this._urlB}/${id}`, ls).pipe(
       map((data: RespModel) => {
         return <LoanStateModel>data.data;
       })
@@ -115,17 +115,17 @@ export class LoanService {
     );
   }
 
-  createLoanPayment(client: LoanPaymentModel): Observable<LoanPaymentModel> {
-    return this._api.PostQuery(`${this._urlC}`, client).pipe(
+  createLoanPayment(lp: LoanPaymentModel): Observable<LoanPaymentModel> {
+    return this._api.PostQuery(`${this._urlC}`, lp).pipe(
       map((data: RespModel) => {
         return <LoanPaymentModel>data.data;
       })
     );
   }
 
-  editLoanPayment(client: LoanPaymentModel): Observable<LoanPaymentModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlC}/${id}`, client).pipe(
+  editLoanPayment(lp: LoanPaymentModel): Observable<LoanPaymentModel> {
+    let id = lp.id;
+    return this._api.PutQuery(`${this._urlC}/${id}`, lp).pipe(
       map((data: RespModel) => {
         return <LoanPaymentModel>data.data;
       })

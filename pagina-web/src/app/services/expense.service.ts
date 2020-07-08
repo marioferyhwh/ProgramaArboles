@@ -31,17 +31,17 @@ export class ExpenseService {
     );
   }
 
-  create(client: ExpenseModel): Observable<ExpenseModel> {
-    return this._api.PostQuery(`${this._urlA}`, client).pipe(
+  create(e: ExpenseModel): Observable<ExpenseModel> {
+    return this._api.PostQuery(`${this._urlA}`, e).pipe(
       map((data: RespModel) => {
         return <ExpenseModel>data.data;
       })
     );
   }
 
-  edit(client: ExpenseModel): Observable<ExpenseModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlA}/${id}`, client).pipe(
+  edit(e: ExpenseModel): Observable<ExpenseModel> {
+    let id = e.id;
+    return this._api.PutQuery(`${this._urlA}/${id}`, e).pipe(
       map((data: RespModel) => {
         return <ExpenseModel>data.data;
       })
@@ -73,9 +73,9 @@ export class ExpenseService {
   }
 
   createDescription(
-    client: ExpenseDescriptionModel
+    ed: ExpenseDescriptionModel
   ): Observable<ExpenseDescriptionModel> {
-    return this._api.PostQuery(`${this._urlB}`, client).pipe(
+    return this._api.PostQuery(`${this._urlB}`, ed).pipe(
       map((data: RespModel) => {
         return <ExpenseDescriptionModel>data.data;
       })
@@ -83,10 +83,10 @@ export class ExpenseService {
   }
 
   editDescription(
-    client: ExpenseDescriptionModel
+    ed: ExpenseDescriptionModel
   ): Observable<ExpenseDescriptionModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlB}/${id}`, client).pipe(
+    let id = ed.id;
+    return this._api.PutQuery(`${this._urlB}/${id}`, ed).pipe(
       map((data: RespModel) => {
         return <ExpenseDescriptionModel>data.data;
       })

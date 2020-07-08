@@ -99,17 +99,17 @@ export class UserService {
     );
   }
 
-  createTel(client: TelModel): Observable<TelModel> {
-    return this._api.PostQuery(`${this._urlB}`, client).pipe(
+  createTel(ut: TelModel): Observable<TelModel> {
+    return this._api.PostQuery(`${this._urlB}`, ut).pipe(
       map((data: RespModel) => {
         return <TelModel>data.data;
       })
     );
   }
 
-  editTel(client: TelModel): Observable<TelModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlB}/${id}`, client).pipe(
+  editTel(ut: TelModel): Observable<TelModel> {
+    let id = ut.id;
+    return this._api.PutQuery(`${this._urlB}/${id}`, ut).pipe(
       map((data: RespModel) => {
         return <TelModel>data.data;
       })
@@ -140,17 +140,17 @@ export class UserService {
     );
   }
 
-  createLevel(client: UserLevelModel): Observable<UserLevelModel> {
-    return this._api.PostQuery(`${this._urlC}`, client).pipe(
+  createLevel(ul: UserLevelModel): Observable<UserLevelModel> {
+    return this._api.PostQuery(`${this._urlC}`, ul).pipe(
       map((data: RespModel) => {
         return <UserLevelModel>data.data;
       })
     );
   }
 
-  editLevel(client: UserLevelModel): Observable<UserLevelModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlC}/${id}`, client).pipe(
+  editLevel(ul: UserLevelModel): Observable<UserLevelModel> {
+    let id = ul.id;
+    return this._api.PutQuery(`${this._urlC}/${id}`, ul).pipe(
       map((data: RespModel) => {
         return <UserLevelModel>data.data;
       })
@@ -181,19 +181,17 @@ export class UserService {
     );
   }
 
-  createCollection(
-    client: UserCollectionModel
-  ): Observable<UserCollectionModel> {
-    return this._api.PostQuery(`${this._urlD}`, client).pipe(
+  createCollection(uc: UserCollectionModel): Observable<UserCollectionModel> {
+    return this._api.PostQuery(`${this._urlD}`, uc).pipe(
       map((data: RespModel) => {
         return <UserCollectionModel>data.data;
       })
     );
   }
 
-  editCollection(client: UserCollectionModel): Observable<UserCollectionModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlD}/${id}`, client).pipe(
+  editCollection(uc: UserCollectionModel): Observable<UserCollectionModel> {
+    let id = uc.id;
+    return this._api.PutQuery(`${this._urlD}/${id}`, uc).pipe(
       map((data: RespModel) => {
         return <UserCollectionModel>data.data;
       })

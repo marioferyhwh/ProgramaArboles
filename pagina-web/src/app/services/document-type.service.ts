@@ -29,17 +29,17 @@ export class DocumentTypeService {
     );
   }
 
-  create(client: DocumentTypeModel): Observable<DocumentTypeModel> {
-    return this._api.PostQuery(`${this._urlA}`, client).pipe(
+  create(dt: DocumentTypeModel): Observable<DocumentTypeModel> {
+    return this._api.PostQuery(`${this._urlA}`, dt).pipe(
       map((data: RespModel) => {
         return <DocumentTypeModel>data.data;
       })
     );
   }
 
-  edit(client: DocumentTypeModel): Observable<DocumentTypeModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlA}/${id}`, client).pipe(
+  edit(dt: DocumentTypeModel): Observable<DocumentTypeModel> {
+    let id = dt.id;
+    return this._api.PutQuery(`${this._urlA}/${id}`, dt).pipe(
       map((data: RespModel) => {
         return <DocumentTypeModel>data.data;
       })
