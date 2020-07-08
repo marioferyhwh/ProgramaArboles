@@ -11,8 +11,10 @@ export class FormCollectionComponent implements OnInit {
   @Input() public data: CollectionModel;
   @Output() public onData: EventEmitter<CollectionModel>;
   public forma: FormGroup;
+  public debug: boolean;
 
   constructor(private _fb: FormBuilder, private _router: Router) {
+    this.debug = false;
     this.onData = new EventEmitter();
     this.initForm();
   }

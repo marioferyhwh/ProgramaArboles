@@ -15,7 +15,7 @@ export class FormUserComponent implements OnInit {
   @Output() public onData: EventEmitter<UserModel>;
 
   public forma: FormGroup;
-  
+
   public documents: DocumentTypeModel[];
   public telds: TelDescriptionModel[];
 
@@ -56,6 +56,15 @@ export class FormUserComponent implements OnInit {
 
   dataForm() {
     if (this.data != null) {
+      if (this.data.actived == null) {
+        this.data.actived = false;
+      }
+      if (this.data.admin == null) {
+        this.data.admin = false;
+      }
+      if (this.data.change_password == null) {
+        this.data.change_password = false;
+      }
       this.forma.reset({ ...this.data });
     }
   }

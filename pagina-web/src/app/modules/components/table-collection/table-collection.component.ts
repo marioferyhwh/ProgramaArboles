@@ -13,6 +13,8 @@ export class TableCollectionComponent implements OnInit {
   @Input() data: CollectionModel[];
   @Input() edit: boolean;
   @Output() onReload: EventEmitter<string>;
+  public debug: boolean;
+
   constructor(
     private _router: Router,
     private _collectionService: CollectionService

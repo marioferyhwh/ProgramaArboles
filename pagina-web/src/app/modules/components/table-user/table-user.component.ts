@@ -9,6 +9,8 @@ import { Router } from "@angular/router";
 })
 export class TableUserComponent implements OnInit {
   @Input() data: UserModel[];
+  public debug: boolean;
+
   constructor(private _router: Router) {}
 
   ngOnInit(): void {}

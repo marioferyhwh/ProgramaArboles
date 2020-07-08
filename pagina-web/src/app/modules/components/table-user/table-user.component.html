@@ -21,6 +21,6 @@
         </tr>
     </tbody>
 </table>
-<pre>
-  {{data|json}}
-</pre>
+<pre *ngIf="debug">
+      {{data | json}}
+    </pre>
