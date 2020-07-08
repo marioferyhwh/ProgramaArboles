@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 export class FormCollectionComponent implements OnInit {
   @Input() public data: CollectionModel;
   @Output() public onData: EventEmitter<CollectionModel>;
+
   public forma: FormGroup;
   public debug: boolean;
 
@@ -46,10 +47,6 @@ export class FormCollectionComponent implements OnInit {
     this.onData.emit(this.data);
   }
 
-  cancel() {
-    this._router.navigate(["/cobro"]);
-  }
-
   initForm() {
     this.forma = this._fb.group({
       id: [0],
@@ -57,6 +54,10 @@ export class FormCollectionComponent implements OnInit {
       actived: ["", Validators.required],
       balance_total: ["", [Validators.required, Validators.min(0)]],
     });
+  }
+
+  cancel() {
+    this._router.navigate(["/cobro"]);
   }
 
   InvalidField(Field: string): boolean {

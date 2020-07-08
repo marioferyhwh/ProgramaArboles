@@ -58,6 +58,9 @@ import { UserLevelListComponent } from "./modules/user/user-level-list/user-leve
 import { UserCollectionListComponent } from "./modules/user/user-collection-list/user-collection-list.component";
 import { UserCollectionNewComponent } from "./modules/user/user-collection-new/user-collection-new.component";
 import { UserCollectionEditComponent } from "./modules/user/user-collection-edit/user-collection-edit.component";
+import { DocumentTypeNewComponent } from './modules/document-type/document-type-new/document-type-new.component';
+import { DocumentTypeListComponent } from './modules/document-type/document-type-list/document-type-list.component';
+import { DocumentTypeEditComponent } from './modules/document-type/document-type-edit/document-type-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,6 +107,9 @@ import { UserCollectionEditComponent } from "./modules/user/user-collection-edit
     UserCollectionListComponent,
     UserCollectionNewComponent,
     UserCollectionEditComponent,
+    DocumentTypeNewComponent,
+    DocumentTypeListComponent,
+    DocumentTypeEditComponent,
   ],
   imports: [
     BrowserModule,

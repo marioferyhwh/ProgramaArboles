@@ -5,6 +5,7 @@ import { GlobalService } from "src/app/services/global.service";
 import { ValidatorsService } from "src/app/services/validators.service";
 import { DocumentTypeModel } from "src/app/shared/models/document-type.model";
 import { TelDescriptionModel } from "src/app/shared/models/tel-description.model";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-form-user",
   templateUrl: "./form-user.component.html",
@@ -22,7 +23,8 @@ export class FormUserComponent implements OnInit {
   constructor(
     private _fb: FormBuilder,
     private _globalService: GlobalService,
-    private _validator: ValidatorsService
+    private _validator: ValidatorsService,
+    private _router: Router
   ) {
     this.onData = new EventEmitter();
     this.initForm();
@@ -130,6 +132,14 @@ export class FormUserComponent implements OnInit {
         ),
       }
     );
+  }
+
+  cancel() {
+    this._router.navigate(["/cobro"]);
+  }
+
+  InvalidField(Field: string): boolean {
+    return this.forma.get(Field).invalid && this.forma.get(Field).touched;
   }
 
   get activedInvalid(): boolean {

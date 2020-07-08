@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DocumentTypeModel } from "src/app/shared/models/document-type.model";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-form-documents",
@@ -10,9 +11,12 @@ import { DocumentTypeModel } from "src/app/shared/models/document-type.model";
 export class FormDocumentsComponent implements OnInit {
   @Input() public data: DocumentTypeModel;
   @Output() public onData: EventEmitter<DocumentTypeModel>;
-  public forma: FormGroup;
 
-  constructor(private _fb: FormBuilder) {
+  public forma: FormGroup;
+  public debug: boolean;
+
+  constructor(private _fb: FormBuilder, private _router: Router) {
+    this.debug = false;
     this.onData = new EventEmitter();
     this.initForm();
   }
@@ -41,6 +45,22 @@ export class FormDocumentsComponent implements OnInit {
   initForm() {
     this.forma = this._fb.group({
       id: [],
+      description: ["", Validators.required],
+      name_short: ["", Validators.required],
     });
+  }
+
+  cancel() {
+    this._router.navigate(["/documento"]);
+  }
+
+  InvalidField(Field: string): boolean {
+    return this.forma.get(Field).invalid && this.forma.get(Field).touched;
+  }
+  get descriptionInvalid(): boolean {
+    return this.InvalidField("description");
+  }
+  get name_shortInvalid(): boolean {
+    return this.InvalidField("name_short");
   }
 }

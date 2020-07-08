@@ -7,6 +7,7 @@ import { LoanStateModel } from "src/app/shared/models/loan-state.model";
 import { TelDescriptionModel } from "src/app/shared/models/tel-description.model";
 import { BusinessTypeModel } from "src/app/shared/models/business-type.model";
 import { ValidatorsService } from "src/app/services/validators.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-form-client",
@@ -18,7 +19,7 @@ export class FormClienteComponent implements OnInit {
   @Output() public onData: EventEmitter<ClientModel>;
 
   public forma: FormGroup;
-  
+
   public documents: DocumentTypeModel[];
   public loan_states: LoanStateModel[];
   public businesstype: BusinessTypeModel[];
@@ -27,7 +28,8 @@ export class FormClienteComponent implements OnInit {
   constructor(
     private _globalService: GlobalService,
     private _fb: FormBuilder,
-    private _validators: ValidatorsService
+    private _validators: ValidatorsService,
+    private _router: Router
   ) {
     this.initForm();
     this.onData = new EventEmitter();
@@ -83,6 +85,10 @@ export class FormClienteComponent implements OnInit {
       id_collection: [0],
       id_user: [0],
     });
+  }
+
+  cancel() {
+    this._router.navigate(["/cliente"]);
   }
 
   addTel() {

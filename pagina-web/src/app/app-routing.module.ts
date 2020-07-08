@@ -43,6 +43,9 @@ import { UserLevelEditComponent } from "./modules/user/user-level-edit/user-leve
 import { UserCollectionNewComponent } from "./modules/user/user-collection-new/user-collection-new.component";
 import { UserCollectionEditComponent } from "./modules/user/user-collection-edit/user-collection-edit.component";
 import { UserCollectionListComponent } from "./modules/user/user-collection-list/user-collection-list.component";
+import { DocumentTypeListComponent } from "./modules/document-type/document-type-list/document-type-list.component";
+import { DocumentTypeNewComponent } from "./modules/document-type/document-type-new/document-type-new.component";
+import { DocumentTypeEditComponent } from "./modules/document-type/document-type-edit/document-type-edit.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -119,12 +122,12 @@ const routes: Routes = [
         component: LoanLoanPaymentEditComponent,
       },
 
-      { path: "prestamo/estados", component: LoanLoanStateListComponent },
-      { path: "prestamo/estados/lista", redirectTo: "prestamo/estados" },
-      { path: "prestamo/estados/nuevo", component: LoanLoanStateNewComponent },
-      { path: "prestamo/estados/:id", component: LoanLoanStateEditComponent },
+      { path: "prestamo/estado", component: LoanLoanStateListComponent },
+      { path: "prestamo/estado/lista", redirectTo: "prestamo/estado" },
+      { path: "prestamo/estado/nuevo", component: LoanLoanStateNewComponent },
+      { path: "prestamo/estado/:id", component: LoanLoanStateEditComponent },
       {
-        path: "prestamo/estados/:id/editar",
+        path: "prestamo/estado/:id/editar",
         component: LoanLoanStateEditComponent,
       },
 
@@ -154,6 +157,12 @@ const routes: Routes = [
       { path: "usuario/nuevo", component: UserNewComponent },
       { path: "usuario/:id", component: UserEditComponent },
       { path: "usuario/:id/editar", component: UserEditComponent },
+
+      { path: "documento", component: DocumentTypeListComponent },
+      { path: "documento/lista", redirectTo: "documento" },
+      { path: "documento/nuevo", component: DocumentTypeNewComponent },
+      { path: "documento/:id", component: DocumentTypeEditComponent },
+      { path: "documento/:id/editar", component: DocumentTypeEditComponent },
 
       { path: "**", pathMatch: "full", redirectTo: "not-found" },
     ],
