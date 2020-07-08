@@ -1,2 +1,3 @@
 <h1>lista de cobros</h1>
-<app-table-collection [data]="collections"></app-table-collection>
+<app-table-collection [data]="collections" [edit]="true" (onReload)="getData()"></app-table-collection>
+<app-button-new class="d-block" [routerLink]="['nuevo']"></app-button-new>

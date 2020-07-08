@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { CollectionModel } from "src/app/shared/models/collection.model";
 import { CollectionService } from "src/app/services/collection.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-collection-edit",
@@ -13,20 +14,58 @@ export class CollectionEditComponent implements OnInit {
 
   constructor(
     private _collectionService: CollectionService,
-    private _activedRoute: ActivatedRoute
+    private _activedRoute: ActivatedRoute,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
     this._activedRoute.params.subscribe((params) => {
       this._collectionService.get(params["id"]).subscribe(
         (res) => {
           this.collection = res;
-          console.log(res);
+          //console.log(res);
         },
         (err) => {
-          console.log(err);
+          const toast2 = Swal.mixin({
+            title: "cobro no encontredo",
+            text: "",
+            icon: "info",
+          });
+          toast2.fire();
+          //console.log({ err });
+          this._router.navigate(["/cobro", "lista"]);
         }
       );
     });
+  }
+
+  onUpdate(c: CollectionModel) {
+    console.log({ c });
+    const toast = Swal.mixin({
+      allowOutsideClick: false,
+      text: "espere por favor",
+      icon: "info",
+    });
+    toast.fire();
+    toast.showLoading();
+    this._collectionService.edit(c).subscribe(
+      (resp) => {
+        toast.close();
+        const toast2 = Swal.mixin({
+          title: "cobro editado",
+          text: "",
+          icon: "success",
+        });
+        toast2.fire();
+        this._router.navigate(["/cobro", "lista"]);
+      },
+      (err) => {
+        console.log({ err });
+      }
+    );
   }
 }

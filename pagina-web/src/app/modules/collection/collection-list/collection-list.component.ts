@@ -13,6 +13,10 @@ export class CollectionListComponent implements OnInit {
   constructor(private _collectionService: CollectionService) {}
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
     this._collectionService.getList(1).subscribe(
       (res) => {
         this.collections = res;
@@ -23,4 +27,5 @@ export class CollectionListComponent implements OnInit {
       }
     );
   }
+  onNew() {}
 }

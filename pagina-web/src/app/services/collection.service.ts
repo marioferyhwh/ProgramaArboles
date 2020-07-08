@@ -31,17 +31,17 @@ export class CollectionService {
     );
   }
 
-  create(client: CollectionModel): Observable<CollectionModel> {
-    return this._api.PostQuery(`${this._urlA}`, client).pipe(
+  create(collection: CollectionModel): Observable<CollectionModel> {
+    return this._api.PostQuery(`${this._urlA}`, collection).pipe(
       map((data: RespModel) => {
         return <CollectionModel>data.data;
       })
     );
   }
 
-  edit(client: CollectionModel): Observable<CollectionModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlA}/${id}`, client).pipe(
+  edit(collection: CollectionModel): Observable<CollectionModel> {
+    let id = collection.id;
+    return this._api.PutQuery(`${this._urlA}/${id}`, collection).pipe(
       map((data: RespModel) => {
         return <CollectionModel>data.data;
       })
@@ -72,17 +72,17 @@ export class CollectionService {
     );
   }
 
-  createCash(client: CollectionCashModel): Observable<CollectionCashModel> {
-    return this._api.PostQuery(`${this._urlB}`, client).pipe(
+  createCash(cash: CollectionCashModel): Observable<CollectionCashModel> {
+    return this._api.PostQuery(`${this._urlB}`, cash).pipe(
       map((data: RespModel) => {
         return <CollectionCashModel>data.data;
       })
     );
   }
 
-  editCash(client: CollectionCashModel): Observable<CollectionCashModel> {
-    let id = client.id;
-    return this._api.PutQuery(`${this._urlB}/${id}`, client).pipe(
+  editCash(cash: CollectionCashModel): Observable<CollectionCashModel> {
+    let id = cash.id;
+    return this._api.PutQuery(`${this._urlB}/${id}`, cash).pipe(
       map((data: RespModel) => {
         return <CollectionCashModel>data.data;
       })

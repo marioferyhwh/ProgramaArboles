@@ -135,6 +135,6 @@ export class ApiServerService {
       "Content-Type": "application/json",
       Authorization: aut,
     });
-    return this._http.get(`${this._url}${query}`, { headers: header });
+    return this._http.delete(`${this._url}${query}`, { headers: header });
   }
 }

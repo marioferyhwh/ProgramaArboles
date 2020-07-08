@@ -40,7 +40,7 @@ import { TableUserLevelComponent } from "./table-user-level/table-user-level.com
 import { ButtonDeleteComponent } from "./button-delete/button-delete.component";
 import { ButtonEditComponent } from "./button-edit/button-edit.component";
 import { ButtonNewComponent } from "./button-new/button-new.component";
-import { ButtonCreateEditComponent } from './button-create-edit/button-create-edit.component';
+import { ButtonCreateEditComponent } from "./button-create-edit/button-create-edit.component";
 
 const declarations = [
   HeaderComponent,
@@ -81,9 +81,10 @@ const declarations = [
   ButtonDeleteComponent,
   ButtonEditComponent,
   ButtonNewComponent,
+  ButtonCreateEditComponent,
 ];
 @NgModule({
-  declarations: [...declarations, ButtonCreateEditComponent],
+  declarations: [...declarations],
   imports: [CommonModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   exports: [...declarations],
 })

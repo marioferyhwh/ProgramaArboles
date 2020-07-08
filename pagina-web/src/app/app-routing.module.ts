@@ -53,27 +53,32 @@ const routes: Routes = [
     children: [
       { path: "not-found", component: NotFoundComponent },
 
-      { path: "negocio/lista", component: BusinessTypeListComponent },
+      { path: "negocio", component: BusinessTypeListComponent },
+      { path: "negocio/lista", redirectTo: "negocio" },
       { path: "negocio/nuevo", component: BusinessTypeNewComponent },
       { path: "negocio/:id", component: BusinessTypeEditComponent },
       { path: "negocio/editar/:id", component: BusinessTypeEditComponent },
 
-      { path: "cliente/lista", component: ClientListComponent },
+      { path: "cliente", component: ClientListComponent },
+      { path: "cliente/lista", redirectTo: "cliente" },
       { path: "cliente/nuevo", component: ClientNewComponent },
       { path: "cliente/:id", component: ClientEditComponent },
       { path: "cliente/editar/:id", component: ClientEditComponent },
 
-      { path: "sector/lista", component: ClienteLocationListComponent },
+      { path: "sector", component: ClienteLocationListComponent },
+      { path: "sector/lista", redirectTo: "sector" },
       { path: "sector/nuevo", component: ClienteLocationNewComponent },
       { path: "sector/:id", component: ClienteLocationEditComponent },
       { path: "sector/editar/:id", component: ClienteLocationEditComponent },
 
-      { path: "cobro/caja/lista", component: CollectionCashListComponent },
+      { path: "cobro/caja/", component: CollectionCashListComponent },
+      { path: "cobro/caja/lista", redirectTo: "cobro/caja/" },
       { path: "cobro/caja/nuevo", component: CollectionCashNewComponent },
       { path: "cobro/caja/:id", component: CollectionCashEditComponent },
       { path: "cobro/caja/:id/editar", component: CollectionCashEditComponent },
 
-      { path: "cobro/lista", component: CollectionListComponent },
+      { path: "cobro", component: CollectionListComponent },
+      { path: "cobro/lista", redirectTo: "cobro" },
       { path: "cobro/nuevo", component: CollectionNewComponent },
       { path: "cobro/:id", component: CollectionEditComponent },
       {
@@ -82,9 +87,10 @@ const routes: Routes = [
       },
 
       {
-        path: "gasto/descripcion/lista",
+        path: "gasto/descripcion",
         component: ExpenseDescriptionListComponent,
       },
+      { path: "gasto/descripcion/lista", redirectTo: "gasto/descripcion" },
       {
         path: "gasto/descripcion/nuevo",
         component: ExpenseDescriptionNewComponent,
@@ -98,12 +104,14 @@ const routes: Routes = [
         component: ExpenseDescriptionEditComponent,
       },
 
-      { path: "gasto/lista", component: ExpenseListComponent },
+      { path: "gasto", component: ExpenseListComponent },
+      { path: "gasto/lista", redirectTo: "gasto" },
       { path: "gasto/nuevo", component: ExpenseNewComponent },
       { path: "gasto/:id", component: ExpenseEditComponent },
       { path: "gasto/:id/editar", component: ExpenseEditComponent },
 
-      { path: "prestamo/pago/lista", component: LoanLoanPaymentListComponent },
+      { path: "prestamo/pago", component: LoanLoanPaymentListComponent },
+      { path: "prestamo/pago/lista", redirectTo: "prestamo/pago" },
       { path: "prestamo/pago/nuevo", component: LoanLoanPaymentNewComponent },
       { path: "prestamo/pago/:id", component: LoanLoanPaymentEditComponent },
       {
@@ -111,7 +119,8 @@ const routes: Routes = [
         component: LoanLoanPaymentEditComponent,
       },
 
-      { path: "prestamo/estados/lista", component: LoanLoanStateListComponent },
+      { path: "prestamo/estados", component: LoanLoanStateListComponent },
+      { path: "prestamo/estados/lista", redirectTo: "prestamo/estados" },
       { path: "prestamo/estados/nuevo", component: LoanLoanStateNewComponent },
       { path: "prestamo/estados/:id", component: LoanLoanStateEditComponent },
       {
@@ -119,12 +128,14 @@ const routes: Routes = [
         component: LoanLoanStateEditComponent,
       },
 
-      { path: "prestamo/lista", component: LoanListComponent },
+      { path: "prestamo", component: LoanListComponent },
+      { path: "prestamo/lista", redirectTo: "prestamo" },
       { path: "prestamo/nuevo", component: LoanNewComponent },
       { path: "prestamo/:id", component: LoanEditComponent },
       { path: "prestamo/:id/editar", component: LoanEditComponent },
 
-      { path: "usuario/cobro/lista", component: UserCollectionListComponent },
+      { path: "usuario/cobro", component: UserCollectionListComponent },
+      { path: "usuario/cobro/lista", redirectTo: "usuario/cobro" },
       { path: "usuario/cobro/nuevo", component: UserCollectionNewComponent },
       { path: "usuario/cobro/:id", component: UserCollectionEditComponent },
       {
@@ -132,12 +143,14 @@ const routes: Routes = [
         component: UserCollectionEditComponent,
       },
 
-      { path: "usuario/nivel/lista", component: UserLevelListComponent },
+      { path: "usuario/nivel", component: UserLevelListComponent },
+      { path: "usuario/nivel/lista", redirectTo: "usuario/nivel" },
       { path: "usuario/nivel/nuevo", component: UserLevelNewComponent },
       { path: "usuario/nivel/:id", component: UserCollectionEditComponent },
       { path: "usuario/nivel/:id/editar", component: UserLevelEditComponent },
 
-      { path: "usuario/lista", component: UserListComponent },
+      { path: "usuario", component: UserListComponent },
+      { path: "usuario/lista", redirectTo: "usuario" },
       { path: "usuario/nuevo", component: UserNewComponent },
       { path: "usuario/:id", component: UserEditComponent },
       { path: "usuario/:id/editar", component: UserEditComponent },

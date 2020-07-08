@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-button-create-edit",
@@ -8,17 +8,24 @@ import { Component, OnInit, Input } from "@angular/core";
 export class ButtonCreateEditComponent implements OnInit {
   @Input() private edit: boolean;
   @Input() private id: number;
-  public buttonText: string;
+  @Output() onCancel: EventEmitter<any>;
+
+  public editar: boolean;
 
   constructor() {
-    this.buttonText = "crear";
+    this.editar = false;
+    this.onCancel = new EventEmitter();
   }
 
   ngOnInit(): void {}
 
   ngOnChanges(): void {
     if (this.edit || (this.id && this.id > 0)) {
-      this.buttonText = "editar";
+      this.editar = true;
     }
+  }
+
+  cancel() {
+    this.onCancel.emit();
   }
 }

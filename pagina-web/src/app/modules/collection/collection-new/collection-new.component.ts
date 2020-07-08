@@ -41,7 +41,7 @@ export class CollectionNewComponent implements OnInit {
           icon: "success",
         });
         toast2.fire();
-        this._router.navigate(["/cobro", resp.id]);
+        this._router.navigate(["/cobro"]);
       },
       (err) => {
         const toast = Swal.mixin({

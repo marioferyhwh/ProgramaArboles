@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CollectionModel } from "src/app/shared/models/collection.model";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-form-collection",
   templateUrl: "./form-collection.component.html",
@@ -11,7 +12,7 @@ export class FormCollectionComponent implements OnInit {
   @Output() public onData: EventEmitter<CollectionModel>;
   public forma: FormGroup;
 
-  constructor(private _fb: FormBuilder) {
+  constructor(private _fb: FormBuilder, private _router: Router) {
     this.onData = new EventEmitter();
     this.initForm();
   }
@@ -38,6 +39,10 @@ export class FormCollectionComponent implements OnInit {
     }
     this.data = <CollectionModel>this.forma.value;
     this.onData.emit(this.data);
+  }
+
+  cancel() {
+    this._router.navigate(["/cobro"]);
   }
 
   initForm() {
