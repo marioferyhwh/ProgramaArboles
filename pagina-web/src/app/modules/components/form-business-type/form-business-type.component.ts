@@ -11,7 +11,7 @@ export class FormBusinessTypeComponent implements OnInit {
   @Input() public data: BusinessTypeModel;
   @Output() public onData: EventEmitter<BusinessTypeModel>;
   public forma: FormGroup;
-  public buttonText = "crear";
+  
 
   constructor(private _fb: FormBuilder) {
     this.onData = new EventEmitter();

@@ -11,7 +11,6 @@ export class FormExpenseDescriptionComponent implements OnInit {
   @Input() public data: ExpenseDescriptionModel;
   @Output() public onData: EventEmitter<ExpenseDescriptionModel>;
   public forma: FormGroup;
-  public buttonText = "crear";
 
   constructor(private _fb: FormBuilder) {
     this.onData = new EventEmitter();
@@ -27,9 +26,6 @@ export class FormExpenseDescriptionComponent implements OnInit {
   dataForm() {
     if (this.data != null) {
       this.forma.reset({ ...this.data });
-      if (this.data.id && this.data.id != 0) {
-        this.buttonText = "editar";
-      }
     }
   }
   onAction() {

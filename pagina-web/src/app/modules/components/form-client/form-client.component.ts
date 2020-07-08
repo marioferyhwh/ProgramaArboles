@@ -18,7 +18,7 @@ export class FormClienteComponent implements OnInit {
   @Output() public onData: EventEmitter<ClientModel>;
 
   public forma: FormGroup;
-  public buttonText = "crear";
+  
   public documents: DocumentTypeModel[];
   public loan_states: LoanStateModel[];
   public businesstype: BusinessTypeModel[];

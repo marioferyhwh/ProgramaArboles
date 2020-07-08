@@ -11,7 +11,7 @@ export class FormLoanStateComponent implements OnInit {
   @Input() public data: LoanStateModel;
   @Output() public onData: EventEmitter<LoanStateModel>;
   public forma: FormGroup;
-  public buttonText = "crear";
+  
 
   constructor(private _fb: FormBuilder) {
     this.onData = new EventEmitter();

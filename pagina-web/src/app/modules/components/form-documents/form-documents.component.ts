@@ -11,7 +11,6 @@ export class FormDocumentsComponent implements OnInit {
   @Input() public data: DocumentTypeModel;
   @Output() public onData: EventEmitter<DocumentTypeModel>;
   public forma: FormGroup;
-  public buttonText = "crear";
 
   constructor(private _fb: FormBuilder) {
     this.onData = new EventEmitter();
@@ -27,9 +26,6 @@ export class FormDocumentsComponent implements OnInit {
   dataForm() {
     if (this.data != null) {
       this.forma.reset({ ...this.data });
-      if (this.data.id && this.data.id != 0) {
-        this.buttonText = "editar";
-      }
     }
   }
   onAction() {

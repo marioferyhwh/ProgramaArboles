@@ -11,7 +11,7 @@ export class FormLoanPaymentComponent implements OnInit {
   @Input() public data: LoanPaymentModel;
   @Output() public onData: EventEmitter<LoanPaymentModel>;
   public forma: FormGroup;
-  public buttonText = "crear";
+  
 
   constructor(private _fb: FormBuilder) {
     this.onData = new EventEmitter();

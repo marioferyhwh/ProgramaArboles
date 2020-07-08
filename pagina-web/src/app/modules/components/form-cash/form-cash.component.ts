@@ -10,7 +10,7 @@ export class FormCashComponent implements OnInit {
   @Input() public data: CollectionCashModel;
   @Output() public onData: EventEmitter<CollectionCashModel>;
   public forma: FormGroup;
-  public buttonText = "crear";
+  
 
   constructor(private _fb: FormBuilder) {
     this.onData = new EventEmitter();
