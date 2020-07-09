@@ -13,6 +13,10 @@ export class ExpenseDescriptionListComponent implements OnInit {
   constructor(private _expenseService: ExpenseService) {}
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
     this._expenseService.getDescriptionList(1).subscribe(
       (res) => {
         this.expenseDescriptions = res;

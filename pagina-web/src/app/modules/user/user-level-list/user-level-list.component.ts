@@ -13,6 +13,10 @@ export class UserLevelListComponent implements OnInit {
   constructor(private _userService: UserService) {}
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
     this._userService.getLevelList(1).subscribe(
       (res) => {
         this.userLevels = res;

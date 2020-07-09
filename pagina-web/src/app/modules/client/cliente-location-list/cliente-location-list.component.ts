@@ -13,6 +13,10 @@ export class ClienteLocationListComponent implements OnInit {
   constructor(private _clientService: ClientService) {}
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
     this._clientService.getLocationList(1).subscribe(
       (res) => {
         this.locations = res;

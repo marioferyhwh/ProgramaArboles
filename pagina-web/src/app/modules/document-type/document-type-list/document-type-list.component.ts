@@ -13,6 +13,10 @@ export class DocumentTypeListComponent implements OnInit {
   constructor(private _documentTypeService: DocumentTypeService) {}
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
     this._documentTypeService.getList(1).subscribe(
       (res) => {
         this.documentType = res;

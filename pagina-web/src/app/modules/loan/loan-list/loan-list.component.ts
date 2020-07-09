@@ -13,6 +13,10 @@ export class LoanListComponent implements OnInit {
   constructor(private _loanService: LoanService) {}
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
     this._loanService.getList(1).subscribe(
       (res) => {
         this.loans = res;

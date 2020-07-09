@@ -1,3 +1,3 @@
 <h1>lista de movimentos</h1>
-<app-table-cash [data]="cashes"></app-table-cash>
+<app-table-cash [data]="cashes" [edit]="true" (onReload)="getData()"></app-table-cash>
 <app-button-new class="d-block" (click)="onNew()"></app-button-new>

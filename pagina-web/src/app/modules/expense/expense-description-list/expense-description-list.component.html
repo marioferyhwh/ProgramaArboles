@@ -1,3 +1,4 @@
 <h1>lista de descripcion de gastos</h1>
-<app-table-expense-description [data]="expenseDescriptions"></app-table-expense-description>
+<app-table-expense-description [data]="expenseDescriptions" [edit]="true" (onReload)="getData()">
+</app-table-expense-description>
 <app-button-new class="d-block" (click)="onNew()"></app-button-new>

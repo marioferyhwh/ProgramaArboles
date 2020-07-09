@@ -13,6 +13,10 @@ export class CollectionCashListComponent implements OnInit {
   constructor(private _collectionservice: CollectionService) {}
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
     this._collectionservice.getCashList(1).subscribe(
       (res) => {
         this.cashes = res;
