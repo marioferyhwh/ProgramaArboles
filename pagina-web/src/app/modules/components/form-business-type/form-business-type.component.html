@@ -1,12 +1,19 @@
 <app-loading *ngIf="!data"></app-loading>
 <form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label" for="type_business">Typo de negocio:</label>
+    <div class="form-group row" *ngIf="data.id">
+        <label class="col-4 col-form-label" for="id">ID:</label>
         <div class="col-8">
-            <input class="form-control" type="text" placeholder="nombre" formControlName="type_business" [class.is-invalid]="type_businessInvalid">
+            <input class="form-control" type="text" formControlName="id">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="type_business">Tipo de negocio:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="negocio" formControlName="type_business" [class.is-invalid]="type_businessInvalid">
             <span class="text-danger" *ngIf="type_businessInvalid">
-        nick name no valido
+        Tipo de negocio no valido
       </span>
         </div>
     </div>

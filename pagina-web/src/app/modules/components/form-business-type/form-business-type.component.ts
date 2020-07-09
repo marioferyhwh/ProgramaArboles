@@ -31,6 +31,7 @@ export class FormBusinessTypeComponent implements OnInit {
     if (this.data != null) {
       this.forma.reset({ ...this.data });
     }
+    this.forma.get("id").disable();
   }
   onAction() {
     console.log(this.forma);
@@ -40,7 +41,9 @@ export class FormBusinessTypeComponent implements OnInit {
       });
       return;
     }
-    this.onData.emit(this.data);
+    const d = <BusinessTypeModel>this.forma.value;
+    d.id = this.data.id;
+    this.onData.emit(d);
   }
 
   initForm() {

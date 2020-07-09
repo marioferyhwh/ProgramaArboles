@@ -16,7 +16,7 @@ export class FormUserComponent implements OnInit {
   @Output() public onData: EventEmitter<UserModel>;
 
   public forma: FormGroup;
-
+  public debug: boolean;
   public documents: DocumentTypeModel[];
   public telds: TelDescriptionModel[];
 
@@ -51,12 +51,16 @@ export class FormUserComponent implements OnInit {
       });
       return;
     }
-    this.data = this.forma.value;
-    console.log(this.data);
-    this.onData.emit(this.data);
+    const d = <UserModel>this.forma.value;
+    d.id = this.data.id;
+    if (d.password == null) {
+      delete d.password;
+    }
+    this.onData.emit(d);
   }
 
   dataForm() {
+    console.log(this.data);
     if (this.data != null) {
       if (this.data.actived == null) {
         this.data.actived = false;
@@ -67,8 +71,12 @@ export class FormUserComponent implements OnInit {
       if (this.data.change_password == null) {
         this.data.change_password = false;
       }
+      if (this.data.time_zone == null) {
+        this.data.time_zone = 0;
+      }
       this.forma.reset({ ...this.data });
     }
+    this.forma.get("id").disable();
   }
 
   listenerForm() {
@@ -143,56 +151,34 @@ export class FormUserComponent implements OnInit {
   }
 
   get activedInvalid(): boolean {
-    return (
-      this.forma.get("actived").invalid && this.forma.get("actived").touched
-    );
+    return this.InvalidField("actived");
   }
-
   get nick_nameInvalid(): boolean {
-    return (
-      this.forma.get("nick_name").invalid && this.forma.get("nick_name").touched
-    );
+    return this.InvalidField("nick_name");
   }
-
   get emailInvalid(): boolean {
-    return this.forma.get("email").invalid && this.forma.get("email").touched;
+    return this.InvalidField("email");
   }
-
   get documentInvalid(): boolean {
-    return (
-      this.forma.get("document").invalid && this.forma.get("document").touched
-    );
+    return this.InvalidField("document");
   }
-
   get document_codeInvalid(): boolean {
-    return (
-      this.forma.get("document_code").invalid &&
-      this.forma.get("document_code").touched
-    );
+    return this.InvalidField("document_code");
   }
   get nameInvalid(): boolean {
-    return this.forma.get("name").invalid && this.forma.get("name").touched;
+    return this.InvalidField("name");
   }
-
   get adminInvalid(): boolean {
-    return this.forma.get("admin").invalid && this.forma.get("admin").touched;
+    return this.InvalidField("admin");
   }
   get time_zoneInvalid(): boolean {
-    return (
-      this.forma.get("time_zone").invalid && this.forma.get("time_zone").touched
-    );
+    return this.InvalidField("time_zone");
   }
-
   get change_passwordInvalid(): boolean {
-    return (
-      this.forma.get("change_password").invalid &&
-      this.forma.get("change_password").touched
-    );
+    return this.InvalidField("change_password");
   }
   get passwordInvalid(): boolean {
-    return (
-      this.forma.get("password").invalid && this.forma.get("password").touched
-    );
+    return this.InvalidField("password");
   }
   get confirm_passwordInvalid(): boolean {
     return !(

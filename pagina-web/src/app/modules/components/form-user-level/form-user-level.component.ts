@@ -29,7 +29,9 @@ export class FormUserLevelComponent implements OnInit {
     if (this.data != null) {
       this.forma.reset({ ...this.data });
     }
+    this.forma.get("id").disable();
   }
+
   onAction() {
     console.log(this.forma);
     if (this.forma.invalid) {
@@ -38,7 +40,9 @@ export class FormUserLevelComponent implements OnInit {
       });
       return;
     }
-    this.onData.emit(this.data);
+    const d = <UserLevelModel>this.forma.value;
+    d.id = this.data.id;
+    this.onData.emit(d);
   }
   initForm() {
     this.forma = this._fb.group({

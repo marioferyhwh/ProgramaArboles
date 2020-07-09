@@ -37,7 +37,7 @@ export class CollectionEditComponent implements OnInit {
           });
           toast2.fire();
           //console.log({ err });
-          this._router.navigate(["/cobro", "lista"]);
+          this._router.navigate(["/cobro"]);
         }
       );
     });

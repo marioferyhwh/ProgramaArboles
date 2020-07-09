@@ -38,6 +38,7 @@ export class FormLoanComponent implements OnInit {
     if (this.data != null) {
       this.forma.reset({ ...this.data });
     }
+    this.forma.get("id").disable();
     this.forma.get("balance").disable();
     this.forma.get("id_client").disable();
     this.forma.get("id_collection").disable();
@@ -52,7 +53,9 @@ export class FormLoanComponent implements OnInit {
     }
 
     console.log(this.forma);
-    this.onData.emit(this.data);
+    const d = <LoanModel>this.forma.value;
+    d.id = this.data.id;
+    this.onData.emit(d);
   }
 
   initForm() {

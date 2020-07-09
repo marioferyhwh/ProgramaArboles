@@ -1,21 +1,28 @@
 <app-loading *ngIf="!data"></app-loading>
 <form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
 
+    <div class="form-group row" *ngIf="data.id">
+        <label class="col-4 col-form-label" for="id">ID:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="nombre" formControlName="id">
+        </div>
+    </div>
+
     <div class="form-group row">
         <label class="col-4 col-form-label" for="id_collection">Cobro:</label>
         <div class="col-8">
             <input class="form-control" type="text" placeholder="nombre" formControlName="id_collection" [class.is-invalid]="id_collectionInvalid">
             <span class="text-danger" *ngIf="id_collectionInvalid">
-        nick name no valido
+        cobro no valido
       </span>
         </div>
     </div>
-    <div class="form-group row">
-        <label class="col-4 col-form-label" for="id_user">Usuario:</label>
+    <div class="form-group row" *ngIf="data.id">
+        <label class="col-4 col-form-label" for="id_user">Registrado por:</label>
         <div class="col-8">
             <input class="form-control" type="text" placeholder="nombre" formControlName="id_user" [class.is-invalid]="id_userInvalid">
             <span class="text-danger" *ngIf="id_userInvalid">
-        nick name no valido
+        usuario no valido
       </span>
         </div>
     </div>
@@ -25,7 +32,7 @@
         <div class="col-8">
             <input class="form-control" type="text" placeholder="nombre" formControlName="id_loan" [class.is-invalid]="id_loanInvalid">
             <span class="text-danger" *ngIf="id_loanInvalid">
-        nick name no valido
+        prestamo no valido
       </span>
         </div>
     </div>
@@ -35,7 +42,7 @@
         <div class="col-8">
             <input class="form-control" type="text" placeholder="nombre" formControlName="money" [class.is-invalid]="moneyInvalid">
             <span class="text-danger" *ngIf="moneyInvalid">
-        nick name no valido
+        valor no valido
       </span>
         </div>
     </div>

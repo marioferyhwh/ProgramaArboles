@@ -1,7 +1,15 @@
 <app-loading *ngIf="!data"></app-loading>
 <form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
+
+    <div class="form-group row" *ngIf="data.id">
+        <label class="col-4 col-form-label" for="id">ID:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="nombre" formControlName="id">
+        </div>
+    </div>
+
     <div class="form-group row">
-        <label class="col-2 col-form-label" for="actived">activo:</label>
+        <label class="col-2 col-form-label" for="actived">Activo:</label>
         <div class="col-7">
             <input class="form-control" type="checkbox" formControlName="actived" [class.is-invalid]="activedInvalid">
             <span class="text-danger" *ngIf="activedInvalid">
@@ -13,19 +21,19 @@
     <div class="form-group row">
         <label class="col-4 col-form-label" for="description">Name cobro:</label>
         <div class="col-8">
-            <input class="form-control" type="text" placeholder="nombre" formControlName="description" [class.is-invalid]="descriptionInvalid">
+            <input class="form-control" type="text" placeholder="descripcion" formControlName="description" [class.is-invalid]="descriptionInvalid">
             <span class="text-danger" *ngIf="descriptionInvalid">
-        nick name no valido
+        descripcion no valido
       </span>
         </div>
     </div>
 
     <div class="form-group row">
-        <label class="col-4 col-form-label" for="balance_total">saldo:</label>
+        <label class="col-4 col-form-label" for="balance_total">Saldo:</label>
         <div class="col-8">
             <input class="form-control" type="number" placeholder="0" formControlName="balance_total" [class.is-invalid]="balance_totalInvalid">
             <span class="text-danger" *ngIf="balance_totalInvalid">
-        usuario no valido
+        saldo no valido
       </span>
         </div>
     </div>

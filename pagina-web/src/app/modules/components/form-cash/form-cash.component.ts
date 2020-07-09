@@ -30,6 +30,7 @@ export class FormCashComponent implements OnInit {
     if (this.data != null) {
       this.forma.reset({ ...this.data });
     }
+    this.forma.get("id").disable();
     this.forma.get("id_collection").disable();
   }
   onAction() {
@@ -40,7 +41,9 @@ export class FormCashComponent implements OnInit {
       });
       return;
     }
-    this.onData.emit(this.data);
+    const d = <CollectionCashModel>this.forma.value;
+    d.id = this.data.id;
+    this.onData.emit(d);
   }
   initForm() {
     this.forma = this._fb.group({

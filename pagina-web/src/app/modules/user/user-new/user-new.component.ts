@@ -39,7 +39,7 @@ export class UserNewComponent implements OnInit {
         });
         toast2.fire();
         console.log(resp);
-        this._router.navigate(["/user", resp.id]);
+        this._router.navigate(["/usuario"]);
       },
       (err) => {
         const toast = Swal.mixin({

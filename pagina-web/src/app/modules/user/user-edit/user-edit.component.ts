@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/services/user.service";
 import { UserModel } from "src/app/shared/models/user.model";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-user-edit",
@@ -13,7 +14,8 @@ export class UserEditComponent implements OnInit {
 
   constructor(
     private _userService: UserService,
-    private _activedRoute: ActivatedRoute
+    private _activedRoute: ActivatedRoute,
+    private _router: Router
   ) {}
 
   ngOnInit(): void {
@@ -24,9 +26,53 @@ export class UserEditComponent implements OnInit {
           console.log(res);
         },
         (err) => {
-          console.log(err);
+          const toast2 = Swal.mixin({
+            title: "usuario no encontredo",
+            text: "",
+            icon: "info",
+          });
+          toast2.fire();
+          //console.log({ err });
+          this.rederic();
         }
       );
     });
+  }
+
+  onUpdate(u: UserModel) {
+    //console.log({ u });
+    const toast = Swal.mixin({
+      allowOutsideClick: false,
+      text: "espere por favor",
+      icon: "info",
+    });
+    toast.fire();
+    toast.showLoading();
+    this._userService.edit(u).subscribe(
+      (resp) => {
+        toast.close();
+        const toast2 = Swal.mixin({
+          title: "Usuario editado",
+          text: "",
+          icon: "success",
+        });
+        toast2.fire();
+        this.rederic();
+      },
+      (err) => {
+        toast.close();
+        const toast2 = Swal.mixin({
+          title: "error",
+          text: err.error.message,
+          icon: "error",
+        });
+        toast2.fire();
+        console.log({ err });
+      }
+    );
+  }
+
+  rederic() {
+    this._router.navigate(["/usuario"]);
   }
 }

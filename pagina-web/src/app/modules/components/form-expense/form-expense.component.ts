@@ -32,6 +32,7 @@ export class FormExpenseComponent implements OnInit {
     if (this.data != null) {
       this.forma.reset({ ...this.data });
     }
+    this.forma.get("id").disable();
     this.forma.get("id_user").disable();
     this.forma.get("id_collection").disable();
   }
@@ -43,7 +44,9 @@ export class FormExpenseComponent implements OnInit {
       });
       return;
     }
-    this.onData.emit(this.data);
+    const d = <ExpenseModel>this.forma.value;
+    d.id = this.data.id;
+    this.onData.emit(d);
   }
   initForm() {
     this.forma = this._fb.group({

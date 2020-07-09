@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CollectionModel } from "src/app/shared/models/collection.model";
 import { Router } from "@angular/router";
+import { constants } from "buffer";
 @Component({
   selector: "app-form-collection",
   templateUrl: "./form-collection.component.html",
@@ -33,6 +34,7 @@ export class FormCollectionComponent implements OnInit {
       }
       this.forma.reset({ ...this.data });
     }
+    this.forma.get("id").disable();
     this.forma.controls["balance_total"].disable();
   }
 
@@ -43,14 +45,15 @@ export class FormCollectionComponent implements OnInit {
       });
       return;
     }
-    this.data = <CollectionModel>this.forma.value;
-    this.onData.emit(this.data);
+    const d = <CollectionModel>this.forma.value;
+    d.id = this.data.id;
+    this.onData.emit(d);
   }
 
   initForm() {
     this.forma = this._fb.group({
       id: [0],
-      description: [""],
+      description: ["", Validators.required],
       actived: ["", Validators.required],
       balance_total: ["", [Validators.required, Validators.min(0)]],
     });

@@ -1,20 +1,27 @@
 <app-loading *ngIf="!data"></app-loading>
 <form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
 
+    <div class="form-group row" *ngIf="data.id">
+        <label class="col-4 col-form-label" for="id">ID:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="nombre" formControlName="id">
+        </div>
+    </div>
+
     <div class="form-group row">
         <label class="col-4 col-form-label" for="id_collection">Cobro:</label>
         <div class="col-8">
-            <input class="form-control" type="text" placeholder="nombre" formControlName="id_collection" [class.is-invalid]="id_collectionInvalid">
+            <input class="form-control" type="text" placeholder="cobro" formControlName="id_collection" [class.is-invalid]="id_collectionInvalid">
             <span class="text-danger" *ngIf="id_collectionInvalid">
         cobro no valido
       </span>
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group row" *ngIf="data.id">
         <label class="col-4 col-form-label" for="id_user">Usuario:</label>
         <div class="col-8">
-            <input class="form-control" type="text" placeholder="nombre" formControlName="id_user" [class.is-invalid]="id_userInvalid">
+            <input class="form-control" type="text" placeholder="usario" formControlName="id_user" [class.is-invalid]="id_userInvalid">
             <span class="text-danger" *ngIf="id_userInvalid">
         usuario no valido
       </span>

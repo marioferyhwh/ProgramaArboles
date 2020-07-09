@@ -51,7 +51,9 @@ export class FormClienteComponent implements OnInit {
     }
     console.log(this.data);
     console.log(this.forma.value);
-    this.onData.emit(this.data);
+    const d = <ClientModel>this.forma.value;
+    d.id = this.data.id;
+    this.onData.emit(d);
   }
 
   initForm() {
@@ -164,5 +166,6 @@ export class FormClienteComponent implements OnInit {
       // this.forma.setValue(this.client);
       this.forma.reset({ ...this.data });
     }
+    this.forma.get("id").disable();
   }
 }

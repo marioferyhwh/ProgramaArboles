@@ -31,6 +31,7 @@ export class FormLoanPaymentComponent implements OnInit {
     if (this.data != null) {
       this.forma.reset({ ...this.data });
     }
+    this.forma.get("id").disable();
     this.forma.get("id_loan").disable;
     this.forma.get("id_user").disable;
     this.forma.get("id_collection").disable;
@@ -43,7 +44,9 @@ export class FormLoanPaymentComponent implements OnInit {
       });
       return;
     }
-    this.onData.emit(this.data);
+    const d = <LoanPaymentModel>this.forma.value;
+    d.id = this.data.id;
+    this.onData.emit(d);
   }
 
   initForm() {

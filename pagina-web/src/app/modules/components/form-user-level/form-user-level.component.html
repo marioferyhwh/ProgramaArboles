@@ -1,12 +1,19 @@
 <app-loading *ngIf="!data"></app-loading>
 <form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
 
+    <div class="form-group row" *ngIf="data.id">
+        <label class="col-4 col-form-label" for="id">ID:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="nombre" formControlName="id">
+        </div>
+    </div>
+
     <div class="form-group row">
         <label class="col-4 col-form-label" for="level">Nivel:</label>
         <div class="col-8">
             <input class="form-control" type="text" placeholder="nombre" formControlName="level" [class.is-invalid]="levelInvalid">
             <span class="text-danger" *ngIf="levelInvalid">
-        usuario no valido
+        nivel no valido
       </span>
         </div>
     </div>
