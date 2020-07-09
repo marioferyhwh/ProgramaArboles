@@ -20,7 +20,7 @@ export class UserEditComponent implements OnInit {
   ngOnInit(): void {
     this._activedRoute.params.subscribe((params) => {
       this._userService.get(params["id"]).subscribe(
-        (res) => {
+        (res: UserModel) => {
           this.user = res;
           console.log(res);
         },

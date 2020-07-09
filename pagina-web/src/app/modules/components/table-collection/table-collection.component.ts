@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Router } from "@angular/router";
 import { CollectionModel } from "src/app/shared/models/collection.model";
 import { CollectionService } from "src/app/services/collection.service";
 import Swal from "sweetalert2";
@@ -15,10 +14,7 @@ export class TableCollectionComponent implements OnInit {
   @Output() onReload: EventEmitter<string>;
   public debug: boolean;
 
-  constructor(
-    private _router: Router,
-    private _collectionService: CollectionService
-  ) {
+  constructor(private _collectionService: CollectionService) {
     this.edit = false;
     this.onReload = new EventEmitter();
   }

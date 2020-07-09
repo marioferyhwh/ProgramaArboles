@@ -21,11 +21,14 @@ export class FormUserLevelComponent implements OnInit {
     this.initForm();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngOnChanges() {
     this.dataForm();
   }
 
   dataForm() {
+    console.log(this.data);
     if (this.data != null) {
       this.forma.reset({ ...this.data });
     }

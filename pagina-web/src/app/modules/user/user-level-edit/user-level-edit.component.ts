@@ -24,9 +24,9 @@ export class UserLevelEditComponent implements OnInit {
   getData() {
     this._activedRoute.params.subscribe((params) => {
       this._userService.getLevel(params["id"]).subscribe(
-        (res) => {
+        (res: UserLevelModel) => {
           this.userLevel = res;
-          //console.log(res);
+          console.log(res);
         },
         (err) => {
           const toast2 = Swal.mixin({
