@@ -1,2 +1,2 @@
 <h1>nuevo pago de prestamo</h1>
-<app-form-loan-payment [data]="loanPayment"></app-form-loan-payment>
+<app-form-loan-payment [data]="loanPayment" (onData)="onCreate($event)"></app-form-loan-payment>

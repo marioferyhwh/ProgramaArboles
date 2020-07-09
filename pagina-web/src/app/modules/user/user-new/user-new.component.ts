@@ -12,7 +12,7 @@ import { UserService } from "src/app/services/user.service";
 })
 export class UserNewComponent implements OnInit {
   public user: UserModel;
-  constructor(private _userService: UserService, private _router: Router) {
+  constructor(private _userService: UserService) {
     this.user = new UserModel();
     this.user.actived = true;
     this.user.change_password = true;
@@ -20,7 +20,7 @@ export class UserNewComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  onCreateUser(u: UserModel) {
+  onCreate(u: UserModel) {
     console.log(u);
     const toast = Swal.mixin({
       allowOutsideClick: false,
@@ -39,7 +39,7 @@ export class UserNewComponent implements OnInit {
         });
         toast2.fire();
         console.log(resp);
-        this._router.navigate(["/usuario"]);
+        this._userService.routeList();
       },
       (err) => {
         const toast = Swal.mixin({

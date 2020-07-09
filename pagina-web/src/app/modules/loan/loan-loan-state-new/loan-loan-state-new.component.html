@@ -1,2 +1,2 @@
 <h1>nuevo estado de prestamo</h1>
-<app-form-loan-state [data]="loanState"></app-form-loan-state>
+<app-form-loan-state [data]="loanState" (onData)="onCreate($event)"></app-form-loan-state>

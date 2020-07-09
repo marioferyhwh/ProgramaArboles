@@ -17,7 +17,7 @@ export class BusinessTypeNewComponent implements OnInit {
     this.businessType = new BusinessTypeModel("");
   }
 
-  onCreate(data) {
+  onCreate(data: BusinessTypeModel) {
     const toast = Swal.mixin({
       allowOutsideClick: false,
       text: "espere por favor",

@@ -1,2 +1,2 @@
 <h1>Nuevo Cliente</h1>
-<app-form-client [data]="client"></app-form-client>
+<app-form-client [data]="client" (onData)="onCreate($event)"></app-form-client>

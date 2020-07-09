@@ -1,2 +1,2 @@
 <h1>Nuevo Tipo De documento</h1>
-<app-form-documents [data]="documentType"></app-form-documents>
+<app-form-documents [data]="documentType" (onData)="onCreate($event)"></app-form-documents>

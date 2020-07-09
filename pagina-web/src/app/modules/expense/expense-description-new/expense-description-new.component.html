@@ -1,2 +1,2 @@
 <h1>nuevo descripcion de gasto</h1>
-<app-form-expense-description [data]="expenseDescription"></app-form-expense-description>
+<app-form-expense-description [data]="expenseDescription" (onData)="onCreate($event)"></app-form-expense-description>
