@@ -8,6 +8,7 @@ import { GlobalService } from "./global.service";
 import { TelModel } from "../shared/models/tel.model";
 import { UserLevelModel } from "../shared/models/user-level.model";
 import { UserCollectionModel } from "../shared/models/user-collection.model";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -18,7 +19,11 @@ export class UserService {
   private _urlC: String = "userlevel";
   private _urlD: String = "usercollection";
 
-  constructor(private _api: ApiServerService, private _global: GlobalService) {
+  constructor(
+    private _api: ApiServerService,
+    private _global: GlobalService,
+    private _router: Router
+  ) {
     console.log("inicia servicio Usuario");
   }
 
@@ -204,5 +209,45 @@ export class UserService {
         return <UserCollectionModel>data.data;
       })
     );
+  }
+
+  routeLogin() {
+    this._router.navigate(["/login"]);
+  }
+  routeList() {
+    this._router.navigate(["/usuario"]);
+  }
+  routeNew() {
+    this._router.navigate(["/usuario", "nuevo"]);
+  }
+  routeEdit(id: number) {
+    this._router.navigate(["/usuario", id, "editar"]);
+  }
+  routeSee(id: number) {
+    this._router.navigate(["/usuario", id]);
+  }
+  routeListLevel() {
+    this._router.navigate(["/usuario", "nivel"]);
+  }
+  routeNewLevel() {
+    this._router.navigate(["/usuario", "nivel", "nuevo"]);
+  }
+  routeEditLevel(id: number) {
+    this._router.navigate(["/usuario", "nivel", id, "editar"]);
+  }
+  routeSeeLevel(id: number) {
+    this._router.navigate(["/usuario", "nivel", id]);
+  }
+  routeListcollection() {
+    this._router.navigate(["/usuario", "cobro"]);
+  }
+  routeNewcollection() {
+    this._router.navigate(["/usuario", "cobro", "nuevo"]);
+  }
+  routeEditcollection(id: number) {
+    this._router.navigate(["/usuario", "cobro", id, "editar"]);
+  }
+  routeSeecollection(id: number) {
+    this._router.navigate(["/usuario", "cobro", id]);
   }
 }

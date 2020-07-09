@@ -4,6 +4,7 @@ import { map } from "rxjs/operators";
 import { Observable } from "rxjs";
 import { RespModel } from "../shared/models/resp.model";
 import { DocumentTypeModel } from "../shared/models/document-type.model";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -11,7 +12,7 @@ import { DocumentTypeModel } from "../shared/models/document-type.model";
 export class DocumentTypeService {
   private _urlA: String = "document";
 
-  constructor(private _api: ApiServerService) {}
+  constructor(private _api: ApiServerService, private _router: Router) {}
 
   getList(c: number): Observable<DocumentTypeModel[]> {
     return this._api.GetQuery(`${this._urlA}/list/${c}`).pipe(
@@ -52,5 +53,18 @@ export class DocumentTypeService {
         return <DocumentTypeModel>data.data;
       })
     );
+  }
+
+  routeList() {
+    this._router.navigate(["/documento"]);
+  }
+  routeNew() {
+    this._router.navigate(["/documento", "nuevo"]);
+  }
+  routeEdit(id: number) {
+    this._router.navigate(["/documento", id, "editar"]);
+  }
+  routeSee(id: number) {
+    this._router.navigate(["/documento", id]);
   }
 }

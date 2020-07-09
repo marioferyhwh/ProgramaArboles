@@ -13,6 +13,10 @@ export class BusinessTypeListComponent implements OnInit {
   constructor(private _businessTypeService: BusinessTypeService) {}
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
     this._businessTypeService.getList(1).subscribe(
       (res) => {
         this.businessTypes = res;
@@ -22,5 +26,9 @@ export class BusinessTypeListComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  onNew() {
+    this._businessTypeService.routeNew();
   }
 }

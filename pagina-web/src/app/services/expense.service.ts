@@ -5,6 +5,7 @@ import { ExpenseModel } from "../shared/models/expense.model";
 import { ApiServerService } from "./api-server.service";
 import { RespModel } from "../shared/models/resp.model";
 import { ExpenseDescriptionModel } from "../shared/models/expense-description.model";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -13,7 +14,7 @@ export class ExpenseService {
   private _urlA: String = "expense";
   private _urlB: String = "expensedescrip";
 
-  constructor(private _api: ApiServerService) {}
+  constructor(private _api: ApiServerService, private _router: Router) {}
 
   getList(c: number): Observable<ExpenseModel[]> {
     return this._api.GetQuery(`${this._urlA}/list/${c}`).pipe(
@@ -99,5 +100,31 @@ export class ExpenseService {
         return <ExpenseDescriptionModel>data.data;
       })
     );
+  }
+
+  routeList() {
+    this._router.navigate(["/gasto"]);
+  }
+  routeNew() {
+    this._router.navigate(["/gasto", "nuevo"]);
+  }
+  routeEdit(id: number) {
+    this._router.navigate(["/gasto", id, "editar"]);
+  }
+  routeSee(id: number) {
+    this._router.navigate(["/gasto", id]);
+  }
+
+  routeListdescription() {
+    this._router.navigate(["/gasto", "descripcion"]);
+  }
+  routeNewdescription() {
+    this._router.navigate(["/gasto", "descripcion", "nuevo"]);
+  }
+  routeEditdescription(id: number) {
+    this._router.navigate(["/gasto", "descripcion", id, "editar"]);
+  }
+  routeSeedescription(id: number) {
+    this._router.navigate(["/gasto", "descripcion", id]);
   }
 }

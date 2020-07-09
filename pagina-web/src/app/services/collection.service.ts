@@ -5,6 +5,7 @@ import { CollectionModel } from "../shared/models/collection.model";
 import { ApiServerService } from "./api-server.service";
 import { RespModel } from "../shared/models/resp.model";
 import { CollectionCashModel } from "../shared/models/collection-cash.model";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -13,7 +14,7 @@ export class CollectionService {
   private _urlA: String = "collection";
   private _urlB: String = "collectioncash";
 
-  constructor(private _api: ApiServerService) {}
+  constructor(private _api: ApiServerService, private _router: Router) {}
 
   getList(c: number): Observable<CollectionModel[]> {
     return this._api.GetQuery(`${this._urlA}/list/${c}`).pipe(
@@ -95,5 +96,29 @@ export class CollectionService {
         return <CollectionCashModel>data.data;
       })
     );
+  }
+  routeList() {
+    this._router.navigate(["/cobro"]);
+  }
+  routeNew() {
+    this._router.navigate(["/cobro", "nuevo"]);
+  }
+  routeEdit(id: number) {
+    this._router.navigate(["/cobro", id, "editar"]);
+  }
+  routeSee(id: number) {
+    this._router.navigate(["/cobro", id]);
+  }
+  routeListcash() {
+    this._router.navigate(["/caja", "caja"]);
+  }
+  routeNewcash() {
+    this._router.navigate(["/caja", "caja", "nuevo"]);
+  }
+  routeEditcash(id: number) {
+    this._router.navigate(["/caja", "caja", id, "editar"]);
+  }
+  routeSeecash(id: number) {
+    this._router.navigate(["/caja", "caja", id]);
   }
 }

@@ -6,6 +6,7 @@ import { ApiServerService } from "./api-server.service";
 import { RespModel } from "../shared/models/resp.model";
 import { TelModel } from "../shared/models/tel.model";
 import { ClientLocationModel } from "../shared/models/client-location.model";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -15,7 +16,7 @@ export class ClientService {
   private _urlB: String = "clienttel";
   private _urlC: String = "clientlocation";
 
-  constructor(private _api: ApiServerService) {}
+  constructor(private _api: ApiServerService, private _router: Router) {}
 
   getList(c: number): Observable<ClientModel[]> {
     return this._api.GetQuery(`${this._urlA}/list/${c}`).pipe(
@@ -138,5 +139,31 @@ export class ClientService {
         return <ClientLocationModel>data.data;
       })
     );
+  }
+
+  routeList() {
+    this._router.navigate(["/cliente"]);
+  }
+  routeNew() {
+    this._router.navigate(["/cliente", "nuevo"]);
+  }
+  routeEdit(id: number) {
+    this._router.navigate(["/cliente", id, "editar"]);
+  }
+  routeSee(id: number) {
+    this._router.navigate(["/cliente", id]);
+  }
+
+  routeListlocation() {
+    this._router.navigate(["/sector"]);
+  }
+  routeNewlocation() {
+    this._router.navigate(["/sector", "nuevo"]);
+  }
+  routeEditlocation(id: number) {
+    this._router.navigate(["/sector", id, "editar"]);
+  }
+  routeSeelocation(id: number) {
+    this._router.navigate(["/sector", id]);
   }
 }

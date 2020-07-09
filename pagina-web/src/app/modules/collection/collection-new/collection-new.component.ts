@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { CollectionModel } from "src/app/shared/models/collection.model";
 import { CollectionService } from "src/app/services/collection.service";
 import Swal from "sweetalert2";
-import { Router } from "@angular/router";
 
 @Component({
   selector: "app-collection-new",
@@ -12,10 +11,7 @@ import { Router } from "@angular/router";
 export class CollectionNewComponent implements OnInit {
   public collection: CollectionModel;
 
-  constructor(
-    private _collectionService: CollectionService,
-    private _router: Router
-  ) {}
+  constructor(private _collectionService: CollectionService) {}
 
   ngOnInit(): void {
     this.collection = new CollectionModel();
@@ -41,7 +37,7 @@ export class CollectionNewComponent implements OnInit {
           icon: "success",
         });
         toast2.fire();
-        this._router.navigate(["/cobro"]);
+        this._collectionService.routeList();
       },
       (err) => {
         const toast = Swal.mixin({

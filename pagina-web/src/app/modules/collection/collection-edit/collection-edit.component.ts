@@ -14,8 +14,7 @@ export class CollectionEditComponent implements OnInit {
 
   constructor(
     private _collectionService: CollectionService,
-    private _activedRoute: ActivatedRoute,
-    private _router: Router
+    private _activedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -37,13 +36,13 @@ export class CollectionEditComponent implements OnInit {
           });
           toast2.fire();
           //console.log({ err });
-          this._router.navigate(["/cobro"]);
+          this._collectionService.routeList();
         }
       );
     });
   }
 
-  onUpdate(c: CollectionModel) {
+  onUpdate(c) {
     console.log({ c });
     const toast = Swal.mixin({
       allowOutsideClick: false,
@@ -61,7 +60,7 @@ export class CollectionEditComponent implements OnInit {
           icon: "success",
         });
         toast2.fire();
-        this._router.navigate(["/cobro", "lista"]);
+        this._collectionService.routeList();
       },
       (err) => {
         console.log({ err });

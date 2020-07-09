@@ -6,6 +6,7 @@ import { ApiServerService } from "./api-server.service";
 import { RespModel } from "../shared/models/resp.model";
 import { LoanStateModel } from "../shared/models/loan-state.model";
 import { LoanPaymentModel } from "../shared/models/loan-payment.model";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -15,7 +16,7 @@ export class LoanService {
   private _urlB: String = "loanloan_state";
   private _urlC: String = "loanloan_payment";
 
-  constructor(private _api: ApiServerService) {}
+  constructor(private _api: ApiServerService, private _router: Router) {}
 
   getList(c: number): Observable<LoanModel[]> {
     return this._api.GetQuery(`${this._urlA}/list/${c}`).pipe(
@@ -138,5 +139,42 @@ export class LoanService {
         return <LoanPaymentModel>data.data;
       })
     );
+  }
+
+  routeList() {
+    this._router.navigate(["/prestamo"]);
+  }
+  routeNew() {
+    this._router.navigate(["/prestamo", "nuevo"]);
+  }
+  routeEdit(id: number) {
+    this._router.navigate(["/prestamo", id, "editar"]);
+  }
+  routeSee(id: number) {
+    this._router.navigate(["/prestamo", id]);
+  }
+  routeListstate() {
+    this._router.navigate(["/prestamo", "estado"]);
+  }
+  routeNewstate() {
+    this._router.navigate(["/prestamo", "estado", "nuevo"]);
+  }
+  routeEditstate(id: number) {
+    this._router.navigate(["/prestamo", "estado", id, "editar"]);
+  }
+  routeSeestate(id: number) {
+    this._router.navigate(["/prestamo", "estado", id]);
+  }
+  routeListPayment() {
+    this._router.navigate(["/prestamo", "pago"]);
+  }
+  routeNewPayment() {
+    this._router.navigate(["/prestamo", "pago", "nuevo"]);
+  }
+  routeEditPayment(id: number) {
+    this._router.navigate(["/prestamo", "pago", id, "editar"]);
+  }
+  routeSeePayment(id: number) {
+    this._router.navigate(["/prestamo", "pago", id]);
   }
 }

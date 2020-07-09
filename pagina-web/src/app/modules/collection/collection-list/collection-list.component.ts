@@ -27,5 +27,8 @@ export class CollectionListComponent implements OnInit {
       }
     );
   }
-  onNew() {}
+
+  onNew() {
+    this._collectionService.routeNew();
+  }
 }
