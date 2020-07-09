@@ -1,0 +1,48 @@
+<app-loading *ngIf="!data"></app-loading>
+<form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
+
+    <div class="form-group row" *ngIf="data.id">
+        <label class="col-4 col-form-label" for="id">ID:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="nombre" formControlName="id">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label" for="actived">Activo:</label>
+        <div class="col-7">
+            <input class="form-control" type="checkbox" formControlName="actived" [class.is-invalid]="activedInvalid">
+            <span class="text-danger" *ngIf="activedInvalid">
+        registre actived
+      </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="name">Name cobro:</label>
+        <div class="col-8">
+            <input class="form-control" type="text" placeholder="descripcion" formControlName="name" [class.is-invalid]="nameInvalid">
+            <span class="text-danger" *ngIf="nameInvalid">
+        descripcion no valido
+      </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-4 col-form-label" for="money">Saldo:</label>
+        <div class="col-8">
+            <input class="form-control" type="number" placeholder="0" formControlName="money" [class.is-invalid]="moneyInvalid">
+            <span class="text-danger" *ngIf="moneyInvalid">
+        saldo no valido
+      </span>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <app-button-create-edit class="col-md-8 input-group" [id]="data.id" (onCancel)="cancel()"></app-button-create-edit>
+    </div>
+    <pre *ngIf="debug">
+      {{forma.status}}
+      {{forma.value | json}}
+    </pre>
+</form>

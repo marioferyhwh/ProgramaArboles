@@ -1,20 +1,20 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { ClientModel } from "src/app/shared/models/client.model";
-import { ClientService } from "src/app/services/client.service";
+import { UserCollectionModel } from "src/app/shared/models/user-collection.model";
+import { UserService } from "src/app/services/user.service";
 import Swal from "sweetalert2";
 
 @Component({
-  selector: "app-table-client",
-  templateUrl: "./table-client.component.html",
-  styleUrls: ["./table-client.component.scss"],
+  selector: "app-table-user-collection",
+  templateUrl: "./table-user-collection.component.html",
+  styleUrls: ["./table-user-collection.component.scss"],
 })
-export class TableClientComponent implements OnInit {
-  @Input() data: ClientModel[];
+export class TableUserCollectionComponent implements OnInit {
+  @Input() data: UserCollectionModel[];
   @Input() edit: boolean;
   @Output() onReload: EventEmitter<string>;
   public debug: boolean;
 
-  constructor(private _clientService: ClientService) {
+  constructor(private _userService: UserService) {
     this.edit = false;
     this.onReload = new EventEmitter();
   }
@@ -33,11 +33,11 @@ export class TableClientComponent implements OnInit {
     });
     toast.fire().then((result) => {
       if (result.value) {
-        this._clientService.delete(id).subscribe(
+        this._userService.deleteLevel(id).subscribe(
           (resp) => {
             const toast = Swal.mixin({
               title: "BORRADO",
-              text: "cobro borrado",
+              text: "nivel de usuario borrado",
               icon: "success",
             });
             toast.fire();
@@ -51,18 +51,17 @@ export class TableClientComponent implements OnInit {
       } else {
         const toast = Swal.mixin({
           title: "CANCELADO",
-          text: "tu cobro esta asalvo",
+          text: "nivel de usuario esta asalvo",
           icon: "error",
         });
         toast.fire();
       }
     });
   }
-
   selectItem(id: number) {
-    this._clientService.routeSee(id);
+    this._userService.routeSeecollection(id);
   }
   editItem(id: number) {
-    this._clientService.routeEdit(id);
+    this._userService.routeEditcollection(id);
   }
 }

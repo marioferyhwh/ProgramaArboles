@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Router } from "@angular/router";
 import { DocumentTypeModel } from "src/app/shared/models/document-type.model";
 import { DocumentTypeService } from "src/app/services/document-type.service";
 import Swal from "sweetalert2";
@@ -15,10 +14,7 @@ export class TableDocumentsComponent implements OnInit {
   @Output() onReload: EventEmitter<string>;
   public debug: boolean;
 
-  constructor(
-    private _router: Router,
-    private _documentTypeService: DocumentTypeService
-  ) {
+  constructor(private _documentTypeService: DocumentTypeService) {
     this.edit = false;
     this.onReload = new EventEmitter();
   }
@@ -63,9 +59,9 @@ export class TableDocumentsComponent implements OnInit {
     });
   }
   selectItem(id: number) {
-    this._router.navigate(["/documento", id, "editar"]);
+    this._documentTypeService.routeSee(id);
   }
   editItem(id: number) {
-    this._router.navigate(["/documento", id]);
+    this._documentTypeService.routeEdit(id);
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Router } from "@angular/router";
 import { UserLevelModel } from "src/app/shared/models/user-level.model";
 import { UserService } from "src/app/services/user.service";
 import Swal from "sweetalert2";
@@ -15,7 +14,7 @@ export class TableUserLevelComponent implements OnInit {
   @Output() onReload: EventEmitter<string>;
   public debug: boolean;
 
-  constructor(private _router: Router, private _userService: UserService) {
+  constructor(private _userService: UserService) {
     this.edit = false;
     this.onReload = new EventEmitter();
   }
@@ -60,9 +59,9 @@ export class TableUserLevelComponent implements OnInit {
     });
   }
   selectItem(id: number) {
-    this._router.navigate(["/gasto", id, "editar"]);
+    this._userService.routeSeeLevel(id);
   }
   editItem(id: number) {
-    this._router.navigate(["/gasto", id]);
+    this._userService.routeEditLevel(id);
   }
 }

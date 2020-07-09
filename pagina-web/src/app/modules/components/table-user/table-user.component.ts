@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { UserModel } from "src/app/shared/models/user.model";
-import { Router } from "@angular/router";
 import { UserService } from "src/app/services/user.service";
 import Swal from "sweetalert2";
 
@@ -15,7 +14,9 @@ export class TableUserComponent implements OnInit {
   @Output() onReload: EventEmitter<string>;
   public debug: boolean;
 
-  constructor(private _router: Router, private _userService: UserService) {}
+  constructor(private _userService: UserService) {
+    this.onReload = new EventEmitter();
+  }
 
   ngOnInit(): void {}
 
@@ -58,10 +59,10 @@ export class TableUserComponent implements OnInit {
   }
 
   selectItem(id: number) {
-    this._router.navigate(["/usuario", id, "editar"]);
+    this._userService.routeSee(id);
   }
 
   editItem(id: number) {
-    this._router.navigate(["/usuario", id]);
+    this._userService.routeEdit(id);
   }
 }

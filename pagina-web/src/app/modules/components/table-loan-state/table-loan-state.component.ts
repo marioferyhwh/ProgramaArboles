@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Router } from "@angular/router";
 import { LoanStateModel } from "src/app/shared/models/loan-state.model";
 import { LoanService } from "src/app/services/loan.service";
 import Swal from "sweetalert2";
@@ -15,7 +14,7 @@ export class TableLoanStateComponent implements OnInit {
   @Output() onReload: EventEmitter<string>;
   public debug: boolean;
 
-  constructor(private _router: Router, private _loanService: LoanService) {
+  constructor(private _loanService: LoanService) {
     this.edit = false;
     this.onReload = new EventEmitter();
   }
@@ -60,9 +59,9 @@ export class TableLoanStateComponent implements OnInit {
     });
   }
   selectItem(id: number) {
-    this._router.navigate(["/gasto", id, "editar"]);
+    this._loanService.routeSeestate(id);
   }
   editItem(id: number) {
-    this._router.navigate(["/gasto", id]);
+    this._loanService.routeEditstate(id);
   }
 }

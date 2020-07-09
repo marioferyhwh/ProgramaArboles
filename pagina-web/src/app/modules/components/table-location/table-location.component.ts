@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Router as _clientService } from "@angular/router";
 import { ClientLocationModel } from "src/app/shared/models/client-location.model";
 import { ClientService } from "src/app/services/client.service";
 import Swal from "sweetalert2";
@@ -15,10 +14,7 @@ export class TableLocationComponent implements OnInit {
   @Output() onReload: EventEmitter<string>;
   public debug: boolean;
 
-  constructor(
-    private _router: _clientService,
-    private _collectionService: ClientService
-  ) {
+  constructor(private _clientService: ClientService) {
     this.edit = false;
     this.onReload = new EventEmitter();
   }
@@ -37,7 +33,7 @@ export class TableLocationComponent implements OnInit {
     });
     toast.fire().then((result) => {
       if (result.value) {
-        this._collectionService.deleteLocation(id).subscribe(
+        this._clientService.deleteLocation(id).subscribe(
           (resp) => {
             const toast = Swal.mixin({
               title: "BORRADO",
@@ -63,9 +59,9 @@ export class TableLocationComponent implements OnInit {
     });
   }
   selectItem(id: number) {
-    this._router.navigate(["/sector", id, "editar"]);
+    this._clientService.routeSeelocation(id);
   }
   editItem(id: number) {
-    this._router.navigate(["/sector", id]);
+    this._clientService.routeEditlocation(id);
   }
 }

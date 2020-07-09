@@ -1,6 +1,5 @@
 import { Component, OnInit, EventEmitter, Output, Input } from "@angular/core";
 import { BusinessTypeModel } from "src/app/shared/models/business-type.model";
-import { Router } from "@angular/router";
 import { BusinessTypeService } from "src/app/services/business-type.service";
 import Swal from "sweetalert2";
 
@@ -15,10 +14,7 @@ export class TableBusinessTypeComponent implements OnInit {
   @Output() onReload: EventEmitter<string>;
   public debug: boolean;
 
-  constructor(
-    private _router: Router,
-    private _businessTypeService: BusinessTypeService
-  ) {
+  constructor(private _businessTypeService: BusinessTypeService) {
     this.edit = false;
     this.onReload = new EventEmitter();
   }
@@ -63,9 +59,9 @@ export class TableBusinessTypeComponent implements OnInit {
     });
   }
   selectItem(id: number) {
-    this._router.navigate(["/negocio", id, "editar"]);
+    this._businessTypeService.routeSee(id);
   }
   editItem(id: number) {
-    this._router.navigate(["/negocio", id]);
+    this._businessTypeService.routeEdit(id);
   }
 }

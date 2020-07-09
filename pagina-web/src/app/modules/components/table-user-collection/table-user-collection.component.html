@@ -11,7 +11,8 @@
     <tbody>
         <tr *ngFor="let dat of data ">
             <th scope="col">{{dat.id}}</th>
-            <td>{{dat.type_business}}</td>
+            <td>{{dat.id_collection}}</td>
+            <td>{{dat.id_user}}</td>
             <td>
                 <app-button-edit (click)="editItem(dat.id)"></app-button-edit>
                 <app-button-delete (click)="deleteItem(dat.id)"></app-button-delete>

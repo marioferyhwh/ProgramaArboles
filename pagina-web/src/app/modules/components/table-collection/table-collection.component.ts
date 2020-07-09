@@ -63,9 +63,9 @@ export class TableCollectionComponent implements OnInit {
     });
   }
   selectItem(id: number) {
-    this._router.navigate(["/cobro", id, "editar"]);
+    this._collectionService.routeSee(id);
   }
   editItem(id: number) {
-    this._router.navigate(["/cobro", id]);
+    this._collectionService.routeEdit(id);
   }
 }

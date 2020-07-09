@@ -1,1 +1,24 @@
-<p>table-expense-description works!</p>
+<app-loading *ngIf="!data"></app-loading>
+<h2 *ngIf="data && data.length == 0 ">No se encontraron negocios</h2>
+<table class="table table-sm" *ngIf="data && data.length > 0 ">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dat of data ">
+            <th scope="col">{{dat.id}}</th>
+            <td>{{dat.description}}</td>
+            <td>
+                <app-button-edit (click)="editItem(dat.id)"></app-button-edit>
+                <app-button-delete (click)="deleteItem(dat.id)"></app-button-delete>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<pre *ngIf="debug">
+      {{data | json}}
+</pre>

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Router } from "@angular/router";
 import { CollectionCashModel } from "src/app/shared/models/collection-cash.model";
 import { CollectionService } from "src/app/services/collection.service";
 import Swal from "sweetalert2";
@@ -15,10 +14,7 @@ export class TableCashComponent implements OnInit {
   @Output() onReload: EventEmitter<string>;
   public debug: boolean;
 
-  constructor(
-    private _router: Router,
-    private _collectionService: CollectionService
-  ) {
+  constructor(private _collectionService: CollectionService) {
     this.edit = false;
     this.onReload = new EventEmitter();
   }
@@ -62,10 +58,11 @@ export class TableCashComponent implements OnInit {
       }
     });
   }
+
   selectItem(id: number) {
-    this._router.navigate(["/cobro", "caja", id, "editar"]);
+    this._collectionService.routeSeecash(id);
   }
   editItem(id: number) {
-    this._router.navigate(["/cobro", "caja", id]);
+    this._collectionService.routeEditcash(id);
   }
 }

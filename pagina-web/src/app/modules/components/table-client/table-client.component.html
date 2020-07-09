@@ -10,7 +10,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let client of this.data">
-            <td (click)="clientEdit(client.id)" class="pointer"> {{client.name}}</td>
+            <td (click)="selectItem(client.id)" class="pointer"> {{client.name}}</td>
             <td>{{client.number_loans}}</td>
             <td>{{client.id_loan_state}}</td>
         </tr>

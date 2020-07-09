@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
-import { Router } from "@angular/router";
 import { ExpenseDescriptionModel } from "src/app/shared/models/expense-description.model";
 import { ExpenseService } from "src/app/services/expense.service";
 import Swal from "sweetalert2";
@@ -15,10 +14,7 @@ export class TableExpenseDescriptionComponent implements OnInit {
   @Output() onReload: EventEmitter<string>;
   public debug: boolean;
 
-  constructor(
-    private _router: Router,
-    private _expenseService: ExpenseService
-  ) {
+  constructor(private _expenseService: ExpenseService) {
     this.edit = false;
     this.onReload = new EventEmitter();
   }
@@ -63,9 +59,9 @@ export class TableExpenseDescriptionComponent implements OnInit {
     });
   }
   selectItem(id: number) {
-    this._router.navigate(["/gasto", id, "editar"]);
+    this._expenseService.routeSeedescription(id);
   }
   editItem(id: number) {
-    this._router.navigate(["/gasto", id]);
+    this._expenseService.routeEditdescription(id);
   }
 }

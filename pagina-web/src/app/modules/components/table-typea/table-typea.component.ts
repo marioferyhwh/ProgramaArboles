@@ -16,4 +16,5 @@ export class TableTypeaComponent implements OnInit {
 
   removeItem(id: number) {}
   selectItem(id: number) {}
+  editItem(id: number) {}
 }

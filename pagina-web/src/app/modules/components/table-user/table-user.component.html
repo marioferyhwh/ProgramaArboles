@@ -15,7 +15,7 @@
             <td>{{dat.actived}}</td>
             <td>{{dat.name}}</td>
             <td>
-                <app-button-edit (click)="selectItem(dat.id)"></app-button-edit>
+                <app-button-edit (click)="editItem(dat.id)"></app-button-edit>
                 <app-button-delete (click)="deleteItem(dat.id)"></app-button-delete>
             </td>
         </tr>
@@ -23,4 +23,4 @@
 </table>
 <pre *ngIf="debug">
       {{data | json}}
-    </pre>
+</pre>
