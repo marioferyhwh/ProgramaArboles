@@ -3,7 +3,8 @@ import { LoanModel } from "src/app/shared/models/loan.model";
 import { GlobalService } from "src/app/services/global.service";
 import { LoanStateModel } from "src/app/shared/models/loan-state.model";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+
+import { LoanService } from "src/app/services/loan.service";
 
 @Component({
   selector: "app-form-loan",
@@ -21,7 +22,7 @@ export class FormLoanComponent implements OnInit {
   constructor(
     private _globalService: GlobalService,
     private _fb: FormBuilder,
-    private _router: Router
+    private _loanService: LoanService
   ) {
     this.debug = false;
     this.onData = new EventEmitter();
@@ -87,7 +88,7 @@ export class FormLoanComponent implements OnInit {
   }
 
   cancel() {
-    this._router.navigate(["/prestamo"]);
+    this._loanService.routeList();
   }
 
   InvalidField(Field: string): boolean {

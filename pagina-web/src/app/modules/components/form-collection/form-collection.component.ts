@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CollectionModel } from "src/app/shared/models/collection.model";
-import { Router } from "@angular/router";
-import { constants } from "buffer";
+import { CollectionService } from "src/app/services/collection.service";
 @Component({
   selector: "app-form-collection",
   templateUrl: "./form-collection.component.html",
@@ -15,7 +14,10 @@ export class FormCollectionComponent implements OnInit {
   public forma: FormGroup;
   public debug: boolean;
 
-  constructor(private _fb: FormBuilder, private _router: Router) {
+  constructor(
+    private _fb: FormBuilder,
+    private _collectionService: CollectionService
+  ) {
     this.debug = false;
     this.onData = new EventEmitter();
     this.initForm();
@@ -60,7 +62,7 @@ export class FormCollectionComponent implements OnInit {
   }
 
   cancel() {
-    this._router.navigate(["/cobro"]);
+    this._collectionService.routeList();
   }
 
   InvalidField(Field: string): boolean {

@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { BusinessTypeModel } from "src/app/shared/models/business-type.model";
 import { Router } from "@angular/router";
+import { BusinessTypeService } from "src/app/services/business-type.service";
 
 @Component({
   selector: "app-form-business-type",
@@ -15,7 +16,10 @@ export class FormBusinessTypeComponent implements OnInit {
   public forma: FormGroup;
   public debug: boolean;
 
-  constructor(private _fb: FormBuilder, private _router: Router) {
+  constructor(
+    private _fb: FormBuilder,
+    private _businessTypeService: BusinessTypeService
+  ) {
     this.debug = false;
     this.onData = new EventEmitter();
     this.initForm();
@@ -54,7 +58,7 @@ export class FormBusinessTypeComponent implements OnInit {
   }
 
   cancel() {
-    this._router.navigate(["/negocio"]);
+    this._businessTypeService.routeList();
   }
 
   InvalidField(Field: string): boolean {

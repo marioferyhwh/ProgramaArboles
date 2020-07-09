@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { LoanPaymentModel } from "src/app/shared/models/loan-payment.model";
-import { Router } from "@angular/router";
+import { LoanService } from "src/app/services/loan.service";
 
 @Component({
   selector: "app-form-loan-payment",
@@ -15,7 +15,7 @@ export class FormLoanPaymentComponent implements OnInit {
   public forma: FormGroup;
   public debug: boolean;
 
-  constructor(private _fb: FormBuilder, private _router: Router) {
+  constructor(private _fb: FormBuilder, private _loanService: LoanService) {
     this.debug = false;
     this.onData = new EventEmitter();
     this.initForm();
@@ -60,7 +60,7 @@ export class FormLoanPaymentComponent implements OnInit {
   }
 
   cancel() {
-    this._router.navigate(["/prestamo/pago"]);
+    this._loanService.routeListstate();
   }
 
   InvalidField(Field: string): boolean {

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ClientLocationModel } from "src/app/shared/models/client-location.model";
-import { Router } from "@angular/router";
+import { ClientService } from "src/app/services/client.service";
 
 @Component({
   selector: "app-form-location",
@@ -15,7 +15,7 @@ export class FormLocationComponent implements OnInit {
   public forma: FormGroup;
   public debug: boolean;
 
-  constructor(private _fb: FormBuilder, private _router: Router) {
+  constructor(private _fb: FormBuilder, private _clientService: ClientService) {
     this.debug = false;
     this.onData = new EventEmitter();
     this.initForm();
@@ -57,7 +57,7 @@ export class FormLocationComponent implements OnInit {
   }
 
   cancel() {
-    this._router.navigate(["/sector"]);
+    this._clientService.routeListlocation();
   }
 
   InvalidField(Field: string): boolean {

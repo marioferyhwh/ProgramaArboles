@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ExpenseModel } from "src/app/shared/models/expense.model";
-import { Router } from "@angular/router";
-import { invalid } from "@angular/compiler/src/render3/view/util";
+import { ExpenseService } from "src/app/services/expense.service";
 
 @Component({
   selector: "app-form-expense",
@@ -16,7 +15,10 @@ export class FormExpenseComponent implements OnInit {
   public forma: FormGroup;
   public debug: boolean;
 
-  constructor(private _fb: FormBuilder, private _router: Router) {
+  constructor(
+    private _fb: FormBuilder,
+    private _expenseService: ExpenseService
+  ) {
     this.debug = false;
     this.onData = new EventEmitter();
     this.initForm();
@@ -59,7 +61,7 @@ export class FormExpenseComponent implements OnInit {
   }
 
   cancel() {
-    this._router.navigate(["/gasto"]);
+    this._expenseService.routeList();
   }
 
   InvalidField(Field: string): boolean {

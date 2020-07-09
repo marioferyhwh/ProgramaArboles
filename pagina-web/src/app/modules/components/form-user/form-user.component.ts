@@ -92,9 +92,6 @@ export class FormUserComponent implements OnInit {
       // console.log({ dt });
       this.documents = dt.document_types;
       this.telds = dt.tel_descriptions;
-      this.documents.unshift({
-        description: "-- selecione tipo de documento --",
-      });
     });
 
     this.forma = this._fb.group(

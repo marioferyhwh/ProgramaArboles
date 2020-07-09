@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { UserService } from "src/app/services/user.service";
 import { UserModel } from "src/app/shared/models/user.model";
 import { CollectionModel } from "src/app/shared/models/collection.model";
+import { UserLevelModel } from "src/app/shared/models/user-level.model";
+import { GlobalService } from "src/app/services/global.service";
 
 @Component({
   selector: "app-form-user-collection",
@@ -16,11 +18,15 @@ export class FormUserCollectionComponent implements OnInit {
   @Input() public users: UserModel[];
   @Input() public collections: CollectionModel[];
   @Output() public onData: EventEmitter<UserCollectionModel>;
-
+  public userLevels: UserLevelModel[];
   public forma: FormGroup;
   public debug: boolean;
 
-  constructor(private _fb: FormBuilder, private _userService: UserService) {
+  constructor(
+    private _fb: FormBuilder,
+    private _userService: UserService,
+    private _globalService: GlobalService
+  ) {
     this.debug = false;
     this.onData = new EventEmitter();
     this.initForm();
@@ -33,11 +39,19 @@ export class FormUserCollectionComponent implements OnInit {
   }
 
   dataForm() {
+    console.log(this.data);
     if (this.data != null) {
       if (this.data.actived == null) {
         this.data.actived = false;
       }
+      if (this.data.money == null) {
+        this.data.money = 0;
+      }
       this.forma.reset({ ...this.data });
+      if (this.data.id != null) {
+        this.forma.get("id_collection").disable();
+        this.forma.get("id_user").disable();
+      }
     }
     this.forma.get("id").disable();
     this.forma.controls["money"].disable();
@@ -50,16 +64,28 @@ export class FormUserCollectionComponent implements OnInit {
       });
       return;
     }
+    this.forma.value["id_collection"] = parseInt(
+      this.forma.value["id_collection"]
+    );
+    this.forma.value["id_user"] = parseInt(this.forma.value["id_user"]);
+    this.forma.value["id_user_level"] = parseInt(
+      this.forma.value["id_user_level"]
+    );
     const d = <UserCollectionModel>this.forma.value;
     d.id = this.data.id;
     this.onData.emit(d);
   }
 
   initForm() {
+    this._globalService.get().subscribe((dt) => {
+      // console.log({ dt });
+      this.userLevels = dt.user_levels;
+    });
+
     this.forma = this._fb.group({
       id: [0],
-      money: [0, Validators.required, Validators.min(0)],
-      name: [0, Validators.required],
+      money: [0, [Validators.required, Validators.min(0)]],
+      name: ["", Validators.required],
       actived: [true, Validators.required],
       id_user: [0, Validators.required],
       id_collection: [0, Validators.required],
@@ -68,7 +94,7 @@ export class FormUserCollectionComponent implements OnInit {
   }
 
   cancel() {
-    this._userService.routeList();
+    this._userService.routeListcollection();
   }
 
   InvalidField(Field: string): boolean {

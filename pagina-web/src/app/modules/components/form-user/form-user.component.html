@@ -60,6 +60,9 @@
             <select class="form-control" formControlName="document_code" [ngClass]="{'is-invalid':document_codeInvalid}">
         <option *ngFor="let doc of documents" [value]="doc.name_short">{{doc.description}}</option>
       </select>
+            <span class="text-danger" *ngIf="document_codeInvalid">
+        especifique tipo de documento
+      </span>
         </div>
     </div>
 
@@ -67,7 +70,7 @@
         <label class="col-4 col-form-label" for="">documento:</label>
         <div class="col-8">
             <input class="form-control" type="text" formControlName="document" [ngClass]="{'is-invalid':documentInvalid}">
-            <span class="text-danger" *ngIf="confirm_passwordInvalid">
+            <span class="text-danger" *ngIf="documentInvalid">
         Documento no valido
       </span>
         </div>

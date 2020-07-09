@@ -73,11 +73,20 @@
             <li class="nav-item dropdown" routerLinkActive="active">
                 <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuracion</a>
                 <ul class="dropdown-menu">
-                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">prestamos</a></li>
+                    <!-- <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">prestamos</a></li>
                     <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">gastos</a></li>
-                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">ingresos</a></li>
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">ingresos</a></li> -->
                     <li class="nav-item dropdown" routerLinkActive="active">
-                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios</a>
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Asignacion</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','cobro','lista']">lista</a>
+                            </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','cobro','nuevo']">nuevo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuario</a>
                         <ul class="dropdown-menu">
                             <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','lista']">lista</a>
                             </li>

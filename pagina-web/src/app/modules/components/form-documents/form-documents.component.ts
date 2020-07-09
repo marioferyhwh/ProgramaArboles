@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DocumentTypeModel } from "src/app/shared/models/document-type.model";
-import { Router } from "@angular/router";
+import { DocumentTypeService } from "src/app/services/document-type.service";
 
 @Component({
   selector: "app-form-documents",
@@ -15,7 +15,10 @@ export class FormDocumentsComponent implements OnInit {
   public forma: FormGroup;
   public debug: boolean;
 
-  constructor(private _fb: FormBuilder, private _router: Router) {
+  constructor(
+    private _fb: FormBuilder,
+    private _documenTypeService: DocumentTypeService
+  ) {
     this.debug = false;
     this.onData = new EventEmitter();
     this.initForm();
@@ -54,7 +57,7 @@ export class FormDocumentsComponent implements OnInit {
   }
 
   cancel() {
-    this._router.navigate(["/documento"]);
+    this._documenTypeService.routeList();
   }
 
   InvalidField(Field: string): boolean {

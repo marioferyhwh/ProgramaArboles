@@ -1,20 +1,22 @@
-<table>
+<app-loading *ngIf="!data"></app-loading>
+<h2 *ngIf="data && data.length == 0 ">No se encontraron clientes</h2>
+<table class="table table-sm" *ngIf="data && data.length > 0 ">
     <thead>
         <tr>
-            <th>id</th>
-            <th>prestamo</th>
-            <th>creado</th>
-            <th>registrado por</th>
-            <th>valor</th>
+            <th scope="col">#</th>
+            <th scope="col">prestamo</th>
+            <th scope="col">creado</th>
+            <th scope="col">registrado por</th>
+            <th scope="col">valor</th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let prestamo_pagado of data">
-            <td>{{prestamo_pagado.id}}</td>
-            <td>{{prestamo_pagado.id_loan}}</td>
-            <td>{{prestamo_pagado.update_at}}</td>
-            <td>{{prestamo_pagado.id_user}}</td>
-            <td>{{prestamo_pagado.money}}</td>
+        <tr *ngFor="let dat of data">
+            <th scope="col">{{dat.id}}</th>
+            <td>{{dat.id_loan}}</td>
+            <td>{{dat.update_at}}</td>
+            <td>{{dat.id_user}}</td>
+            <td>{{dat.money}}</td>
         </tr>
     </tbody>
 </table>

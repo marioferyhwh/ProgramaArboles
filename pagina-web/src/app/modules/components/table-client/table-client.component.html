@@ -1,18 +1,28 @@
 <app-loading *ngIf="!data"></app-loading>
 <h2 *ngIf="data && data.length == 0 ">No se encontraron clientes</h2>
-<table *ngIf="data && data.length > 0 " class="table">
+<table class="table table-sm" *ngIf="data && data.length > 0 ">
     <thead>
         <tr>
-            <th>nombre</th>
-            <th>Prestamos</th>
-            <th>estado</th>
+            <th scope="col">#</th>
+            <th scope="col">nombre</th>
+            <th scope="col">Prestamos</th>
+            <th scope="col">estado</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let client of this.data">
-            <td (click)="selectItem(client.id)" class="pointer"> {{client.name}}</td>
-            <td>{{client.number_loans}}</td>
-            <td>{{client.id_loan_state}}</td>
+        <tr *ngFor="let dat of this.data">
+            <th scope="col">{{dat.id}}</th>
+            <td> {{dat.name}}</td>
+            <td>{{dat.number_loans}}</td>
+            <td>{{dat.id_loan_state}}</td>
+            <td>
+                <app-button-edit (click)="editItem(dat.id)"></app-button-edit>
+                <app-button-delete (click)="deleteItem(dat.id)"></app-button-delete>
+            </td>
         </tr>
     </tbody>
 </table>
+<pre *ngIf="debug">
+      {{data | json}}
+</pre>

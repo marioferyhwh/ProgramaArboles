@@ -33,7 +33,7 @@ export class TableUserCollectionComponent implements OnInit {
     });
     toast.fire().then((result) => {
       if (result.value) {
-        this._userService.deleteLevel(id).subscribe(
+        this._userService.deleteCollection(id).subscribe(
           (resp) => {
             const toast = Swal.mixin({
               title: "BORRADO",

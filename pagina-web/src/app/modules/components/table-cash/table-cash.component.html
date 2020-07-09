@@ -1,18 +1,28 @@
-<table>
+<app-loading *ngIf="!data"></app-loading>
+<h2 *ngIf="data && data.length == 0 ">No se encontraron movimentos</h2>
+<table class="table table-sm" *ngIf="data && data.length > 0 ">
     <thead>
         <tr>
-            <th>id</th>
-            <th>cobro</th>
-            <th>usuario</th>
-            <th>valor</th>
+            <th scope="col">#</th>
+            <th scope="col">cobro</th>
+            <th scope="col">usuario</th>
+            <th scope="col">valor</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let movimento of this.data">
-            <td>{{movimento.id}}</td>
-            <td>{{movimento.id_collection}}</td>
-            <td>{{movimento.id_user}}</td>
-            <td>{{movimento.money}}</td>
+        <tr *ngFor="let dat of data ">
+            <th scope="col">{{dat.id}}</th>
+            <td>{{dat.id_collection}}</td>
+            <td>{{dat.id_user}}</td>
+            <td>{{dat.money}}</td>
+            <td>
+                <app-button-edit (click)="editItem(dat.id)"></app-button-edit>
+                <app-button-delete (click)="deleteItem(dat.id)"></app-button-delete>
+            </td>
         </tr>
     </tbody>
 </table>
+<pre *ngIf="debug">
+      {{data | json}}
+</pre>

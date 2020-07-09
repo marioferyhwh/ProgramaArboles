@@ -7,7 +7,7 @@ import { LoanStateModel } from "src/app/shared/models/loan-state.model";
 import { TelDescriptionModel } from "src/app/shared/models/tel-description.model";
 import { BusinessTypeModel } from "src/app/shared/models/business-type.model";
 import { ValidatorsService } from "src/app/services/validators.service";
-import { Router } from "@angular/router";
+import { ClientService } from "src/app/services/client.service";
 
 @Component({
   selector: "app-form-client",
@@ -29,7 +29,7 @@ export class FormClienteComponent implements OnInit {
     private _globalService: GlobalService,
     private _fb: FormBuilder,
     private _validators: ValidatorsService,
-    private _router: Router
+    private _clientService: ClientService
   ) {
     this.initForm();
     this.onData = new EventEmitter();
@@ -63,13 +63,6 @@ export class FormClienteComponent implements OnInit {
       this.loan_states = dt.loan_states;
       this.businesstype = dt.business_types;
       this.telds = dt.tel_descriptions;
-      this.documents.unshift({
-        description: "-- selecione tipo de documento --",
-      });
-      this.businesstype.unshift({
-        //id: 0,
-        type_business: "-- selecione negocio --",
-      });
     });
     this.forma = this._fb.group({
       name: ["", [Validators.required, Validators.minLength(5)]],
@@ -90,7 +83,7 @@ export class FormClienteComponent implements OnInit {
   }
 
   cancel() {
-    this._router.navigate(["/cliente"]);
+    this._clientService.routeList();
   }
 
   addTel() {

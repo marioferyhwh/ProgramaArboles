@@ -17,7 +17,7 @@ export class UserCollectionListComponent implements OnInit {
   }
 
   getData() {
-    this._userService.getCollectionList(1).subscribe(
+    this._userService.getCollectionList(0).subscribe(
       (res) => {
         this.userColections = res;
         console.log(res);
@@ -29,6 +29,6 @@ export class UserCollectionListComponent implements OnInit {
   }
 
   onNew() {
-    this._userService.routeNew();
+    this._userService.routeNewcollection();
   }
 }
