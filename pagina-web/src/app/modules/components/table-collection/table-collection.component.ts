@@ -55,7 +55,7 @@ export class TableCollectionComponent implements OnInit {
       } else {
         const toast = Swal.mixin({
           title: "CANCELADO",
-          text: "tu cobro esta asalvo",
+          text: "cobro esta asalvo",
           icon: "error",
         });
         toast.fire();

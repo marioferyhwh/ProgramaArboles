@@ -60,19 +60,19 @@ const routes: Routes = [
       { path: "negocio/lista", redirectTo: "negocio" },
       { path: "negocio/nuevo", component: BusinessTypeNewComponent },
       { path: "negocio/:id", component: BusinessTypeEditComponent },
-      { path: "negocio/editar/:id", component: BusinessTypeEditComponent },
+      { path: "negocio/:id/editar", component: BusinessTypeEditComponent },
 
       { path: "cliente", component: ClientListComponent },
       { path: "cliente/lista", redirectTo: "cliente" },
       { path: "cliente/nuevo", component: ClientNewComponent },
       { path: "cliente/:id", component: ClientEditComponent },
-      { path: "cliente/editar/:id", component: ClientEditComponent },
+      { path: "cliente/:id/editar", component: ClientEditComponent },
 
       { path: "sector", component: ClienteLocationListComponent },
       { path: "sector/lista", redirectTo: "sector" },
       { path: "sector/nuevo", component: ClienteLocationNewComponent },
       { path: "sector/:id", component: ClienteLocationEditComponent },
-      { path: "sector/editar/:id", component: ClienteLocationEditComponent },
+      { path: "sector/:id/editar", component: ClienteLocationEditComponent },
 
       { path: "cobro/caja/", component: CollectionCashListComponent },
       { path: "cobro/caja/lista", redirectTo: "cobro/caja/" },

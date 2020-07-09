@@ -35,7 +35,7 @@ export class TableUserComponent implements OnInit {
           (resp) => {
             const toast = Swal.mixin({
               title: "BORRADO",
-              text: "cobro borrado",
+              text: "usuario borrado",
               icon: "success",
             });
             toast.fire();
@@ -49,7 +49,7 @@ export class TableUserComponent implements OnInit {
       } else {
         const toast = Swal.mixin({
           title: "CANCELADO",
-          text: "tu cobro esta asalvo",
+          text: "usuario esta asalvo",
           icon: "error",
         });
         toast.fire();
