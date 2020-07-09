@@ -1,2 +1,2 @@
 <h1>editar gasto</h1>
-<app-form-expense [data]="expense"></app-form-expense>
+<app-form-expense [data]="expense" (onData)="onUpdate($event)"></app-form-expense>

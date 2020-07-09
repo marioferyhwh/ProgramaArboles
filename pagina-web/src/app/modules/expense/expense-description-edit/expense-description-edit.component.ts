@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ExpenseDescriptionModel } from "src/app/shared/models/expense-description.model";
 import { ExpenseService } from "src/app/services/expense.service";
 import { ActivatedRoute } from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-expense-description-edit",
@@ -17,16 +18,60 @@ export class ExpenseDescriptionEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
     this._activedRoute.params.subscribe((params) => {
       this._expenseService.getDescription(params["id"]).subscribe(
         (res) => {
           this.expenseDescription = res;
-          console.log(res);
+          //console.log(res);
         },
         (err) => {
-          console.log(err);
+          const toast2 = Swal.mixin({
+            title: "descripcion de gasto no encontredo",
+            text: "",
+            icon: "info",
+          });
+          toast2.fire();
+          //console.log({ err });
+          this._expenseService.routeListdescription();
         }
       );
     });
+  }
+
+  onUpdate(c: ExpenseDescriptionModel) {
+    console.log({ c });
+    const toast = Swal.mixin({
+      allowOutsideClick: false,
+      text: "espere por favor",
+      icon: "info",
+    });
+    toast.fire();
+    toast.showLoading();
+    this._expenseService.editDescription(c).subscribe(
+      (resp) => {
+        toast.close();
+        const toast2 = Swal.mixin({
+          title: "descripcion de gasto editado",
+          text: "",
+          icon: "success",
+        });
+        toast2.fire();
+        this._expenseService.routeListdescription();
+      },
+      (err) => {
+        toast.close();
+        const toast2 = Swal.mixin({
+          title: "error",
+          text: err.error.message,
+          icon: "error",
+        });
+        toast2.fire();
+        console.log({ err });
+      }
+    );
   }
 }

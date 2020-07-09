@@ -1,2 +1,2 @@
 <h1>editar estado de prestamo</h1>
-<app-form-loan-state [data]="loanState"></app-form-loan-state>
+<app-form-loan-state [data]="loanState" (onData)="onUpdate($event)"></app-form-loan-state>

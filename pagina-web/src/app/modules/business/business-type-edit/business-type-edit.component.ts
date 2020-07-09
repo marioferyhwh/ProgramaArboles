@@ -20,6 +20,7 @@ export class BusinessTypeEditComponent implements OnInit {
   ngOnInit(): void {
     this.getData();
   }
+
   getData() {
     this._activedRoute.params.subscribe((params) => {
       this._businessTypeService.get(params["id"]).subscribe(
@@ -40,7 +41,8 @@ export class BusinessTypeEditComponent implements OnInit {
       );
     });
   }
-  onUpdate(c) {
+
+  onUpdate(c: BusinessTypeModel) {
     console.log({ c });
     const toast = Swal.mixin({
       allowOutsideClick: false,
@@ -61,6 +63,13 @@ export class BusinessTypeEditComponent implements OnInit {
         this._businessTypeService.routeList();
       },
       (err) => {
+        toast.close();
+        const toast2 = Swal.mixin({
+          title: "error",
+          text: err.error.message,
+          icon: "error",
+        });
+        toast2.fire();
         console.log({ err });
       }
     );

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/services/user.service";
 import { UserModel } from "src/app/shared/models/user.model";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import Swal from "sweetalert2";
 
 @Component({
@@ -14,8 +14,7 @@ export class UserEditComponent implements OnInit {
 
   constructor(
     private _userService: UserService,
-    private _activedRoute: ActivatedRoute,
-    private _router: Router
+    private _activedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -33,7 +32,7 @@ export class UserEditComponent implements OnInit {
           });
           toast2.fire();
           //console.log({ err });
-          this.rederic();
+          this._userService.routeList();
         }
       );
     });
@@ -57,7 +56,7 @@ export class UserEditComponent implements OnInit {
           icon: "success",
         });
         toast2.fire();
-        this.rederic();
+        this._userService.routeList();
       },
       (err) => {
         toast.close();
@@ -70,9 +69,5 @@ export class UserEditComponent implements OnInit {
         console.log({ err });
       }
     );
-  }
-
-  rederic() {
-    this._router.navigate(["/usuario"]);
   }
 }

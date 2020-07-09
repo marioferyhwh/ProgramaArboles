@@ -42,7 +42,7 @@ export class CollectionEditComponent implements OnInit {
     });
   }
 
-  onUpdate(c) {
+  onUpdate(c: CollectionModel) {
     console.log({ c });
     const toast = Swal.mixin({
       allowOutsideClick: false,
@@ -63,6 +63,13 @@ export class CollectionEditComponent implements OnInit {
         this._collectionService.routeList();
       },
       (err) => {
+        toast.close();
+        const toast2 = Swal.mixin({
+          title: "error",
+          text: err.error.message,
+          icon: "error",
+        });
+        toast2.fire();
         console.log({ err });
       }
     );

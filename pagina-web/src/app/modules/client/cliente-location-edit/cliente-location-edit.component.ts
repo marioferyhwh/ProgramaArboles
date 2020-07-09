@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ClientLocationModel } from "src/app/shared/models/client-location.model";
 import { ClientService } from "src/app/services/client.service";
 import { ActivatedRoute } from "@angular/router";
+import Swal from "sweetalert2";
 
 @Component({
   selector: "app-cliente-location-edit",
@@ -17,16 +18,60 @@ export class ClienteLocationEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
     this._activedRoute.params.subscribe((params) => {
       this._clientService.getLocation(params["id"]).subscribe(
         (res) => {
           this.location = res;
-          console.log(res);
+          //console.log(res);
         },
         (err) => {
-          console.log(err);
+          const toast2 = Swal.mixin({
+            title: "sector no encontredo",
+            text: "",
+            icon: "info",
+          });
+          toast2.fire();
+          //console.log({ err });
+          this._clientService.routeListlocation();
         }
       );
     });
+  }
+
+  onUpdate(c: ClientLocationModel) {
+    console.log({ c });
+    const toast = Swal.mixin({
+      allowOutsideClick: false,
+      text: "espere por favor",
+      icon: "info",
+    });
+    toast.fire();
+    toast.showLoading();
+    this._clientService.editLocation(c).subscribe(
+      (resp) => {
+        toast.close();
+        const toast2 = Swal.mixin({
+          title: "sector editado",
+          text: "",
+          icon: "success",
+        });
+        toast2.fire();
+        this._clientService.routeListlocation();
+      },
+      (err) => {
+        toast.close();
+        const toast2 = Swal.mixin({
+          title: "error",
+          text: err.error.message,
+          icon: "error",
+        });
+        toast2.fire();
+        console.log({ err });
+      }
+    );
   }
 }

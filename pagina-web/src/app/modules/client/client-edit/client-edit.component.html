@@ -1,2 +1,2 @@
 <h1>Editar Cliente</h1>
-<app-form-client [data]="client"></app-form-client>
+<app-form-client [data]="client" (onData)="onUpdate($event)"></app-form-client>
