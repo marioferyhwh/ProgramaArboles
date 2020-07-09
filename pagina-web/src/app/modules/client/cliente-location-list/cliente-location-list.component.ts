@@ -22,4 +22,7 @@ export class ClienteLocationListComponent implements OnInit {
       }
     );
   }
+  onNew() {
+    this._clientService.routeNewlocation();
+  }
 }

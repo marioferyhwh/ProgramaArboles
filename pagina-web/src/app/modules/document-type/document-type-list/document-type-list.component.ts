@@ -23,4 +23,7 @@ export class DocumentTypeListComponent implements OnInit {
       }
     );
   }
+  onNew() {
+    this._documentTypeService.routeNew();
+  }
 }

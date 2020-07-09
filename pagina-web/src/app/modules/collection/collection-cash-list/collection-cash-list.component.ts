@@ -23,4 +23,7 @@ export class CollectionCashListComponent implements OnInit {
       }
     );
   }
+  onNew() {
+    this._collectionservice.routeNewcash();
+  }
 }

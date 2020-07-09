@@ -22,4 +22,8 @@ export class ClientListComponent implements OnInit {
       }
     );
   }
+
+  onNew() {
+    this._clientService.routeNew();
+  }
 }

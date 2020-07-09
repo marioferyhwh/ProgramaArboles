@@ -23,4 +23,8 @@ export class UserLevelListComponent implements OnInit {
       }
     );
   }
+
+  onNew() {
+    this._userService.routeNew();
+  }
 }

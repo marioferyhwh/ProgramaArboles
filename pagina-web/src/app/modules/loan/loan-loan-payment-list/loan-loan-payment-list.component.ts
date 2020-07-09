@@ -23,4 +23,8 @@ export class LoanLoanPaymentListComponent implements OnInit {
       }
     );
   }
+
+  onNew() {
+    this._loanService.routeNewPayment();
+  }
 }

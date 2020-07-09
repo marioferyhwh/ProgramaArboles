@@ -23,4 +23,8 @@ export class UserListComponent implements OnInit {
       }
     );
   }
+
+  onNew() {
+    this._userService.routeNew();
+  }
 }
