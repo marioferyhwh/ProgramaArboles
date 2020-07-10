@@ -23,7 +23,7 @@
             <td>{{dat.quota}}</td>
             <td>{{dat.balance}}</td>
             <td>
-                <app-button-edit (click)="editItem(dat.id)"></app-button-edit>
+                <app-button-see (click)="selectItem(dat.id)"></app-button-see>
                 <app-button-delete (click)="deleteItem(dat.id)"></app-button-delete>
             </td>
         </tr>

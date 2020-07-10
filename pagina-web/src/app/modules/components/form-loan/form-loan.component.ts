@@ -48,6 +48,10 @@ export class FormLoanComponent implements OnInit {
         this.forma.get("id_client").disable();
       }
     }
+    this.forma.get("id").disable();
+    this.forma.get("balance").disable();
+    this.forma.get("id_collection").disable();
+    this.forma.get("id_user").disable();
   }
 
   onAction() {
@@ -66,7 +70,6 @@ export class FormLoanComponent implements OnInit {
   }
 
   initForm() {
-    this.data = new LoanModel();
     this._globalService.get().subscribe((dt) => {
       console.log({ dt });
       this.loan_states = dt.loan_states;
@@ -92,11 +95,6 @@ export class FormLoanComponent implements OnInit {
       id_collection: [0, [Validators.required, Validators.min(1)]],
       id_user: [0, [Validators.required, Validators.min(1)]],
     });
-
-    this.forma.get("id").disable();
-    this.forma.get("balance").disable();
-    this.forma.get("id_collection").disable();
-    this.forma.get("id_user").disable();
   }
 
   cancel() {

@@ -41,6 +41,7 @@
     <div class="form-group row">
         <app-button-create-edit class="col-md-8 input-group" [id]="data.id" (onCancel)="cancel()"></app-button-create-edit>
     </div>
+
     <pre *ngIf="debug">
       {{forma.status}}
       {{forma.value | json}}

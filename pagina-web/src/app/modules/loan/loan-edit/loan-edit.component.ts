@@ -3,6 +3,12 @@ import { LoanModel } from "src/app/shared/models/loan.model";
 import { LoanService } from "src/app/services/loan.service";
 import { ActivatedRoute } from "@angular/router";
 import Swal from "sweetalert2";
+import { CollectionModel } from "src/app/shared/models/collection.model";
+import { UserModel } from "src/app/shared/models/user.model";
+import { ClientModel } from "src/app/shared/models/client.model";
+import { GlobalService } from "src/app/services/global.service";
+import { UserService } from "src/app/services/user.service";
+import { ClientService } from "src/app/services/client.service";
 
 @Component({
   selector: "app-loan-edit",
@@ -11,11 +17,19 @@ import Swal from "sweetalert2";
 })
 export class LoanEditComponent implements OnInit {
   public loan: LoanModel;
+  public colllections: CollectionModel[];
+  public users: UserModel[];
+  public clients: ClientModel[];
 
   constructor(
     private _loanService: LoanService,
-    private _activedRoute: ActivatedRoute
-  ) {}
+    private _activedRoute: ActivatedRoute,
+    private _globalService: GlobalService,
+    private _userService: UserService,
+    private _clientService: ClientService
+  ) {
+    this.colllections = [_globalService.getVarCollection];
+  }
 
   ngOnInit(): void {
     this.getData();
@@ -26,17 +40,23 @@ export class LoanEditComponent implements OnInit {
       this._loanService.get(params["id"]).subscribe(
         (res) => {
           this.loan = res;
-          //console.log(res);
+          console.log(res);
+          this._userService.get(res.id_user).subscribe((resp) => {
+            this.users = [resp];
+          });
+          this._clientService.get(res.id_client).subscribe((resp) => {
+            this.clients = [resp];
+          });
         },
         (err) => {
-          const toast2 = Swal.mixin({
-            title: "prestamo no encontredo",
-            text: "",
-            icon: "info",
-          });
-          toast2.fire();
-          //console.log({ err });
-          this._loanService.routeList();
+          // const toast2 = Swal.mixin({
+          //   title: "prestamo no encontredo",
+          //   text: "",
+          //   icon: "info",
+          // });
+          // toast2.fire();
+          console.log(err.error);
+          // this._loanService.routeList();
         }
       );
     });

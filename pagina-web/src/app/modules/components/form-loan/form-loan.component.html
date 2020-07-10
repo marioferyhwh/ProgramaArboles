@@ -1,4 +1,5 @@
-<form autocomplete="off" class="col-8 offset-2 text-right" [formGroup]="forma" (ngSubmit)="onAction()">
+<app-loading *ngIf="!data"></app-loading>
+<form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
 
     <div class="form-group row" *ngIf="data.id">
         <label class="col-4 col-form-label" for="id">ID:</label>
@@ -43,17 +44,6 @@
         </div>
     </div>
 
-    <div class="form-group row" *ngIf="data.id">
-        <label class="col-4 col-form-label" for="id_user">creado por:</label>
-        <div class="col-8">
-            <select class="form-control" formControlName="id_user" [class.is-invalid]="id_userInvalid">
-        <option *ngFor="let estate of loan_states" [value]="estate.id">{{estate.state}}</option>
-      </select>
-            <small class="text-danger" *ngIf="id_userInvalid">
-        usario no valido
-      </small>
-        </div>
-    </div>
 
     <div class="form-group row">
         <label class="col-4 col-form-label" for="initial_value">Prestamo:</label>
@@ -101,8 +91,7 @@
     </div>
 
     <div class="form-group row">
-        <label class="col-4 col-form-label input-group"></label>
-        <button class="col-md-8 btn btn-outline-primary btn-block" type="submit">Crear</button>
+        <app-button-create-edit class="col-md-8 input-group" [id]="data.id" (onCancel)="cancel()"></app-button-create-edit>
     </div>
 
 </form>

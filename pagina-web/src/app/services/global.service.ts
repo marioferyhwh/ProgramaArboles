@@ -43,6 +43,8 @@ export class GlobalService {
   getVar(): void {
     if (localStorage.getItem(this._nameVar)) {
       this._variables = JSON.parse(localStorage.getItem(this._nameVar));
+    } else {
+      this._variables = new GlobalVarModel();
     }
     // return new GlobalVarModel();
   }
