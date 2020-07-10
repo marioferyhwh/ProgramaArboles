@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { CollectionService } from "src/app/services/collection.service";
 import { CollectionModel } from "src/app/shared/models/collection.model";
 import { GlobalService } from "src/app/services/global.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-collection-select",
@@ -10,9 +11,9 @@ import { GlobalService } from "src/app/services/global.service";
 })
 export class CollectionSelectComponent implements OnInit {
   public collections: CollectionModel[];
-  public collectionSelect: CollectionModel;
   constructor(
     private _collectionService: CollectionService,
+    private _userService: UserService,
     private _globalServer: GlobalService
   ) {}
 
@@ -21,7 +22,6 @@ export class CollectionSelectComponent implements OnInit {
   }
 
   getData() {
-    this.collectionSelect = this._globalServer.getVarCollection;
     this._collectionService.getList(0).subscribe(
       (res) => {
         this.collections = res;
@@ -34,9 +34,17 @@ export class CollectionSelectComponent implements OnInit {
   }
 
   selectColletion(id: number, name: string) {
-    this.collectionSelect = this._globalServer.getVarCollection;
-    this.collectionSelect.id = id;
-    this.collectionSelect.description = name;
+    let c = this._globalServer.getVarCollection;
+    c.id = id;
+    c.description = name;
     this._globalServer.varAllSave();
+    this._userService.getCollectionByCollection(id).subscribe(
+      (resp) => {
+        console.log(resp);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }

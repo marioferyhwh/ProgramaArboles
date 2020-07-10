@@ -186,6 +186,22 @@ export class UserService {
     );
   }
 
+  getCollectionByCollection(id: number): Observable<UserCollectionModel> {
+    return this._api.GetQuery(`${this._urlD}/0?collection=${id}`).pipe(
+      map((data: RespModel) => {
+        return <UserCollectionModel>data.data;
+      })
+    );
+  }
+
+  getCollectionByUser(id: number): Observable<UserCollectionModel> {
+    return this._api.GetQuery(`${this._urlD}/0?user=${id}`).pipe(
+      map((data: RespModel) => {
+        return <UserCollectionModel>data.data;
+      })
+    );
+  }
+
   createCollection(uc: UserCollectionModel): Observable<UserCollectionModel> {
     return this._api.PostQuery(`${this._urlD}`, uc).pipe(
       map((data: RespModel) => {

@@ -2,7 +2,8 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { UserModel } from "../shared/models/user.model";
-import { GlobalService } from "./global.service";
+import { map } from "rxjs/operators";
+import { RespModel } from "../shared/models/resp.model";
 
 @Injectable({
   providedIn: "root",
@@ -86,7 +87,11 @@ export class ApiServerService {
       "Content-Type": "application/json",
       Authorization: aut,
     });
-    return this._http.get(`${this._url}${query}`, { headers: header });
+    return this._http.get(`${this._url}${query}`, { headers: header }).pipe(
+      map((data: RespModel) => {
+        return data || new RespModel();
+      })
+    );
   }
 
   PostQuery(
@@ -105,7 +110,13 @@ export class ApiServerService {
       "Content-Type": "application/json",
       Authorization: aut,
     });
-    return this._http.post(`${this._url}${query}`, data, { headers: header });
+    return this._http
+      .post(`${this._url}${query}`, data, { headers: header })
+      .pipe(
+        map((data: RespModel) => {
+          return data || new RespModel();
+        })
+      );
   }
 
   PutQuery(
@@ -122,7 +133,13 @@ export class ApiServerService {
       "Content-Type": "application/json",
       Authorization: aut,
     });
-    return this._http.put(`${this._url}${query}`, data, { headers: header });
+    return this._http
+      .put(`${this._url}${query}`, data, { headers: header })
+      .pipe(
+        map((data: RespModel) => {
+          return data || new RespModel();
+        })
+      );
   }
 
   DeleteQuery(query: string, token: boolean = true): Observable<object> {
@@ -135,6 +152,10 @@ export class ApiServerService {
       "Content-Type": "application/json",
       Authorization: aut,
     });
-    return this._http.delete(`${this._url}${query}`, { headers: header });
+    return this._http.delete(`${this._url}${query}`, { headers: header }).pipe(
+      map((data: RespModel) => {
+        return data || new RespModel();
+      })
+    );
   }
 }

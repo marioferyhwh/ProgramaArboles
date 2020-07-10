@@ -9,6 +9,7 @@ import { UserModel } from "../shared/models/user.model";
 import { CollectionModel } from "../shared/models/collection.model";
 import { ClientModel } from "../shared/models/client.model";
 import { ExpenseModel } from "../shared/models/expense.model";
+import { UserCollectionModel } from "../shared/models/user-collection.model";
 
 @Injectable({
   providedIn: "root",
@@ -98,9 +99,16 @@ export class GlobalService {
     }
     return this._variables.expense;
   }
+  get getUserCollection(): UserCollectionModel {
+    this.getVar();
+    if (this._variables.userCollection == null) {
+      this._variables.userCollection = new UserCollectionModel();
+    }
+    return this._variables.userCollection;
+  }
 
   varAllSave() {
-    console.log(this._variables);
+    //console.log(this._variables);
     localStorage.setItem(this._nameVar, JSON.stringify(this._variables));
   }
 
@@ -118,6 +126,10 @@ export class GlobalService {
   }
   varExpenseDelete() {
     this._variables.expense = null;
+    this.varAllSave();
+  }
+  varUserCollectionDelete() {
+    this._variables.userCollection = null;
     this.varAllSave();
   }
 }
