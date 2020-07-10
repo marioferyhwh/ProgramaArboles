@@ -3,6 +3,8 @@ import { ClientLocationModel } from "src/app/shared/models/client-location.model
 import { ClientService } from "src/app/services/client.service";
 import { ActivatedRoute } from "@angular/router";
 import Swal from "sweetalert2";
+import { CollectionModel } from "src/app/shared/models/collection.model";
+import { GlobalService } from "src/app/services/global.service";
 
 @Component({
   selector: "app-cliente-location-edit",
@@ -11,11 +13,15 @@ import Swal from "sweetalert2";
 })
 export class ClienteLocationEditComponent implements OnInit {
   public location: ClientLocationModel;
+  public collections: CollectionModel[];
 
   constructor(
     private _clientService: ClientService,
-    private _activedRoute: ActivatedRoute
-  ) {}
+    private _activedRoute: ActivatedRoute,
+    private _globalService: GlobalService
+  ) {
+    this.collections = [this._globalService.getVarCollection];
+  }
 
   ngOnInit(): void {
     this.getData();
@@ -26,7 +32,7 @@ export class ClienteLocationEditComponent implements OnInit {
       this._clientService.getLocation(params["id"]).subscribe(
         (res) => {
           this.location = res;
-          //console.log(res);
+          console.log(res);
         },
         (err) => {
           const toast2 = Swal.mixin({

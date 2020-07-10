@@ -8,6 +8,7 @@ import { TelDescriptionModel } from "src/app/shared/models/tel-description.model
 import { BusinessTypeModel } from "src/app/shared/models/business-type.model";
 import { ValidatorsService } from "src/app/services/validators.service";
 import { ClientService } from "src/app/services/client.service";
+import { CollectionModel } from "src/app/shared/models/collection.model";
 
 @Component({
   selector: "app-form-client",
@@ -16,6 +17,7 @@ import { ClientService } from "src/app/services/client.service";
 })
 export class FormClienteComponent implements OnInit {
   @Input() public data: ClientModel;
+  @Input() public collections: CollectionModel[];
   @Output() public onData: EventEmitter<ClientModel>;
 
   public forma: FormGroup;
@@ -41,6 +43,15 @@ export class FormClienteComponent implements OnInit {
     this.dataForm();
   }
 
+  dataForm() {
+    if (this.data != null) {
+      // this.forma.setValue(this.client);
+      this.forma.reset({ ...this.data });
+    }
+    this.forma.get("id").disable();
+    this.forma.get("id_collection").disable();
+  }
+
   onAction() {
     console.log(this.forma);
     if (this.forma.invalid) {
@@ -53,6 +64,7 @@ export class FormClienteComponent implements OnInit {
     console.log(this.forma.value);
     const d = <ClientModel>this.forma.value;
     d.id = this.data.id;
+    d.id_collection = this.data.id_collection;
     this.onData.emit(d);
   }
 
@@ -153,12 +165,10 @@ export class FormClienteComponent implements OnInit {
       this.forma.get("id_location").touched
     );
   }
-
-  dataForm() {
-    if (this.data != null) {
-      // this.forma.setValue(this.client);
-      this.forma.reset({ ...this.data });
-    }
-    this.forma.get("id").disable();
+  get id_collectionInvalid(): boolean {
+    return (
+      this.forma.get("id_collection").invalid &&
+      this.forma.get("id_collection").touched
+    );
   }
 }

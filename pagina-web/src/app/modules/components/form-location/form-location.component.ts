@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ClientLocationModel } from "src/app/shared/models/client-location.model";
 import { ClientService } from "src/app/services/client.service";
+import { CollectionModel } from "src/app/shared/models/collection.model";
 
 @Component({
   selector: "app-form-location",
@@ -10,6 +11,7 @@ import { ClientService } from "src/app/services/client.service";
 })
 export class FormLocationComponent implements OnInit {
   @Input() public data: ClientLocationModel;
+  @Input() public collections: CollectionModel[];
   @Output() public onData: EventEmitter<ClientLocationModel>;
 
   public forma: FormGroup;
@@ -45,6 +47,8 @@ export class FormLocationComponent implements OnInit {
     }
     const d = <ClientLocationModel>this.forma.value;
     d.id = this.data.id;
+    d.id_collection = this.data.id_collection;
+    // console.log({ d });
     this.onData.emit(d);
   }
 

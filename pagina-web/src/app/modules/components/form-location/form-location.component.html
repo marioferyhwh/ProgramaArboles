@@ -9,18 +9,21 @@
     </div>
 
     <div class="form-group row">
-        <label class="col-4 col-form-label" for="id_collection">Cobro:</label>
+        <label class="col-4 col-form-label r" for="id_collection">Cobro:</label>
         <div class="col-8">
-            <input class="form-control" type="text" placeholder="nombre" formControlName="id_collection" [class.is-invalid]="id_collectionInvalid">
+            <select class="form-control" formControlName="id_collection" type="number" [ngClass]="{'is-invalid':id_collectionInvalid}">
+        <option *ngFor="let dat of collections" [value]="dat.id">{{dat.id}}-{{dat.description}}</option>
+      </select>
             <span class="text-danger" *ngIf="id_collectionInvalid">
-        cobro no valido
+        especifique cobro
       </span>
         </div>
     </div>
+
     <div class="form-group row">
         <label class="col-4 col-form-label" for="name">Sector:</label>
         <div class="col-8">
-            <input class="form-control" type="text" placeholder="nombre" formControlName="name" [class.is-invalid]="nameInvalid">
+            <input class="form-control" type="text" placeholder="nombre del sector" formControlName="name" [class.is-invalid]="nameInvalid">
             <span class="text-danger" *ngIf="nameInvalid">
         sector no valido
       </span>
