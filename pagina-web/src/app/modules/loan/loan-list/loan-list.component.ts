@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { LoanModel } from "src/app/shared/models/loan.model";
 import { LoanService } from "src/app/services/loan.service";
+import { GlobalService } from "src/app/services/global.service";
 
 @Component({
   selector: "app-loan-list",
@@ -10,25 +11,32 @@ import { LoanService } from "src/app/services/loan.service";
 export class LoanListComponent implements OnInit {
   public loans: LoanModel[];
 
-  constructor(private _loanService: LoanService) {}
+  constructor /* private _loanService: LoanService,
+    private _globalService: GlobalService*/() {
+    console.log("sadas");
+  }
 
   ngOnInit(): void {
     this.getData();
+    console.log("sadas");
+    console.log("sadas");
   }
 
   getData() {
-    this._loanService.getList(1).subscribe(
-      (res) => {
-        this.loans = res;
-        console.log(res);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    // console.log(1);
+    // let c = this._globalService.getVarCollection;
+    // this._loanService.getList(c.id).subscribe(
+    //   (res) => {
+    //     this.loans = res;
+    //     console.log(res);
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //   }
+    // );
   }
 
   onNew() {
-    this._loanService.routeNew();
+    // this._loanService.routeNew();
   }
 }

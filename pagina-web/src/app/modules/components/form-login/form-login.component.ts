@@ -54,7 +54,7 @@ export class FormLoginComponent implements OnInit {
         console.log(resp);
 
         //this._globalService.setVar({ user: 1 });
-        this._router.navigate(["/selecionar"]);
+        this._router.navigate(["/cobro/selecionar"]);
       },
       (err) => {
         const toast = Swal.mixin({

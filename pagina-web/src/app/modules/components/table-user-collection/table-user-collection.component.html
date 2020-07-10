@@ -6,6 +6,7 @@
             <th scope="col">#</th>
             <th scope="col">cobro</th>
             <th scope="col">usuario</th>
+            <th scope="col">saldo</th>
             <th></th>
         </tr>
     </thead>
@@ -14,6 +15,7 @@
             <th scope="col">{{dat.id}}</th>
             <td>{{dat.id_collection}}</td>
             <td>{{dat.id_user}}</td>
+            <td>{{dat.money |moneda}}</td>
             <td>
                 <app-button-edit (click)="editItem(dat.id)"></app-button-edit>
                 <app-button-delete (click)="deleteItem(dat.id)"></app-button-delete>

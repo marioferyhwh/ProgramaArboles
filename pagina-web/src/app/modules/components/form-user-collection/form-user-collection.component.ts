@@ -78,7 +78,7 @@ export class FormUserCollectionComponent implements OnInit {
 
   initForm() {
     this._globalService.get().subscribe((dt) => {
-      // console.log({ dt });
+      console.log({ dt });
       this.userLevels = dt.user_levels;
     });
 

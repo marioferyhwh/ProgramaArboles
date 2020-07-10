@@ -5,6 +5,9 @@ import { LoanStateModel } from "src/app/shared/models/loan-state.model";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { LoanService } from "src/app/services/loan.service";
+import { CollectionModel } from "src/app/shared/models/collection.model";
+import { UserModel } from "src/app/shared/models/user.model";
+import { ClientModel } from "src/app/shared/models/client.model";
 
 @Component({
   selector: "app-form-loan",
@@ -13,6 +16,9 @@ import { LoanService } from "src/app/services/loan.service";
 })
 export class FormLoanComponent implements OnInit {
   @Input() public data: LoanModel;
+  @Input() public collections: CollectionModel[];
+  @Input() public users: UserModel[];
+  @Input() public clients: ClientModel[];
   @Output() public onData: EventEmitter<LoanModel>;
 
   public forma: FormGroup;
@@ -38,12 +44,10 @@ export class FormLoanComponent implements OnInit {
   dataForm() {
     if (this.data != null) {
       this.forma.reset({ ...this.data });
+      if (this.data.id != null) {
+        this.forma.get("id_client").disable();
+      }
     }
-    this.forma.get("id").disable();
-    this.forma.get("balance").disable();
-    this.forma.get("id_client").disable();
-    this.forma.get("id_collection").disable();
-    this.forma.get("id_user").disable();
   }
 
   onAction() {
@@ -52,10 +56,12 @@ export class FormLoanComponent implements OnInit {
         c.markAsTouched();
       });
     }
-
     console.log(this.forma);
+    this.forma.value["id_client"] = parseInt(this.forma.value["id_client"]);
     const d = <LoanModel>this.forma.value;
     d.id = this.data.id;
+    d.id_user = this.data.id_user;
+    d.id_collection = this.data.id_collection;
     this.onData.emit(d);
   }
 
@@ -70,6 +76,7 @@ export class FormLoanComponent implements OnInit {
       // });
     });
     this.forma = this._fb.group({
+      id: [],
       initial_value: ["", [Validators.required, Validators.min(5)]],
       interest: [
         20,
@@ -85,6 +92,11 @@ export class FormLoanComponent implements OnInit {
       id_collection: [0, [Validators.required, Validators.min(1)]],
       id_user: [0, [Validators.required, Validators.min(1)]],
     });
+
+    this.forma.get("id").disable();
+    this.forma.get("balance").disable();
+    this.forma.get("id_collection").disable();
+    this.forma.get("id_user").disable();
   }
 
   cancel() {

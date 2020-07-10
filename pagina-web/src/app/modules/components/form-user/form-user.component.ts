@@ -76,7 +76,6 @@ export class FormUserComponent implements OnInit {
       }
       this.forma.reset({ ...this.data });
     }
-    this.forma.get("id").disable();
   }
 
   listenerForm() {
@@ -137,6 +136,7 @@ export class FormUserComponent implements OnInit {
         ),
       }
     );
+    this.forma.get("id").disable();
   }
 
   cancel() {
