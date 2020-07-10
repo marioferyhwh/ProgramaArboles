@@ -46,6 +46,7 @@ import { UserCollectionListComponent } from "./modules/user/user-collection-list
 import { DocumentTypeListComponent } from "./modules/document-type/document-type-list/document-type-list.component";
 import { DocumentTypeNewComponent } from "./modules/document-type/document-type-new/document-type-new.component";
 import { DocumentTypeEditComponent } from "./modules/document-type/document-type-edit/document-type-edit.component";
+import { CollectionSelectComponent } from "./modules/collection/collection-select/collection-select.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -74,8 +75,9 @@ const routes: Routes = [
       { path: "sector/:id", component: ClienteLocationEditComponent },
       { path: "sector/:id/editar", component: ClienteLocationEditComponent },
 
-      { path: "cobro/caja/", component: CollectionCashListComponent },
-      { path: "cobro/caja/lista", redirectTo: "cobro/caja/" },
+      { path: "cobro/selecionar", component: CollectionSelectComponent },
+      { path: "cobro/caja", component: CollectionCashListComponent },
+      { path: "cobro/caja/lista", redirectTo: "cobro/caja" },
       { path: "cobro/caja/nuevo", component: CollectionCashNewComponent },
       { path: "cobro/caja/:id", component: CollectionCashEditComponent },
       { path: "cobro/caja/:id/editar", component: CollectionCashEditComponent },

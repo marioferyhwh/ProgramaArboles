@@ -44,6 +44,7 @@ import { ButtonCreateEditComponent } from "./button-create-edit/button-create-ed
 import { PipesModule } from "src/app/shared/pipes/pipes.module";
 import { TableUserCollectionComponent } from "./table-user-collection/table-user-collection.component";
 import { FormUserCollectionComponent } from "./form-user-collection/form-user-collection.component";
+import { CardCollectionComponent } from './card-collection/card-collection.component';
 
 const declarations = [
   HeaderComponent,
@@ -89,7 +90,7 @@ const declarations = [
   FormUserCollectionComponent,
 ];
 @NgModule({
-  declarations: [...declarations],
+  declarations: [...declarations, CardCollectionComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
