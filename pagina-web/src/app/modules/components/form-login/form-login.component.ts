@@ -52,6 +52,7 @@ export class FormLoginComponent implements OnInit {
           localStorage.removeItem(this.emailLS);
         }
         console.log(resp);
+
         //this._globalService.setVar({ user: 1 });
         this._router.navigate(["/selecionar"]);
       },

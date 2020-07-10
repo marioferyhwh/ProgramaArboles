@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ClientService } from "src/app/services/client.service";
 import { ClientModel } from "src/app/shared/models/client.model";
+import { GlobalService } from "src/app/services/global.service";
 
 @Component({
   selector: "app-client-list",
@@ -9,14 +10,18 @@ import { ClientModel } from "src/app/shared/models/client.model";
 })
 export class ClientListComponent implements OnInit {
   public clients: ClientModel[];
-  constructor(private _clientService: ClientService) {}
+  constructor(
+    private _clientService: ClientService,
+    private _globalService: GlobalService
+  ) {}
 
   ngOnInit(): void {
     this.getData();
   }
 
   getData() {
-    this._clientService.getList(1).subscribe(
+    let c = this._globalService.getVarCollection;
+    this._clientService.getList(c.id).subscribe(
       (res: ClientModel[]) => {
         this.clients = res;
         console.log(res);

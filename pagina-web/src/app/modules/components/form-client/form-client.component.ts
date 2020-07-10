@@ -9,6 +9,8 @@ import { BusinessTypeModel } from "src/app/shared/models/business-type.model";
 import { ValidatorsService } from "src/app/services/validators.service";
 import { ClientService } from "src/app/services/client.service";
 import { CollectionModel } from "src/app/shared/models/collection.model";
+import { ClientLocationModel } from "src/app/shared/models/client-location.model";
+import { UserModel } from "src/app/shared/models/user.model";
 
 @Component({
   selector: "app-form-client",
@@ -18,6 +20,8 @@ import { CollectionModel } from "src/app/shared/models/collection.model";
 export class FormClienteComponent implements OnInit {
   @Input() public data: ClientModel;
   @Input() public collections: CollectionModel[];
+  @Input() public users: UserModel[];
+  @Input() public locations: ClientLocationModel[];
   @Output() public onData: EventEmitter<ClientModel>;
 
   public forma: FormGroup;
@@ -50,6 +54,7 @@ export class FormClienteComponent implements OnInit {
     }
     this.forma.get("id").disable();
     this.forma.get("id_collection").disable();
+    this.forma.get("id_user").disable();
   }
 
   onAction() {
@@ -62,9 +67,23 @@ export class FormClienteComponent implements OnInit {
     }
     console.log(this.data);
     console.log(this.forma.value);
+    if (this.forma.value["email"] == null) {
+      this.forma.value["email"] = "";
+    }
+    if (this.forma.value["document"] == null) {
+      this.forma.value["document"] = 0;
+    }
+    this.forma.value["id_type_business"] = parseInt(
+      this.forma.value["id_type_business"]
+    );
+    this.forma.value["id_location"] = parseInt(this.forma.value["id_location"]);
+    this.forma.value["id_loan_state"] = parseInt(
+      this.forma.value["id_loan_state"]
+    );
     const d = <ClientModel>this.forma.value;
     d.id = this.data.id;
     d.id_collection = this.data.id_collection;
+    d.id_user = this.data.id_user;
     this.onData.emit(d);
   }
 
@@ -115,60 +134,42 @@ export class FormClienteComponent implements OnInit {
     return <FormArray>this.forma.get("tels");
   }
 
+  InvalidField(Field: string): boolean {
+    return this.forma.get(Field).invalid && this.forma.get(Field).touched;
+  }
   numberInvalid(i: number) {
     const forma = this.telsArray.controls[i];
     return forma.get("number").invalid && forma.get("number").touched;
   }
 
   get nameInvalid(): boolean {
-    return this.forma.get("name").invalid && this.forma.get("name").touched;
+    return this.InvalidField("name");
   }
-
   get emailInvalid(): boolean {
-    return this.forma.get("email").invalid && this.forma.get("email").touched;
+    return this.InvalidField("email");
   }
-
   get documentInvalid(): boolean {
-    return (
-      this.forma.get("document").invalid && this.forma.get("document").touched
-    );
+    return this.InvalidField("document");
   }
-
   get document_codeInvalid(): boolean {
-    return (
-      this.forma.get("document_code").invalid &&
-      this.forma.get("document_code").touched
-    );
+    return this.InvalidField("document_code");
   }
-
   get adressInvalid(): boolean {
-    return this.forma.get("adress").invalid && this.forma.get("adress").touched;
+    return this.InvalidField("adress");
   }
-
   get id_loan_stateInvalid(): boolean {
-    return (
-      this.forma.get("id_loan_state").invalid &&
-      this.forma.get("id_loan_state").touched
-    );
+    return this.InvalidField("id_loan_state");
   }
-
   get id_type_businessInvalid(): boolean {
-    return (
-      this.forma.get("id_type_business").invalid &&
-      this.forma.get("id_type_business").touched
-    );
+    return this.InvalidField("id_type_business");
   }
-
   get id_locationInvalid(): boolean {
-    return (
-      this.forma.get("id_location").invalid &&
-      this.forma.get("id_location").touched
-    );
+    return this.InvalidField("id_location");
   }
   get id_collectionInvalid(): boolean {
-    return (
-      this.forma.get("id_collection").invalid &&
-      this.forma.get("id_collection").touched
-    );
+    return this.InvalidField("id_collection");
+  }
+  get id_userInvalid(): boolean {
+    return this.InvalidField("id_user");
   }
 }

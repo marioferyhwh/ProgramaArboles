@@ -4,6 +4,9 @@ import { ClientService } from "src/app/services/client.service";
 import Swal from "sweetalert2";
 import { CollectionModel } from "src/app/shared/models/collection.model";
 import { UserModel } from "src/app/shared/models/user.model";
+import { GlobalService } from "src/app/services/global.service";
+import { ClientLocationModel } from "src/app/shared/models/client-location.model";
+import { ApiServerService } from "src/app/services/api-server.service";
 
 @Component({
   selector: "app-client-new",
@@ -12,10 +15,30 @@ import { UserModel } from "src/app/shared/models/user.model";
 })
 export class ClientNewComponent implements OnInit {
   public client: ClientModel;
-  constructor(private _clientService: ClientService) {}
+  public collections: CollectionModel[];
+  public users: UserModel[];
+  public locations: ClientLocationModel[];
+  constructor(
+    private _clientService: ClientService,
+    private _globalService: GlobalService,
+    private _apiService: ApiServerService
+  ) {
+    this.collections = [this._globalService.getVarCollection];
+    this.users = [this._apiService.userToken()];
+    this._clientService.getLocationList(this.collections[0].id).subscribe(
+      (resp) => {
+        this.locations = resp;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.client = new ClientModel();
+    this.client.id_collection = this.collections[0].id;
+    this.client.id_user = this.users[0].id;
   }
 
   onCreate(data: ClientModel) {

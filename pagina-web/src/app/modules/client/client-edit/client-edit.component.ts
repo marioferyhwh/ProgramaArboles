@@ -3,6 +3,11 @@ import { ActivatedRoute } from "@angular/router";
 import { ClientService } from "src/app/services/client.service";
 import { ClientModel } from "src/app/shared/models/client.model";
 import Swal from "sweetalert2";
+import { GlobalService } from "src/app/services/global.service";
+import { CollectionModel } from "src/app/shared/models/collection.model";
+import { UserModel } from "src/app/shared/models/user.model";
+import { ClientLocationModel } from "src/app/shared/models/client-location.model";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-client-edit",
@@ -11,10 +16,28 @@ import Swal from "sweetalert2";
 })
 export class ClientEditComponent implements OnInit {
   public client: ClientModel;
+  public collections: CollectionModel[];
+  public users: UserModel[];
+  public locations: ClientLocationModel[];
+
   constructor(
     private _activedRoute: ActivatedRoute,
-    private _clientService: ClientService
-  ) {}
+    private _clientService: ClientService,
+    private _globalService: GlobalService,
+    private _userService: UserService
+  ) {
+    this.collections = [this._globalService.getVarCollection];
+    console.log(this.collections);
+    this._clientService.getLocationList(this.collections[0].id).subscribe(
+      (resp) => {
+        this.locations = resp;
+        console.log(resp);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.getData();
@@ -25,6 +48,9 @@ export class ClientEditComponent implements OnInit {
       this._clientService.get(params["id"]).subscribe(
         (res) => {
           this.client = res;
+          this._userService.get(res.id_user).subscribe((resp) => {
+            this.users = [resp];
+          });
           //console.log(res);
         },
         (err) => {
