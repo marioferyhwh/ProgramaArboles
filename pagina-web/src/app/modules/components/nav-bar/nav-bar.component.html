@@ -25,6 +25,15 @@
                 <ul class="dropdown-menu">
                     <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/prestamo','lista']">lista</a></li>
                     <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/prestamo','nuevo']">nuevo</a></li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tipos</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active">
+                                <a class="dropdown-item" [routerLink]="['/prestamo','estado','lista']">lista</a></li>
+                            <li routerLinkActive="active">
+                                <a class="dropdown-item" [routerLink]="['/prestamo','estado','nuevo']">nuevo</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item dropdown" routerLinkActive="active">

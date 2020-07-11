@@ -115,10 +115,16 @@ const routes: Routes = [
       { path: "gasto/:id", component: ExpenseEditComponent },
       { path: "gasto/:id/editar", component: ExpenseEditComponent },
 
-      { path: "prestamo/pago", component: LoanLoanPaymentListComponent },
-      { path: "prestamo/pago/lista", redirectTo: "prestamo/pago" },
-      { path: "prestamo/pago/nuevo", component: LoanLoanPaymentNewComponent },
-      { path: "prestamo/pago/:id", component: LoanLoanPaymentEditComponent },
+      { path: "prestamo/:loan/pago", component: LoanLoanPaymentListComponent },
+      { path: "prestamo/:loan/pago/lista", redirectTo: "prestamo/pago" },
+      {
+        path: "prestamo/:loan/pago/nuevo",
+        component: LoanLoanPaymentNewComponent,
+      },
+      {
+        path: "prestamo/:loan/pago/:id",
+        component: LoanLoanPaymentEditComponent,
+      },
       {
         path: "prestamo/pago/:id/editar",
         component: LoanLoanPaymentEditComponent,
