@@ -63,35 +63,36 @@ export class LoanEditComponent implements OnInit {
   }
 
   onUpdate(c: LoanModel) {
-    console.log({ c });
-    const toast = Swal.mixin({
-      allowOutsideClick: false,
-      text: "espere por favor",
-      icon: "info",
-    });
-    toast.fire();
-    toast.showLoading();
-    this._loanService.edit(c).subscribe(
-      (resp) => {
-        toast.close();
-        const toast2 = Swal.mixin({
-          title: "prestamo editado",
-          text: "",
-          icon: "success",
-        });
-        toast2.fire();
-        this._loanService.routeList();
-      },
-      (err) => {
-        toast.close();
-        const toast2 = Swal.mixin({
-          title: "error",
-          text: err.error.message,
-          icon: "error",
-        });
-        toast2.fire();
-        console.log({ err });
-      }
-    );
+    this._loanService.routeList();
+    // console.log({ c });
+    // const toast = Swal.mixin({
+    //   allowOutsideClick: false,
+    //   text: "espere por favor",
+    //   icon: "info",
+    // });
+    // toast.fire();
+    // toast.showLoading();
+    // this._loanService.edit(c).subscribe(
+    //   (resp) => {
+    //     toast.close();
+    //     const toast2 = Swal.mixin({
+    //       title: "prestamo editado",
+    //       text: "",
+    //       icon: "success",
+    //     });
+    //     toast2.fire();
+    //     this._loanService.routeList();
+    //   },
+    //   (err) => {
+    //     toast.close();
+    //     const toast2 = Swal.mixin({
+    //       title: "error",
+    //       text: err.error.message,
+    //       icon: "error",
+    //     });
+    //     toast2.fire();
+    //     console.log({ err });
+    //   }
+    // );
   }
 }
