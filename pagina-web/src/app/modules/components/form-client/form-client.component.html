@@ -1,155 +1,159 @@
 <app-loading *ngIf="!data"></app-loading>
 <form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
 
-    <div class="form-group row" *ngIf="data.id">
-        <label class="col-4 col-form-label" for="id">ID:</label>
-        <div class="col-8">
-            <input class="form-control" type="text" placeholder="nombre" formControlName="id">
-        </div>
+  <div class="form-group row" *ngIf="data.id">
+    <label class="col-4 col-form-label" for="id">ID:</label>
+    <div class="col-8">
+      <input class="form-control" type="text" placeholder="nombre" formControlName="id">
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label r" for="id_collection">Cobro:</label>
-        <div class="col-8">
-            <select class="form-control" formControlName="id_collection" type="number" [ngClass]="{'is-invalid':id_collectionInvalid}">
+  <div class="form-group row">
+    <label class="col-4 col-form-label r" for="id_collection">Cobro:</label>
+    <div class="col-8">
+      <select class="form-control" formControlName="id_collection" type="number"
+        [ngClass]="{'is-invalid':id_collectionInvalid}">
         <option *ngFor="let dat of collections" [value]="dat.id">{{dat.id}}-{{dat.description}}</option>
       </select>
-            <span class="text-danger" *ngIf="id_collectionInvalid">
+      <span class="text-danger" *ngIf="id_collectionInvalid">
         especifique cobro
       </span>
-        </div>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label r" for="id_user">Creado por:</label>
-        <div class="col-8">
-            <select class="form-control" formControlName="id_user" type="number" [ngClass]="{'is-invalid':id_userInvalid}">
+  <div class="form-group row">
+    <label class="col-4 col-form-label r" for="id_user">Creado por:</label>
+    <div class="col-8">
+      <select class="form-control" formControlName="id_user" type="number" [ngClass]="{'is-invalid':id_userInvalid}">
         <option *ngFor="let dat of users" [value]="dat.id">{{dat.id}}-{{dat.name}}</option>
       </select>
-            <span class="text-danger" *ngIf="id_userInvalid">
-        especifique cobro
+      <span class="text-danger" *ngIf="id_userInvalid">
+        especifique usuario
       </span>
-        </div>
     </div>
+  </div>
 
-    <div class="form-group row" *ngIf="data.id">
-        <label class="col-4 col-form-label">Creado:{{data.create_at}}</label>
-    </div>
+  <div class="form-group row" *ngIf="data.id">
+    <label class="col-4 col-form-label">Creado:{{data.create_at}}</label>
+  </div>
 
-    <div class="form-group row" *ngIf="data.id">
-        <label class="col-4 col-form-label">actualizado:{{data.update_at}}</label>
-        <label class="col-10 col-form-label">prestamos:{{data.number_loans}}</label>
-    </div>
+  <div class="form-group row" *ngIf="data.id">
+    <label class="col-4 col-form-label">actualizado:{{data.update_at}}</label>
+    <label class="col-10 col-form-label">prestamos:{{data.number_loans}}</label>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label " for="">Estado:</label>
-        <div class="col-8">
-            <select class="form-control" formControlName="id_loan_state" [ngClass]="{'is-invalid':id_loan_stateInvalid}">
+  <div class="form-group row">
+    <label class="col-4 col-form-label " for="">Estado:</label>
+    <div class="col-8">
+      <select class="form-control" formControlName="id_loan_state" [ngClass]="{'is-invalid':id_loan_stateInvalid}">
         <option *ngFor=" let estate of loan_states" [value]="estate.id">{{estate.state}}</option>
       </select>
-        </div>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label" for="">nombre:</label>
-        <div class="col-8">
-            <input class="form-control" type="text" placeholder="nombre" [ngClass]="{'is-invalid':nameInvalid}" formControlName="name">
-            <small class="form-text text-danger" *ngIf="nameInvalid"> ingrese 10 letras</small>
-        </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="">nombre:</label>
+    <div class="col-8">
+      <input class="form-control" type="text" placeholder="nombre" [ngClass]="{'is-invalid':nameInvalid}"
+        formControlName="name">
+      <small class="form-text text-danger" *ngIf="nameInvalid"> ingrese 10 letras</small>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label" for="">correo:</label>
-        <div class="col-8">
-            <input class="form-control" type="text" placeholder="correo@mail.com" [ngClass]="{'is-invalid':emailInvalid}" formControlName="email">
-            <small class="form-text text-danger" *ngIf="emailInvalid"> correo no valido ej: correo@mail.com</small>
-        </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="">correo:</label>
+    <div class="col-8">
+      <input class="form-control" type="text" placeholder="correo@mail.com" [ngClass]="{'is-invalid':emailInvalid}"
+        formControlName="email">
+      <small class="form-text text-danger" *ngIf="emailInvalid"> correo no valido ej: correo@mail.com</small>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label r" for="">tipo de documento:</label>
-        <div class="col-8">
-            <select class="form-control" formControlName="document_code" [ngClass]="{'is-invalid':document_codeInvalid}">
+  <div class="form-group row">
+    <label class="col-4 col-form-label r" for="">tipo de documento:</label>
+    <div class="col-8">
+      <select class="form-control" formControlName="document_code" [ngClass]="{'is-invalid':document_codeInvalid}">
         <option *ngFor="let doc of documents" [value]="doc.name_short">{{doc.description}}</option>
       </select>
-        </div>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label" for="">documento:</label>
-        <div class="col-8">
-            <input class="form-control" type="text" formControlName="document" [ngClass]="{'is-invalid':documentInvalid}">
-        </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="">documento:</label>
+    <div class="col-8">
+      <input class="form-control" type="text" formControlName="document" [ngClass]="{'is-invalid':documentInvalid}">
     </div>
+  </div>
 
 
 
-    <div class="form-group row align-items-center">
-        <label class="col-4 col-form-label" for="">Tipo de negocio:</label>
-        <div class="col-8">
-            <select class="form-control" [ngClass]="{'is-invalid':id_type_businessInvalid}" formControlName="id_type_business">
+  <div class="form-group row align-items-center">
+    <label class="col-4 col-form-label" for="">Tipo de negocio:</label>
+    <div class="col-8">
+      <select class="form-control" [ngClass]="{'is-invalid':id_type_businessInvalid}"
+        formControlName="id_type_business">
         <option *ngFor="let bussines of businesstype" [value]="bussines.id">{{bussines.type_business}}</option>
       </select>
-            <small class="form-text text-danger" *ngIf="id_type_businessInvalid">
+      <small class="form-text text-danger" *ngIf="id_type_businessInvalid">
         ingreser negocio
       </small>
-        </div>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label" for="">Localizacion:</label>
-        <div class="col-8">
-            <select class="form-control" formControlName="id_location" [ngClass]="{'is-invalid':id_locationInvalid}">
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="">Localizacion:</label>
+    <div class="col-8">
+      <select class="form-control" formControlName="id_location" [ngClass]="{'is-invalid':id_locationInvalid}">
         <option *ngFor="let dat of locations" [value]="dat.id">{{dat.name}}</option>
       </select>
-            <small class="form-text text-danger" *ngIf="id_locationInvalid">
+      <small class="form-text text-danger" *ngIf="id_locationInvalid">
         ingreser localizacion
       </small>
-        </div>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label " for="">Direccion:</label>
-        <div class="col-8">
-            <input [ngClass]="{'is-invalid':adressInvalid}" class="form-control" type="text" formControlName="adress">
-            <small class="form-text text-danger" *ngIf="adressInvalid"> ingrese dirrecion</small>
-        </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label " for="">Direccion:</label>
+    <div class="col-8">
+      <input [ngClass]="{'is-invalid':adressInvalid}" class="form-control" type="text" formControlName="adress">
+      <small class="form-text text-danger" *ngIf="adressInvalid"> ingrese dirrecion</small>
     </div>
+  </div>
 
-    <div class="row">
-        <div class="col">
-            <table class="table">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Tipo</th>
-                        <th>Numero</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody formArrayName="tels">
-                    <tr *ngFor="let tel of telsArray.controls; let i = index" [formGroupName]="i">
-                        <td>
-                            <select class="form-control" formControlName="id_tel_descript">
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Tipo</th>
+            <th>Numero</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody formArrayName="tels">
+          <tr *ngFor="let tel of telsArray.controls; let i = index" [formGroupName]="i">
+            <td>
+              <select class="form-control" formControlName="id_tel_descript">
                 <option *ngFor="let teld of telds" [value]="teld.id">{{teld.tel_description}}</option>
               </select>
-                        </td>
-                        <td>
-                            <input class="form-control" type="text" formControlName="number" [class.is-invalid]="numberInvalid(i)" />
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" type="button" (click)="removeTel(i)">-</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class=" btn btn-secondary btn-block mb-5" type="button" (click)="addTel()">+</button>
-        </div>
+            </td>
+            <td>
+              <input class="form-control" type="text" formControlName="number" [class.is-invalid]="numberInvalid(i)" />
+            </td>
+            <td>
+              <button class="btn btn-danger" type="button" (click)="removeTel(i)">-</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class=" btn btn-secondary btn-block mb-5" type="button" (click)="addTel()">+</button>
     </div>
+  </div>
 
-    <div class="form-group row">
+  <div class="form-group row">
 
-        <app-button-create-edit class="col-md-8 input-group" [id]="data.id"></app-button-create-edit>
-    </div>
+    <app-button-create-edit class="col-md-8 input-group" [id]="data.id"></app-button-create-edit>
+  </div>
 
 </form>
 <pre>

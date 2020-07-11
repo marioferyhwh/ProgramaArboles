@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { CollectionCashModel } from "src/app/shared/models/collection-cash.model";
 import { CollectionService } from "src/app/services/collection.service";
+import { CollectionModel } from "src/app/shared/models/collection.model";
+import { UserModel } from "src/app/shared/models/user.model";
 @Component({
   selector: "app-form-cash",
   templateUrl: "./form-cash.component.html",
@@ -9,6 +11,8 @@ import { CollectionService } from "src/app/services/collection.service";
 })
 export class FormCashComponent implements OnInit {
   @Input() public data: CollectionCashModel;
+  @Input() public collections: CollectionModel[];
+  @Input() public users: UserModel[];
   @Output() public onData: EventEmitter<CollectionCashModel>;
 
   public forma: FormGroup;
@@ -26,12 +30,16 @@ export class FormCashComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnChanges() {
+    console.log(this.users);
     this.dataForm();
   }
 
   dataForm() {
     if (this.data != null) {
       this.forma.reset({ ...this.data });
+      if (this.data.id != null) {
+        this.forma.get("id_user").disable();
+      }
     }
     this.forma.get("id").disable();
     this.forma.get("id_collection").disable();
@@ -44,8 +52,10 @@ export class FormCashComponent implements OnInit {
       });
       return;
     }
+    this.forma.value["id_user"] = parseInt(this.forma.value["id_user"]);
     const d = <CollectionCashModel>this.forma.value;
     d.id = this.data.id;
+    d.id_collection = this.data.id_collection;
     this.onData.emit(d);
   }
   initForm() {
@@ -58,7 +68,7 @@ export class FormCashComponent implements OnInit {
   }
 
   cancel() {
-    this._collectionService.routeList();
+    this._collectionService.routeListcash();
   }
 
   InvalidField(Field: string): boolean {

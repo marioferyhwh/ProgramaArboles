@@ -2,6 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { CollectionCashModel } from "src/app/shared/models/collection-cash.model";
 import { CollectionService } from "src/app/services/collection.service";
 import Swal from "sweetalert2";
+import { CollectionModel } from "src/app/shared/models/collection.model";
+import { UserModel } from "src/app/shared/models/user.model";
+import { GlobalService } from "src/app/services/global.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-collection-cash-new",
@@ -10,11 +14,29 @@ import Swal from "sweetalert2";
 })
 export class CollectionCashNewComponent implements OnInit {
   public cash: CollectionCashModel;
+  public collections: CollectionModel[];
+  public users: UserModel[];
 
-  constructor(private _collectionService: CollectionService) {}
+  constructor(
+    private _collectionService: CollectionService,
+    private _globalService: GlobalService,
+    private _userService: UserService
+  ) {
+    this.collections = [this._globalService.getVarCollection];
+  }
 
   ngOnInit(): void {
     this.cash = new CollectionCashModel();
+    this.cash.id_collection = this.collections[0].id;
+    this._userService.getListByCollection(this.cash.id_collection).subscribe(
+      (resp) => {
+        this.users = resp;
+        console.log({ resp });
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   onCreate(data: CollectionCashModel) {

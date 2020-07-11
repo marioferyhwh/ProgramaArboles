@@ -24,6 +24,14 @@ export class CollectionService {
     );
   }
 
+  getListByUser(c: number): Observable<CollectionModel[]> {
+    return this._api.GetQuery(`${this._urlA}/list/0?user=${c}`).pipe(
+      map((data: RespModel) => {
+        return <Array<CollectionModel>>data.data;
+      })
+    );
+  }
+
   get(id: number): Observable<CollectionModel> {
     return this._api.GetQuery(`${this._urlA}/${id}`).pipe(
       map((data: RespModel) => {

@@ -55,6 +55,14 @@ export class UserService {
     );
   }
 
+  getListByCollection(id: number): Observable<UserModel[]> {
+    return this._api.GetQuery(`${this._urlA}/list/0?collection=${id}`).pipe(
+      map((data: RespModel) => {
+        return <Array<UserModel>>data.data;
+      })
+    );
+  }
+
   get(id: number): Observable<UserModel> {
     return this._api.GetQuery(`${this._urlA}/${id}`).pipe(
       map((data: RespModel) => {
