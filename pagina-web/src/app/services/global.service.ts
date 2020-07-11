@@ -73,72 +73,72 @@ export class GlobalService {
       sessionStorage.removeItem(this._nameVar);
     }
   }
-  set getVarUser(dato) {
+  set varUser(dato) {
     this._variables.user = dato;
 
     this.varAllSave();
   }
-  get getVarUser(): UserModel {
+  get varUser(): UserModel {
     this.getVar();
     if (this._variables.user == null) {
       this._variables.user = new UserModel();
     }
     return this._variables.user;
   }
-  set getVarCollection(dato) {
+  set varCollection(dato) {
     this._variables.collection = dato;
 
     this.varAllSave();
   }
-  get getVarCollection(): CollectionModel {
+  get varCollection(): CollectionModel {
     this.getVar();
     if (this._variables.collection == null) {
       this._variables.collection = new CollectionModel();
     }
     return this._variables.collection;
   }
-  set getVarClient(dato) {
+  set varClient(dato) {
     this._variables.client = dato;
 
     this.varAllSave();
   }
-  get getVarClient(): ClientModel {
+  get varClient(): ClientModel {
     this.getVar();
     if (this._variables.client == null) {
       this._variables.client = new ClientModel();
     }
     return this._variables.client;
   }
-  set getVarExpense(dato) {
+  set varExpense(dato) {
     this._variables.expense = dato;
 
     this.varAllSave();
   }
-  get getVarExpense(): ExpenseModel {
+  get varExpense(): ExpenseModel {
     this.getVar();
     if (this._variables.expense == null) {
       this._variables.expense = new ExpenseModel();
     }
     return this._variables.expense;
   }
-  set getvarUserCollection(dato) {
+  set varUserCollection(dato) {
     this._variables.userCollection = dato;
 
     this.varAllSave();
   }
-  get getvarUserCollection(): UserCollectionModel {
+  get varUserCollection(): UserCollectionModel {
     this.getVar();
     if (this._variables.userCollection == null) {
       this._variables.userCollection = new UserCollectionModel();
     }
     return this._variables.userCollection;
   }
-  set getvarloan(dato) {
+  set varloan(dato) {
     this._variables.loan = dato;
 
     this.varAllSave();
   }
-  get getvarloan(): LoanModel {
+  get varloan(): LoanModel {
     this.getVar();
     if (this._variables.loan == null) {
       this._variables.loan = new LoanModel();

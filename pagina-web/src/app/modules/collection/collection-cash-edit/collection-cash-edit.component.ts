@@ -24,7 +24,7 @@ export class CollectionCashEditComponent implements OnInit {
     private _globalService: GlobalService,
     private _userService: UserService
   ) {
-    this.collections = [_globalService.getVarCollection];
+    this.collections = [_globalService.varCollection];
   }
 
   ngOnInit(): void {

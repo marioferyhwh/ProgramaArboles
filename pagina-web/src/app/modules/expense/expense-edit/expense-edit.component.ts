@@ -26,7 +26,7 @@ export class ExpenseEditComponent implements OnInit {
     private _globalService: GlobalService,
     private _userService: UserService
   ) {
-    this.colllections = [_globalService.getVarCollection];
+    this.colllections = [_globalService.varCollection];
   }
 
   ngOnInit(): void {

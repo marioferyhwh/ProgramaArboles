@@ -21,7 +21,7 @@ export class CollectionListComponent implements OnInit {
   }
 
   getData() {
-    let u = this._globalService.getVarUser;
+    let u = this._globalService.varUser;
     this._collectionService.getList(u.id).subscribe(
       (res) => {
         this.collections = res;

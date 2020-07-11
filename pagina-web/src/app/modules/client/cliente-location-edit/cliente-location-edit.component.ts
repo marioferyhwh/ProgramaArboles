@@ -20,7 +20,7 @@ export class ClienteLocationEditComponent implements OnInit {
     private _activedRoute: ActivatedRoute,
     private _globalService: GlobalService
   ) {
-    this.collections = [this._globalService.getVarCollection];
+    this.collections = [this._globalService.varCollection];
   }
 
   ngOnInit(): void {

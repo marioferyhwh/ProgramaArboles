@@ -24,7 +24,7 @@ export class ExpenseNewComponent implements OnInit {
     private _globalService: GlobalService,
     private _apiService: ApiServerService
   ) {
-    this.colllections = [this._globalService.getVarCollection];
+    this.colllections = [this._globalService.varCollection];
     this.users = [this._apiService.userToken()];
     this._expenseService.getDescriptionList(this.colllections[0].id).subscribe(
       (resp) => {

@@ -26,7 +26,7 @@ export class ClientEditComponent implements OnInit {
     private _globalService: GlobalService,
     private _userService: UserService
   ) {
-    this.collections = [this._globalService.getVarCollection];
+    this.collections = [this._globalService.varCollection];
     this._clientService.getLocationList(this.collections[0].id).subscribe(
       (resp) => {
         this.locations = resp;

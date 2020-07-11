@@ -22,7 +22,7 @@ export class CollectionCashNewComponent implements OnInit {
     private _globalService: GlobalService,
     private _userService: UserService
   ) {
-    this.collections = [this._globalService.getVarCollection];
+    this.collections = [this._globalService.varCollection];
   }
 
   ngOnInit(): void {

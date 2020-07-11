@@ -30,7 +30,7 @@ export class LoanEditComponent implements OnInit {
     private _userService: UserService,
     private _clientService: ClientService
   ) {
-    this.collections = [_globalService.getVarCollection];
+    this.collections = [_globalService.varCollection];
   }
 
   ngOnInit(): void {

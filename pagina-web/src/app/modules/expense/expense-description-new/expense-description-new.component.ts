@@ -20,7 +20,7 @@ export class ExpenseDescriptionNewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.collections = [this._globalService.getVarCollection];
+    this.collections = [this._globalService.varCollection];
     this.expenseDescription = new ExpenseDescriptionModel();
     this.expenseDescription.id_collection = this.collections[0].id;
   }

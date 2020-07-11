@@ -14,6 +14,6 @@ export class BodyComponent implements OnInit {
   ngOnInit(): void {}
   ngOnChanges(): void {}
   ngDoCheck(): void {
-    this.collectionSelect = this._globalService.getVarCollection;
+    this.collectionSelect = this._globalService.varCollection;
   }
 }

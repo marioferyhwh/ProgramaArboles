@@ -21,7 +21,7 @@ export class ClienteLocationListComponent implements OnInit {
   }
 
   getData() {
-    let c = this._globalService.getVarCollection;
+    let c = this._globalService.varCollection;
     this._clientService.getLocationList(c.id).subscribe(
       (res) => {
         this.locations = res;

@@ -20,7 +20,7 @@ export class ClienteLocationNewComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.collections = [this._globalService.getVarCollection];
+    this.collections = [this._globalService.varCollection];
     this.location = new ClientLocationModel();
     this.location.id_collection = this.collections[0].id;
   }

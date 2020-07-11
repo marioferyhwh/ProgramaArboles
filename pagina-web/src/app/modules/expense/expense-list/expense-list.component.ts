@@ -21,7 +21,7 @@ export class ExpenseListComponent implements OnInit {
   }
 
   getData() {
-    let c = this._globalService.getVarCollection;
+    let c = this._globalService.varCollection;
     this._expenseService.getList(c.id).subscribe(
       (res) => {
         this.expenses = res;

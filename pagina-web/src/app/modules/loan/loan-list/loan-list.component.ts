@@ -21,7 +21,7 @@ export class LoanListComponent implements OnInit {
   }
 
   getData() {
-    let c = this._globalService.getVarCollection;
+    let c = this._globalService.varCollection;
     this._loanService.getList(c.id).subscribe(
       (res) => {
         this.loans = res;

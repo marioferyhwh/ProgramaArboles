@@ -21,7 +21,7 @@ export class CollectionCashListComponent implements OnInit {
   }
 
   getData() {
-    let c = this._globalService.getVarCollection;
+    let c = this._globalService.varCollection;
     this._collectionservice.getCashList(c.id).subscribe(
       (res) => {
         this.cashes = res;

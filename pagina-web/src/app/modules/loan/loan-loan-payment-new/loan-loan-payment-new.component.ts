@@ -27,7 +27,7 @@ export class LoanLoanPaymentNewComponent implements OnInit {
     private _globalService: GlobalService,
     private _apiService: ApiServerService
   ) {
-    this.collections = [_globalService.getVarCollection];
+    this.collections = [_globalService.varCollection];
     this.users = [this._apiService.userToken()];
     this._loanService.getList(this.collections[0].id).subscribe(
       (resp) => {

@@ -20,7 +20,7 @@ export class ClientListComponent implements OnInit {
   }
 
   getData() {
-    let c = this._globalService.getVarCollection;
+    let c = this._globalService.varCollection;
     this._clientService.getList(c.id).subscribe(
       (res: ClientModel[]) => {
         this.clients = res;

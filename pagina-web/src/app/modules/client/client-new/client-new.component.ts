@@ -23,7 +23,7 @@ export class ClientNewComponent implements OnInit {
     private _globalService: GlobalService,
     private _apiService: ApiServerService
   ) {
-    this.collections = [this._globalService.getVarCollection];
+    this.collections = [this._globalService.varCollection];
     this.users = [this._apiService.userToken()];
     this._clientService.getLocationList(this.collections[0].id).subscribe(
       (resp) => {

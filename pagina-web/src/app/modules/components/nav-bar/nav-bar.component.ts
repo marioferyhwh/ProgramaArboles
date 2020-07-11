@@ -27,8 +27,8 @@ export class NavBarComponent implements OnInit {
     this.getData();
   }
   getData() {
-    this.Colllection = this._globalService.getVarCollection;
-    this.levenNow = this._globalService.getvarUserCollection.id_user_level;
+    this.Colllection = this._globalService.varCollection;
+    this.levenNow = this._globalService.varUserCollection.id_user_level;
   }
   logOut() {
     this._globalService.clearVar();

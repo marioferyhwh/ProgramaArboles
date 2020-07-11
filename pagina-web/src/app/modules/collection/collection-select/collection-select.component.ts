@@ -37,13 +37,13 @@ export class CollectionSelectComponent implements OnInit {
   }
 
   selectColletion(id: number, name: string) {
-    let c = this._globalServer.getVarCollection;
+    let c = this._globalServer.varCollection;
     c.id = id;
     c.description = name;
     this._globalServer.varAllSave();
     this._userService.getCollectionByCollection(id).subscribe(
       (resp) => {
-        this._globalServer.getvarUserCollection = resp;
+        this._globalServer.varUserCollection = resp;
         console.log({ resp });
       },
       (err) => {
