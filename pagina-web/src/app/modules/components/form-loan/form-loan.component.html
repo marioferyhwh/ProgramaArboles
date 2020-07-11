@@ -1,103 +1,105 @@
 <app-loading *ngIf="!data"></app-loading>
 <form class="col-8 offset-2 text-left" *ngIf="data" autocomplete="off" (ngSubmit)="onAction()" [formGroup]="forma">
 
-    <div class="form-group row" *ngIf="data.id">
-        <label class="col-4 col-form-label" for="id">ID:</label>
-        <div class="col-8">
-            <input class="form-control" type="text" placeholder="nombre" formControlName="id">
-        </div>
+  <div class="form-group row" *ngIf="data.id">
+    <label class="col-4 col-form-label" for="id">ID:</label>
+    <div class="col-8">
+      <input class="form-control" type="text" placeholder="nombre" formControlName="id">
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label r" for="id_collection">Cobro:</label>
-        <div class="col-8">
-            <select class="form-control" formControlName="id_collection" type="number" [ngClass]="{'is-invalid':id_collectionInvalid}">
+  <div class="form-group row">
+    <label class="col-4 col-form-label r" for="id_collection">Cobro:</label>
+    <div class="col-8">
+      <select class="form-control" formControlName="id_collection" type="number"
+        [ngClass]="{'is-invalid':id_collectionInvalid}">
         <option *ngFor="let dat of collections" [value]="dat.id">{{dat.id}}-{{dat.description}}</option>
       </select>
-            <span class="text-danger" *ngIf="id_collectionInvalid">
+      <span class="text-danger" *ngIf="id_collectionInvalid">
         especifique cobro
       </span>
-        </div>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label r" for="id_user">Creado por:</label>
-        <div class="col-8">
-            <select class="form-control" formControlName="id_user" type="number" [ngClass]="{'is-invalid':id_userInvalid}">
+  <div class="form-group row" *ngIf="data.id">
+    <label class="col-4 col-form-label r" for="id_user">Creado por:</label>
+    <div class="col-8">
+      <select class="form-control" formControlName="id_user" type="number" [ngClass]="{'is-invalid':id_userInvalid}">
         <option *ngFor="let dat of users" [value]="dat.id">{{dat.id}}-{{dat.name}}</option>
       </select>
-            <span class="text-danger" *ngIf="id_userInvalid">
+      <span class="text-danger" *ngIf="id_userInvalid">
         especifique cobro
       </span>
-        </div>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label" for="id_client">Cliente:</label>
-        <div class="col-8">
-            <select class="form-control" formControlName="id_client" [class.is-invalid]="id_clientInvalid">
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="id_client">Cliente:</label>
+    <div class="col-8">
+      <select class="form-control" formControlName="id_client" [class.is-invalid]="id_clientInvalid">
         <option *ngFor="let estate of clients" [value]="estate.id">{{estate.id}}-{{estate.name}}</option>
       </select>
-            <small class="text-danger" *ngIf="id_clientInvalid">
+      <small class="text-danger" *ngIf="id_clientInvalid">
         cliente no valido
       </small>
-        </div>
     </div>
+  </div>
 
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label" for="initial_value">Prestamo:</label>
-        <div class="col-8">
-            <input type="number" class="form-control" formControlName="initial_value" [class.is-invalid]="initial_valueInvalid">
-            <small class="text-danger" *ngIf="initial_valueInvalid">monto minimo 5</small>
-        </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="initial_value">Prestamo:</label>
+    <div class="col-8">
+      <input type="number" class="form-control" formControlName="initial_value"
+        [class.is-invalid]="initial_valueInvalid">
+      <small class="text-danger" *ngIf="initial_valueInvalid">monto minimo 5</small>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label" for="interest">interes:</label>
-        <div class="col-8">
-            <input type="number" class="form-control" formControlName="interest" [class.is-invalid]="interestInvalid">
-            <small class="text-danger" *ngIf="interestInvalid">rango vaido 10-100</small>
-        </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="interest">interes:</label>
+    <div class="col-8">
+      <input type="number" class="form-control" formControlName="interest" [class.is-invalid]="interestInvalid">
+      <small class="text-danger" *ngIf="interestInvalid">rango vaido 10-100</small>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label" for="quota"># coutas:</label>
-        <div class="col-8">
-            <input type="number" class="form-control" formControlName="quota" [class.is-invalid]="quotaInvalid">
-            <small class="text-danger" *ngIf="quotaInvalid">rango vaido 1-120</small>
-        </div>
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="quota"># coutas:</label>
+    <div class="col-8">
+      <input type="number" class="form-control" formControlName="quota" [class.is-invalid]="quotaInvalid">
+      <small class="text-danger" *ngIf="quotaInvalid">rango vaido 1-120</small>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <label class="col-4 col-form-label" for="id_loan_state">estado:</label>
-        <div class="col-8">
+  <div class="form-group row">
+    <label class="col-4 col-form-label" for="id_loan_state">estado:</label>
+    <div class="col-8">
 
-            <select class="form-control" formControlName="id_loan_state" [class.is-invalid]="id_loan_stateInvalid">
+      <select class="form-control" formControlName="id_loan_state" [class.is-invalid]="id_loan_stateInvalid">
         <option *ngFor="let estate of loan_states" [value]="estate.id">{{estate.state}}</option>
       </select>
-            <small class="text-danger" *ngIf="id_loan_stateInvalid">
+      <small class="text-danger" *ngIf="id_loan_stateInvalid">
         inidique un estdo valido para el cobro
       </small>
-        </div>
     </div>
+  </div>
 
-    <div class="form-group row" *ngIf="data.id">
-        <label class="col-4 col-form-label" for="balance">Saldo:</label>
-        <div class="col-8">
-            <input type="number" class="form-control" formControlName="balance" [class.is-invalid]="balanceInvalid">
-            <small class="text-danger" *ngIf="balanceInvalid">rango vaido 1-120</small>
-        </div>
+  <div class="form-group row" *ngIf="data.id">
+    <label class="col-4 col-form-label" for="balance">Saldo:</label>
+    <div class="col-8">
+      <input type="number" class="form-control" formControlName="balance" [class.is-invalid]="balanceInvalid">
+      <small class="text-danger" *ngIf="balanceInvalid">rango vaido 1-120</small>
     </div>
+  </div>
 
-    <div class="form-group row">
-        <app-button-create-edit class="col-md-8 input-group" [id]="data.id" (onCancel)="cancel()"></app-button-create-edit>
-    </div>
+  <div class="form-group row">
+    <app-button-create-edit class="col-md-8 input-group" [id]="data.id" (onCancel)="cancel()"></app-button-create-edit>
+  </div>
 
 </form>
 
 <hr>
-<pre>
+<pre *ngIf="debug">
   Estado:for {{forma.valid}}
   Status:{{forma.status}}
   {{forma.value | json}}

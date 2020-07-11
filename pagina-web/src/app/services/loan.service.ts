@@ -165,16 +165,16 @@ export class LoanService {
   routeSeestate(id: number) {
     this._router.navigate(["/prestamo", "estado", id]);
   }
-  routeListPayment() {
-    this._router.navigate(["/prestamo", "pago"]);
+  routeListPayment(loan: number) {
+    this._router.navigate(["/prestamo", loan, "pago"]);
   }
-  routeNewPayment() {
-    this._router.navigate(["/prestamo", "pago", "nuevo"]);
+  routeNewPayment(loan: number) {
+    this._router.navigate(["/prestamo", loan, "pago", "nuevo"]);
   }
-  routeEditPayment(id: number) {
-    this._router.navigate(["/prestamo", "pago", id, "editar"]);
+  routeEditPayment(id: number, loan: number) {
+    this._router.navigate(["/prestamo", loan, "pago", id, "editar"]);
   }
-  routeSeePayment(id: number) {
-    this._router.navigate(["/prestamo", "pago", id]);
+  routeSeePayment(id: number, loan: number) {
+    this._router.navigate(["/prestamo", loan, "pago", id]);
   }
 }

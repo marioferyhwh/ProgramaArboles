@@ -46,6 +46,7 @@ import { TableUserCollectionComponent } from "./table-user-collection/table-user
 import { FormUserCollectionComponent } from "./form-user-collection/form-user-collection.component";
 import { CardCollectionComponent } from "./card-collection/card-collection.component";
 import { ButtonSeeComponent } from "./button-see/button-see.component";
+import { ButtonRefrestComponent } from "./button-refrest/button-refrest.component";
 
 const declarations = [
   HeaderComponent,
@@ -91,6 +92,7 @@ const declarations = [
   FormUserCollectionComponent,
   CardCollectionComponent,
   ButtonSeeComponent,
+  ButtonRefrestComponent,
 ];
 @NgModule({
   declarations: [...declarations],

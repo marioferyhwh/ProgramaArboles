@@ -58,10 +58,11 @@ export class TableLoanPaymentComponent implements OnInit {
       }
     });
   }
-  selectItem(id: number) {
-    this._loanService.routeSeePayment(id);
+  selectItem(id: number, loan: number) {
+    this._loanService.routeSeePayment(id, loan);
   }
-  editItem(id: number) {
-    this._loanService.routeEditPayment(id);
+  editItem(id: number, loan: number) {
+    console.log(id, " ", loan);
+    this._loanService.routeEditPayment(id, loan);
   }
 }

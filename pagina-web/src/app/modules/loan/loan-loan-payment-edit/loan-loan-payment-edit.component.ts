@@ -3,6 +3,9 @@ import { LoanPaymentModel } from "src/app/shared/models/loan-payment.model";
 import { LoanService } from "src/app/services/loan.service";
 import { ActivatedRoute } from "@angular/router";
 import Swal from "sweetalert2";
+import { CollectionModel } from "src/app/shared/models/collection.model";
+import { UserModel } from "src/app/shared/models/user.model";
+import { LoanModel } from "src/app/shared/models/loan.model";
 
 @Component({
   selector: "app-loan-loan-payment-edit",
@@ -11,6 +14,10 @@ import Swal from "sweetalert2";
 })
 export class LoanLoanPaymentEditComponent implements OnInit {
   public loanPayment: LoanPaymentModel;
+  public collections: CollectionModel[];
+  public users: UserModel[];
+  public loans: LoanModel[];
+  private _idLoan: number;
 
   constructor(
     private _loanService: LoanService,
@@ -23,6 +30,7 @@ export class LoanLoanPaymentEditComponent implements OnInit {
 
   getData() {
     this._activedRoute.params.subscribe((params) => {
+      this._idLoan = params["loan"];
       this._loanService.getLoanPayment(params["id"]).subscribe(
         (res) => {
           this.loanPayment = res;
@@ -36,7 +44,7 @@ export class LoanLoanPaymentEditComponent implements OnInit {
           });
           toast2.fire();
           //console.log({ err });
-          this._loanService.routeListPayment();
+          this._loanService.routeSee(this._idLoan);
         }
       );
     });
@@ -60,7 +68,7 @@ export class LoanLoanPaymentEditComponent implements OnInit {
           icon: "success",
         });
         toast2.fire();
-        this._loanService.routeListPayment();
+        this._loanService.routeSee(this._idLoan);
       },
       (err) => {
         toast.close();

@@ -46,6 +46,10 @@ export class FormLoanComponent implements OnInit {
       this.forma.reset({ ...this.data });
       if (this.data.id != null) {
         this.forma.get("id_client").disable();
+        this.forma.get("initial_value").disable();
+        this.forma.get("interest").disable();
+        this.forma.get("quota").disable();
+        this.forma.get("id_client").disable();
       }
     }
     this.forma.get("id").disable();

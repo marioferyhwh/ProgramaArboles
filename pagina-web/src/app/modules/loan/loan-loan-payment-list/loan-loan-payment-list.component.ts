@@ -11,6 +11,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class LoanLoanPaymentListComponent implements OnInit {
   public loanPayments: LoanPaymentModel[];
+  private _idLoan: number;
 
   constructor(
     private _loanService: LoanService,
@@ -24,6 +25,7 @@ export class LoanLoanPaymentListComponent implements OnInit {
 
   getData() {
     this._activedRoute.params.subscribe((params) => {
+      this._idLoan = params["loan"];
       this._loanService.getLoanPaymentList(params["loan"]).subscribe(
         (res) => {
           this.loanPayments = res;
@@ -37,6 +39,6 @@ export class LoanLoanPaymentListComponent implements OnInit {
   }
 
   onNew() {
-    this._loanService.routeNewPayment();
+    this._loanService.routeNewPayment(this._idLoan);
   }
 }

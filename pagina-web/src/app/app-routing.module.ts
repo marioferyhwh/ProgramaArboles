@@ -126,7 +126,7 @@ const routes: Routes = [
         component: LoanLoanPaymentEditComponent,
       },
       {
-        path: "prestamo/pago/:id/editar",
+        path: "prestamo/:loan/pago/:id/editar",
         component: LoanLoanPaymentEditComponent,
       },
 

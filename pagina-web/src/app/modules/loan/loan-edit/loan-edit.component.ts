@@ -9,6 +9,7 @@ import { ClientModel } from "src/app/shared/models/client.model";
 import { GlobalService } from "src/app/services/global.service";
 import { UserService } from "src/app/services/user.service";
 import { ClientService } from "src/app/services/client.service";
+import { LoanPaymentModel } from "src/app/shared/models/loan-payment.model";
 
 @Component({
   selector: "app-loan-edit",
@@ -17,9 +18,10 @@ import { ClientService } from "src/app/services/client.service";
 })
 export class LoanEditComponent implements OnInit {
   public loan: LoanModel;
-  public colllections: CollectionModel[];
+  public collections: CollectionModel[];
   public users: UserModel[];
   public clients: ClientModel[];
+  public loanPayments: LoanPaymentModel[];
 
   constructor(
     private _loanService: LoanService,
@@ -28,7 +30,7 @@ export class LoanEditComponent implements OnInit {
     private _userService: UserService,
     private _clientService: ClientService
   ) {
-    this.colllections = [_globalService.getVarCollection];
+    this.collections = [_globalService.getVarCollection];
   }
 
   ngOnInit(): void {
@@ -47,6 +49,15 @@ export class LoanEditComponent implements OnInit {
           this._clientService.get(res.id_client).subscribe((resp) => {
             this.clients = [resp];
           });
+          this._loanService.getLoanPaymentList(res.id).subscribe(
+            (res) => {
+              this.loanPayments = res;
+              console.log(res);
+            },
+            (err) => {
+              console.log(err);
+            }
+          );
         },
         (err) => {
           // const toast2 = Swal.mixin({
@@ -94,5 +105,8 @@ export class LoanEditComponent implements OnInit {
     //     console.log({ err });
     //   }
     // );
+  }
+  onLista() {
+    this._loanService.routeNewPayment(this.loan.id);
   }
 }

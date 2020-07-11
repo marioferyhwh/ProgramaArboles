@@ -16,7 +16,7 @@ import { ClientService } from "src/app/services/client.service";
 })
 export class LoanNewComponent implements OnInit {
   public loan: LoanModel;
-  public colllections: CollectionModel[];
+  public collections: CollectionModel[];
   public users: UserModel[];
   public clients: ClientModel[];
 
@@ -26,9 +26,9 @@ export class LoanNewComponent implements OnInit {
     private _apiService: ApiServerService,
     private _clientService: ClientService
   ) {
-    this.colllections = [this._globalService.getVarCollection];
+    this.collections = [this._globalService.getVarCollection];
     this.users = [this._apiService.userToken()];
-    this._clientService.getList(this.colllections[0].id).subscribe(
+    this._clientService.getList(this.collections[0].id).subscribe(
       (resp) => {
         this.clients = resp;
       },
@@ -40,7 +40,7 @@ export class LoanNewComponent implements OnInit {
 
   ngOnInit(): void {
     this.loan = new LoanModel();
-    this.loan.id_collection = this.colllections[0].id;
+    this.loan.id_collection = this.collections[0].id;
     this.loan.id_user = this.users[0].id;
     this.loan.interest = 20;
     this.loan.quota = 30;
