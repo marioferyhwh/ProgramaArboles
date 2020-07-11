@@ -1,11 +1,11 @@
 <app-header></app-header>
 <div class="container body">
-    <div class="row">
-        <div class="col" *ngIf="collectionSelect">
-            <p class="float-left">Cobro:{{collectionSelect.description}} / {{collectionSelect.id}}
-            </p>
-        </div>
+  <div class="row">
+    <div class="col" *ngIf="collectionSelect && collectionSelect.id">
+      <p class="float-left">Cobro:{{collectionSelect.description}} / {{collectionSelect.id}}
+      </p>
     </div>
+  </div>
 
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>

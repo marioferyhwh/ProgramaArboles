@@ -10,6 +10,7 @@ import { CollectionModel } from "../shared/models/collection.model";
 import { ClientModel } from "../shared/models/client.model";
 import { ExpenseModel } from "../shared/models/expense.model";
 import { UserCollectionModel } from "../shared/models/user-collection.model";
+import { LoanModel } from "../shared/models/loan.model";
 
 @Injectable({
   providedIn: "root",
@@ -41,8 +42,8 @@ export class GlobalService {
   }
 
   getVar(): void {
-    if (localStorage.getItem(this._nameVar)) {
-      this._variables = JSON.parse(localStorage.getItem(this._nameVar));
+    if (sessionStorage.getItem(this._nameVar)) {
+      this._variables = JSON.parse(sessionStorage.getItem(this._nameVar));
     } else {
       this._variables = new GlobalVarModel();
     }
@@ -64,21 +65,30 @@ export class GlobalService {
   //     dataOld.expense = data.expense;
   //   }
 
-  //   localStorage.setItem(this._nameVar, JSON.stringify(dataOld));
+  //   sessionStorage.setItem(this._nameVar, JSON.stringify(dataOld));
   // }
 
   clearVar() {
-    if (localStorage.getItem(this._nameVar)) {
-      localStorage.removeItem(this._nameVar);
+    if (sessionStorage.getItem(this._nameVar)) {
+      sessionStorage.removeItem(this._nameVar);
     }
   }
+  set getVarUser(dato) {
+    this._variables.user = dato;
 
+    this.varAllSave();
+  }
   get getVarUser(): UserModel {
     this.getVar();
     if (this._variables.user == null) {
       this._variables.user = new UserModel();
     }
     return this._variables.user;
+  }
+  set getVarCollection(dato) {
+    this._variables.collection = dato;
+
+    this.varAllSave();
   }
   get getVarCollection(): CollectionModel {
     this.getVar();
@@ -87,12 +97,22 @@ export class GlobalService {
     }
     return this._variables.collection;
   }
+  set getVarClient(dato) {
+    this._variables.client = dato;
+
+    this.varAllSave();
+  }
   get getVarClient(): ClientModel {
     this.getVar();
     if (this._variables.client == null) {
       this._variables.client = new ClientModel();
     }
     return this._variables.client;
+  }
+  set getVarExpense(dato) {
+    this._variables.expense = dato;
+
+    this.varAllSave();
   }
   get getVarExpense(): ExpenseModel {
     this.getVar();
@@ -101,17 +121,34 @@ export class GlobalService {
     }
     return this._variables.expense;
   }
-  get getUserCollection(): UserCollectionModel {
+  set getvarUserCollection(dato) {
+    this._variables.userCollection = dato;
+
+    this.varAllSave();
+  }
+  get getvarUserCollection(): UserCollectionModel {
     this.getVar();
     if (this._variables.userCollection == null) {
       this._variables.userCollection = new UserCollectionModel();
     }
     return this._variables.userCollection;
   }
+  set getvarloan(dato) {
+    this._variables.loan = dato;
+
+    this.varAllSave();
+  }
+  get getvarloan(): LoanModel {
+    this.getVar();
+    if (this._variables.loan == null) {
+      this._variables.loan = new LoanModel();
+    }
+    return this._variables.loan;
+  }
 
   varAllSave() {
     //console.log(this._variables);
-    localStorage.setItem(this._nameVar, JSON.stringify(this._variables));
+    sessionStorage.setItem(this._nameVar, JSON.stringify(this._variables));
   }
 
   varUserDelete() {
@@ -132,6 +169,10 @@ export class GlobalService {
   }
   varUserCollectionDelete() {
     this._variables.userCollection = null;
+    this.varAllSave();
+  }
+  varloanDelete() {
+    this._variables.loan = null;
     this.varAllSave();
   }
 }

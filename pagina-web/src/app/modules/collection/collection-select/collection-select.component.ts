@@ -43,10 +43,11 @@ export class CollectionSelectComponent implements OnInit {
     this._globalServer.varAllSave();
     this._userService.getCollectionByCollection(id).subscribe(
       (resp) => {
-        console.log(resp);
+        this._globalServer.getvarUserCollection = resp;
+        console.log({ resp });
       },
       (err) => {
-        console.log(err);
+        console.log({ err });
       }
     );
   }
