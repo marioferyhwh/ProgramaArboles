@@ -110,15 +110,15 @@ export class CollectionService {
     this._router.navigate(["/cobro", id]);
   }
   routeListcash() {
-    this._router.navigate(["/caja", "caja"]);
+    this._router.navigate(["/cobro", "caja"]);
   }
   routeNewcash() {
-    this._router.navigate(["/caja", "caja", "nuevo"]);
+    this._router.navigate(["/cobro", "caja", "nuevo"]);
   }
   routeEditcash(id: number) {
-    this._router.navigate(["/caja", "caja", id, "editar"]);
+    this._router.navigate(["/cobro", "caja", id, "editar"]);
   }
   routeSeecash(id: number) {
-    this._router.navigate(["/caja", "caja", id]);
+    this._router.navigate(["/cobro", "caja", id]);
   }
 }

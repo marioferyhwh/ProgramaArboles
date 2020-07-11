@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CollectionCashModel } from "src/app/shared/models/collection-cash.model";
 import { CollectionService } from "src/app/services/collection.service";
+import { GlobalService } from "src/app/services/global.service";
 
 @Component({
   selector: "app-collection-cash-list",
@@ -10,14 +11,18 @@ import { CollectionService } from "src/app/services/collection.service";
 export class CollectionCashListComponent implements OnInit {
   public cashes: CollectionCashModel[];
 
-  constructor(private _collectionservice: CollectionService) {}
+  constructor(
+    private _collectionservice: CollectionService,
+    private _globalService: GlobalService
+  ) {}
 
   ngOnInit(): void {
     this.getData();
   }
 
   getData() {
-    this._collectionservice.getCashList(1).subscribe(
+    let c = this._globalService.getVarCollection;
+    this._collectionservice.getCashList(c.id).subscribe(
       (res) => {
         this.cashes = res;
         console.log(res);

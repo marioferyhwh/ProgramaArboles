@@ -17,7 +17,7 @@ export class DocumentTypeListComponent implements OnInit {
   }
 
   getData() {
-    this._documentTypeService.getList(1).subscribe(
+    this._documentTypeService.getList(0).subscribe(
       (res) => {
         this.documentType = res;
         console.log(res);

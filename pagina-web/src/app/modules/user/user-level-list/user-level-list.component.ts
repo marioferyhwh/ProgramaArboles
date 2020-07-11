@@ -17,7 +17,7 @@ export class UserLevelListComponent implements OnInit {
   }
 
   getData() {
-    this._userService.getLevelList(1).subscribe(
+    this._userService.getLevelList(0).subscribe(
       (res) => {
         this.userLevels = res;
         console.log(res);

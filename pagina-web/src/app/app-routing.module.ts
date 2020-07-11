@@ -75,7 +75,7 @@ const routes: Routes = [
       { path: "sector/:id", component: ClienteLocationEditComponent },
       { path: "sector/:id/editar", component: ClienteLocationEditComponent },
 
-      { path: "cobro/selecionar", component: CollectionSelectComponent },
+      { path: "cobro/seleccionar", component: CollectionSelectComponent },
       { path: "cobro/caja", component: CollectionCashListComponent },
       { path: "cobro/caja/lista", redirectTo: "cobro/caja" },
       { path: "cobro/caja/nuevo", component: CollectionCashNewComponent },

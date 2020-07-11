@@ -17,7 +17,7 @@ export class BusinessTypeListComponent implements OnInit {
   }
 
   getData() {
-    this._businessTypeService.getList(1).subscribe(
+    this._businessTypeService.getList(0).subscribe(
       (res) => {
         this.businessTypes = res;
         console.log(res);

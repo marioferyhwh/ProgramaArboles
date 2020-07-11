@@ -17,7 +17,7 @@ export class LoanLoanStateListComponent implements OnInit {
   }
 
   getData() {
-    this._loanService.getLoanStateList(1).subscribe(
+    this._loanService.getLoanStateList(0).subscribe(
       (res) => {
         this.loanStates = res;
         console.log(res);
