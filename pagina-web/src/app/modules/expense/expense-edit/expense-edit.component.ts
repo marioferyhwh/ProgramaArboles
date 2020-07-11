@@ -3,6 +3,11 @@ import { ExpenseModel } from "src/app/shared/models/expense.model";
 import { ExpenseService } from "src/app/services/expense.service";
 import { ActivatedRoute } from "@angular/router";
 import Swal from "sweetalert2";
+import { CollectionModel } from "src/app/shared/models/collection.model";
+import { UserModel } from "src/app/shared/models/user.model";
+import { GlobalService } from "src/app/services/global.service";
+import { UserService } from "src/app/services/user.service";
+import { ExpenseDescriptionModel } from "src/app/shared/models/expense-description.model";
 
 @Component({
   selector: "app-expense-edit",
@@ -11,11 +16,18 @@ import Swal from "sweetalert2";
 })
 export class ExpenseEditComponent implements OnInit {
   public expense: ExpenseModel;
+  public colllections: CollectionModel[];
+  public users: UserModel[];
+  public expenseDescriptions: ExpenseDescriptionModel[];
 
   constructor(
     private _expenseService: ExpenseService,
-    private _activedRoute: ActivatedRoute
-  ) {}
+    private _activedRoute: ActivatedRoute,
+    private _globalService: GlobalService,
+    private _userService: UserService
+  ) {
+    this.colllections = [_globalService.getVarCollection];
+  }
 
   ngOnInit(): void {
     this.getData();
@@ -27,6 +39,15 @@ export class ExpenseEditComponent implements OnInit {
         (res) => {
           this.expense = res;
           //console.log(res);
+          this._userService.get(res.id_user).subscribe((resp) => {
+            this.users = [resp];
+          });
+
+          this._expenseService
+            .getDescription(res.id_expense)
+            .subscribe((resp) => {
+              this.expenseDescriptions = [resp];
+            });
         },
         (err) => {
           const toast2 = Swal.mixin({

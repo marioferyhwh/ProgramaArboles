@@ -3,6 +3,8 @@ import { ExpenseDescriptionModel } from "src/app/shared/models/expense-descripti
 import { ExpenseService } from "src/app/services/expense.service";
 import { ActivatedRoute } from "@angular/router";
 import Swal from "sweetalert2";
+import { CollectionModel } from "src/app/shared/models/collection.model";
+import { GlobalService } from "src/app/services/global.service";
 
 @Component({
   selector: "app-expense-description-edit",
@@ -11,11 +13,15 @@ import Swal from "sweetalert2";
 })
 export class ExpenseDescriptionEditComponent implements OnInit {
   public expenseDescription: ExpenseDescriptionModel;
+  public collections: CollectionModel[];
 
   constructor(
     private _expenseService: ExpenseService,
-    private _activedRoute: ActivatedRoute
-  ) {}
+    private _activedRoute: ActivatedRoute,
+    private _globalService: GlobalService
+  ) {
+    this.collections = [this._globalService.getVarCollection];
+  }
 
   ngOnInit(): void {
     this.getData();

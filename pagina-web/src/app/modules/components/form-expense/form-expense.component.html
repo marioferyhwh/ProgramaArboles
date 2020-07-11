@@ -9,21 +9,25 @@
     </div>
 
     <div class="form-group row">
-        <label class="col-4 col-form-label" for="id_collection">Cobro:</label>
+        <label class="col-4 col-form-label r" for="id_collection">Cobro:</label>
         <div class="col-8">
-            <input class="form-control" type="text" placeholder="cobro" formControlName="id_collection" [class.is-invalid]="id_collectionInvalid">
+            <select class="form-control" formControlName="id_collection" type="number" [ngClass]="{'is-invalid':id_collectionInvalid}">
+        <option *ngFor="let dat of collections" [value]="dat.id">{{dat.id}}-{{dat.description}}</option>
+      </select>
             <span class="text-danger" *ngIf="id_collectionInvalid">
-        cobro no valido
+        especifique cobro
       </span>
         </div>
     </div>
 
-    <div class="form-group row" *ngIf="data.id">
-        <label class="col-4 col-form-label" for="id_user">Usuario:</label>
+    <div class="form-group row">
+        <label class="col-4 col-form-label r" for="id_user">Usuario:</label>
         <div class="col-8">
-            <input class="form-control" type="text" placeholder="usario" formControlName="id_user" [class.is-invalid]="id_userInvalid">
+            <select class="form-control" formControlName="id_user" type="number" [ngClass]="{'is-invalid':id_userInvalid}">
+        <option *ngFor="let dat of users" [value]="dat.id">{{dat.id}}-{{dat.name}}</option>
+      </select>
             <span class="text-danger" *ngIf="id_userInvalid">
-        usuario no valido
+        especifique Usuario
       </span>
         </div>
     </div>
@@ -31,8 +35,9 @@
     <div class="form-group row">
         <label class="col-4 col-form-label" for="id_expense">Gasto:</label>
         <div class="col-8">
-            <input class="form-control" type="number" placeholder="0" formControlName="id_expense" [class.is-invalid]="id_expenseInvalid">
-            <span class="text-danger" *ngIf="id_expenseInvalid">
+            <select class="form-control" formControlName="id_expense" type="number" [ngClass]="{'is-invalid':id_expenseInvalid}">
+        <option *ngFor="let dat of expenseDescriptions" [value]="dat.id">{{dat.id}}-{{dat.description}}</option>
+      </select> <span class="text-danger" *ngIf="id_expenseInvalid">
         gasto no valido
       </span>
         </div>

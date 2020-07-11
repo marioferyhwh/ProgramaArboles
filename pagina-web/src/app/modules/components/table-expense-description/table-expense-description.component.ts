@@ -33,7 +33,7 @@ export class TableExpenseDescriptionComponent implements OnInit {
     });
     toast.fire().then((result) => {
       if (result.value) {
-        this._expenseService.delete(id).subscribe(
+        this._expenseService.deleteDescription(id).subscribe(
           (resp) => {
             const toast = Swal.mixin({
               title: "BORRADO",

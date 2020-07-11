@@ -2,6 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { ExpenseDescriptionModel } from "src/app/shared/models/expense-description.model";
 import { ExpenseService } from "src/app/services/expense.service";
 import Swal from "sweetalert2";
+import { CollectionModel } from "src/app/shared/models/collection.model";
+import { GlobalService } from "src/app/services/global.service";
 
 @Component({
   selector: "app-expense-description-new",
@@ -10,11 +12,17 @@ import Swal from "sweetalert2";
 })
 export class ExpenseDescriptionNewComponent implements OnInit {
   public expenseDescription: ExpenseDescriptionModel;
+  public collections: CollectionModel[];
 
-  constructor(private _expenseService: ExpenseService) {}
+  constructor(
+    private _expenseService: ExpenseService,
+    private _globalService: GlobalService
+  ) {}
 
   ngOnInit(): void {
+    this.collections = [this._globalService.getVarCollection];
     this.expenseDescription = new ExpenseDescriptionModel();
+    this.expenseDescription.id_collection = this.collections[0].id;
   }
 
   onCreate(data: ExpenseDescriptionModel) {

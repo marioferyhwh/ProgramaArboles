@@ -2,6 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { ExpenseModel } from "src/app/shared/models/expense.model";
 import { ExpenseService } from "src/app/services/expense.service";
 import Swal from "sweetalert2";
+import { CollectionModel } from "src/app/shared/models/collection.model";
+import { UserModel } from "src/app/shared/models/user.model";
+import { GlobalService } from "src/app/services/global.service";
+import { ApiServerService } from "src/app/services/api-server.service";
+import { ExpenseDescriptionModel } from "src/app/shared/models/expense-description.model";
 
 @Component({
   selector: "app-expense-new",
@@ -10,11 +15,31 @@ import Swal from "sweetalert2";
 })
 export class ExpenseNewComponent implements OnInit {
   public expense: ExpenseModel;
+  public colllections: CollectionModel[];
+  public users: UserModel[];
+  public expenseDescriptions: ExpenseDescriptionModel[];
 
-  constructor(private _expenseService: ExpenseService) {}
+  constructor(
+    private _expenseService: ExpenseService,
+    private _globalService: GlobalService,
+    private _apiService: ApiServerService
+  ) {
+    this.colllections = [this._globalService.getVarCollection];
+    this.users = [this._apiService.userToken()];
+    this._expenseService.getDescriptionList(this.colllections[0].id).subscribe(
+      (resp) => {
+        this.expenseDescriptions = resp;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+  }
 
   ngOnInit(): void {
     this.expense = new ExpenseModel();
+    this.expense.id_collection = this.colllections[0].id;
+    this.expense.id_user = this.users[0].id;
   }
 
   onCreate(data: ExpenseModel) {

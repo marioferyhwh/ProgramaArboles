@@ -2,6 +2,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { ExpenseModel } from "src/app/shared/models/expense.model";
 import { ExpenseService } from "src/app/services/expense.service";
+import { CollectionModel } from "src/app/shared/models/collection.model";
+import { UserModel } from "src/app/shared/models/user.model";
+import { ExpenseDescriptionModel } from "src/app/shared/models/expense-description.model";
 
 @Component({
   selector: "app-form-expense",
@@ -10,6 +13,9 @@ import { ExpenseService } from "src/app/services/expense.service";
 })
 export class FormExpenseComponent implements OnInit {
   @Input() public data: ExpenseModel;
+  @Input() public collections: CollectionModel[];
+  @Input() public users: UserModel[];
+  @Input() public expenseDescriptions: ExpenseDescriptionModel[];
   @Output() public onData: EventEmitter<ExpenseModel>;
 
   public forma: FormGroup;
@@ -19,7 +25,7 @@ export class FormExpenseComponent implements OnInit {
     private _fb: FormBuilder,
     private _expenseService: ExpenseService
   ) {
-    this.debug = false;
+    this.debug = true;
     this.onData = new EventEmitter();
     this.initForm();
   }
@@ -33,9 +39,11 @@ export class FormExpenseComponent implements OnInit {
   dataForm() {
     if (this.data != null) {
       this.forma.reset({ ...this.data });
+      if (this.data.id != null) {
+        this.forma.get("id_user").disable();
+      }
     }
     this.forma.get("id").disable();
-    this.forma.get("id_user").disable();
     this.forma.get("id_collection").disable();
   }
   onAction() {
@@ -46,8 +54,11 @@ export class FormExpenseComponent implements OnInit {
       });
       return;
     }
+    this.forma.value["id_user"] = parseInt(this.forma.value["id_user"]);
+    this.forma.value["id_expense"] = parseInt(this.forma.value["id_expense"]);
     const d = <ExpenseModel>this.forma.value;
     d.id = this.data.id;
+    d.id_collection = this.data.id_collection;
     this.onData.emit(d);
   }
   initForm() {
