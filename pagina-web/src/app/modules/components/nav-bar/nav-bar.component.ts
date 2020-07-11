@@ -12,11 +12,14 @@ import { CollectionModel } from "src/app/shared/models/collection.model";
 export class NavBarComponent implements OnInit {
   private levenNow: number;
   private Colllection: CollectionModel;
+  public admin: boolean;
   constructor(
     private _userServer: UserService,
-    private _globalService: GlobalService
+    private _globalService: GlobalService,
+    private _apiService: ApiServerService
   ) {
     this.levenNow = 3;
+    this.admin = _apiService.userToken().admin;
   }
 
   ngOnInit(): void {}
