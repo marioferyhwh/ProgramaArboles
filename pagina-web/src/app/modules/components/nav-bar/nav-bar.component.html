@@ -31,7 +31,7 @@
           <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/prestamo','nuevo']">nuevo</a></li>
           <li class="nav-item dropdown" routerLinkActive="active">
             <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" *ngIf="minLevel(1)">Tipos</a>
+              aria-expanded="false" *ngIf="admin">Tipos</a>
             <ul class="dropdown-menu">
               <li routerLinkActive="active">
                 <a class="dropdown-item" [routerLink]="['/prestamo','estado','lista']">lista</a></li>
@@ -89,6 +89,7 @@
           <!-- <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">prestamos</a></li>
                     <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">gastos</a></li>-->
           <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cobro','seleccionar']">seleccionar</a>
+            <div class="dropdown-divider "></div>
           </li>
           <li class="nav-item dropdown" routerLinkActive="active">
             <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
