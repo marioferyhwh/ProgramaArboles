@@ -6,6 +6,8 @@ import Swal from "sweetalert2";
 import { CollectionModel } from "src/app/shared/models/collection.model";
 import { UserModel } from "src/app/shared/models/user.model";
 import { LoanModel } from "src/app/shared/models/loan.model";
+import { GlobalService } from "src/app/services/global.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-loan-loan-payment-edit",
@@ -21,10 +23,15 @@ export class LoanLoanPaymentEditComponent implements OnInit {
 
   constructor(
     private _loanService: LoanService,
-    private _activedRoute: ActivatedRoute
-  ) {}
+    private _activedRoute: ActivatedRoute,
+    private _globalService: GlobalService,
+    private _userService: UserService
+  ) {
+    this.collections = [_globalService.getVarCollection];
+  }
 
   ngOnInit(): void {
+    console.log(this.collections);
     this.getData();
   }
 
@@ -34,6 +41,12 @@ export class LoanLoanPaymentEditComponent implements OnInit {
       this._loanService.getLoanPayment(params["id"]).subscribe(
         (res) => {
           this.loanPayment = res;
+          this._userService.get(res.id_user).subscribe((resp) => {
+            this.users = [resp];
+          });
+          this._loanService.get(res.id_loan).subscribe((resp) => {
+            this.loans = [resp];
+          });
           //console.log(res);
         },
         (err) => {

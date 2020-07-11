@@ -1,33 +1,33 @@
 <app-loading *ngIf="!data"></app-loading>
 <h2 *ngIf="data && data.length == 0 ">No se encontraron movimentos</h2>
 <table class="table table-sm" *ngIf="data && data.length > 0 ">
-    <thead>
-        <tr>
-            <th scope="col">cliente</th>
-            <th scope="col">creado</th>
-            <th scope="col">actualizado</th>
-            <th scope="col">inicial</th>
-            <th scope="col">interes</th>
-            <th scope="col">cuotas</th>
-            <th scope="col">saldo</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let dat of data">
-            <td>{{dat.id}}</td>
-            <td>{{dat.create_at}}</td>
-            <td>{{dat.update_at}}</td>
-            <td>{{dat.initial_value}}</td>
-            <td>{{dat.interest}}</td>
-            <td>{{dat.quota}}</td>
-            <td>{{dat.balance}}</td>
-            <td>
-                <app-button-see (click)="selectItem(dat.id)"></app-button-see>
-                <app-button-delete (click)="deleteItem(dat.id)"></app-button-delete>
-            </td>
-        </tr>
-    </tbody>
+  <thead>
+    <tr>
+      <th scope="col">cliente</th>
+      <th scope="col">creado</th>
+      <th scope="col">actualizado</th>
+      <th scope="col">inicial</th>
+      <th scope="col">interes</th>
+      <th scope="col">cuotas</th>
+      <th scope="col">saldo</th>
+      <th *ngIf="edit"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dat of data">
+      <td>{{dat.id}}</td>
+      <td>{{dat.create_at}}</td>
+      <td>{{dat.update_at}}</td>
+      <td>{{dat.initial_value}}</td>
+      <td>{{dat.interest}}</td>
+      <td>{{dat.quota}}</td>
+      <td>{{dat.balance}}</td>
+      <td *ngIf="edit">
+        <app-button-see (click)="selectItem(dat.id)"></app-button-see>
+        <app-button-delete (click)="deleteItem(dat.id)"></app-button-delete>
+      </td>
+    </tr>
+  </tbody>
 </table>
 <pre *ngIf="debug">
       {{data | json}}

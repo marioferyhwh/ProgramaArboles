@@ -8,7 +8,7 @@
       <th scope="col">creado</th>
       <th scope="col">registrado por</th>
       <th scope="col">valor</th>
-      <th></th>
+      <th *ngIf="edit"></th>
     </tr>
   </thead>
   <tbody>
@@ -18,7 +18,7 @@
       <td>{{dat.update_at}}</td>
       <td>{{dat.id_user}}</td>
       <td>{{dat.money}}</td>
-      <td>
+      <td *ngIf="edit">
         <app-button-edit (click)="editItem(dat.id,dat.id_loan)"></app-button-edit>
         <app-button-delete (click)="deleteItem(dat.id)"></app-button-delete>
       </td>

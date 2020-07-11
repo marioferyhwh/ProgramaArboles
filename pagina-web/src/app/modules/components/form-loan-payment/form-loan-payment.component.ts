@@ -35,6 +35,9 @@ export class FormLoanPaymentComponent implements OnInit {
   ngOnInit(): void {}
 
   ngOnChanges() {
+    console.log(this.collections);
+
+    console.log(this.data);
     this.dataForm();
   }
 
@@ -76,7 +79,7 @@ export class FormLoanPaymentComponent implements OnInit {
   }
 
   cancel() {
-    this._loanService.routeListstate();
+    this._loanService.routeSee(this.data.id_loan);
   }
 
   InvalidField(Field: string): boolean {

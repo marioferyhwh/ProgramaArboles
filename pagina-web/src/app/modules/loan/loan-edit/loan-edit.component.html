@@ -2,5 +2,5 @@
 <app-form-loan [data]="loan" (onData)="onUpdate($event)" [collections]="collections" [users]="users"
   [clients]="clients"></app-form-loan>
 
-<app-table-loan-payment [data]="loanPayments"></app-table-loan-payment>
+<app-table-loan-payment [data]="loanPayments" [edit]="true" (onReload)="getData()"></app-table-loan-payment>
 <app-button-new class="d-block" (click)="onLista()"></app-button-new>
