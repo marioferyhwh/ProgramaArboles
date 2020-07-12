@@ -10,6 +10,7 @@ import { RespModel } from "../shared/models/resp.model";
 })
 export class ApiServerService {
   private _url = "http://localhost:8080/api/v1/";
+  //private _url = "https://guarded-inlet-61566.herokuapp.com/api/v1/";
   private _nameToken = "forest-token";
   private _token: string;
   private _user: UserModel;
