@@ -23,10 +23,20 @@
     <script src="assets/js/bootnavbar.js"></script>
     <script>
         $(function() {
-            $('#main_navbar').bootnavbar({
-                //option
-                //animation: false
-            });
+            let varset = setInterval(interval, 2700)
+
+            function interval() {
+                if (document.getElementById("main_navbar") == null) {
+                    return
+                }
+                clearInterval(varset)
+                $('#main_navbar').bootnavbar({
+                    //option
+                    //animation: false
+                });
+            }
+
+
         })
     </script>
 </body>
