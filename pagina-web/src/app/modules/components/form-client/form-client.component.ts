@@ -25,6 +25,7 @@ export class FormClienteComponent implements OnInit {
   @Output() public onData: EventEmitter<ClientModel>;
 
   public forma: FormGroup;
+  public debug: boolean;
 
   public documents: DocumentTypeModel[];
   public loan_states: LoanStateModel[];
@@ -37,6 +38,7 @@ export class FormClienteComponent implements OnInit {
     private _validators: ValidatorsService,
     private _clientService: ClientService
   ) {
+    this.debug = false;
     this.initForm();
     this.onData = new EventEmitter();
   }

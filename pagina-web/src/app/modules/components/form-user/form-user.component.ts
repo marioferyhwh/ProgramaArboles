@@ -26,6 +26,7 @@ export class FormUserComponent implements OnInit {
     private _validator: ValidatorsService,
     private _router: Router
   ) {
+    this.debug = false;
     this.onData = new EventEmitter();
     this.initForm();
     this.listenerForm();

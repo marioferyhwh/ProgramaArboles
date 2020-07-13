@@ -1,5 +1,7 @@
 <!-- <h3>Cobro:{{collectionSelect.description}} __{{collectionSelect.id}}</h3> -->
-<div class="card-columns">
+<app-loading *ngIf="!collections"></app-loading>
+<h2 *ngIf="collections && collections.length == 0 ">No se encontraron cobros</h2>
+<div class="card-columns" *ngIf="collections && collections.length > 0 ">
     <div class="card" *ngFor="let dat of collections">
         <div class="card-header"># {{dat.id}}</div>
         <div class="card-body">

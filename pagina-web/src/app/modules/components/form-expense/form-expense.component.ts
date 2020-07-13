@@ -25,7 +25,7 @@ export class FormExpenseComponent implements OnInit {
     private _fb: FormBuilder,
     private _expenseService: ExpenseService
   ) {
-    this.debug = true;
+    this.debug = false;
     this.onData = new EventEmitter();
     this.initForm();
   }
