@@ -1,168 +1,145 @@
 <nav class="navbar navbar-expand-sm navbar-light bg-native" id="main_navbar">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav"
-    aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="main_nav">
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown" routerLinkActive="active" *ngIf="minLevelandCollection(3)">
-        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">Cliente</a>
-        <ul class="dropdown-menu">
-          <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cliente','lista']">Lista</a></li>
-          <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cliente','nuevo']">nuevo</a></li>
-          <li class="nav-item dropdown" routerLinkActive="active">
-            <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">Sectores</a>
-            <ul class="dropdown-menu">
-              <li routerLinkActive="active">
-                <a class="dropdown-item" [routerLink]="['/sector','lista']">lista</a></li>
-              <li routerLinkActive="active">
-                <a class="dropdown-item" [routerLink]="['/sector','nuevo']">nuevo</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown" routerLinkActive="active" *ngIf="minLevelandCollection(3)">
-        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">prestamo</a>
-        <ul class="dropdown-menu">
-          <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/prestamo','lista']">lista</a></li>
-          <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/prestamo','nuevo']">nuevo</a></li>
-          <li class="nav-item dropdown" routerLinkActive="active">
-            <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" *ngIf="admin">Tipos</a>
-            <ul class="dropdown-menu">
-              <li routerLinkActive="active">
-                <a class="dropdown-item" [routerLink]="['/prestamo','estado','lista']">lista</a></li>
-              <li routerLinkActive="active">
-                <a class="dropdown-item" [routerLink]="['/prestamo','estado','nuevo']">nuevo</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown" routerLinkActive="active" *ngIf="minLevelandCollection(3)">
-        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">gastos</a>
-        <ul class="dropdown-menu">
-          <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/gasto','lista']">lista</a></li>
-          <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/gasto','nuevo']">nuevo</a></li>
-          <li class="nav-item dropdown" routerLinkActive="active">
-            <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">Tipos</a>
-            <ul class="dropdown-menu">
-              <li routerLinkActive="active">
-                <a class="dropdown-item" [routerLink]="['/gasto','descripcion','lista']">lista</a></li>
-              <li routerLinkActive="active">
-                <a class="dropdown-item" [routerLink]="['/gasto','descripcion','nuevo']">nuevo</a></li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-item dropdown" routerLinkActive="active" *ngIf="minLevelandCollection(2)">
-        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Caja</a>
-        <ul class="dropdown-menu">
-          <li class="nav-item dropdown" routerLinkActive="active">
-            <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">movimentos</a>
-            <ul class="dropdown-menu">
-              <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cobro','caja','nuevo']">nuevo</a>
-              </li>
-              <li routerLinkActive="active"><a class="dropdown-item"
-                  [routerLink]="['/cobro','caja','buscar']">buscar</a> </li>
-              <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cobro','caja','items']">items</a>
-              </li>
-              <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cobro','caja','lista']">lista</a>
-              </li>
-            </ul>
-          </li>
-          <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/calculator']">calculos</a></li>
-        </ul>
-      </li>
-      <!-- <li class="nav-item dropdown" routerLinkActive="active">
+    <div class="collapse navbar-collapse" id="main_nav">
+        <ul class="navbar-nav">
+            <li class="nav-item dropdown" routerLinkActive="active" *ngIf="minLevelandCollection(3)">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cliente</a>
+                <ul class="dropdown-menu">
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cliente','lista']">Lista</a></li>
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cliente','nuevo']">nuevo</a></li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/sector','lista']">Sectores</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active">
+                                <a class="dropdown-item" [routerLink]="['/sector','lista']">lista</a></li>
+                            <li routerLinkActive="active">
+                                <a class="dropdown-item" [routerLink]="['/sector','nuevo']">nuevo</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown" routerLinkActive="active" *ngIf="minLevelandCollection(3)">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">prestamo</a>
+                <ul class="dropdown-menu">
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/prestamo','lista']">lista</a></li>
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/prestamo','nuevo']">nuevo</a></li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="admin" [routerLink]="['/prestamo','estado','lista']">Tipos</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active">
+                                <a class="dropdown-item" [routerLink]="['/prestamo','estado','lista']">lista</a></li>
+                            <li routerLinkActive="active">
+                                <a class="dropdown-item" [routerLink]="['/prestamo','estado','nuevo']">nuevo</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown" routerLinkActive="active" *ngIf="minLevelandCollection(3)">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">gastos</a>
+                <ul class="dropdown-menu">
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/gasto','lista']">lista</a></li>
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/gasto','nuevo']">nuevo</a></li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/gasto','descripcion','lista']">Tipos</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active">
+                                <a class="dropdown-item" [routerLink]="['/gasto','descripcion','lista']">lista</a></li>
+                            <li routerLinkActive="active">
+                                <a class="dropdown-item" [routerLink]="['/gasto','descripcion','nuevo']">nuevo</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown" routerLinkActive="active" *ngIf="minLevelandCollection(2)">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown">Caja</a>
+                <ul class="dropdown-menu">
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/cobro','caja','lista']">movimentos</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cobro','caja','nuevo']">nuevo</a>
+                            </li>
+                            <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cobro','caja','buscar']">buscar</a> </li>
+                            <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cobro','caja','items']">items</a>
+                            </li>
+                            <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cobro','caja','lista']">lista</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/calculator']">calculos</a></li>
+                </ul>
+            </li>
+            <!-- <li class="nav-item dropdown" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/cobro','seleccionar']">Selecionar</a>
       </li> -->
-      <li class="nav-item dropdown" routerLinkActive="active">
-        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">Configuracion</a>
-        <ul class="dropdown-menu">
-          <!-- <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">prestamos</a></li>
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Configuracion</a>
+                <ul class="dropdown-menu">
+                    <!-- <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">prestamos</a></li>
                     <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/config']">gastos</a></li>-->
-          <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cobro','seleccionar']">seleccionar</a>
-            <div class="dropdown-divider "></div>
-          </li>
-          <li class="nav-item dropdown" routerLinkActive="active">
-            <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" *ngIf="admin">Asignacion</a>
-            <ul class="dropdown-menu">
-              <li routerLinkActive="active"> <a class="dropdown-item"
-                  [routerLink]="['/usuario','cobro','lista']">lista</a>
-              </li>
-              <li routerLinkActive="active"> <a class="dropdown-item"
-                  [routerLink]="['/usuario','cobro','nuevo']">nuevo</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown" routerLinkActive="active">
-            <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" *ngIf="admin">todos Usuario</a>
-            <ul class="dropdown-menu">
-              <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','lista']">lista</a>
-              </li>
-              <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','nuevo']">nuevo</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown" routerLinkActive="active">
-            <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" *ngIf="admin">todos cobros</a>
-            <ul class=" dropdown-menu ">
-              <li routerLinkActive="active "> <a class="dropdown-item " [routerLink]="[ '/cobro', 'lista'] ">lista</a>
-              </li>
-              <li routerLinkActive="active "> <a class="dropdown-item " [routerLink]="[ '/cobro', 'nuevo'] ">nuevo</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown" routerLinkActive="active">
-            <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" *ngIf="admin">documentos</a>
-            <ul class=" dropdown-menu ">
-              <li routerLinkActive="active "> <a class="dropdown-item "
-                  [routerLink]="[ '/documento', 'lista'] ">lista</a>
-              </li>
-              <li routerLinkActive="active "> <a class="dropdown-item "
-                  [routerLink]="[ '/documento', 'nuevo'] ">nuevo</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown" routerLinkActive="active">
-            <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" *ngIf="admin">negocios</a>
-            <ul class=" dropdown-menu ">
-              <li routerLinkActive="active "> <a class="dropdown-item " [routerLink]="[ '/negocio', 'lista'] ">lista</a>
-              </li>
-              <li routerLinkActive="active "> <a class="dropdown-item " [routerLink]="[ '/negocio', 'nuevo'] ">nuevo</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown" routerLinkActive="active">
-            <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false" *ngIf="admin">niveles</a>
-            <ul class="dropdown-menu">
-              <li routerLinkActive="active"> <a class="dropdown-item"
-                  [routerLink]="['/usuario','nivel','lista']">lista</a>
-              </li>
-              <li routerLinkActive="active"> <a class="dropdown-item"
-                  [routerLink]="['/usuario','nivel','nuevo']">nuevo</a>
-              </li>
-            </ul>
-          </li>
-          <div class="dropdown-divider "></div>
-          <li routerLinkActive="active "><a class="dropdown-item " (click)="logOut() "
-              [routerLink]="[ '/login'] ">salir</a>
-          </li>
+                    <li routerLinkActive="active"><a class="dropdown-item" [routerLink]="['/cobro','seleccionar']">seleccionar</a>
+                        <div class="dropdown-divider"></div>
+                    </li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="admin" [routerLink]="['/usuario','cobro','lista']">Asignacion</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','cobro','lista']">lista</a>
+                            </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','cobro','nuevo']">nuevo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="admin" [routerLink]="['/usuario','lista']">todos Usuario</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','lista']">lista</a>
+                            </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','nuevo']">nuevo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="admin" [routerLink]="[ '/cobro', 'lista']">todos cobros</a>
+                        <ul class=" dropdown-menu">
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="[ '/cobro', 'lista']">lista</a>
+                            </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="[ '/cobro', 'nuevo']">nuevo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="admin" [routerLink]="[ '/documento', 'lista']">documentos</a>
+                        <ul class=" dropdown-menu">
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="[ '/documento', 'lista']">lista</a>
+                            </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="[ '/documento', 'nuevo']">nuevo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="admin" [routerLink]="[ '/negocio', 'lista']">negocios</a>
+                        <ul class=" dropdown-menu">
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="[ '/negocio', 'lista']">lista</a>
+                            </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="[ '/negocio', 'nuevo']">nuevo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" routerLinkActive="active">
+                        <a class="dropdown-item dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="admin" [routerLink]="['/usuario','nivel','lista']">niveles</a>
+                        <ul class="dropdown-menu">
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','nivel','lista']">lista</a>
+                            </li>
+                            <li routerLinkActive="active"> <a class="dropdown-item" [routerLink]="['/usuario','nivel','nuevo']">nuevo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <div class="dropdown-divider"></div>
+                    <li routerLinkActive="active"><a class="dropdown-item" (click)="logOut()" [routerLink]="[ '/login']">salir</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
-      </li>
-    </ul>
-  </div>
+    </div>
 </nav>
