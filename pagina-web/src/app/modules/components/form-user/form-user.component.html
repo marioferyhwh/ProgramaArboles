@@ -4,7 +4,7 @@
     <div class="form-group row" *ngIf="data.id">
         <label class="col-4 col-form-label" for="id">ID:</label>
         <div class="col-8">
-            <input class="form-control" type="text" placeholder="nombre" formControlName="id">
+            <input class="form-control" type="text" placeholder="id" formControlName="id">
         </div>
     </div>
 
@@ -37,7 +37,7 @@
     <div class="form-group row">
         <label class="col-4 col-form-label">nombre:</label>
         <div class="col-8">
-            <input class="form-control" type="text" placeholder="Name" formControlName="name" [class.is-invalid]="nameInvalid">
+            <input class="form-control" type="text" placeholder="nombre" formControlName="name" [class.is-invalid]="nameInvalid">
             <span class="text-danger" *ngIf="nameInvalid">
         usuario no valido
       </span>
@@ -89,7 +89,7 @@
     <div class="form-group row">
         <label class="col-4 col-form-label" for="password">clave:</label>
         <div class="col-8">
-            <input class="form-control" type="password" placeholder="**********" formControlName="password" [class.is-invalid]="passwordInvalid">
+            <input class="form-control" type="password" placeholder="  **********" formControlName="password" [class.is-invalid]="passwordInvalid">
             <span class="text-danger" *ngIf="passwordInvalid">
         Clave no valida
       </span>
@@ -99,7 +99,7 @@
     <div class="form-group row">
         <label class="col-4 col-form-label" for="confirm_password">confirmar clave:</label>
         <div class="col-8">
-            <input class="form-control" type="password" placeholder="**********" formControlName="confirm_password" [class.is-invalid]="confirm_passwordInvalid">
+            <input class="form-control" type="password" placeholder="  **********" formControlName="confirm_password" [class.is-invalid]="confirm_passwordInvalid">
             <span class="text-danger" *ngIf="confirm_passwordInvalid">
         no conciden las claves
       </span>

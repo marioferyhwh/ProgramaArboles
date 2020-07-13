@@ -55,7 +55,14 @@ export class FormCollectionComponent implements OnInit {
   initForm() {
     this.forma = this._fb.group({
       id: [0],
-      description: ["", Validators.required],
+      description: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(256),
+        ],
+      ],
       actived: ["", Validators.required],
       balance_total: ["", [Validators.required, Validators.min(0)]],
     });

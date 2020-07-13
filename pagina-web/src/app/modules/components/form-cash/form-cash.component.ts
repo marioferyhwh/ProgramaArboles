@@ -61,8 +61,8 @@ export class FormCashComponent implements OnInit {
   initForm() {
     this.forma = this._fb.group({
       id: [],
-      id_collection: [0, Validators.required],
-      id_user: [0, Validators.required],
+      id_collection: [0, [Validators.required, Validators.min(1)]],
+      id_user: [0, [Validators.required, Validators.min(1)]],
       money: [0, Validators.required],
     });
   }

@@ -98,11 +98,12 @@ export class FormUserComponent implements OnInit {
       {
         id: [0],
         actived: [true, [Validators.required]],
-        nick_name: [""],
+        nick_name: ["", [Validators.minLength(3), Validators.maxLength(50)]],
         email: [
           "",
           [
             Validators.required,
+            Validators.maxLength(100),
             Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"),
           ],
           ,
@@ -120,7 +121,15 @@ export class FormUserComponent implements OnInit {
             Validators.pattern("[0-9]+"),
           ],
         ],
-        name: ["", [Validators.required], this._validator.userExists],
+        name: [
+          "",
+          [
+            Validators.required,
+            Validators.minLength(4),
+            Validators.maxLength(50),
+          ],
+          this._validator.userExists,
+        ],
         admin: [false, [Validators.required]],
         time_zone: [
           -5,

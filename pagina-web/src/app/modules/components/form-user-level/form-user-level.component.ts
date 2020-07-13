@@ -50,7 +50,14 @@ export class FormUserLevelComponent implements OnInit {
   initForm() {
     this.forma = this._fb.group({
       id: [],
-      level: ["", Validators.required],
+      level: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(11),
+        ],
+      ],
     });
   }
 

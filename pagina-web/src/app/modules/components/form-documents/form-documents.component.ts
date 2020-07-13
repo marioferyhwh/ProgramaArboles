@@ -51,8 +51,15 @@ export class FormDocumentsComponent implements OnInit {
   initForm() {
     this.forma = this._fb.group({
       id: [],
-      description: ["", Validators.required],
-      name_short: ["", Validators.required],
+      description: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(30),
+        ],
+      ],
+      name_short: ["", [Validators.required, Validators.maxLength(3)]],
     });
   }
 

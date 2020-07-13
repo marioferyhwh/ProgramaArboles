@@ -53,7 +53,14 @@ export class FormBusinessTypeComponent implements OnInit {
   initForm() {
     this.forma = this._fb.group({
       id: [],
-      type_business: ["", Validators.required],
+      type_business: [
+        "",
+        [
+          Validators.required,
+          Validators.maxLength(45),
+          Validators.minLength(4),
+        ],
+      ],
     });
   }
 

@@ -85,11 +85,18 @@ export class FormUserCollectionComponent implements OnInit {
     this.forma = this._fb.group({
       id: [0],
       money: [0, [Validators.required, Validators.min(0)]],
-      name: ["", Validators.required],
+      name: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+        ],
+      ],
       actived: [true, Validators.required],
-      id_user: [0, Validators.required],
-      id_collection: [0, Validators.required],
-      id_user_level: [0, Validators.required],
+      id_user: [0, [Validators.required, Validators.min(1)]],
+      id_collection: [0, [Validators.required, Validators.min(1)]],
+      id_user_level: [0, [Validators.required, Validators.min(1)]],
     });
   }
 

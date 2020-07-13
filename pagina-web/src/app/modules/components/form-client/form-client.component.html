@@ -4,7 +4,7 @@
     <div class="form-group row" *ngIf="data.id">
         <label class="col-4 col-form-label" for="id">ID:</label>
         <div class="col-8">
-            <input class="form-control" type="text" placeholder="nombre" formControlName="id">
+            <input class="form-control" type="text" placeholder="id" formControlName="id">
         </div>
     </div>
 
@@ -38,7 +38,7 @@
 
     <div class="form-group row" *ngIf="data.id">
         <label class="col-4 col-form-label">actualizado:{{data.update_at}}</label>
-        <label class="col-10 col-form-label">prestamos:{{data.number_loans}}</label>
+        <label class="col-10 col-form-label">#prestamos:{{data.number_loans}}</label>
     </div>
 
     <div class="form-group row">

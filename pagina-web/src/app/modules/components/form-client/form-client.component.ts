@@ -55,6 +55,7 @@ export class FormClienteComponent implements OnInit {
       this.forma.reset({ ...this.data });
     }
     this.forma.get("id").disable();
+    this.forma.get("number_loans").disable();
     this.forma.get("id_collection").disable();
     this.forma.get("id_user").disable();
   }
@@ -98,15 +99,42 @@ export class FormClienteComponent implements OnInit {
       this.telds = dt.tel_descriptions;
     });
     this.forma = this._fb.group({
-      name: ["", [Validators.required, Validators.minLength(5)]],
-      email: ["", [Validators.email]],
+      name: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(50),
+        ],
+      ],
+      email: [
+        "",
+        [
+          Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$"),
+          Validators.maxLength(100),
+        ],
+      ],
       document_code: ["", [this._validators.documentCode]],
-      document: ["", [this._validators.documentCode]],
-      adress: ["", [Validators.required]],
+      document: [
+        "",
+        [
+          this._validators.document,
+          Validators.pattern("[0-9]+"),
+          Validators.maxLength(11),
+        ],
+      ],
+      adress: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(60),
+        ],
+      ],
       number_loans: [0],
-      id_loan_state: [1, [Validators.required]],
-      id_type_business: ["", [Validators.required]],
-      id_location: ["", [Validators.required]],
+      id_loan_state: [1, [Validators.required, , Validators.min(1)]],
+      id_type_business: ["", [Validators.required, , Validators.min(1)]],
+      id_location: ["", [Validators.required, , Validators.min(1)]],
       tels: this._fb.array([]),
 
       id: [],

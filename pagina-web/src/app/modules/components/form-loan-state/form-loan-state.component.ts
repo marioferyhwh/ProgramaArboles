@@ -48,7 +48,14 @@ export class FormLoanStateComponent implements OnInit {
   initForm() {
     this.forma = this._fb.group({
       id: [],
-      state: ["", Validators.required],
+      state: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+        ],
+      ],
     });
   }
 

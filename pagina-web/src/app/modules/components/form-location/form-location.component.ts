@@ -56,7 +56,14 @@ export class FormLocationComponent implements OnInit {
     this.forma = this._fb.group({
       id: [],
       id_collection: [0, Validators.required],
-      name: ["", Validators.required],
+      name: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(11),
+        ],
+      ],
     });
   }
 
